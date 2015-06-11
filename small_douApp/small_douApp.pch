@@ -72,6 +72,7 @@
 #pragma mark- 屏幕大小
 
 #define TopHeight 64.0
+#define TabBarHeight 49.0
 #define ScreenB [UIScreen mainScreen].bounds
 #define ScreenW [UIScreen mainScreen].bounds.size.width
 #define ScreenH [UIScreen mainScreen].bounds.size.height
@@ -87,6 +88,10 @@
 #define ISIOS8 ([[[UIDevice currentDevice] systemVersion]floatValue]>=8.0)?YES:NO
 
 #define ISIOS7 ([[[UIDevice currentDevice] systemVersion]floatValue]>=7.0)?YES:NO
+
+
+
+
 
 
 #endif

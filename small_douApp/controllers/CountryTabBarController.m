@@ -9,15 +9,50 @@
 #import "CountryTabBarController.h"
 
 @interface CountryTabBarController ()
-
+{
+    UIView *_tabBar;
+}
 @end
 
 @implementation CountryTabBarController
 
+-(instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        self.view.backgroundColor = color_bg;   
+    }
+    return self;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.tabBar.hidden = YES;
+    [self createTabBar];
+    [self createTabs];
+    [self createViewControllers];
 }
+
+-(void)createTabBar
+{
+    _tabBar = [[UIView alloc] initWithFrame:CGRectMake(0, ScreenH-TabBarHeight, ScreenW, TabBarHeight)];
+    _tabBar.backgroundColor = color_green;
+    [self.view addSubview:_tabBar];
+
+}
+
+-(void)createTabs
+{
+
+
+}
+
+-(void)createViewControllers
+{
+
+
+
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
