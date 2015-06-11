@@ -16,8 +16,25 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self createNavBar];
+    [self configNavBar];
+    
 }
 
+-(void)configNavBar
+{
+    self.midTitle = @"登录";
+    self.navTintColor = color_green;
+    self.midTitelColor = [UIColor whiteColor];
+}
+
+
+-(void)leftButItemClick
+{
+
+
+
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

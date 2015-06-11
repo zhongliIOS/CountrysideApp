@@ -10,4 +10,16 @@
 
 @interface LBaseViewController : UIViewController
 
+
+@property(nonatomic,strong)UIView *navBar;
+@property(nonatomic,copy)NSString *midTitle;
+@property(nonatomic,strong)UIColor *midTitelColor;
+@property(nonatomic,strong)UIColor *navTintColor;
+
+
+-(void)createNavBar;
+
+- (void)leftButItemClick;
+- (void)rightButItemClick;
+
 @end

@@ -15,4 +15,78 @@
 #import <AFNetworking.h>
 #import <MBProgressHUD.h>
 
+/**
+*  标题字体
+*/
+#define size_title1 23  //一般用于首页专题标题
+#define size_title2 18  //一般用于导航栏标题
+/**
+ *  主体字体
+ */
+#define size_font1 16  //一般用于正文标题，按钮问题
+#define size_font2 14  //一般用于强调正文，小按钮
+#define size_font3 13  //一般用于阅读正文
+#define size_font4 12  //提示文字
+#define size_font5 10  //一般用于日期 单位
+
+
+
+#pragma mark 颜色
+/**
+ *  文字颜色
+ */
+//黑色
+#define color_font_black [UIColor colorWithRed:51/255.0 green:51.0/255.0 blue:51.0/255.0 alpha:1]
+//深灰
+#define color_font_gray1 [UIColor colorWithRed:102/255.0 green:102/255.0 blue:102/255.0 alpha:1]
+//浅灰
+#define color_font_gray2 [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1]
+/**
+ *  背景
+ */
+#define color_bg [UIColor colorWithRed:238/255.0 green:238/255.0 blue:238/255.0 alpha:1]
+
+/**
+ *  边框
+ */
+#define color_line1 [UIColor colorWithRed:204/255.0 green:204/255.0 blue:204/255.0 alpha:1]
+#define color_line2 [UIColor colorWithRed:229/255.0 green:229/255.0 blue:229/255.0 alpha:1]
+
+/**
+ *  彩色
+ */
+//绿色
+#define color_green [UIColor colorWithRed:87/255.0 green:200/255.0 blue:93/255.0 alpha:1]
+//蓝色
+#define color_blue1 [UIColor colorWithRed:66/255.0 green:128/255.0 blue:217/255.0 alpha:1]
+//橘色
+#define color_orange [UIColor colorWithRed:254/255.0 green:150/255.0 blue:45/255.0 alpha:1]
+//红色
+#define color_red   [UIColor colorWithRed:255/255.0 green:103/255.0 blue:95/255.0 alpha:1]
+//蓝色 登录
+#define color_blue2 [UIColor colorWithRed:18/255.0 green:141/255.0 blue:182/255.0 alpha:1]
+
+/**
+ *  屏幕
+ */
+#pragma mark- 屏幕大小
+
+#define TopHeight 64.0
+#define ScreenB [UIScreen mainScreen].bounds
+#define ScreenW [UIScreen mainScreen].bounds.size.width
+#define ScreenH [UIScreen mainScreen].bounds.size.height
+
+
+#pragma mark- 系统设备与版本
+//设备
+#define ISiPhone4  ScreenH == 480
+#define ISiPhone5  ScreenH == 568
+#define ISiPhone6  ScreenH == 667
+#define ISiPhone6Plus  ScreenH == 736
+//版本
+#define ISIOS8 ([[[UIDevice currentDevice] systemVersion]floatValue]>=8.0)?YES:NO
+
+#define ISIOS7 ([[[UIDevice currentDevice] systemVersion]floatValue]>=7.0)?YES:NO
+
+
 #endif

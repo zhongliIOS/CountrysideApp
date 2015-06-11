@@ -9,7 +9,12 @@
 #import "LBaseViewController.h"
 
 @interface LBaseViewController ()
-
+{
+    UILabel *_midMaxLabel;
+    UIButton *_leftBtn;
+    UIButton *_rightBtn;
+   
+}
 @end
 
 @implementation LBaseViewController
@@ -17,6 +22,51 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.view.backgroundColor = color_bg;
+
+}
+
+-(void)createNavBar
+{
+    _navBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenW, TopHeight)];
+    [self.view addSubview:_navBar];
+    _midMaxLabel = [[UILabel alloc] initWithFrame:CGRectMake((ScreenW-150)/2, 20, 150, 44)];
+    _midMaxLabel.font = [UIFont systemFontOfSize:size_title2];
+    _midMaxLabel.textAlignment = NSTextAlignmentCenter;
+    [_navBar addSubview:_midMaxLabel];
+    //左右边按钮
+    _leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    _leftBtn.frame = CGRectMake(0, 20, 50, 44);
+    [_leftBtn addTarget:self action:@selector(leftButItemClick) forControlEvents:UIControlEventTouchUpInside];
+    [_leftBtn setImage:[UIImage imageNamed:@"arrow-nav-white-36x36-left@2x"] forState:UIControlStateNormal];
+    [self.view addSubview:_leftBtn];
+}
+
+
+-(void)leftButItemClick
+{
+
+
+
+
+}
+
+-(void)setNavTintColor:(UIColor *)navTintColor
+{
+    _navBar.backgroundColor = navTintColor;
+
+}
+-(void)setMidTitelColor:(UIColor *)midTitelColor
+{
+
+    _midMaxLabel.textColor = midTitelColor;
+
+}
+-(void)setMidTitle:(NSString *)midTitle
+{
+    _midTitle = midTitle;
+    _midMaxLabel.text = midTitle;
+
 }
 
 - (void)didReceiveMemoryWarning {
