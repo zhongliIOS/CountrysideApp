@@ -23,9 +23,12 @@
 		CAF0AD731B27C89A00306D9E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF0AD721B27C89A00306D9E /* ViewController.m */; };
 		CAF0AD761B27C89A00306D9E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAF0AD741B27C89A00306D9E /* Main.storyboard */; };
 		CAF0AD781B27C89A00306D9E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAF0AD771B27C89A00306D9E /* Images.xcassets */; };
-		CAF0AD7B1B27C89A00306D9E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = CAF0AD791B27C89A00306D9E /* LaunchScreen.xib */; };
 		CAF0AD871B27C89A00306D9E /* small_douAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF0AD861B27C89A00306D9E /* small_douAppTests.m */; };
 		CAF0AD9E1B29761000306D9E /* arrow-nav-white-36x36-left@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CAF0AD9D1B29761000306D9E /* arrow-nav-white-36x36-left@2x.png */; };
+		CAF0ADA91B2A83CE00306D9E /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF0ADA81B2A83CE00306D9E /* MainViewController.m */; };
+		CAF0ADAC1B2A83E900306D9E /* FenLeiVIewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF0ADAB1B2A83E900306D9E /* FenLeiVIewController.m */; };
+		CAF0ADAF1B2A840200306D9E /* GoodsCarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF0ADAE1B2A840200306D9E /* GoodsCarViewController.m */; };
+		CAF0ADB21B2A841200306D9E /* UserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF0ADB11B2A841200306D9E /* UserViewController.m */; };
 		DA0AD5CD7A4F83073772C578 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A7A3CC018FB239C5723C05C /* libPods.a */; settings = {ATTRIBUTES = (Required, ); }; };
 /* End PBXBuildFile section */
 
@@ -74,12 +77,19 @@
 		CAF0AD721B27C89A00306D9E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		CAF0AD751B27C89A00306D9E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CAF0AD771B27C89A00306D9E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		CAF0AD7A1B27C89A00306D9E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		CAF0AD801B27C89A00306D9E /* small_douAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = small_douAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAF0AD851B27C89A00306D9E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CAF0AD861B27C89A00306D9E /* small_douAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = small_douAppTests.m; sourceTree = "<group>"; };
 		CAF0AD9B1B27F56200306D9E /* small_douApp.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = small_douApp.pch; sourceTree = "<group>"; };
 		CAF0AD9D1B29761000306D9E /* arrow-nav-white-36x36-left@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-nav-white-36x36-left@2x.png"; sourceTree = "<group>"; };
+		CAF0ADA71B2A83CE00306D9E /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		CAF0ADA81B2A83CE00306D9E /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		CAF0ADAA1B2A83E900306D9E /* FenLeiVIewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FenLeiVIewController.h; sourceTree = "<group>"; };
+		CAF0ADAB1B2A83E900306D9E /* FenLeiVIewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FenLeiVIewController.m; sourceTree = "<group>"; };
+		CAF0ADAD1B2A840100306D9E /* GoodsCarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsCarViewController.h; sourceTree = "<group>"; };
+		CAF0ADAE1B2A840200306D9E /* GoodsCarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsCarViewController.m; sourceTree = "<group>"; };
+		CAF0ADB01B2A841200306D9E /* UserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserViewController.h; sourceTree = "<group>"; };
+		CAF0ADB11B2A841200306D9E /* UserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,7 +191,6 @@
 				C33B83721B28895E0020F76E /* LTableViewController.m */,
 				CAF0AD741B27C89A00306D9E /* Main.storyboard */,
 				CAF0AD771B27C89A00306D9E /* Images.xcassets */,
-				CAF0AD791B27C89A00306D9E /* LaunchScreen.xib */,
 				CAF0AD9B1B27F56200306D9E /* small_douApp.pch */,
 				CAF0AD6A1B27C89A00306D9E /* Supporting Files */,
 			);
@@ -228,6 +237,14 @@
 				C31C254B1B2894B400BD8435 /* LoginViewController.m */,
 				C31C254D1B2895AD00BD8435 /* CountryTabBarController.h */,
 				C31C254E1B2895AD00BD8435 /* CountryTabBarController.m */,
+				CAF0ADA71B2A83CE00306D9E /* MainViewController.h */,
+				CAF0ADA81B2A83CE00306D9E /* MainViewController.m */,
+				CAF0ADAA1B2A83E900306D9E /* FenLeiVIewController.h */,
+				CAF0ADAB1B2A83E900306D9E /* FenLeiVIewController.m */,
+				CAF0ADAD1B2A840100306D9E /* GoodsCarViewController.h */,
+				CAF0ADAE1B2A840200306D9E /* GoodsCarViewController.m */,
+				CAF0ADB01B2A841200306D9E /* UserViewController.h */,
+				CAF0ADB11B2A841200306D9E /* UserViewController.m */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -367,7 +384,6 @@
 			files = (
 				CAF0AD9E1B29761000306D9E /* arrow-nav-white-36x36-left@2x.png in Resources */,
 				CAF0AD761B27C89A00306D9E /* Main.storyboard in Resources */,
-				CAF0AD7B1B27C89A00306D9E /* LaunchScreen.xib in Resources */,
 				CAF0AD781B27C89A00306D9E /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -421,17 +437,21 @@
 			files = (
 				C31C25491B288EC700BD8435 /* LUnity.m in Sources */,
 				CAF0AD731B27C89A00306D9E /* ViewController.m in Sources */,
+				CAF0ADAF1B2A840200306D9E /* GoodsCarViewController.m in Sources */,
 				C31C254C1B2894B400BD8435 /* LoginViewController.m in Sources */,
+				CAF0ADAC1B2A83E900306D9E /* FenLeiVIewController.m in Sources */,
 				CAF0AD701B27C89A00306D9E /* AppDelegate.m in Sources */,
 				C33B837D1B288BAB0020F76E /* ObjectList.m in Sources */,
 				C33B83841B288C620020F76E /* THttpActionMgr.m in Sources */,
 				C33B837B1B288BAB0020F76E /* JsonObject.m in Sources */,
+				CAF0ADB21B2A841200306D9E /* UserViewController.m in Sources */,
 				C33B83701B28894E0020F76E /* LBaseViewController.m in Sources */,
 				C33B83851B288C620020F76E /* TResponeResult.m in Sources */,
 				C33B83731B28895E0020F76E /* LTableViewController.m in Sources */,
 				C31C254F1B2895AD00BD8435 /* CountryTabBarController.m in Sources */,
 				C33B83881B288C940020F76E /* TActionBase.m in Sources */,
 				C33B837C1B288BAB0020F76E /* ObjBase.m in Sources */,
+				CAF0ADA91B2A83CE00306D9E /* MainViewController.m in Sources */,
 				CAF0AD6D1B27C89A00306D9E /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -461,14 +481,6 @@
 				CAF0AD751B27C89A00306D9E /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		CAF0AD791B27C89A00306D9E /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CAF0AD7A1B27C89A00306D9E /* Base */,
-			);
-			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -561,9 +573,11 @@
 			baseConfigurationReference = AB6C8FD08409BBC4169418C6 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/small_douApp/small_douApp.pch";
 				INFOPLIST_FILE = small_douApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -574,9 +588,11 @@
 			baseConfigurationReference = 906F9933CFD4C17C084076E5 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/small_douApp/small_douApp.pch";
 				INFOPLIST_FILE = small_douApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

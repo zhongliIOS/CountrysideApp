@@ -10,7 +10,8 @@
 
 @interface LBaseViewController : UIViewController
 
-
+@property(nonatomic,strong)UIButton *leftBtn;
+@property(nonatomic,strong)UIButton *rightBtn;
 @property(nonatomic,strong)UIView *navBar;
 @property(nonatomic,copy)NSString *midTitle;
 @property(nonatomic,strong)UIColor *midTitelColor;

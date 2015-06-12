@@ -11,7 +11,6 @@
 @interface LBaseViewController ()
 {
     UILabel *_midMaxLabel;
-    UIButton *_leftBtn;
     UIButton *_rightBtn;
    
 }
@@ -50,7 +49,12 @@
 
 
 }
+-(void)rightButItemClick
+{
 
+
+
+}
 -(void)setNavTintColor:(UIColor *)navTintColor
 {
     _navBar.backgroundColor = navTintColor;
