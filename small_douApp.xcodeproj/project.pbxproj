@@ -18,6 +18,7 @@
 		C33B83841B288C620020F76E /* THttpActionMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = C33B83811B288C620020F76E /* THttpActionMgr.m */; };
 		C33B83851B288C620020F76E /* TResponeResult.m in Sources */ = {isa = PBXBuildFile; fileRef = C33B83831B288C620020F76E /* TResponeResult.m */; };
 		C33B83881B288C940020F76E /* TActionBase.m in Sources */ = {isa = PBXBuildFile; fileRef = C33B83871B288C940020F76E /* TActionBase.m */; };
+		CAD7F1B31B31198F00DD94FC /* AddSubView.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD7F1B21B31198F00DD94FC /* AddSubView.m */; };
 		CAF0AD6D1B27C89A00306D9E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF0AD6C1B27C89A00306D9E /* main.m */; };
 		CAF0AD701B27C89A00306D9E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF0AD6F1B27C89A00306D9E /* AppDelegate.m */; };
 		CAF0AD731B27C89A00306D9E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF0AD721B27C89A00306D9E /* ViewController.m */; };
@@ -56,18 +57,20 @@
 		C33B836F1B28894E0020F76E /* LBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBaseViewController.m; sourceTree = "<group>"; };
 		C33B83711B28895E0020F76E /* LTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTableViewController.h; sourceTree = "<group>"; };
 		C33B83721B28895E0020F76E /* LTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTableViewController.m; sourceTree = "<group>"; };
-		C33B83751B288BAB0020F76E /* JsonObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonObject.h; sourceTree = "<group>"; };
-		C33B83761B288BAB0020F76E /* JsonObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JsonObject.m; sourceTree = "<group>"; };
-		C33B83771B288BAB0020F76E /* ObjBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjBase.h; sourceTree = "<group>"; };
-		C33B83781B288BAB0020F76E /* ObjBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjBase.m; sourceTree = "<group>"; };
-		C33B83791B288BAB0020F76E /* ObjectList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectList.h; sourceTree = "<group>"; };
-		C33B837A1B288BAB0020F76E /* ObjectList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectList.m; sourceTree = "<group>"; };
+		C33B83751B288BAB0020F76E /* JsonObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JsonObject.h; path = ../JsonObject.h; sourceTree = "<group>"; };
+		C33B83761B288BAB0020F76E /* JsonObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JsonObject.m; path = ../JsonObject.m; sourceTree = "<group>"; };
+		C33B83771B288BAB0020F76E /* ObjBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ObjBase.h; path = ../ObjBase.h; sourceTree = "<group>"; };
+		C33B83781B288BAB0020F76E /* ObjBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ObjBase.m; path = ../ObjBase.m; sourceTree = "<group>"; };
+		C33B83791B288BAB0020F76E /* ObjectList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ObjectList.h; path = ../ObjectList.h; sourceTree = "<group>"; };
+		C33B837A1B288BAB0020F76E /* ObjectList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ObjectList.m; path = ../ObjectList.m; sourceTree = "<group>"; };
 		C33B83801B288C620020F76E /* THttpActionMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THttpActionMgr.h; sourceTree = "<group>"; };
 		C33B83811B288C620020F76E /* THttpActionMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THttpActionMgr.m; sourceTree = "<group>"; };
 		C33B83821B288C620020F76E /* TResponeResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TResponeResult.h; sourceTree = "<group>"; };
 		C33B83831B288C620020F76E /* TResponeResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TResponeResult.m; sourceTree = "<group>"; };
 		C33B83861B288C940020F76E /* TActionBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TActionBase.h; sourceTree = "<group>"; };
 		C33B83871B288C940020F76E /* TActionBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TActionBase.m; sourceTree = "<group>"; };
+		CAD7F1B11B31198F00DD94FC /* AddSubView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSubView.h; sourceTree = "<group>"; };
+		CAD7F1B21B31198F00DD94FC /* AddSubView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSubView.m; sourceTree = "<group>"; };
 		CAF0AD671B27C89A00306D9E /* small_douApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = small_douApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAF0AD6B1B27C89A00306D9E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CAF0AD6C1B27C89A00306D9E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -148,6 +151,19 @@
 				C33B83831B288C620020F76E /* TResponeResult.m */,
 			);
 			path = Https;
+			sourceTree = "<group>";
+		};
+		CAD7F1B01B31171B00DD94FC /* BasObject */ = {
+			isa = PBXGroup;
+			children = (
+				C33B83751B288BAB0020F76E /* JsonObject.h */,
+				C33B83761B288BAB0020F76E /* JsonObject.m */,
+				C33B83771B288BAB0020F76E /* ObjBase.h */,
+				C33B83781B288BAB0020F76E /* ObjBase.m */,
+				C33B83791B288BAB0020F76E /* ObjectList.h */,
+				C33B837A1B288BAB0020F76E /* ObjectList.m */,
+			);
+			path = BasObject;
 			sourceTree = "<group>";
 		};
 		CAF0AD5E1B27C89A00306D9E = {
@@ -259,12 +275,7 @@
 		CAF0AD931B27EF3D00306D9E /* models */ = {
 			isa = PBXGroup;
 			children = (
-				C33B83751B288BAB0020F76E /* JsonObject.h */,
-				C33B83761B288BAB0020F76E /* JsonObject.m */,
-				C33B83771B288BAB0020F76E /* ObjBase.h */,
-				C33B83781B288BAB0020F76E /* ObjBase.m */,
-				C33B83791B288BAB0020F76E /* ObjectList.h */,
-				C33B837A1B288BAB0020F76E /* ObjectList.m */,
+				CAD7F1B01B31171B00DD94FC /* BasObject */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -280,6 +291,8 @@
 		CAF0AD961B27EF3D00306D9E /* views */ = {
 			isa = PBXGroup;
 			children = (
+				CAD7F1B11B31198F00DD94FC /* AddSubView.h */,
+				CAD7F1B21B31198F00DD94FC /* AddSubView.m */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -447,6 +460,7 @@
 				CAF0ADB21B2A841200306D9E /* UserViewController.m in Sources */,
 				C33B83701B28894E0020F76E /* LBaseViewController.m in Sources */,
 				C33B83851B288C620020F76E /* TResponeResult.m in Sources */,
+				CAD7F1B31B31198F00DD94FC /* AddSubView.m in Sources */,
 				C33B83731B28895E0020F76E /* LTableViewController.m in Sources */,
 				C31C254F1B2895AD00BD8435 /* CountryTabBarController.m in Sources */,
 				C33B83881B288C940020F76E /* TActionBase.m in Sources */,
