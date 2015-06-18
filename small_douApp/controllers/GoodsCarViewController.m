@@ -16,10 +16,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self createContenView];
     [self createNavBar];
     [self configNavBar];
     
 }
+
+-(void)createContenView
+{
+
+
+
+
+}
+
+
 
 -(void)configNavBar
 {

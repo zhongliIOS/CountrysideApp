@@ -14,6 +14,9 @@
 
 #import <AFNetworking.h>
 #import <MBProgressHUD.h>
+#import "CustomTextField.h"
+#import "LUnity.h"
+#import "EMSearchDisplayController.h"
 
 /**
 *  标题字体
@@ -41,6 +44,10 @@
 #define color_font_gray1 [UIColor colorWithRed:102/255.0 green:102/255.0 blue:102/255.0 alpha:1]
 //浅灰
 #define color_font_gray2 [UIColor colorWithRed:153/255.0 green:153/255.0 blue:153/255.0 alpha:1]
+
+#define color_font_green [UIColor colorWithRed:0.51 green:0.93 blue:0.36 alpha:1]
+#define color_btn_green [UIColor colorWithRed:0.37 green:0.76 blue:0.25 alpha:1]
+
 /**
  *  背景
  */
@@ -90,7 +97,7 @@
 #define ISIOS7 ([[[UIDevice currentDevice] systemVersion]floatValue]>=7.0)?YES:NO
 
 #define leftSpace 10.0
-
+#define bordWidth 0.5
 
 
 

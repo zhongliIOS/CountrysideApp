@@ -7,7 +7,7 @@
 //
 
 #import "MainViewController.h"
-#import "FenLeiVIewController.h"
+#import "SearchGoodsViewController.h"
 
 @interface MainViewController()<UITextViewDelegate>
 {
@@ -19,9 +19,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self createContentView];
     [self createNavBar];
     [self configNavBar];
-    [self createContentView];
 }
 
 -(void)createContentView
@@ -36,7 +36,6 @@
 
 -(void)configNavBar
 {
-    self.navTintColor = color_green;
     self.midTitelColor = [UIColor whiteColor];
     self.leftBtn.hidden = YES;
     
@@ -57,6 +56,7 @@
     UILabel *navSearchView = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(areaBtn.frame)+10, 30, ScreenW-30-areaBtn.frame.size.width, 24)];
     navSearchView.layer.cornerRadius = 12;
     navSearchView.layer.masksToBounds = YES;
+    navSearchView.userInteractionEnabled = YES;
     navSearchView.text = @"      搜索商品";
     navSearchView.textColor = [UIColor colorWithRed:0.52 green:0.94 blue:0.36 alpha:1];
     navSearchView.font = [UIFont systemFontOfSize:size_font3];
@@ -76,23 +76,20 @@
 
 -(void)navBtnClick:(UIButton *)btn
 {
+    
     if (btn.tag == 0) {
         //选择小区
         
     }
     if (btn.tag == 1) {
         //搜索商品
+        SearchGoodsViewController *vc = [[SearchGoodsViewController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
     }
 
-
 }
 
 
--(void)leftButItemClick
-{
-    FenLeiVIewController *vc = [[FenLeiVIewController alloc] init];
-    [self.navigationController pushViewController:vc animated:YES];
-}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

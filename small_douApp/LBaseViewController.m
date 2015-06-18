@@ -11,7 +11,6 @@
 @interface LBaseViewController ()
 {
     UILabel *_midMaxLabel;
-    UIButton *_rightBtn;
    
 }
 @end
@@ -37,30 +36,43 @@
 -(void)createNavBar
 {
     _navBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenW, TopHeight)];
+    _navBar.userInteractionEnabled = YES;
+    self.navTintColor = color_green;
+
     [self.view addSubview:_navBar];
     _midMaxLabel = [[UILabel alloc] initWithFrame:CGRectMake((ScreenW-150)/2, 20, 150, 44)];
     _midMaxLabel.font = [UIFont systemFontOfSize:size_title2];
     _midMaxLabel.textAlignment = NSTextAlignmentCenter;
     [_navBar addSubview:_midMaxLabel];
     //左右边按钮
-    _leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    _leftBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    _leftBtn.titleLabel.font = [UIFont systemFontOfSize:size_font1];
     _leftBtn.frame = CGRectMake(0, 20, 50, 44);
     [_leftBtn addTarget:self action:@selector(leftButItemClick) forControlEvents:UIControlEventTouchUpInside];
-    [_leftBtn setImage:[UIImage imageNamed:@"arrow-nav-white-36x36-left@2x"] forState:UIControlStateNormal];
-    [self.view addSubview:_leftBtn];
+    _leftBtn.hidden = YES;
+    [_navBar addSubview:_leftBtn];
+    
+    _rightBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    _rightBtn.frame = CGRectMake(ScreenW-50, 20, 40, 44);
+    [_rightBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    _rightBtn.hidden = YES;
+    [_rightBtn addTarget:self action:@selector(rightButItemClick) forControlEvents:UIControlEventTouchUpInside];
+    _rightBtn.titleLabel.font = [UIFont systemFontOfSize:size_font1];
+    [_rightBtn setTitle:@"取消" forState:UIControlStateNormal];
+    [_navBar addSubview:_rightBtn];
 }
 
 
 -(void)leftButItemClick
 {
 
-
+    [self.navigationController popViewControllerAnimated:YES];
 
 
 }
 -(void)rightButItemClick
 {
-
+    [self.navigationController popViewControllerAnimated:YES];
 
 
 }

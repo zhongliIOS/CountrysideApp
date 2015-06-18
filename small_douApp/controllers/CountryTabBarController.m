@@ -50,7 +50,7 @@
 -(void)createTabs
 {
     CGFloat btnWidth = ScreenW/4.0;
-    NSArray *arr = @[@"首页",@"分类",@"购物车",@"我的"];
+    NSArray *arr = @[@"首页",@"分类",@"购物车",@"账户"];
     for (int i = 0; i<4; i++) {
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         btn.frame = CGRectMake(btnWidth*i, 0, btnWidth, TabBarHeight);

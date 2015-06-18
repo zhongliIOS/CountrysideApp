@@ -18,6 +18,11 @@
 		C33B83841B288C620020F76E /* THttpActionMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = C33B83811B288C620020F76E /* THttpActionMgr.m */; };
 		C33B83851B288C620020F76E /* TResponeResult.m in Sources */ = {isa = PBXBuildFile; fileRef = C33B83831B288C620020F76E /* TResponeResult.m */; };
 		C33B83881B288C940020F76E /* TActionBase.m in Sources */ = {isa = PBXBuildFile; fileRef = C33B83871B288C940020F76E /* TActionBase.m */; };
+		CA1E63421B325AB400EE4EE7 /* EMSearchDisplayController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA1E63411B325AB400EE4EE7 /* EMSearchDisplayController.m */; };
+		CA1E63451B325CA400EE4EE7 /* SearchGoodsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA1E63441B325CA400EE4EE7 /* SearchGoodsViewController.m */; };
+		CA1E63491B326B8E00EE4EE7 /* CustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = CA1E63481B326B8E00EE4EE7 /* CustomTextField.m */; };
+		CA1E634C1B32C8AC00EE4EE7 /* UserNameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA1E634B1B32C8AC00EE4EE7 /* UserNameCell.m */; };
+		CA1E634F1B32C8BC00EE4EE7 /* UserOtherCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA1E634E1B32C8BC00EE4EE7 /* UserOtherCell.m */; };
 		CAD7F1B31B31198F00DD94FC /* AddSubView.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD7F1B21B31198F00DD94FC /* AddSubView.m */; };
 		CAF0AD6D1B27C89A00306D9E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF0AD6C1B27C89A00306D9E /* main.m */; };
 		CAF0AD701B27C89A00306D9E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF0AD6F1B27C89A00306D9E /* AppDelegate.m */; };
@@ -69,6 +74,16 @@
 		C33B83831B288C620020F76E /* TResponeResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TResponeResult.m; sourceTree = "<group>"; };
 		C33B83861B288C940020F76E /* TActionBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TActionBase.h; sourceTree = "<group>"; };
 		C33B83871B288C940020F76E /* TActionBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TActionBase.m; sourceTree = "<group>"; };
+		CA1E63401B325AB400EE4EE7 /* EMSearchDisplayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMSearchDisplayController.h; sourceTree = "<group>"; };
+		CA1E63411B325AB400EE4EE7 /* EMSearchDisplayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMSearchDisplayController.m; sourceTree = "<group>"; };
+		CA1E63431B325CA400EE4EE7 /* SearchGoodsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchGoodsViewController.h; sourceTree = "<group>"; };
+		CA1E63441B325CA400EE4EE7 /* SearchGoodsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchGoodsViewController.m; sourceTree = "<group>"; };
+		CA1E63471B326B8E00EE4EE7 /* CustomTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTextField.h; sourceTree = "<group>"; };
+		CA1E63481B326B8E00EE4EE7 /* CustomTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTextField.m; sourceTree = "<group>"; };
+		CA1E634A1B32C8AC00EE4EE7 /* UserNameCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserNameCell.h; sourceTree = "<group>"; };
+		CA1E634B1B32C8AC00EE4EE7 /* UserNameCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserNameCell.m; sourceTree = "<group>"; };
+		CA1E634D1B32C8BC00EE4EE7 /* UserOtherCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserOtherCell.h; sourceTree = "<group>"; };
+		CA1E634E1B32C8BC00EE4EE7 /* UserOtherCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserOtherCell.m; sourceTree = "<group>"; };
 		CAD7F1B11B31198F00DD94FC /* AddSubView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSubView.h; sourceTree = "<group>"; };
 		CAD7F1B21B31198F00DD94FC /* AddSubView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSubView.m; sourceTree = "<group>"; };
 		CAF0AD671B27C89A00306D9E /* small_douApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = small_douApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,6 +141,8 @@
 		C31C25461B288EAF00BD8435 /* unitys */ = {
 			isa = PBXGroup;
 			children = (
+				CA1E63401B325AB400EE4EE7 /* EMSearchDisplayController.h */,
+				CA1E63411B325AB400EE4EE7 /* EMSearchDisplayController.m */,
 				C31C25471B288EC700BD8435 /* LUnity.h */,
 				C31C25481B288EC700BD8435 /* LUnity.m */,
 			);
@@ -151,6 +168,15 @@
 				C33B83831B288C620020F76E /* TResponeResult.m */,
 			);
 			path = Https;
+			sourceTree = "<group>";
+		};
+		CA1E63461B326B8200EE4EE7 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				CA1E63471B326B8E00EE4EE7 /* CustomTextField.h */,
+				CA1E63481B326B8E00EE4EE7 /* CustomTextField.m */,
+			);
+			path = Custom;
 			sourceTree = "<group>";
 		};
 		CAD7F1B01B31171B00DD94FC /* BasObject */ = {
@@ -261,6 +287,8 @@
 				CAF0ADAE1B2A840200306D9E /* GoodsCarViewController.m */,
 				CAF0ADB01B2A841200306D9E /* UserViewController.h */,
 				CAF0ADB11B2A841200306D9E /* UserViewController.m */,
+				CA1E63431B325CA400EE4EE7 /* SearchGoodsViewController.h */,
+				CA1E63441B325CA400EE4EE7 /* SearchGoodsViewController.m */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -291,8 +319,13 @@
 		CAF0AD961B27EF3D00306D9E /* views */ = {
 			isa = PBXGroup;
 			children = (
+				CA1E63461B326B8200EE4EE7 /* Custom */,
 				CAD7F1B11B31198F00DD94FC /* AddSubView.h */,
 				CAD7F1B21B31198F00DD94FC /* AddSubView.m */,
+				CA1E634A1B32C8AC00EE4EE7 /* UserNameCell.h */,
+				CA1E634B1B32C8AC00EE4EE7 /* UserNameCell.m */,
+				CA1E634D1B32C8BC00EE4EE7 /* UserOtherCell.h */,
+				CA1E634E1B32C8BC00EE4EE7 /* UserOtherCell.m */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -450,6 +483,9 @@
 			files = (
 				C31C25491B288EC700BD8435 /* LUnity.m in Sources */,
 				CAF0AD731B27C89A00306D9E /* ViewController.m in Sources */,
+				CA1E63491B326B8E00EE4EE7 /* CustomTextField.m in Sources */,
+				CA1E634F1B32C8BC00EE4EE7 /* UserOtherCell.m in Sources */,
+				CA1E63451B325CA400EE4EE7 /* SearchGoodsViewController.m in Sources */,
 				CAF0ADAF1B2A840200306D9E /* GoodsCarViewController.m in Sources */,
 				C31C254C1B2894B400BD8435 /* LoginViewController.m in Sources */,
 				CAF0ADAC1B2A83E900306D9E /* FenLeiVIewController.m in Sources */,
@@ -460,6 +496,8 @@
 				CAF0ADB21B2A841200306D9E /* UserViewController.m in Sources */,
 				C33B83701B28894E0020F76E /* LBaseViewController.m in Sources */,
 				C33B83851B288C620020F76E /* TResponeResult.m in Sources */,
+				CA1E634C1B32C8AC00EE4EE7 /* UserNameCell.m in Sources */,
+				CA1E63421B325AB400EE4EE7 /* EMSearchDisplayController.m in Sources */,
 				CAD7F1B31B31198F00DD94FC /* AddSubView.m in Sources */,
 				C33B83731B28895E0020F76E /* LTableViewController.m in Sources */,
 				C31C254F1B2895AD00BD8435 /* CountryTabBarController.m in Sources */,
