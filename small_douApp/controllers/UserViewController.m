@@ -9,6 +9,9 @@
 
 #import "UserViewController.h"
 #import "LoginViewController.h"
+#import "GoodsDetailViewController.h"
+#import "UserNameCell.h"
+#import "UserOtherCell.h"
 
 @interface UserViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -32,6 +35,8 @@
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, TopHeight, ScreenW, ScreenH-TopHeight-TabBarHeight)];
     _tableView.delegate = self;
     _tableView.dataSource = self;
+    _tableView.backgroundColor = [UIColor clearColor];
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_tableView];
 }
 
@@ -54,17 +59,54 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
- 
-
-
+    if (indexPath.row==0) {
+        UserNameCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UserNameCell"];
+        if (!cell) {
+            cell = [[UserNameCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UserNameCell"];
+        }
+        cell.backgroundColor = [UIColor clearColor];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
+    }
+    else
+    {
+        UserOtherCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UserOtherCell"];
+        if (!cell) {
+            cell = [[UserOtherCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UserOtherCell"];
+        }
+        cell.backgroundColor = [UIColor clearColor];
+        cell.titleString = @[@"订单查询",@"完成订单",@"我的收藏"][indexPath.row-1];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
+    
+    }
     return nil;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.row==0) {
+        return 72.0;
+    }
+    else
+     return 56;
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row==1) {
+    //订单查询
+        GoodsDetailViewController *vc = [[GoodsDetailViewController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    if (indexPath.row==2) {
+     //完成订单
+        
+    }
+    if (indexPath.row==3) {
+    //我的收藏
+        
+    }
 
-
-    return 44.0;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

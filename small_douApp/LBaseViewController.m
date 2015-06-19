@@ -50,6 +50,8 @@
     _leftBtn.frame = CGRectMake(0, 20, 50, 44);
     [_leftBtn addTarget:self action:@selector(leftButItemClick) forControlEvents:UIControlEventTouchUpInside];
     _leftBtn.hidden = YES;
+    [_leftBtn setTintColor:[UIColor whiteColor]];
+
     [_navBar addSubview:_leftBtn];
     
     _rightBtn = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -59,6 +61,8 @@
     [_rightBtn addTarget:self action:@selector(rightButItemClick) forControlEvents:UIControlEventTouchUpInside];
     _rightBtn.titleLabel.font = [UIFont systemFontOfSize:size_font1];
     [_rightBtn setTitle:@"取消" forState:UIControlStateNormal];
+    [_rightBtn setTintColor:[UIColor whiteColor]];
+
     [_navBar addSubview:_rightBtn];
 }
 

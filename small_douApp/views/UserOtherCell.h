@@ -10,4 +10,6 @@
 
 @interface UserOtherCell : UITableViewCell
 
+@property(nonatomic,copy)NSString *titleString;
+
 @end

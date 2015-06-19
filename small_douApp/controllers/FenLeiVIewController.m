@@ -84,11 +84,16 @@
 
     [UIView animateWithDuration:0.2 animations:^{
         _searchBar.frame = CGRectMake(0, 20, ScreenW, 44);
+        self.view.backgroundColor = [UIColor colorWithRed:230.0/255 green:230.0/255 blue:230.0/255 alpha:1.0];
+        self.navBar.hidden = YES;
+
     }];
 }
 - (void)searchDisplayControllerWillEndSearch:(UISearchDisplayController *)controller{
     [UIView animateWithDuration:0.2 animations:^{
         _searchBar.frame = CGRectMake(0, TopHeight, ScreenW, 44);
+        self.view.backgroundColor = color_bg;
+        self.navBar.hidden = NO;
     }];
     
 }

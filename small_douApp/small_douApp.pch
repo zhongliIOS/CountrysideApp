@@ -99,6 +99,6 @@
 #define leftSpace 10.0
 #define bordWidth 0.5
 
-
+#define backImageName @"arrow-nav-white-36x36-left@2x"
 
 #endif
