@@ -15,6 +15,8 @@
 @interface CountryTabBarController ()
 {
     UIView *_tabBar;
+    NSArray *_imgArr;
+    NSArray *_imgHArr;
 }
 @end
 
@@ -51,18 +53,28 @@
 {
     CGFloat btnWidth = ScreenW/4.0;
     NSArray *arr = @[@"首页",@"分类",@"购物车",@"账户"];
+    _imgArr = @[@"home",@"label",@"shop",@"me"];
+    _imgHArr = @[@"home_nav",@"label_nav",@"shop_nav",@"me_nav"];
     for (int i = 0; i<4; i++) {
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
         btn.frame = CGRectMake(btnWidth*i, 0, btnWidth, TabBarHeight);
         btn.tag = i;
+        UIImageView *imageV = [[UIImageView alloc] initWithFrame:CGRectMake((btnWidth-39)/2.0, 5, 39, 27.5)];
+        imageV.image = [UIImage imageNamed:_imgArr[i]];
+        [btn addSubview:imageV];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(imageV.frame), btnWidth, 14)];
+        label.textColor = color_font_gray2;
+        label.text = arr[i];
+        label.font = [UIFont systemFontOfSize:size_font4];
+        label.textAlignment = NSTextAlignmentCenter;
+        [btn addSubview:label];
         if (i==0) {
             btn.selected = YES;
+            imageV.image = [UIImage imageNamed:_imgHArr[0]];
+            label.textColor = color_font_green;
         }
         [btn addTarget:self action:@selector(tabBarBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-        [btn setTitle:arr[i] forState:UIControlStateNormal];
-        [btn setTitleColor:color_font_gray2 forState:UIControlStateNormal];
-        [btn setTitleColor:color_green forState:UIControlStateSelected];
-        btn.titleLabel.font = [UIFont systemFontOfSize:size_font2];
+
         [_tabBar addSubview:btn];
         
     }
@@ -91,10 +103,30 @@
         if ([view isKindOfClass:[UIButton class]]) {
             UIButton *tempBtn = (UIButton *)view;
             tempBtn.selected = NO;
+            for (UIView *view in tempBtn.subviews) {
+                if ([view isKindOfClass:[UIImageView class]]) {
+                    UIImageView *temp = (UIImageView *)view;
+                    temp.image = [UIImage imageNamed:_imgArr[tempBtn.tag]];
+                }
+                if ([view isKindOfClass:[UILabel class]]) {
+                    UILabel *label = (UILabel *)view;
+                    label.textColor = color_font_gray2;
+                }
+            }
         }
     }
     btn.selected = YES;
     self.selectedIndex = btn.tag;
+    for (UIView *view in btn.subviews) {
+        if ([view isKindOfClass:[UIImageView class]]) {
+            UIImageView *temp = (UIImageView *)view;
+            temp.image = [UIImage imageNamed:_imgHArr[btn.tag]];
+        }
+        if ([view isKindOfClass:[UILabel class]]) {
+            UILabel *label = (UILabel *)view;
+            label.textColor = color_font_green;
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning {

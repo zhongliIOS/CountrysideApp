@@ -12,7 +12,7 @@
 {
 
     UILabel *_tipLabel;
-    
+    UIImageView *_imgV;
 }
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -30,25 +30,34 @@
     bgView.backgroundColor = [UIColor whiteColor];
     [self.contentView addSubview:bgView];
     
-    UIImageView *imgV = [[UIImageView alloc] initWithFrame:CGRectMake(leftSpace, 15, 25, 25)];
-    imgV.image = [UIImage imageNamed:@""];
-    [bgView addSubview:imgV];
+    _imgV = [[UIImageView alloc] initWithFrame:CGRectMake(leftSpace, 12.5, 30, 30)];
+    [bgView addSubview:_imgV];
     
-    _tipLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(imgV.frame)+10, 0, 100, 55)];
+    _tipLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_imgV.frame)+10, 0, 100, 55)];
     _tipLabel.text = @"我的收藏";
     _tipLabel.font = [UIFont systemFontOfSize:size_font2];
     _tipLabel.textColor = color_font_black;
     [bgView addSubview:_tipLabel];
     
-    UIImageView *nextImgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
-    nextImgV.image = [UIImage imageNamed:@""];
+    UIImageView *nextImgV = [[UIImageView alloc] initWithFrame:CGRectMake(ScreenW-22, 17.5, 14, 20)];
+    nextImgV.image = [UIImage imageNamed:@"jinru"];
     [bgView addSubview:nextImgV];
 }
 -(void)setTitleString:(NSString *)titleString
 {
 
     _tipLabel.text = titleString;
+    if ([titleString isEqualToString:@"订单查询"]) {
+        _imgV.image = [UIImage imageNamed:@"ddcx"];
+    }
+    if ([titleString isEqualToString:@"完成订单"]) {
+        _imgV.image = [UIImage imageNamed:@"wcdd"];
 
+    }
+    if ([titleString isEqualToString:@"我的收藏"]) {
+        _imgV.image = [UIImage imageNamed:@"wdsc"];
+
+    }
 }
 - (void)awakeFromNib {
     // Initialization code

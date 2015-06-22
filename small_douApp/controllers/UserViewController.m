@@ -10,6 +10,7 @@
 #import "UserViewController.h"
 #import "LoginViewController.h"
 #import "GoodsDetailViewController.h"
+#import "OrderSearchController.h"
 #import "UserNameCell.h"
 #import "UserOtherCell.h"
 
@@ -95,7 +96,7 @@
 {
     if (indexPath.row==1) {
     //订单查询
-        GoodsDetailViewController *vc = [[GoodsDetailViewController alloc]init];
+        OrderSearchController *vc = [[OrderSearchController alloc]init];
         [self.navigationController pushViewController:vc animated:YES];
     }
     if (indexPath.row==2) {
