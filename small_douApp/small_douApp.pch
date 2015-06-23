@@ -75,6 +75,7 @@
 #define color_red   [UIColor colorWithRed:255/255.0 green:103/255.0 blue:95/255.0 alpha:1]
 //蓝色 登录
 #define color_blue2 [UIColor colorWithRed:18/255.0 green:141/255.0 blue:182/255.0 alpha:1]
+#define color_btn_red [UIColor colorWithRed:0.99 green:0.27 blue:0.13 alpha:1]
 
 /**
  *  屏幕

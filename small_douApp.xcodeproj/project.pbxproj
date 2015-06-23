@@ -40,6 +40,9 @@
 		C33B83841B288C620020F76E /* THttpActionMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = C33B83811B288C620020F76E /* THttpActionMgr.m */; };
 		C33B83851B288C620020F76E /* TResponeResult.m in Sources */ = {isa = PBXBuildFile; fileRef = C33B83831B288C620020F76E /* TResponeResult.m */; };
 		C33B83881B288C940020F76E /* TActionBase.m in Sources */ = {isa = PBXBuildFile; fileRef = C33B83871B288C940020F76E /* TActionBase.m */; };
+		C38136151B399A8D00418CDB /* TianXieOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C38136141B399A8D00418CDB /* TianXieOrderViewController.m */; };
+		C38136181B399F9D00418CDB /* GoodOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C38136171B399F9D00418CDB /* GoodOrderCell.m */; };
+		C381361B1B39A19B00418CDB /* GoodAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C381361A1B39A19B00418CDB /* GoodAddressCell.m */; };
 		C3EA5CA61B383B460043C3E9 /* OrderSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EA5CA51B383B460043C3E9 /* OrderSearchController.m */; };
 		C3EA5CA91B383E190043C3E9 /* OrderSumarryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EA5CA81B383E190043C3E9 /* OrderSumarryCell.m */; };
 		C3EA5CAC1B384D810043C3E9 /* UserDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EA5CAB1B384D810043C3E9 /* UserDetailViewController.m */; };
@@ -132,6 +135,12 @@
 		C33B83831B288C620020F76E /* TResponeResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TResponeResult.m; sourceTree = "<group>"; };
 		C33B83861B288C940020F76E /* TActionBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TActionBase.h; sourceTree = "<group>"; };
 		C33B83871B288C940020F76E /* TActionBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TActionBase.m; sourceTree = "<group>"; };
+		C38136131B399A8D00418CDB /* TianXieOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TianXieOrderViewController.h; sourceTree = "<group>"; };
+		C38136141B399A8D00418CDB /* TianXieOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TianXieOrderViewController.m; sourceTree = "<group>"; };
+		C38136161B399F9D00418CDB /* GoodOrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodOrderCell.h; sourceTree = "<group>"; };
+		C38136171B399F9D00418CDB /* GoodOrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodOrderCell.m; sourceTree = "<group>"; };
+		C38136191B39A19B00418CDB /* GoodAddressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodAddressCell.h; sourceTree = "<group>"; };
+		C381361A1B39A19B00418CDB /* GoodAddressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodAddressCell.m; sourceTree = "<group>"; };
 		C3EA5CA41B383B460043C3E9 /* OrderSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderSearchController.h; sourceTree = "<group>"; };
 		C3EA5CA51B383B460043C3E9 /* OrderSearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderSearchController.m; sourceTree = "<group>"; };
 		C3EA5CA71B383E190043C3E9 /* OrderSumarryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderSumarryCell.h; sourceTree = "<group>"; };
@@ -365,6 +374,8 @@
 				CAF0ADAB1B2A83E900306D9E /* FenLeiVIewController.m */,
 				CAF0ADAD1B2A840100306D9E /* GoodsCarViewController.h */,
 				CAF0ADAE1B2A840200306D9E /* GoodsCarViewController.m */,
+				C38136131B399A8D00418CDB /* TianXieOrderViewController.h */,
+				C38136141B399A8D00418CDB /* TianXieOrderViewController.m */,
 				CAF0ADB01B2A841200306D9E /* UserViewController.h */,
 				CAF0ADB11B2A841200306D9E /* UserViewController.m */,
 				C3EA5CAA1B384D810043C3E9 /* UserDetailViewController.h */,
@@ -430,6 +441,10 @@
 				CAB4D3D11B33EC2C00A998E5 /* GoodPushCell.m */,
 				C3EA5CA71B383E190043C3E9 /* OrderSumarryCell.h */,
 				C3EA5CA81B383E190043C3E9 /* OrderSumarryCell.m */,
+				C38136161B399F9D00418CDB /* GoodOrderCell.h */,
+				C38136171B399F9D00418CDB /* GoodOrderCell.m */,
+				C38136191B39A19B00418CDB /* GoodAddressCell.h */,
+				C381361A1B39A19B00418CDB /* GoodAddressCell.m */,
 				CA3F2FEC1B392AB6002B9B76 /* GoodCarCell.h */,
 				CA3F2FED1B392AB6002B9B76 /* GoodCarCell.m */,
 				CA3F2FF51B395C40002B9B76 /* FavCell.h */,
@@ -634,7 +649,9 @@
 				C3EA5CAC1B384D810043C3E9 /* UserDetailViewController.m in Sources */,
 				CAB4D3CF1B33E7F700A998E5 /* GoodDescribleCell.m in Sources */,
 				CA1E634F1B32C8BC00EE4EE7 /* UserOtherCell.m in Sources */,
+				C38136181B399F9D00418CDB /* GoodOrderCell.m in Sources */,
 				CA1E63451B325CA400EE4EE7 /* SearchGoodsViewController.m in Sources */,
+				C381361B1B39A19B00418CDB /* GoodAddressCell.m in Sources */,
 				CAB4D3D21B33EC2C00A998E5 /* GoodPushCell.m in Sources */,
 				CA3F2FF71B395C40002B9B76 /* FavCell.m in Sources */,
 				C3EA5CA61B383B460043C3E9 /* OrderSearchController.m in Sources */,
@@ -663,6 +680,7 @@
 				CAF0ADA91B2A83CE00306D9E /* MainViewController.m in Sources */,
 				CAF0AD6D1B27C89A00306D9E /* main.m in Sources */,
 				C30FD4721B37DD4500776357 /* MainHeadViewCell.m in Sources */,
+				C38136151B399A8D00418CDB /* TianXieOrderViewController.m in Sources */,
 				C3EA5CA91B383E190043C3E9 /* OrderSumarryCell.m in Sources */,
 				CAB4D3C91B33BDBF00A998E5 /* GoodsDetailViewController.m in Sources */,
 			);

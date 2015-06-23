@@ -8,6 +8,7 @@
 
 #import "GoodsCarViewController.h"
 #import "PayViewController.h"
+#import "TianXieOrderViewController.h"
 #import "GoodCarCell.h"
 
 @interface GoodsCarViewController ()<UITableViewDataSource,UITableViewDelegate>
@@ -64,7 +65,7 @@
     UIButton *buyBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     buyBtn.tintColor = [UIColor whiteColor];
     buyBtn.frame = CGRectMake(ScreenW-95, 7.5, 85, 29);
-    buyBtn.backgroundColor = color_red;
+    buyBtn.backgroundColor = color_btn_red;
     [buyBtn setTitle:@"立即购买" forState:UIControlStateNormal];
     [buyBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     buyBtn.titleLabel.font = [UIFont systemFontOfSize:size_font2];
@@ -85,7 +86,7 @@
 -(void)buyBtnClick
 {
   //购买
-    PayViewController *vc = [[PayViewController alloc]init];
+    TianXieOrderViewController *vc = [[TianXieOrderViewController alloc]init];
     [self.navigationController pushViewController:vc animated:YES];
 
 

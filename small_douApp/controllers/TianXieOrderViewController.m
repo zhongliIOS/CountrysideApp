@@ -1,23 +1,24 @@
 //
-//  MyFavViewController.m
+//  TianXieOrderViewController.m
 //  small_douApp
 //
-//  Created by zhongli on 15/6/23.
+//  Created by 刘中礼 on 15/6/23.
 //  Copyright (c) 2015年 zhongli. All rights reserved.
 //
 
-#import "MyFavViewController.h"
-#import "FavCell.h"
+#import "TianXieOrderViewController.h"
+#import "GoodOrderCell.h"
+#import "GoodAddressCell.h"
 
-@interface MyFavViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface TianXieOrderViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
 
-    UITableView *_tableView;
+   UITableView *_tableView;
 
 }
 @end
 
-@implementation MyFavViewController
+@implementation TianXieOrderViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -27,7 +28,7 @@
 }
 -(void)configNavBar
 {
-    self.midTitle = @"我的收藏";
+    self.midTitle = @"填写订单";
     self.midTitelColor = [UIColor whiteColor];
     [self.leftBtn setImage:[UIImage imageNamed:backImageName] forState:UIControlStateNormal];
     self.leftBtn.hidden = NO;
@@ -44,23 +45,36 @@
     _tableView.delegate = self;
     [self.view addSubview:_tableView];
 }
-
 #pragma mark----tableViewDelegate
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-    FavCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FavCell"];
-    if (!cell) {
-        cell = [[FavCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"FavCell"];
+    if (indexPath.row!=2) {
+        GoodOrderCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GoodOrderCell"];
+        if (!cell) {
+            cell = [[GoodOrderCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"GoodOrderCell"];
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
     }
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    return cell;
+    else
+    {
+        GoodAddressCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GoodAddressCell"];
+        if (!cell) {
+            cell = [[GoodAddressCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"GoodAddressCell"];
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
     
+    }
+    return nil;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.row==2) {
+        return 235.0;
+    }
     
     return 55.0;
 }
@@ -70,9 +84,8 @@
 {
     
     
-    return 2;
+    return 3;
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

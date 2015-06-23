@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface OrderSumarryCell : UITableViewCell
+//所有订单cell
 
 @end

@@ -10,6 +10,7 @@
 
 @interface GoodCarCell : UITableViewCell
 
+//购物车Cell
 @property(nonatomic,copy)void(^CallBackSelected)(BOOL );
 @property(nonatomic,copy)void(^CallBackCount)(NSInteger );
 
