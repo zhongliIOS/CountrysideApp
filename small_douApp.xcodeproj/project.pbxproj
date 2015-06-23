@@ -48,6 +48,10 @@
 		CA1E63491B326B8E00EE4EE7 /* CustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = CA1E63481B326B8E00EE4EE7 /* CustomTextField.m */; };
 		CA1E634C1B32C8AC00EE4EE7 /* UserNameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA1E634B1B32C8AC00EE4EE7 /* UserNameCell.m */; };
 		CA1E634F1B32C8BC00EE4EE7 /* UserOtherCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA1E634E1B32C8BC00EE4EE7 /* UserOtherCell.m */; };
+		CA3F2FEE1B392AB6002B9B76 /* GoodCarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3F2FED1B392AB6002B9B76 /* GoodCarCell.m */; };
+		CA3F2FF11B39491E002B9B76 /* PayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3F2FF01B39491E002B9B76 /* PayViewController.m */; };
+		CA3F2FF41B395A3E002B9B76 /* MyFavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3F2FF31B395A3E002B9B76 /* MyFavViewController.m */; };
+		CA3F2FF71B395C40002B9B76 /* FavCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3F2FF61B395C40002B9B76 /* FavCell.m */; };
 		CAB4D3C91B33BDBF00A998E5 /* GoodsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB4D3C81B33BDBF00A998E5 /* GoodsDetailViewController.m */; };
 		CAB4D3CC1B33C9CA00A998E5 /* GoodHeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB4D3CB1B33C9CA00A998E5 /* GoodHeadCell.m */; };
 		CAB4D3CF1B33E7F700A998E5 /* GoodDescribleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB4D3CE1B33E7F700A998E5 /* GoodDescribleCell.m */; };
@@ -144,6 +148,14 @@
 		CA1E634B1B32C8AC00EE4EE7 /* UserNameCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserNameCell.m; sourceTree = "<group>"; };
 		CA1E634D1B32C8BC00EE4EE7 /* UserOtherCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserOtherCell.h; sourceTree = "<group>"; };
 		CA1E634E1B32C8BC00EE4EE7 /* UserOtherCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserOtherCell.m; sourceTree = "<group>"; };
+		CA3F2FEC1B392AB6002B9B76 /* GoodCarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodCarCell.h; sourceTree = "<group>"; };
+		CA3F2FED1B392AB6002B9B76 /* GoodCarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodCarCell.m; sourceTree = "<group>"; };
+		CA3F2FEF1B39491E002B9B76 /* PayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayViewController.h; sourceTree = "<group>"; };
+		CA3F2FF01B39491E002B9B76 /* PayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PayViewController.m; sourceTree = "<group>"; };
+		CA3F2FF21B395A3E002B9B76 /* MyFavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFavViewController.h; sourceTree = "<group>"; };
+		CA3F2FF31B395A3E002B9B76 /* MyFavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFavViewController.m; sourceTree = "<group>"; };
+		CA3F2FF51B395C40002B9B76 /* FavCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavCell.h; sourceTree = "<group>"; };
+		CA3F2FF61B395C40002B9B76 /* FavCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavCell.m; sourceTree = "<group>"; };
 		CAB4D3C71B33BDBF00A998E5 /* GoodsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodsDetailViewController.h; sourceTree = "<group>"; };
 		CAB4D3C81B33BDBF00A998E5 /* GoodsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodsDetailViewController.m; sourceTree = "<group>"; };
 		CAB4D3CA1B33C9CA00A998E5 /* GoodHeadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodHeadCell.h; sourceTree = "<group>"; };
@@ -363,6 +375,10 @@
 				CAB4D3C81B33BDBF00A998E5 /* GoodsDetailViewController.m */,
 				C3EA5CA41B383B460043C3E9 /* OrderSearchController.h */,
 				C3EA5CA51B383B460043C3E9 /* OrderSearchController.m */,
+				CA3F2FEF1B39491E002B9B76 /* PayViewController.h */,
+				CA3F2FF01B39491E002B9B76 /* PayViewController.m */,
+				CA3F2FF21B395A3E002B9B76 /* MyFavViewController.h */,
+				CA3F2FF31B395A3E002B9B76 /* MyFavViewController.m */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -414,6 +430,10 @@
 				CAB4D3D11B33EC2C00A998E5 /* GoodPushCell.m */,
 				C3EA5CA71B383E190043C3E9 /* OrderSumarryCell.h */,
 				C3EA5CA81B383E190043C3E9 /* OrderSumarryCell.m */,
+				CA3F2FEC1B392AB6002B9B76 /* GoodCarCell.h */,
+				CA3F2FED1B392AB6002B9B76 /* GoodCarCell.m */,
+				CA3F2FF51B395C40002B9B76 /* FavCell.h */,
+				CA3F2FF61B395C40002B9B76 /* FavCell.m */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -616,15 +636,19 @@
 				CA1E634F1B32C8BC00EE4EE7 /* UserOtherCell.m in Sources */,
 				CA1E63451B325CA400EE4EE7 /* SearchGoodsViewController.m in Sources */,
 				CAB4D3D21B33EC2C00A998E5 /* GoodPushCell.m in Sources */,
+				CA3F2FF71B395C40002B9B76 /* FavCell.m in Sources */,
 				C3EA5CA61B383B460043C3E9 /* OrderSearchController.m in Sources */,
 				CAF0ADAF1B2A840200306D9E /* GoodsCarViewController.m in Sources */,
+				CA3F2FEE1B392AB6002B9B76 /* GoodCarCell.m in Sources */,
 				C31C254C1B2894B400BD8435 /* LoginViewController.m in Sources */,
 				C30FD4751B37EAA300776357 /* MainTuiJianCell.m in Sources */,
+				CA3F2FF41B395A3E002B9B76 /* MyFavViewController.m in Sources */,
 				CAF0ADAC1B2A83E900306D9E /* FenLeiVIewController.m in Sources */,
 				CAB4D3CC1B33C9CA00A998E5 /* GoodHeadCell.m in Sources */,
 				CAF0AD701B27C89A00306D9E /* AppDelegate.m in Sources */,
 				C33B837D1B288BAB0020F76E /* ObjectList.m in Sources */,
 				C33B83841B288C620020F76E /* THttpActionMgr.m in Sources */,
+				CA3F2FF11B39491E002B9B76 /* PayViewController.m in Sources */,
 				C33B837B1B288BAB0020F76E /* JsonObject.m in Sources */,
 				CAF0ADB21B2A841200306D9E /* UserViewController.m in Sources */,
 				C33B83701B28894E0020F76E /* LBaseViewController.m in Sources */,

@@ -9,8 +9,9 @@
 
 #import "UserViewController.h"
 #import "LoginViewController.h"
-#import "GoodsDetailViewController.h"
 #import "OrderSearchController.h"
+#import "UserDetailViewController.h"
+#import "MyFavViewController.h"
 #import "UserNameCell.h"
 #import "UserOtherCell.h"
 
@@ -25,7 +26,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self createContentView];
     [self createNavBar];
     [self configNavBar];
     [self createTableView];
@@ -50,11 +50,7 @@
   
 }
 
--(void)createContentView
-{
-    LoginViewController *vc = [[LoginViewController alloc]init];
-    [self.navigationController presentViewController:vc animated:YES completion:nil];
-}
+
 
 #pragma mark----tableViewDelegate
 
@@ -79,7 +75,6 @@
         cell.titleString = @[@"订单查询",@"完成订单",@"我的收藏"][indexPath.row-1];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
-    
     }
     return nil;
 }
@@ -94,6 +89,11 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.row==0) {
+        //个人信息
+        UserDetailViewController *vc = [[UserDetailViewController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
     if (indexPath.row==1) {
     //订单查询
         OrderSearchController *vc = [[OrderSearchController alloc]init];
@@ -104,8 +104,9 @@
         
     }
     if (indexPath.row==3) {
-    //我的收藏
-        
+        //我的收藏
+        MyFavViewController *vc = [[MyFavViewController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
     }
 
 }

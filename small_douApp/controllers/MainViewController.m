@@ -23,7 +23,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self createContentView];
     [self createNavBar];
     [self configNavBar];
     [self createTableView];
@@ -40,12 +39,6 @@
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_tableView];
 
-}
--(void)createContentView
-{
- 
-    
-    
 }
 
 

@@ -1,21 +1,23 @@
 //
-//  OrderSearchController.m
+//  MyFavViewController.m
 //  small_douApp
 //
-//  Created by 刘中礼 on 15/6/22.
+//  Created by zhongli on 15/6/23.
 //  Copyright (c) 2015年 zhongli. All rights reserved.
 //
 
-#import "OrderSearchController.h"
-#import "OrderSumarryCell.h"
+#import "MyFavViewController.h"
+#import "FavCell.h"
 
-@interface OrderSearchController ()<UITableViewDataSource,UITableViewDelegate>
+@interface MyFavViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
+
     UITableView *_tableView;
+
 }
 @end
 
-@implementation OrderSearchController
+@implementation MyFavViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -25,15 +27,16 @@
 }
 -(void)configNavBar
 {
-    self.midTitle = @"订单查询";
+    self.midTitle = @"我的收藏";
     self.midTitelColor = [UIColor whiteColor];
     [self.leftBtn setImage:[UIImage imageNamed:backImageName] forState:UIControlStateNormal];
     self.leftBtn.hidden = NO;
-
+    
 }
+
 -(void)createTableView
 {
-
+    
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, TopHeight, ScreenW, ScreenH-TopHeight)];
     _tableView.backgroundColor = [UIColor clearColor];
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -45,26 +48,22 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
-    OrderSumarryCell *cell = [tableView dequeueReusableCellWithIdentifier:@"OrderSumarryCell"];
+    
+    FavCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FavCell"];
     if (!cell) {
-        cell = [[OrderSumarryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"OrderSumarryCell"];
+        cell = [[FavCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"FavCell"];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
-
+    
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
-        return 55.0;
-}
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-
     
+    return 55.0;
 }
+
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -72,6 +71,7 @@
     
     return 2;
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

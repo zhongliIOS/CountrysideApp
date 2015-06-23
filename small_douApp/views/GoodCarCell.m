@@ -1,18 +1,19 @@
 //
-//  OrderSumarryCell.m
+//  GoodCarCell.m
 //  small_douApp
 //
-//  Created by 刘中礼 on 15/6/22.
+//  Created by zhongli on 15/6/23.
 //  Copyright (c) 2015年 zhongli. All rights reserved.
 //
 
-#import "OrderSumarryCell.h"
+#import "GoodCarCell.h"
+#import "AddSubView.h"
 
-@implementation OrderSumarryCell
+@implementation GoodCarCell
 {
     UIImageView *_imageV;
     UILabel *_titleLabel;
-    UILabel *_statusLabel;
+    UILabel *_priceLabel;
 }
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -23,7 +24,6 @@
     }
     return self;
 }
-
 
 -(void)createContentView
 {
@@ -36,7 +36,16 @@
     line.backgroundColor = color_line2;
     [mainView addSubview:line];
     
-    _imageV = [[UIImageView alloc] initWithFrame:CGRectMake(7, (55.0-imgVH)/2, imgVH, imgVH)];
+    UIButton *choiceBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    choiceBtn.frame = CGRectMake(leftSpace, 20, 15, 15);
+    choiceBtn.layer.cornerRadius = 7.5;
+    choiceBtn.layer.masksToBounds = YES;
+    choiceBtn.layer.borderWidth = 1.0;
+    choiceBtn.layer.borderColor = color_line1.CGColor;
+    [choiceBtn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [mainView addSubview:choiceBtn];
+    
+    _imageV = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(choiceBtn.frame)+10, (55.0-imgVH)/2, imgVH, imgVH)];
     _imageV.layer.cornerRadius = 3.0;
     _imageV.layer.masksToBounds = YES;
     _imageV.layer.borderWidth = 0.5;
@@ -48,25 +57,38 @@
     _titleLabel.textColor = color_font_black;
     _titleLabel.text = @"特级红富士";
     [mainView addSubview:_titleLabel];
-
-   UILabel * tipLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_imageV.frame)+10, CGRectGetMaxY(_titleLabel.frame)+7, 60, 12)];
-    tipLabel.font = [UIFont systemFontOfSize:size_font4];
-    tipLabel.textColor = color_font_gray1;
-    tipLabel.text = @"订单状态：";
-    [mainView addSubview:tipLabel];
     
-    _statusLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(tipLabel.frame)+3, CGRectGetMaxY(_titleLabel.frame)+7, 250, 14)];
-    _statusLabel.font = [UIFont systemFontOfSize:size_font2];
-    _statusLabel.textColor = color_font_green;
-    _statusLabel.text = @"未支付";
-    [mainView addSubview:_statusLabel];
+    _priceLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_imageV.frame)+10, CGRectGetMaxY(_titleLabel.frame)+7, 150, 12)];
+    _priceLabel.font = [UIFont systemFontOfSize:size_font4];
+    _priceLabel.textColor = color_font_red;
+    _priceLabel.text = @"￥100.00";
+    [mainView addSubview:_priceLabel];
     
-    UIImageView *imgV = [[UIImageView alloc] initWithFrame:CGRectMake(ScreenW-22, 17.5, 14, 20)];
-    imgV.image = [UIImage imageNamed:@"jinru"];
-    [mainView addSubview:imgV];
-    
+    AddSubView *customView = [[AddSubView alloc] initWithFrame:CGRectMake(ScreenW-90, 17.5, 80, 20)];
+    [customView setAddClick:^(NSInteger num) {
+        if (_CallBackCount) {
+            _CallBackCount(num);
+        }
+    }];
+    [customView setSubClick:^(NSInteger num) {
+        if (_CallBackCount) {
+            _CallBackCount(num);
+        }
+    }];
+    [mainView addSubview:customView];
     
 }
+
+
+
+-(void)btnClick:(UIButton *)btn
+{
+    btn.selected = !btn.selected;
+    if (_CallBackSelected) {
+        _CallBackSelected(btn.selected);
+    }
+}
+
 
 - (void)awakeFromNib {
     // Initialization code
