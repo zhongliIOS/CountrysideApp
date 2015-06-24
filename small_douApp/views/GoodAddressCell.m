@@ -24,7 +24,7 @@
 {
     NSArray *titleArr = @[@"手机号码",@"收获小区",@"商品金额",@"优惠金额"];
     for (int i=0; i<2; i++) {
-        UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 10+120*i, ScreenW, 110)];
+        UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 10+120.5*i, ScreenW, 110.5)];
         bgView.backgroundColor = [UIColor whiteColor];
         [self.contentView addSubview:bgView];
         for (int j=0; j<2; j++) {
@@ -33,9 +33,25 @@
             label.font = [UIFont systemFontOfSize:size_font2];
             label.text = titleArr[i*2+j];
             [bgView addSubview:label];
+            
+            UILabel *detailLabel = [[UILabel alloc]initWithFrame:CGRectMake(ScreenW-210, 55*j, 200, 55)];
+            detailLabel.font = [UIFont systemFontOfSize:size_font2];
+            detailLabel.text = @"18321538808";
+            detailLabel.textAlignment = NSTextAlignmentRight;
+            [bgView addSubview:detailLabel];
+            detailLabel.textColor = i==0?color_font_gray1:color_font_red;
+
+                
+            
+        }
+        for (int j=0; j<3; j++) {
+            UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 55*j, ScreenW, 0.5)];
+            line.backgroundColor = color_line2;
+            [bgView addSubview:line];
         }
     }
 
+    
 }
 
 - (void)awakeFromNib {

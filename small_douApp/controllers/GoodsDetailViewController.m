@@ -8,8 +8,7 @@
 
 #import "GoodsDetailViewController.h"
 #import "GoodHeadCell.h"
-#import "GoodDescribleCell.h"
-#import "GoodPushCell.h"
+#import "EvaluationViewController.h"
 
 @interface GoodsDetailViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -25,9 +24,19 @@
     [super viewDidLoad];
     [self createNavBar];
     [self congigNavBar];
+    [self createTableView];
     [self createContentView];
 }
+-(void)createTableView
+{
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, TopHeight, ScreenW, ScreenH-TopHeight-44.0)];
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    _tableView.backgroundColor = [UIColor clearColor];
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self.view addSubview:_tableView];
 
+}
 -(void)congigNavBar
 {
     self.midTitle = @"商品详情";
@@ -38,8 +47,8 @@
     [self.rightBtn setTitle:@"收藏" forState:UIControlStateNormal];
     self.rightBtn.hidden = NO;
 
-
 }
+
 -(void)createContentView
 {
     CGFloat bottomH = 44.0;
@@ -55,13 +64,20 @@
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
         btn.tintColor = [UIColor whiteColor];
         btn.frame = CGRectMake(leftSpace+(120+leftSpace)*i, 8, 120, 28);
-        btn.layer.cornerRadius = 2.0;
+        btn.layer.cornerRadius = 3.0;
         btn.backgroundColor = i==1?[UIColor colorWithRed:0.93 green:0.45 blue:0.2 alpha:1]:[UIColor colorWithRed:0.98 green:0.27 blue:0.13 alpha:1];
         [btn setTitle:@[@"立即购买",@"加入购物车"][i] forState:UIControlStateNormal];
         [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         btn.titleLabel.font = [UIFont systemFontOfSize:size_font2];
         [bottomBg addSubview:btn];
+        if (i==1) {
+            UIImageView *imgV = [[UIImageView alloc]initWithFrame:CGRectMake(CGRectGetMaxX(btn.frame)+10, 7.5, 31, 28.5)];
+            imgV.image = [UIImage imageNamed:@"gouwuche"];
+            [bottomBg addSubview:imgV];
+
+        }
     }
+    
 }
 
 
@@ -69,22 +85,31 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
-   
-
-    return nil;
+    GoodHeadCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GoodHeadCell"];
+    if (!cell) {
+        cell = [[GoodHeadCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"GoodHeadCell"];
+    }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    [cell setCallBackCount:^(NSInteger num) {
+        
+    }];
+    [cell setCallBackEvaluation:^{
+        EvaluationViewController *vc =[[EvaluationViewController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }];
+    return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
 
-    return 44;
+    return 400;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 
 
-    return 4;
+    return 1;
 }
 
 - (void)didReceiveMemoryWarning {

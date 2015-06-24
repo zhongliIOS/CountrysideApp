@@ -43,7 +43,6 @@
 
 
 
-
 -(void)configNavBar
 {
     self.midTitelColor = [UIColor whiteColor];
@@ -58,9 +57,8 @@
     _areaLabel.font = [UIFont systemFontOfSize:size_font2];
     _areaLabel.textColor = [UIColor whiteColor];
     _areaLabel.text = @"新建商务大厦";
-    UIImageView *imgV = [[UIImageView alloc] initWithFrame:CGRectMake(90, 35, 10, 10)];
-    imgV.image = [UIImage imageNamed:@""];
-    imgV.backgroundColor = [UIColor whiteColor];
+    UIImageView *imgV = [[UIImageView alloc] initWithFrame:CGRectMake(100, 39, 10, 7)];
+    imgV.image = [UIImage imageNamed:@"areaxiala"];
     [self.view addSubview:imgV];
     [areaBtn addSubview:_areaLabel];
     

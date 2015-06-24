@@ -12,5 +12,7 @@
 
 @property(nonatomic,strong)UIScrollView *mainScrollView;
 @property(nonatomic,strong)UILabel *pageLabel;
-
+@property(nonatomic,strong)UIButton *addressBtn;
+@property(nonatomic,copy)void(^CallBackEvaluation)(void );
+@property(nonatomic,copy)void(^CallBackCount)(NSInteger );
 @end

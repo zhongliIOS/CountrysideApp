@@ -7,14 +7,16 @@
 //
 
 #import "TianXieOrderViewController.h"
+#import "PayViewController.h"
 #import "GoodOrderCell.h"
 #import "GoodAddressCell.h"
+
 
 @interface TianXieOrderViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
 
    UITableView *_tableView;
-
+    UILabel *_priceLabel;
 }
 @end
 
@@ -25,6 +27,7 @@
     [self createNavBar];
     [self configNavBar];
     [self createTableView];
+    [self createFootView];
 }
 -(void)configNavBar
 {
@@ -34,17 +37,52 @@
     self.leftBtn.hidden = NO;
     
 }
-
+-(void)createFootView
+{
+    UIView *footView = [[UIView alloc] initWithFrame:CGRectMake(0, ScreenH-45.0, ScreenW, 45.0)];
+    footView.backgroundColor = [UIColor colorWithRed:0.97 green:0.97 blue:0.97 alpha:1];
+    [self.view addSubview:footView];
+    
+    UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenW, 1.0)];
+    line.backgroundColor = color_line2;
+    [footView addSubview:line];
+    
+    _priceLabel = [[UILabel alloc] initWithFrame:CGRectMake(leftSpace, 1, 200, 44.0)];
+    _priceLabel.font = [UIFont systemFontOfSize:size_font2];
+    _priceLabel.textColor = color_font_red;
+    _priceLabel.text = @"实付款：￥226.00";
+    
+    UIButton *buyBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    buyBtn.tintColor = [UIColor whiteColor];
+    buyBtn.frame = CGRectMake(ScreenW-128, 5, 118, 35);
+    buyBtn.backgroundColor = color_btn_red;
+    [buyBtn setTitle:@"立即支付" forState:UIControlStateNormal];
+    [buyBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    buyBtn.titleLabel.font = [UIFont systemFontOfSize:size_font2];
+    buyBtn.layer.cornerRadius = 3.0;
+    buyBtn.layer.masksToBounds = YES;
+    [buyBtn addTarget:self action:@selector(buyBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [footView addSubview:buyBtn];
+    [footView addSubview:_priceLabel];
+}
 -(void)createTableView
 {
     
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, TopHeight, ScreenW, ScreenH-TopHeight)];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, TopHeight, ScreenW, ScreenH-TopHeight-45.0)];
     _tableView.backgroundColor = [UIColor clearColor];
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.dataSource = self;
     _tableView.delegate = self;
     [self.view addSubview:_tableView];
 }
+
+-(void)buyBtnClick
+{
+    PayViewController *vc = [[PayViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
+
+}
+
 #pragma mark----tableViewDelegate
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
