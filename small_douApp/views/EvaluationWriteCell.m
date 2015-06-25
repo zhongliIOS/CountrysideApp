@@ -44,6 +44,7 @@
     _pageLabel.textAlignment = NSTextAlignmentCenter;
     _pageLabel.font = [UIFont systemFontOfSize:size_font2];
     _pageLabel.text = @"1/5";
+    _pageLabel.textColor = [UIColor whiteColor];
     [self.contentView addSubview:_pageLabel];
     
     _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(leftSpace, CGRectGetMaxY(_mainScrollView.frame)+10, ScreenW-2*leftSpace, 20)];
@@ -82,6 +83,7 @@
     [bgView addSubview:textBg];
 
     _textView = [[UITextView alloc] initWithFrame:CGRectMake(5, 5, ScreenW-22, 91)];
+    _textView.backgroundColor = [UIColor colorWithRed:0.97 green:0.97 blue:0.97 alpha:1];;
     [textBg addSubview:_textView];
     
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -95,11 +97,12 @@
     btn.layer.masksToBounds = YES;
     [btn addTarget:self action:@selector(btnClick) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:btn];
-
+    
 }
 
 -(void)btnClick
 {
+    
     if (_CallBackClick) {
         _CallBackClick();
     }

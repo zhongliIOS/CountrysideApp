@@ -76,10 +76,7 @@
         [btn addTarget:self action:@selector(tabBarBtnClick:) forControlEvents:UIControlEventTouchUpInside];
 
         [_tabBar addSubview:btn];
-        
     }
-    
-
 }
 
 -(void)createViewControllers
@@ -88,9 +85,7 @@
     NSArray *controllersArr = @[@"MainViewController",@"FenLeiVIewController",@"GoodsCarViewController",@"UserViewController"];
     for (int i=0; i<4; i++) {
         UIViewController *vc = [[NSClassFromString(controllersArr[i]) alloc] init];
-//        UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:vc];
         [controllers addObject:vc];
-//        navi.navigationBarHidden = YES;
     }
     self.viewControllers = controllers;
     self.selectedIndex = 0;

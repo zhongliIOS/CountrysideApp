@@ -17,6 +17,7 @@
 #import "CustomTextField.h"
 #import "LUnity.h"
 #import "EMSearchDisplayController.h"
+#import "UIImage+fixOrientation.h"
 
 /**
 *  标题字体

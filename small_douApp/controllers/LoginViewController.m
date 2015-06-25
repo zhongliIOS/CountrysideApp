@@ -13,6 +13,9 @@
 {
     CustomTextField *_phoneTf;
     CustomTextField *_yzmTf;
+    NSTimer *_timer;
+    NSInteger _time;//倒计时
+    UIButton *_getYZM;//获取验证码的按钮
 }
 @end
 
@@ -65,6 +68,7 @@
     }
     
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
+    _getYZM = btn;
     btn.frame = CGRectMake(ScreenW-2*leftSpace-110, 9, 100, 27);
     btn.layer.cornerRadius = 5.0;
     btn.backgroundColor = color_btn_green;
@@ -88,15 +92,46 @@
     [self.view addSubview:loginBtn];
 }
 
+-(void)login
+{
+
+
+
+}
+
 -(void)btnClick:(UIButton *)btn
 {
     if (btn.tag == 0) {
         //获取验证码
+        [self daojishi];
     }
     if (btn.tag == 1) {
         //登录
+        [self login];
     }
 
+}
+
+-(void)daojishi
+{
+    _time = 60;
+    _timer =  [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerFireMethod:) userInfo:nil repeats:YES];
+    
+}
+- (void)timerFireMethod:(NSTimer *)timer{
+    if (_time>1) {
+        _time -= 1;
+        _getYZM.highlighted = YES;
+        _getYZM.userInteractionEnabled = NO;
+        NSString *string = [NSString stringWithFormat:@"%d",_time];
+        [_getYZM setTitle:string forState:UIControlStateHighlighted];
+        
+    }else{
+        _getYZM.highlighted = NO;
+        _getYZM.userInteractionEnabled = YES;
+        [timer invalidate];
+        timer = nil;
+    }
 }
 
 -(void)leftButItemClick

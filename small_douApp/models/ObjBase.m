@@ -87,9 +87,9 @@
             self.guid = number_guid;
         }
         
-        self.class_type = [self ReadField_String:data WithFieldName:@"class_type"];
-        self.created_at = [self ReadField_String:data WithFieldName:@"created_at"];
-        self.updated_at = [self ReadField_String:data WithFieldName:@"updated_at"];
+//        self.class_type = [self ReadField_String:data WithFieldName:@"class_type"];
+//        self.created_at = [self ReadField_String:data WithFieldName:@"created_at"];
+//        self.updated_at = [self ReadField_String:data WithFieldName:@"updated_at"];
         
     }
     
@@ -100,9 +100,9 @@
     if( self = [super init] )
     {
         self.guid = [coder decodeObjectForKey:@"id"];
-        self.class_type = [coder decodeObjectForKey:@"class_type"];
-        self.created_at = [coder decodeObjectForKey:@"created_at"];
-        self.updated_at = [coder decodeObjectForKey:@"updated_at"];
+//        self.class_type = [coder decodeObjectForKey:@"class_type"];
+//        self.created_at = [coder decodeObjectForKey:@"created_at"];
+//        self.updated_at = [coder decodeObjectForKey:@"updated_at"];
     }
     
     return self;
@@ -113,9 +113,9 @@
 -(void) encodeWithCoder: (NSCoder *)coder
 {
     [coder encodeObject: self.guid forKey:@"id"];
-    [coder encodeObject: self.class_type forKey:@"class_type"];
-    [coder encodeObject: self.created_at  forKey:@"created_at"];
-    [coder encodeObject: self.updated_at  forKey:@"updated_at"];
+//    [coder encodeObject: self.class_type forKey:@"class_type"];
+//    [coder encodeObject: self.created_at  forKey:@"created_at"];
+//    [coder encodeObject: self.updated_at  forKey:@"updated_at"];
 }
 
 @end

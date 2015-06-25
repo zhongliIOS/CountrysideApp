@@ -51,6 +51,7 @@
 
 - (BOOL) DoActionWithSuccess:(ActionSussessBlock) success Failure:(ActionFailureBlock) failure
 {
+    NSLog(@"%@",[self get_action_url]);
     if( !self.isValid )
         return NO;
 

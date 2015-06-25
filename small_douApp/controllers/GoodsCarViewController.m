@@ -27,6 +27,7 @@
     [self configNavBar];
     [self createTableView];
     [self createFootView];
+
 }
 -(void)createTableView
 {

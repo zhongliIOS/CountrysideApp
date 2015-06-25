@@ -15,6 +15,7 @@
 #import "MyFavViewController.h"
 #import "UserNameCell.h"
 #import "UserOtherCell.h"
+#import "EvaluationWriteViewController.h"
 
 @interface UserViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -102,7 +103,7 @@
     }
     if (indexPath.row==2) {
      //完成订单
-        GoodsDetailViewController *vc =[[GoodsDetailViewController alloc]init];
+        EvaluationWriteViewController *vc =[[EvaluationWriteViewController alloc]init];
         [self.navigationController pushViewController:vc animated:YES];
     }
     if (indexPath.row==3) {

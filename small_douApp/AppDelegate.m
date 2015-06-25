@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "LoginViewController.h"
+#import "GetAreasAction.h"
 #import "CountryTabBarController.h"
 
 @interface AppDelegate ()
@@ -19,6 +19,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    GetAreasAction *act = [[GetAreasAction alloc]init];
+    [act DoActionWithSuccess:^(TActionBase *action, id responseObject, AFHTTPRequestOperation *operation) {
+        NSLog(@"%@",responseObject);
+        
+    } Failure:^(TActionBase *action, NSError *error, AFHTTPRequestOperation *operation) {
+        
+    }];
+    
+    
     
     CountryTabBarController *vc = [[CountryTabBarController alloc] init];
     UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:vc];

@@ -20,20 +20,20 @@
  */
 @property (nonatomic,retain)    id    guid;
 
-/**
- *  对象类型
- */
-@property (nonatomic,retain)    NSString *     class_type;
-
-/**
- *  创建时间
- */
-@property (nonatomic,retain)    NSString * created_at;
-
- /**
- *  更新时间
- */
-@property (nonatomic,retain)    NSString * updated_at;
+///**
+// *  对象类型
+// */
+//@property (nonatomic,retain)    NSString *     class_type;
+//
+///**
+// *  创建时间
+// */
+//@property (nonatomic,retain)    NSString * created_at;
+//
+// /**
+// *  更新时间
+// */
+//@property (nonatomic,retain)    NSString * updated_at;
 
 
 -(id) initWithDirectory:(NSDictionary *) data;

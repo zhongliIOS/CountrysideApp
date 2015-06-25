@@ -45,7 +45,9 @@
     _tf.textColor = [UIColor whiteColor];
     _tf.returnKeyType = UIReturnKeySearch;
     [view addSubview:_tf];
-    
+    UIImageView *bigV = [[UIImageView alloc] initWithFrame:CGRectMake(0, -3, 31, 31)];
+    bigV.image = [UIImage imageNamed:@"search"];
+    [view addSubview:bigV];
 }
 
 -(void)createContentView
@@ -65,7 +67,12 @@
     return YES;
 }
 
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
 
+    [self.view endEditing:YES];
+
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

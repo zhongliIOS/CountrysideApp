@@ -49,6 +49,7 @@
     _pageLabel.textAlignment = NSTextAlignmentCenter;
     _pageLabel.font = [UIFont systemFontOfSize:size_font2];
     _pageLabel.text = @"1/5";
+    _pageLabel.textColor = [UIColor whiteColor];
     [self.contentView addSubview:_pageLabel];
     
     _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(leftSpace, CGRectGetMaxY(_mainScrollView.frame)+10, ScreenW-2*leftSpace, 20)];

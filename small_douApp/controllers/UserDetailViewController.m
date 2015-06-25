@@ -8,7 +8,7 @@
 
 #import "UserDetailViewController.h"
 
-@interface UserDetailViewController ()
+@interface UserDetailViewController ()<UIActionSheetDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 {
 
     UIImageView *_iconImageV;
@@ -65,6 +65,7 @@
             _iconImageV = [[UIImageView alloc] initWithFrame:CGRectMake(ScreenW-82, 2.5, 50, 50)];
             _iconImageV.layer.cornerRadius = 25.0;
             _iconImageV.layer.masksToBounds = YES;
+            _iconImageV.contentMode = UIViewContentModeScaleAspectFill;
             _iconImageV.backgroundColor = color_bg;
             [bgView addSubview:_iconImageV];
         }
@@ -86,7 +87,8 @@
 {
     if (btn.tag==0) {
         //选择头像
-        
+        UIActionSheet *action = [[UIActionSheet alloc]initWithTitle:@"照片来源" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍照",@"从相册选取", nil];
+        [action showInView:self.view];
     }
     if (btn.tag==1) {
         //修改用户名
@@ -99,6 +101,77 @@
 
 
 }
+
+#pragma mark---ActionsheetDelegate
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (buttonIndex) {
+        case 0:
+        {
+            //相机
+            //判断是否能使用相机或者相册
+            if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+                [self pickImageWithType:UIImagePickerControllerSourceTypeCamera];
+            }
+            else
+            {
+                NSLog(@"不支持相机");
+            }
+        }
+            break;
+        case 1:
+        {
+            if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
+                [self pickImageWithType:UIImagePickerControllerSourceTypePhotoLibrary];
+            }
+            else
+            {
+                NSLog(@"不支持相册");
+            }
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
+    
+}
+
+-(void)pickImageWithType:(UIImagePickerControllerSourceType)type
+{
+    //图片选取器
+    UIImagePickerController *picker = [[UIImagePickerController alloc]init];
+    //代理
+    picker.delegate = self;
+    //设置图片来源
+    picker.sourceType = type;
+    //能否编辑
+    //YES:出现编辑区域,进行截取,一般用于头像选择
+    //NO:直接选择图片
+    picker.allowsEditing = YES;
+    [self presentViewController:picker animated:YES completion:nil];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo
+{
+    UIImage *fixOrientationImage = [image fixOrientation];
+    UIImage *newImage = [LUnity ReduceToDefaultSize:fixOrientationImage];
+    _iconImageV.image = newImage;
+    NSLog(@"NewimageDataLength%ld",[UIImageJPEGRepresentation(newImage, 1.0) length]);
+    NSLog(@"Newheight:%lf==width:%lf",newImage.size.height,newImage.size.width);
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+//取消的时候,调用
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    NSLog(@"选择取消");
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -39,21 +39,9 @@ static THttpActionMgr *sharedMgr = nil;
 {
    NSString * hostname = nil;
     
-#if defined(XUEXUECAN_DEVELOPMENT)
-    
-//    hostname = @"http://192.168.1.144/api/v1";
-    hostname = @"http://192.168.1.226:83/api/v1";
 
-#elif defined(XUEXUECAN_TEST)
-    
-    hostname = @"http://rebuild.test.xuexuecan.com/api/v1";
+    hostname = @"http://120.25.213.75:8080";
 
-#elif defined(XUEXUECAN_PRODUCTION)
-    
-    hostname = @"http://www.xuexuecan.com/api/vi";
-#elif defined(XUEXUECAN_UAT)
-    hostname = @"http://120.26.204.129:80/api/v1";
-#endif
                 
     NSString * base_url_string = [[NSString alloc] initWithFormat:@"%@",hostname];
     return base_url_string;

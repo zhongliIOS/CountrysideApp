@@ -11,6 +11,7 @@
 #import "MainHeadViewCell.h"
 #import "MainTuiJianCell.h"
 #import "MainAllCell.h"
+#import "AreaViewController.h"
 
 @interface MainViewController()<UITextViewDelegate,UITableViewDataSource,UITableViewDelegate>
 {
@@ -26,7 +27,7 @@
     [self createNavBar];
     [self configNavBar];
     [self createTableView];
-
+    
 }
 
 -(void)createTableView
@@ -88,7 +89,8 @@
     
     if (btn.tag == 0) {
         //选择小区
-        
+        AreaViewController *vc = [[AreaViewController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
     }
     if (btn.tag == 1) {
         //搜索商品

@@ -19,12 +19,19 @@
 
 @implementation EvaluationWriteViewController
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    //    注册键盘监听
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showKeyboard:) name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideKeyboard) name:UIKeyboardDidHideNotification object:nil];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self createNavBar];
     [self configNavBar];
     [self createTableView];
 }
+
 -(void)configNavBar
 {
     self.midTitle = @"评价订单";
@@ -43,6 +50,7 @@
     _tableView.delegate = self;
     [self.view addSubview:_tableView];
 }
+
 #pragma mark----tableViewDelegate
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -53,15 +61,32 @@
         cell = [[EvaluationWriteCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"EvaluationWriteCell"];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    [cell setCallBackClick:^{
+        NSLog(@"xixi");
+        [self endEdit];
+    }];
     return cell;
 
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+
+    [self endEdit];
+
+
+}
+
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    [self endEdit];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
-    return 500.0;
+    return 490.0;
 }
+
 
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -70,10 +95,31 @@
     
     return 1;
 }
+
+//键盘弹起
+-(void)showKeyboard:(NSNotification *)not{
+    CGSize size = [[not.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+    _tableView.frame =CGRectMake(0,TopHeight, ScreenW,ScreenH-size.height-TopHeight);
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    [_tableView scrollToRowAtIndexPath: indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+}
+//键盘隐藏
+-(void)hideKeyboard{
+    _tableView.frame =CGRectMake(0, TopHeight, ScreenW ,ScreenH-TopHeight);
+}
+
+-(void)endEdit
+{
+    [self.view endEditing:YES];
+    [self.view endEditing:YES];
+
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 /*
 #pragma mark - Navigation
