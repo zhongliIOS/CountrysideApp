@@ -27,26 +27,23 @@
 {
     CGSize selfSize = frame.size;
     //创建两个按钮
+    NSArray *imgArr = @[@"jian",@"jia"];
     for (int i = 0; i<2; i++) {
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.frame = CGRectMake((selfSize.width-selfSize.height)*i, 0, selfSize.height, selfSize.height);
-        btn.backgroundColor = color_font_gray2;
+        btn.frame = CGRectMake((selfSize.width-35)*i, 0, 35, selfSize.height);
         btn.tag = i;
+        [btn setImage:[UIImage imageNamed:imgArr[i]] forState:UIControlStateNormal];
         [btn addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:btn];
     }
     //中间的_label
-    _label = [[UILabel alloc]initWithFrame:CGRectMake(selfSize.height, 0, selfSize.width-2*selfSize.height, selfSize.height)];
+    _label = [[UILabel alloc]initWithFrame:CGRectMake(35, 0, selfSize.width-2*35, selfSize.height)];
     _label.text = [NSString stringWithFormat:@"%lu",_currentCount];
     _label.textColor = color_font_black;
     _label.font = [UIFont systemFontOfSize:size_font4];
     _label.textAlignment = NSTextAlignmentCenter;
     [self addSubview:_label];
     
-    self.layer.cornerRadius = 3.0;
-    self.layer.masksToBounds = YES;
-    self.layer.borderColor = color_line1.CGColor;
-    self.layer.borderWidth = 1.0;
 }
 
 -(void)click:(UIButton *)btn

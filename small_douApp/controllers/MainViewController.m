@@ -73,7 +73,7 @@
     navSearchView.backgroundColor = [UIColor colorWithRed:0.37 green:0.76 blue:0.25 alpha:1];
     [self.navBar addSubview:navSearchView];
     UIImageView *bigV = [[UIImageView alloc] initWithFrame:CGRectMake(0, -3, 31, 31)];
-    bigV.image = [UIImage imageNamed:@"search"];
+    bigV.image = [UIImage imageNamed:@"search_green"];
     [navSearchView addSubview:bigV];
     
     UIButton *searchFoodBtn = [UIButton buttonWithType:UIButtonTypeCustom];

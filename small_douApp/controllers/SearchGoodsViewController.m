@@ -46,7 +46,7 @@
     _tf.returnKeyType = UIReturnKeySearch;
     [view addSubview:_tf];
     UIImageView *bigV = [[UIImageView alloc] initWithFrame:CGRectMake(0, -3, 31, 31)];
-    bigV.image = [UIImage imageNamed:@"search"];
+    bigV.image = [UIImage imageNamed:@"search_green"];
     [view addSubview:bigV];
 }
 

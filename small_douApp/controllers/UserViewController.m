@@ -31,6 +31,8 @@
     [self createNavBar];
     [self configNavBar];
     [self createTableView];
+    LoginViewController *vc = [[LoginViewController alloc]init];
+    [self.navigationController presentViewController:vc animated:YES completion:nil];
 }
 -(void)createTableView
 {

@@ -9,18 +9,27 @@
 #import "LoginViewController.h"
 #import "CountryTabBarController.h"
 
-@interface LoginViewController ()
+@interface LoginViewController ()<UIScrollViewDelegate>
 {
     CustomTextField *_phoneTf;
     CustomTextField *_yzmTf;
     NSTimer *_timer;
     NSInteger _time;//倒计时
     UIButton *_getYZM;//获取验证码的按钮
+    UIScrollView *_mainScrollView;
 }
 @end
 
 @implementation LoginViewController
 
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showKeyboard:) name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideKeyboard) name:UIKeyboardDidHideNotification object:nil];
+
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self createNavBar];
@@ -40,19 +49,22 @@
 
 -(void)createContentView
 {
+    _mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, TopHeight, ScreenW, ScreenH-TopHeight)];
+    _mainScrollView.delegate = self;
+    _mainScrollView.contentSize = CGSizeMake(ScreenW, ScreenH-TopHeight+1);
+    [self.view addSubview:_mainScrollView];
     CGFloat viewHight = 90;
-    CGFloat imgSize = 80;
-    UIImageView *imgV = [[UIImageView alloc] initWithFrame:CGRectMake((ScreenW-imgSize)/2.0, 15+TopHeight, imgSize, imgSize)];
-    imgV.image = [UIImage imageNamed:@""];
-    [self.view addSubview:imgV];
+    UIImageView *imgV = [[UIImageView alloc] initWithFrame:CGRectMake((ScreenW-176/2.0)/2.0, 15, 176/2.0, 159/2.0)];
+    imgV.image = [UIImage imageNamed:@"huangua"];
+    [_mainScrollView addSubview:imgV];
     
-    UIView *bgview = [[UIView alloc] initWithFrame:CGRectMake(leftSpace, 110+TopHeight, ScreenW-2*leftSpace, viewHight)];
+    UIView *bgview = [[UIView alloc] initWithFrame:CGRectMake(leftSpace, CGRectGetMaxY(imgV.frame)+25, ScreenW-2*leftSpace, viewHight)];
     bgview.backgroundColor = [UIColor whiteColor];
     bgview.layer.cornerRadius = 5.0;
     bgview.layer.masksToBounds = YES;
     bgview.layer.borderWidth = bordWidth;
     bgview.layer.borderColor = color_line2.CGColor;
-    [self.view addSubview:bgview];
+    [_mainScrollView addSubview:bgview];
     
     UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 45, ScreenW-2*leftSpace, 0.5)];
     line.backgroundColor = color_line2;
@@ -64,6 +76,12 @@
         tf.font = [UIFont systemFontOfSize:size_font2];
         tf.placeholder = arr[i];
         tf.placeholderColor = [UIColor colorWithRed:0.92 green:0.92 blue:0.92 alpha:1];
+        if (i==0) {
+            [tf LimitWithMaxLength:11];
+        }
+        else
+        [tf LimitWithMaxLength:4];
+        
         [bgview addSubview:tf];
     }
     
@@ -89,7 +107,7 @@
     loginBtn.titleLabel.font = [UIFont systemFontOfSize:size_font1];
     [loginBtn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
 
-    [self.view addSubview:loginBtn];
+    [_mainScrollView addSubview:loginBtn];
 }
 
 -(void)login
@@ -133,10 +151,30 @@
         timer = nil;
     }
 }
+//键盘弹起
+-(void)showKeyboard:(NSNotification *)not{
+    CGSize size = [[not.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+    CGFloat queBtnMaxY = 250.0;
+    CGFloat maxJipanY = ScreenH-TopHeight-size.height;
+    if (queBtnMaxY-maxJipanY) {
+        _mainScrollView.contentOffset = CGPointMake(0, queBtnMaxY-maxJipanY);
 
+    }
+}
+-(void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView
+{
+    [self.view endEditing:YES];
+
+}
+
+
+//键盘隐藏
+-(void)hideKeyboard{
+    _mainScrollView.contentOffset = CGPointMake(0, 0);
+}
 -(void)leftButItemClick
 {
-    
+    [self.view endEditing:YES];
     [self dismissViewControllerAnimated:YES completion:nil];
 
 }

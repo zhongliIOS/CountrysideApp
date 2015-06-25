@@ -37,11 +37,12 @@
     [mainView addSubview:line];
     
     UIButton *choiceBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    choiceBtn.frame = CGRectMake(leftSpace, 20, 15, 15);
+    choiceBtn.frame = CGRectMake(leftSpace, 17.5, 20, 20);
     choiceBtn.layer.cornerRadius = 7.5;
     choiceBtn.layer.masksToBounds = YES;
-    choiceBtn.layer.borderWidth = 1.0;
-    choiceBtn.layer.borderColor = color_line1.CGColor;
+    
+    [choiceBtn setImage:[UIImage imageNamed:@"weixuanzhong"] forState:UIControlStateNormal];
+        [choiceBtn setImage:[UIImage imageNamed:@"xuanzhong"] forState:UIControlStateSelected];
     [choiceBtn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
     [mainView addSubview:choiceBtn];
     
@@ -64,7 +65,7 @@
     _priceLabel.text = @"￥100.00";
     [mainView addSubview:_priceLabel];
     
-    AddSubView *customView = [[AddSubView alloc] initWithFrame:CGRectMake(ScreenW-90, 17.5, 80, 20)];
+    AddSubView *customView = [[AddSubView alloc] initWithFrame:CGRectMake(ScreenW-90, 17.5, 85, 25)];
     [customView setAddClick:^(NSInteger num) {
         if (_CallBackCount) {
             _CallBackCount(num);
