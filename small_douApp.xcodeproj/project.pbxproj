@@ -34,6 +34,8 @@
 		C38136151B399A8D00418CDB /* TianXieOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C38136141B399A8D00418CDB /* TianXieOrderViewController.m */; };
 		C38136181B399F9D00418CDB /* GoodOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C38136171B399F9D00418CDB /* GoodOrderCell.m */; };
 		C381361B1B39A19B00418CDB /* GoodAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C381361A1B39A19B00418CDB /* GoodAddressCell.m */; };
+		C388EAEB1B418028002D392A /* RequestSmsCodeAction.m in Sources */ = {isa = PBXBuildFile; fileRef = C388EAEA1B418028002D392A /* RequestSmsCodeAction.m */; };
+		C388EAEE1B418045002D392A /* VerifySmsCodeAction.m in Sources */ = {isa = PBXBuildFile; fileRef = C388EAED1B418045002D392A /* VerifySmsCodeAction.m */; };
 		C3CA70B91B3C353600672337 /*  wuxing.png in Resources */ = {isa = PBXBuildFile; fileRef = C3CA70B21B3C353600672337 /*  wuxing.png */; };
 		C3CA70BA1B3C353600672337 /* huangua.png in Resources */ = {isa = PBXBuildFile; fileRef = C3CA70B31B3C353600672337 /* huangua.png */; };
 		C3CA70BB1B3C353600672337 /* jia.png in Resources */ = {isa = PBXBuildFile; fileRef = C3CA70B41B3C353600672337 /* jia.png */; };
@@ -155,6 +157,10 @@
 		C38136171B399F9D00418CDB /* GoodOrderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodOrderCell.m; sourceTree = "<group>"; };
 		C38136191B39A19B00418CDB /* GoodAddressCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodAddressCell.h; sourceTree = "<group>"; };
 		C381361A1B39A19B00418CDB /* GoodAddressCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodAddressCell.m; sourceTree = "<group>"; };
+		C388EAE91B418028002D392A /* RequestSmsCodeAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestSmsCodeAction.h; sourceTree = "<group>"; };
+		C388EAEA1B418028002D392A /* RequestSmsCodeAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestSmsCodeAction.m; sourceTree = "<group>"; };
+		C388EAEC1B418045002D392A /* VerifySmsCodeAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerifySmsCodeAction.h; sourceTree = "<group>"; };
+		C388EAED1B418045002D392A /* VerifySmsCodeAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerifySmsCodeAction.m; sourceTree = "<group>"; };
 		C3CA70B21B3C353600672337 /*  wuxing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = " wuxing.png"; sourceTree = "<group>"; };
 		C3CA70B31B3C353600672337 /* huangua.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = huangua.png; sourceTree = "<group>"; };
 		C3CA70B41B3C353600672337 /* jia.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jia.png; sourceTree = "<group>"; };
@@ -306,6 +312,10 @@
 				C33B837F1B288C480020F76E /* Https */,
 				CA8EBBBC1B3BF49200444BD2 /* GetAreasAction.h */,
 				CA8EBBBD1B3BF49200444BD2 /* GetAreasAction.m */,
+				C388EAE91B418028002D392A /* RequestSmsCodeAction.h */,
+				C388EAEA1B418028002D392A /* RequestSmsCodeAction.m */,
+				C388EAEC1B418045002D392A /* VerifySmsCodeAction.h */,
+				C388EAED1B418045002D392A /* VerifySmsCodeAction.m */,
 			);
 			path = services;
 			sourceTree = "<group>";
@@ -770,6 +780,7 @@
 				C3EA5CA61B383B460043C3E9 /* OrderSearchController.m in Sources */,
 				CAF0ADAF1B2A840200306D9E /* GoodsCarViewController.m in Sources */,
 				CA3A86251B3A62EE005848C0 /* EvaluationViewController.m in Sources */,
+				C388EAEB1B418028002D392A /* RequestSmsCodeAction.m in Sources */,
 				CA3F2FEE1B392AB6002B9B76 /* GoodCarCell.m in Sources */,
 				C31C254C1B2894B400BD8435 /* LoginViewController.m in Sources */,
 				C30FD4751B37EAA300776357 /* MainTuiJianCell.m in Sources */,
@@ -792,6 +803,7 @@
 				C33B83731B28895E0020F76E /* LTableViewController.m in Sources */,
 				CA8EBBAC1B3BA7E500444BD2 /* ObjCustomer.m in Sources */,
 				C31C254F1B2895AD00BD8435 /* CountryTabBarController.m in Sources */,
+				C388EAEE1B418045002D392A /* VerifySmsCodeAction.m in Sources */,
 				C33B83881B288C940020F76E /* TActionBase.m in Sources */,
 				CA3A862B1B3A7CF9005848C0 /* EvaluationLevelCell.m in Sources */,
 				CA8EBBBE1B3BF49200444BD2 /* GetAreasAction.m in Sources */,

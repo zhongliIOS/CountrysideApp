@@ -7,7 +7,8 @@
 //
 
 #import "LoginViewController.h"
-#import "CountryTabBarController.h"
+#import "RequestSmsCodeAction.h"
+#import "VerifySmsCodeAction.h"
 
 @interface LoginViewController ()<UIScrollViewDelegate>
 {
@@ -78,9 +79,13 @@
         tf.placeholderColor = [UIColor colorWithRed:0.92 green:0.92 blue:0.92 alpha:1];
         if (i==0) {
             [tf LimitWithMaxLength:11];
+            _phoneTf = tf;
         }
         else
-        [tf LimitWithMaxLength:4];
+        {
+            [tf LimitWithMaxLength:4];
+            _yzmTf = tf;
+        }
         
         [bgview addSubview:tf];
     }
@@ -121,7 +126,7 @@
 {
     if (btn.tag == 0) {
         //获取验证码
-        [self daojishi];
+        [self getSMSCode];
     }
     if (btn.tag == 1) {
         //登录
@@ -129,7 +134,23 @@
     }
 
 }
+-(void)getSMSCode
+{
+  
+    if (_phoneTf.text.length!=11) {
+        [LUnity showErrorHUDViewAtView:self.view WithTitle:@"请输入正确的手机号"];
+        return;
+    }
+    
+    RequestSmsCodeAction *act = [[RequestSmsCodeAction alloc]initWithMobilePhoneNum:_phoneTf.text];
+    [act DoActionWithSuccess:^(TActionBase *action, id responseObject, AFHTTPRequestOperation *operation) {
+        [LUnity showErrorHUDViewAtView:self.view WithTitle:@"验证码发送成功"];
+    } Failure:^(TActionBase *action, NSError *error, AFHTTPRequestOperation *operation) {
+        
+    }];
 
+
+}
 -(void)daojishi
 {
     _time = 60;
