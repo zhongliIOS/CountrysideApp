@@ -18,6 +18,7 @@
 #import "LUnity.h"
 #import "EMSearchDisplayController.h"
 #import "UIImage+fixOrientation.h"
+#import "AreaInfo.h"
 
 /**
 *  标题字体
@@ -88,6 +89,7 @@
 #define ScreenB [UIScreen mainScreen].bounds
 #define ScreenW [UIScreen mainScreen].bounds.size.width
 #define ScreenH [UIScreen mainScreen].bounds.size.height
+#define AutoPlus [UIScreen mainScreen].bounds.size.width/320.0
 
 
 #pragma mark- 系统设备与版本

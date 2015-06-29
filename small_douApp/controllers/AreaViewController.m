@@ -14,6 +14,8 @@
     EMSearchDisplayController *_displayController;
     UITableView *_tableView;
     NSMutableArray *_tipDataArr;
+    NSArray *_areaArray;
+    NSMutableArray *_searchDataArray;
 }
 @end
 
@@ -26,6 +28,10 @@
     [self createSearchBar];
     [self createTableView];
     [self initSearchDisplay];
+    _searchDataArray = [NSMutableArray array];
+    AreaInfo *m = [AreaInfo areaInfo];
+    _areaArray = m.dataArray;
+    NSLog(@"%@",m.dataArray);
     
 }
 -(void)createTableView
@@ -107,7 +113,12 @@
 }
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     
-    
+    [_searchDataArray removeAllObjects];
+    for (NSDictionary *dic in _areaArray) {
+        if ([dic[@"name"] containsString:searchText]) {
+            [_searchDataArray addObject:dic];
+        }
+    }
     
     
 }
@@ -117,6 +128,7 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (_tableView == tableView) {
         static NSString *tipCellIdentifier = @"tipCellIdentifier";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:tipCellIdentifier];
         if (cell == nil)
@@ -129,6 +141,23 @@
         cell.textLabel.textColor = color_font_gray1;
         cell.textLabel.font = [UIFont systemFontOfSize:size_font1];
         return cell;
+    }
+    else
+    {
+        static NSString *tipCellIdentifier = @"tipCellIdentifier1";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:tipCellIdentifier];
+        if (cell == nil)
+        {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
+                                          reuseIdentifier:tipCellIdentifier];
+            cell.backgroundColor = [UIColor clearColor];
+        }
+        cell.textLabel.text = _searchDataArray[indexPath.row][@"name"];
+        cell.textLabel.textColor = color_font_gray1;
+        cell.textLabel.font = [UIFont systemFontOfSize:size_font1];
+        return cell;
+    
+    }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     if (tableView==_tableView) {
@@ -182,8 +211,11 @@
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if (_tableView == tableView) {
+        return 2;
+    }
   
-    return 2;
+    return _searchDataArray.count;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {

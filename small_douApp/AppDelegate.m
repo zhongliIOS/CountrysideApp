@@ -21,12 +21,17 @@
     // Override point for customization after application launch.
     GetAreasAction *act = [[GetAreasAction alloc]init];
     [act DoActionWithSuccess:^(TActionBase *action, id responseObject, AFHTTPRequestOperation *operation) {
-        NSLog(@"%@",responseObject);
+        NSDictionary *dic = responseObject;
+        if (dic) {
+            NSArray *areas = dic[@"_embedded"][@"areas"];
+            AreaInfo *m = [AreaInfo areaInfo];
+            m.dataArray = areas;
+        }
         
     } Failure:^(TActionBase *action, NSError *error, AFHTTPRequestOperation *operation) {
-        
+        NSLog(@"%@",operation.responseObject);
+
     }];
-    
     
     
     CountryTabBarController *vc = [[CountryTabBarController alloc] init];

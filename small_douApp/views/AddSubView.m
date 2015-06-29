@@ -43,12 +43,18 @@
     _label.font = [UIFont systemFontOfSize:size_font4];
     _label.textAlignment = NSTextAlignmentCenter;
     [self addSubview:_label];
+
+    for (int i=0; i<2; i++) {
+        UIView *line = [[UIView alloc] initWithFrame:CGRectMake(10, (selfSize.height-5)*i+2.5, selfSize.width-20, 1)];
+        line.backgroundColor = color_line1;
+        [self addSubview:line];
+    }
     
 }
 
 -(void)click:(UIButton *)btn
 {
-    if (btn.tag == 0) {
+   if (btn.tag == 0) {
        //减
         _currentCount--;
         if (_currentCount==0) {

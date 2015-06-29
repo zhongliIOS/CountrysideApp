@@ -14,7 +14,7 @@
 {
     self = [super initWithActionURLString:@"areas/areas_list.json"];
     if (self) {
-        self.parameters = [@{@"sort":@"玩玩"} mutableCopy];
+        
     }
     self.isValid = YES;
     return self;

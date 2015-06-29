@@ -105,7 +105,7 @@
     }
     if (indexPath.row==2) {
      //完成订单
-        EvaluationWriteViewController *vc =[[EvaluationWriteViewController alloc]init];
+        GoodsDetailViewController *vc =[[GoodsDetailViewController alloc]init];
         [self.navigationController pushViewController:vc animated:YES];
     }
     if (indexPath.row==3) {

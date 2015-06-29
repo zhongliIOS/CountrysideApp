@@ -23,7 +23,7 @@
 
 -(void)createContentView
 {
-    CGFloat imageH = 115.0;
+    CGFloat imageH = 115.0*AutoPlus;
     _mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, ScreenW, imageH)];
     _mainScrollView.pagingEnabled = YES;
     _mainScrollView.bounces = NO;

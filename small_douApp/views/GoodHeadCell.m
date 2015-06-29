@@ -128,7 +128,7 @@
     [countBgView addSubview:countLabel];
 
     
-    AddSubView *customView = [[AddSubView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(countLabel.frame), 7.5, 80, 20)];
+    AddSubView *customView = [[AddSubView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(countLabel.frame), 7.5, 90, 20)];
     [customView setAddClick:^(NSInteger num) {
         if (_CallBackCount) {
             _CallBackCount(num);

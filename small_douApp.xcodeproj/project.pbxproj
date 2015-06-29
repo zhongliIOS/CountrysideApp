@@ -69,6 +69,7 @@
 		CA3F2FF11B39491E002B9B76 /* PayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3F2FF01B39491E002B9B76 /* PayViewController.m */; };
 		CA3F2FF41B395A3E002B9B76 /* MyFavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3F2FF31B395A3E002B9B76 /* MyFavViewController.m */; };
 		CA3F2FF71B395C40002B9B76 /* FavCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3F2FF61B395C40002B9B76 /* FavCell.m */; };
+		CA87509F1B3CF50D0089F693 /* AreaInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = CA87509E1B3CF50D0089F693 /* AreaInfo.m */; };
 		CA8EBBA91B3BA66800444BD2 /* ObjArea.m in Sources */ = {isa = PBXBuildFile; fileRef = CA8EBBA81B3BA66800444BD2 /* ObjArea.m */; };
 		CA8EBBAC1B3BA7E500444BD2 /* ObjCustomer.m in Sources */ = {isa = PBXBuildFile; fileRef = CA8EBBAB1B3BA7E500444BD2 /* ObjCustomer.m */; };
 		CA8EBBAF1B3BA95A00444BD2 /* ObjOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = CA8EBBAE1B3BA95A00444BD2 /* ObjOrder.m */; };
@@ -206,6 +207,8 @@
 		CA3F2FF31B395A3E002B9B76 /* MyFavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFavViewController.m; sourceTree = "<group>"; };
 		CA3F2FF51B395C40002B9B76 /* FavCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavCell.h; sourceTree = "<group>"; };
 		CA3F2FF61B395C40002B9B76 /* FavCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavCell.m; sourceTree = "<group>"; };
+		CA87509D1B3CF50D0089F693 /* AreaInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AreaInfo.h; sourceTree = "<group>"; };
+		CA87509E1B3CF50D0089F693 /* AreaInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AreaInfo.m; sourceTree = "<group>"; };
 		CA8EBBA71B3BA66800444BD2 /* ObjArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ObjArea.h; path = BasObject/ObjArea.h; sourceTree = "<group>"; };
 		CA8EBBA81B3BA66800444BD2 /* ObjArea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ObjArea.m; path = BasObject/ObjArea.m; sourceTree = "<group>"; };
 		CA8EBBAA1B3BA7E500444BD2 /* ObjCustomer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjCustomer.h; sourceTree = "<group>"; };
@@ -291,6 +294,8 @@
 				CA1E63411B325AB400EE4EE7 /* EMSearchDisplayController.m */,
 				C31C25471B288EC700BD8435 /* LUnity.h */,
 				C31C25481B288EC700BD8435 /* LUnity.m */,
+				CA87509D1B3CF50D0089F693 /* AreaInfo.h */,
+				CA87509E1B3CF50D0089F693 /* AreaInfo.m */,
 			);
 			path = unitys;
 			sourceTree = "<group>";
@@ -783,6 +788,7 @@
 				CA1E634C1B32C8AC00EE4EE7 /* UserNameCell.m in Sources */,
 				CA1E63421B325AB400EE4EE7 /* EMSearchDisplayController.m in Sources */,
 				CAD7F1B31B31198F00DD94FC /* AddSubView.m in Sources */,
+				CA87509F1B3CF50D0089F693 /* AreaInfo.m in Sources */,
 				C33B83731B28895E0020F76E /* LTableViewController.m in Sources */,
 				CA8EBBAC1B3BA7E500444BD2 /* ObjCustomer.m in Sources */,
 				C31C254F1B2895AD00BD8435 /* CountryTabBarController.m in Sources */,

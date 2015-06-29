@@ -13,6 +13,8 @@
 #import "MainAllCell.h"
 #import "AreaViewController.h"
 
+//http://120.25.213.75:8080/jsondoc
+
 @interface MainViewController()<UITextViewDelegate,UITableViewDataSource,UITableViewDelegate>
 {
     UILabel *_areaLabel;
@@ -32,14 +34,12 @@
 
 -(void)createTableView
 {
-    
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, TopHeight, ScreenW, ScreenH-TopHeight-TabBarHeight)];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     _tableView.backgroundColor = [UIColor clearColor];
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_tableView];
-
 }
 
 
@@ -128,7 +128,7 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row==0) {
-        return 114.0;
+        return 114.0*AutoPlus;
     }
     if (indexPath.row==1) {
         return 137.0;
