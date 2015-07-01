@@ -66,13 +66,12 @@
         [self endEdit];
     }];
     return cell;
-
 }
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
     [self endEdit];
-
 
 }
 

@@ -20,7 +20,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     GetAreasAction *act = [[GetAreasAction alloc]init];
-    [act DoActionWithSuccess:^(TActionBase *action, id responseObject, AFHTTPRequestOperation *operation) {
+    [act DoActionWithSuccess:^(MyActionBase *action, id responseObject, AFHTTPRequestOperation *operation) {
         NSDictionary *dic = responseObject;
         if (dic) {
             NSArray *areas = dic[@"_embedded"][@"areas"];
@@ -28,7 +28,7 @@
             m.dataArray = areas;
         }
         
-    } Failure:^(TActionBase *action, NSError *error, AFHTTPRequestOperation *operation) {
+    } Failure:^(MyActionBase *action, NSError *error, AFHTTPRequestOperation *operation) {
         NSLog(@"%@",operation.responseObject);
 
     }];

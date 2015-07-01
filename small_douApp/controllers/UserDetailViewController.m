@@ -8,23 +8,61 @@
 
 #import "UserDetailViewController.h"
 
-@interface UserDetailViewController ()<UIActionSheetDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
+@interface UserDetailViewController ()<UIActionSheetDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIPickerViewDataSource,UIPickerViewDelegate>
 {
 
     UIImageView *_iconImageV;
-
+    NSArray *_areaArray;
+    UIPickerView *_pickView;
+    UIView *_cancelAndCompleteView;
+    NSString *_currentArea;
+    UILabel *_areaDetailLabel;
 }
 @end
 
 @implementation UserDetailViewController
 
+-(void)initData
+{
+
+    _areaArray=@[@"汤臣花园一期",@"碧桂园",@"山水龙城",@"鞍山新村",@"雨山湖小区",@"工大东区"];
+
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self initData];
     [self createNavBar];
     [self configNavBar];
     [self createContentView];
+    [self createPickView];
 }
-
+-(void)createPickView
+{
+    CGFloat height = ISiPhone4?130.0:150;
+    _pickView = [[UIPickerView alloc]initWithFrame:CGRectMake(0,ScreenH-height, ScreenW, height)];
+    _pickView.delegate = self;
+    _pickView.backgroundColor  = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5];
+    _pickView.showsSelectionIndicator = YES;
+    _pickView.dataSource = self;
+    _pickView.hidden = YES;
+    [self.view addSubview:_pickView];
+    
+    _cancelAndCompleteView = [[UIView alloc]initWithFrame:CGRectMake(0, ScreenH-height-40, ScreenW, 40)];
+    _cancelAndCompleteView.backgroundColor = [UIColor whiteColor];
+    _cancelAndCompleteView.hidden = YES;
+    [self.view addSubview:_cancelAndCompleteView];
+    for (int i=0; i<2; i++) {
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
+        btn.frame = CGRectMake((ScreenW-60)*i, 0, 60, 40);
+        [btn setTitle:@[@"取消",@"完成"][i] forState:UIControlStateNormal];
+        [btn setTitleColor:color_font_black forState:UIControlStateNormal];
+        btn.titleLabel.font = [UIFont systemFontOfSize:size_font1];
+        btn.tag = i;
+        [btn addTarget:self action:@selector(pickCancelSureClick:) forControlEvents:UIControlEventTouchUpInside];
+        [_cancelAndCompleteView addSubview:btn];
+    }
+}
 -(void)configNavBar
 {
     self.midTitle = @"个人信息";
@@ -76,6 +114,10 @@
             detailLabel.text = @"ihanqi";
             detailLabel.font = [UIFont systemFontOfSize:size_font2];
             detailLabel.textAlignment = NSTextAlignmentRight;
+            if (i==2) {
+                _areaDetailLabel = detailLabel;
+
+            }
             [bgView addSubview:detailLabel];
         
         }
@@ -96,7 +138,8 @@
     }
     if (btn.tag==2) {
         //修改默认小区
-        
+        _pickView.hidden = NO;
+        _cancelAndCompleteView.hidden = NO;
     }
 
 
@@ -169,8 +212,43 @@
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
+#pragma mark------pickViewDelegate
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
+    return 1;
+}
+// returns the # of rows in each component..
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
+    return _areaArray.count;
+}
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
+    NSString *title = _areaArray[row];
+    NSString *string = [[NSString alloc]initWithFormat:@"%@",title];
+    return string;
+}
+- (NSAttributedString *)pickerView:(UIPickerView *)pickerView attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component{
+    
+    NSMutableAttributedString *string = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"%@",_areaArray[row]]];
+    [string addAttribute:NSForegroundColorAttributeName value:color_font_black range:NSMakeRange(0, string.length)];
+    [string addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:size_font1] range:NSMakeRange(0, string.length)];
+
+    return string;
+}
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
+    
+    _currentArea = _areaArray[row] ;
+}
+
+-(void)pickCancelSureClick:(UIButton *)btn
+{
+
+    _pickView.hidden = YES;
+    _cancelAndCompleteView.hidden = YES;
+    if (btn.tag==1) {
+        _areaDetailLabel.text = _currentArea;
+    }
 
 
+}
 
 
 - (void)didReceiveMemoryWarning {

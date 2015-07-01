@@ -28,9 +28,7 @@
 		C33B837B1B288BAB0020F76E /* JsonObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C33B83761B288BAB0020F76E /* JsonObject.m */; };
 		C33B837C1B288BAB0020F76E /* ObjBase.m in Sources */ = {isa = PBXBuildFile; fileRef = C33B83781B288BAB0020F76E /* ObjBase.m */; };
 		C33B837D1B288BAB0020F76E /* ObjectList.m in Sources */ = {isa = PBXBuildFile; fileRef = C33B837A1B288BAB0020F76E /* ObjectList.m */; };
-		C33B83841B288C620020F76E /* THttpActionMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = C33B83811B288C620020F76E /* THttpActionMgr.m */; };
 		C33B83851B288C620020F76E /* TResponeResult.m in Sources */ = {isa = PBXBuildFile; fileRef = C33B83831B288C620020F76E /* TResponeResult.m */; };
-		C33B83881B288C940020F76E /* TActionBase.m in Sources */ = {isa = PBXBuildFile; fileRef = C33B83871B288C940020F76E /* TActionBase.m */; };
 		C38136151B399A8D00418CDB /* TianXieOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C38136141B399A8D00418CDB /* TianXieOrderViewController.m */; };
 		C38136181B399F9D00418CDB /* GoodOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C38136171B399F9D00418CDB /* GoodOrderCell.m */; };
 		C381361B1B39A19B00418CDB /* GoodAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C381361A1B39A19B00418CDB /* GoodAddressCell.m */; };
@@ -51,6 +49,9 @@
 		CA1E63491B326B8E00EE4EE7 /* CustomTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = CA1E63481B326B8E00EE4EE7 /* CustomTextField.m */; };
 		CA1E634C1B32C8AC00EE4EE7 /* UserNameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA1E634B1B32C8AC00EE4EE7 /* UserNameCell.m */; };
 		CA1E634F1B32C8BC00EE4EE7 /* UserOtherCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA1E634E1B32C8BC00EE4EE7 /* UserOtherCell.m */; };
+		CA258F3E1B42390E00BDD2F3 /* LogOutAction.m in Sources */ = {isa = PBXBuildFile; fileRef = CA258F3D1B42390E00BDD2F3 /* LogOutAction.m */; };
+		CA258F411B4290C700BDD2F3 /* MyHttpActionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CA258F401B4290C700BDD2F3 /* MyHttpActionManager.m */; };
+		CA258F441B4293FF00BDD2F3 /* MyActionBase.m in Sources */ = {isa = PBXBuildFile; fileRef = CA258F431B4293FF00BDD2F3 /* MyActionBase.m */; };
 		CA3A86221B3A5B85005848C0 /* gouwuche.png in Resources */ = {isa = PBXBuildFile; fileRef = CA3A86211B3A5B85005848C0 /* gouwuche.png */; };
 		CA3A86251B3A62EE005848C0 /* EvaluationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3A86241B3A62EE005848C0 /* EvaluationViewController.m */; };
 		CA3A86281B3A632D005848C0 /* EvaluationWriteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3A86271B3A632D005848C0 /* EvaluationWriteViewController.m */; };
@@ -145,12 +146,8 @@
 		C33B83781B288BAB0020F76E /* ObjBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ObjBase.m; path = ../ObjBase.m; sourceTree = "<group>"; };
 		C33B83791B288BAB0020F76E /* ObjectList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ObjectList.h; path = ../ObjectList.h; sourceTree = "<group>"; };
 		C33B837A1B288BAB0020F76E /* ObjectList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ObjectList.m; path = ../ObjectList.m; sourceTree = "<group>"; };
-		C33B83801B288C620020F76E /* THttpActionMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THttpActionMgr.h; sourceTree = "<group>"; };
-		C33B83811B288C620020F76E /* THttpActionMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THttpActionMgr.m; sourceTree = "<group>"; };
 		C33B83821B288C620020F76E /* TResponeResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TResponeResult.h; sourceTree = "<group>"; };
 		C33B83831B288C620020F76E /* TResponeResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TResponeResult.m; sourceTree = "<group>"; };
-		C33B83861B288C940020F76E /* TActionBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TActionBase.h; sourceTree = "<group>"; };
-		C33B83871B288C940020F76E /* TActionBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TActionBase.m; sourceTree = "<group>"; };
 		C38136131B399A8D00418CDB /* TianXieOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TianXieOrderViewController.h; sourceTree = "<group>"; };
 		C38136141B399A8D00418CDB /* TianXieOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TianXieOrderViewController.m; sourceTree = "<group>"; };
 		C38136161B399F9D00418CDB /* GoodOrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodOrderCell.h; sourceTree = "<group>"; };
@@ -184,6 +181,12 @@
 		CA1E634B1B32C8AC00EE4EE7 /* UserNameCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserNameCell.m; sourceTree = "<group>"; };
 		CA1E634D1B32C8BC00EE4EE7 /* UserOtherCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserOtherCell.h; sourceTree = "<group>"; };
 		CA1E634E1B32C8BC00EE4EE7 /* UserOtherCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserOtherCell.m; sourceTree = "<group>"; };
+		CA258F3C1B42390E00BDD2F3 /* LogOutAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogOutAction.h; sourceTree = "<group>"; };
+		CA258F3D1B42390E00BDD2F3 /* LogOutAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogOutAction.m; sourceTree = "<group>"; };
+		CA258F3F1B4290C700BDD2F3 /* MyHttpActionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyHttpActionManager.h; sourceTree = "<group>"; };
+		CA258F401B4290C700BDD2F3 /* MyHttpActionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyHttpActionManager.m; sourceTree = "<group>"; };
+		CA258F421B4293FF00BDD2F3 /* MyActionBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyActionBase.h; sourceTree = "<group>"; };
+		CA258F431B4293FF00BDD2F3 /* MyActionBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyActionBase.m; sourceTree = "<group>"; };
 		CA3A86211B3A5B85005848C0 /* gouwuche.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gouwuche.png; sourceTree = "<group>"; };
 		CA3A86231B3A62EE005848C0 /* EvaluationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EvaluationViewController.h; sourceTree = "<group>"; };
 		CA3A86241B3A62EE005848C0 /* EvaluationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EvaluationViewController.m; sourceTree = "<group>"; };
@@ -316,6 +319,8 @@
 				C388EAEA1B418028002D392A /* RequestSmsCodeAction.m */,
 				C388EAEC1B418045002D392A /* VerifySmsCodeAction.h */,
 				C388EAED1B418045002D392A /* VerifySmsCodeAction.m */,
+				CA258F3C1B42390E00BDD2F3 /* LogOutAction.h */,
+				CA258F3D1B42390E00BDD2F3 /* LogOutAction.m */,
 			);
 			path = services;
 			sourceTree = "<group>";
@@ -323,12 +328,12 @@
 		C33B837F1B288C480020F76E /* Https */ = {
 			isa = PBXGroup;
 			children = (
-				C33B83861B288C940020F76E /* TActionBase.h */,
-				C33B83871B288C940020F76E /* TActionBase.m */,
-				C33B83801B288C620020F76E /* THttpActionMgr.h */,
-				C33B83811B288C620020F76E /* THttpActionMgr.m */,
 				C33B83821B288C620020F76E /* TResponeResult.h */,
 				C33B83831B288C620020F76E /* TResponeResult.m */,
+				CA258F3F1B4290C700BDD2F3 /* MyHttpActionManager.h */,
+				CA258F401B4290C700BDD2F3 /* MyHttpActionManager.m */,
+				CA258F421B4293FF00BDD2F3 /* MyActionBase.h */,
+				CA258F431B4293FF00BDD2F3 /* MyActionBase.m */,
 			);
 			path = Https;
 			sourceTree = "<group>";
@@ -774,9 +779,12 @@
 				C38136181B399F9D00418CDB /* GoodOrderCell.m in Sources */,
 				CA3A862E1B3A7D18005848C0 /* EvaluationContentCell.m in Sources */,
 				CA1E63451B325CA400EE4EE7 /* SearchGoodsViewController.m in Sources */,
+				CA258F441B4293FF00BDD2F3 /* MyActionBase.m in Sources */,
 				C381361B1B39A19B00418CDB /* GoodAddressCell.m in Sources */,
+				CA258F3E1B42390E00BDD2F3 /* LogOutAction.m in Sources */,
 				CAB4D3D21B33EC2C00A998E5 /* GoodPushCell.m in Sources */,
 				CA3F2FF71B395C40002B9B76 /* FavCell.m in Sources */,
+				CA258F411B4290C700BDD2F3 /* MyHttpActionManager.m in Sources */,
 				C3EA5CA61B383B460043C3E9 /* OrderSearchController.m in Sources */,
 				CAF0ADAF1B2A840200306D9E /* GoodsCarViewController.m in Sources */,
 				CA3A86251B3A62EE005848C0 /* EvaluationViewController.m in Sources */,
@@ -789,7 +797,6 @@
 				CAB4D3CC1B33C9CA00A998E5 /* GoodHeadCell.m in Sources */,
 				CAF0AD701B27C89A00306D9E /* AppDelegate.m in Sources */,
 				C33B837D1B288BAB0020F76E /* ObjectList.m in Sources */,
-				C33B83841B288C620020F76E /* THttpActionMgr.m in Sources */,
 				CA3F2FF11B39491E002B9B76 /* PayViewController.m in Sources */,
 				C33B837B1B288BAB0020F76E /* JsonObject.m in Sources */,
 				CAF0ADB21B2A841200306D9E /* UserViewController.m in Sources */,
@@ -804,7 +811,6 @@
 				CA8EBBAC1B3BA7E500444BD2 /* ObjCustomer.m in Sources */,
 				C31C254F1B2895AD00BD8435 /* CountryTabBarController.m in Sources */,
 				C388EAEE1B418045002D392A /* VerifySmsCodeAction.m in Sources */,
-				C33B83881B288C940020F76E /* TActionBase.m in Sources */,
 				CA3A862B1B3A7CF9005848C0 /* EvaluationLevelCell.m in Sources */,
 				CA8EBBBE1B3BF49200444BD2 /* GetAreasAction.m in Sources */,
 				C33B837C1B288BAB0020F76E /* ObjBase.m in Sources */,

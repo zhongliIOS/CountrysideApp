@@ -6,9 +6,9 @@
 //  Copyright (c) 2015年 zhongli. All rights reserved.
 //
 
-#import "TActionBase.h"
+#import "MyActionBase.h"
 
-@interface VerifySmsCodeAction : TActionPostBase
+@interface VerifySmsCodeAction : MyActionPostBase
 
 -(id)initWithMobile:(NSString *)mobilePhoneNumber andCode:(NSString *)smsCode;
 

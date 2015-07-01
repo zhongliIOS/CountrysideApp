@@ -1,20 +1,18 @@
 //
-//  TActionBase.m
-//  xuexuecan
+//  MyActionBase.m
+//  small_douApp
 //
-//  Created by teng.tang on 15/2/13.
-//  Copyright (c) 2015年 ICan. All rights reserved.
+//  Created by zhongli on 15/6/30.
+//  Copyright (c) 2015年 zhongli. All rights reserved.
 //
 
-#import "TActionBase.h"
+#import "MyActionBase.h"
 
-
-@interface TActionBase()
+@interface MyActionBase()
 @property (nonatomic,retain) NSString * url;
 @end
 
-@implementation TActionBase
-
+@implementation MyActionBase
 -(id) initWithActionURLString:(NSString *) str_url
 {
     self = [super init];
@@ -32,68 +30,65 @@
     return self.url;
 }
 
-- (BOOL) DoActionWithSuccess:(ActionSussessBlock) success Failure:(ActionFailureBlock) failure
+- (BOOL) DoActionWithSuccess:(SussessBlock) success Failure:(FailureBlock) failure
 {
-    // 必须实现该方法
-#ifdef DEBUG
-    assert(0);
-#endif
 
     
-
+    
     
     return YES;
 }
-
 @end
 
-@implementation TActionGetBase
 
-- (BOOL) DoActionWithSuccess:(ActionSussessBlock) success Failure:(ActionFailureBlock) failure
+
+@implementation MyActionGetBase
+
+- (BOOL) DoActionWithSuccess:(SussessBlock) success Failure:(FailureBlock) failure
 {
     NSLog(@"%@",[self get_action_url]);
     if( !self.isValid )
         return NO;
-
-    AFHTTPRequestOperationManager * http_request_mgr = [[THttpActionMgr shared] getHttpRequestMgr];
+    
+    AFHTTPRequestOperationManager * http_request_mgr = [[MyHttpActionManager defaultManager] getHttpRequestMgr];
     if( !http_request_mgr )
         return NO;
-
+    
     [http_request_mgr GET:[self get_action_url] parameters:self.parameters
-                   success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                       success( self , responseObject , operation );
-                   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                       failure( self , error , operation );
-                   }];
+                  success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                      success( self , responseObject , operation );
+                  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                      failure( self , error , operation );
+                  }];
     return YES;
 }
 
 @end
 
 
-@implementation TActionPostBase
+@implementation MyActionPostBase
 
-- (BOOL) DoActionWithSuccess:(ActionSussessBlock) success Failure:(ActionFailureBlock) failure
+- (BOOL) DoActionWithSuccess:(SussessBlock) success Failure:(FailureBlock) failure
 {
     if( !self.isValid )
         return NO;
-    AFHTTPRequestOperationManager * http_request_mgr = [[THttpActionMgr shared] getHttpRequestMgr];
+    AFHTTPRequestOperationManager * http_request_mgr = [[MyHttpActionManager defaultManager] getHttpRequestMgr];
     if( !http_request_mgr )
         return NO;
-        
+    
     [http_request_mgr POST:[self get_action_url] parameters:self.parameters
                    success:^(AFHTTPRequestOperation *operation, id responseObject) {
-         success( self , responseObject , operation );
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-         failure( self , error , operation );
-        
-    }];
+                       success( self , responseObject , operation );
+                   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                       failure( self , error , operation );
+                       
+                   }];
     
     return YES;
 }
 @end
 
-@implementation TActionPostWithSingleImageBase
+@implementation MyActionPostWithSingleImageBase
 
 -(id) initWithActionURLString:(NSString *) str_url
 {
@@ -106,18 +101,18 @@
     return self;
 }
 
-- (BOOL) DoActionWithSuccess:(ActionSussessBlock) success Failure:(ActionFailureBlock) failure
+- (BOOL) DoActionWithSuccess:(SussessBlock) success Failure:(FailureBlock) failure
 {
     if( !self.isValid )
         return NO;
-    AFHTTPRequestOperationManager * http_request_mgr = [[THttpActionMgr shared] getHttpRequestMgr];
+    AFHTTPRequestOperationManager * http_request_mgr = [[MyHttpActionManager defaultManager] getHttpRequestMgr];
     if( !http_request_mgr )
         return NO;
     
     NSURL * upload_file_url = nil;
     if( self.upload_image )
     {
-//        图片大小限制
+        //        图片大小限制
         if( CGSizeEqualToSize(self.upload_image_max_size, CGSizeZero) )
             
         {
@@ -163,10 +158,10 @@
 
 @end
 
-@implementation TActionPostWithManyImageBase
+@implementation MyActionPostWithManyImageBase
 {
     NSMutableArray *_upload_file_url_Arr;
-
+    
 }
 -(id)initWithActionURLString:(NSString *)str_url
 {
@@ -176,17 +171,17 @@
         _upload_file_url_Arr = [NSMutableArray array];
     }
     return self;
-
-
+    
+    
 }
--(BOOL)DoActionWithSuccess:(ActionSussessBlock)success Failure:(ActionFailureBlock)failure
+-(BOOL)DoActionWithSuccess:(SussessBlock)success Failure:(FailureBlock)failure
 {
     if( !self.isValid )
         return NO;
-    AFHTTPRequestOperationManager * http_request_mgr = [[THttpActionMgr shared] getHttpRequestMgr];
+    AFHTTPRequestOperationManager * http_request_mgr = [[MyHttpActionManager defaultManager] getHttpRequestMgr];
     if( !http_request_mgr )
         return NO;
-
+    
     
     [http_request_mgr POST:[self get_action_url]
                 parameters:self.parameters
@@ -212,9 +207,9 @@
              }
              i++;
          }
-
+         
      }
-        success:^(AFHTTPRequestOperation *operation, id responseObject)
+                   success:^(AFHTTPRequestOperation *operation, id responseObject)
      {
          for (NSURL *upload_file_url in _upload_file_url_Arr) {
              if( upload_file_url )
@@ -223,7 +218,7 @@
              }
              
          }
-
+         
          success( self , responseObject , operation );
      }
                    failure:^(AFHTTPRequestOperation *operation, NSError *error)
@@ -240,27 +235,27 @@
      }];
     
     return YES;
-
+    
 }
 
 @end
 
-@implementation TActionDeleteBase
+@implementation MyActionDeleteBase
 
-- (BOOL) DoActionWithSuccess:(ActionSussessBlock) success Failure:(ActionFailureBlock) failure
+- (BOOL) DoActionWithSuccess:(SussessBlock) success Failure:(FailureBlock) failure
 {
     if( !self.isValid )
         return NO;
-    AFHTTPRequestOperationManager * http_request_mgr = [[THttpActionMgr shared] getHttpRequestMgr];
+    AFHTTPRequestOperationManager * http_request_mgr = [[MyHttpActionManager defaultManager] getHttpRequestMgr];
     if( !http_request_mgr )
         return NO;
     
     [http_request_mgr DELETE:[self get_action_url] parameters:self.parameters
-                   success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                       success( self , responseObject , operation );
-                   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                       failure( self , error , operation );
-                   }];
+                     success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                         success( self , responseObject , operation );
+                     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                         failure( self , error , operation );
+                     }];
     return YES;
 }
 

@@ -77,13 +77,14 @@
         tf.font = [UIFont systemFontOfSize:size_font2];
         tf.placeholder = arr[i];
         tf.placeholderColor = [UIColor colorWithRed:0.92 green:0.92 blue:0.92 alpha:1];
+        tf.keyboardType = UIKeyboardTypeNumberPad;
         if (i==0) {
             [tf LimitWithMaxLength:11];
             _phoneTf = tf;
         }
         else
         {
-            [tf LimitWithMaxLength:4];
+            [tf LimitWithMaxLength:6];
             _yzmTf = tf;
         }
         
@@ -117,9 +118,22 @@
 
 -(void)login
 {
-
-
-
+    if (_phoneTf.text.length!=11) {
+        [LUnity showErrorHUDViewAtView:self.view WithTitle:@"请输入正确的手机号"];
+        return;
+    }
+    if (_yzmTf.text.length==0) {
+        [LUnity showErrorHUDViewAtView:self.view WithTitle:@"请输入验证码"];
+        return;
+    }
+    
+    VerifySmsCodeAction *act = [[VerifySmsCodeAction alloc]initWithMobile:_phoneTf.text andCode:_yzmTf.text];
+    [act DoActionWithSuccess:^(MyActionBase *action, id responseObject, AFHTTPRequestOperation *operation) {
+        NSLog(@"loginResponse:%@",responseObject);
+        [LUnity showErrorHUDViewAtView:self.view WithTitle:@"登陆成功"];
+    } Failure:^(MyActionBase *action, NSError *error, AFHTTPRequestOperation *operation) {
+        
+    }];
 }
 
 -(void)btnClick:(UIButton *)btn
@@ -143,9 +157,10 @@
     }
     
     RequestSmsCodeAction *act = [[RequestSmsCodeAction alloc]initWithMobilePhoneNum:_phoneTf.text];
-    [act DoActionWithSuccess:^(TActionBase *action, id responseObject, AFHTTPRequestOperation *operation) {
+    [act DoActionWithSuccess:^(MyActionBase *action, id responseObject, AFHTTPRequestOperation *operation) {
+        NSLog(@"request:%@",responseObject);
         [LUnity showErrorHUDViewAtView:self.view WithTitle:@"验证码发送成功"];
-    } Failure:^(TActionBase *action, NSError *error, AFHTTPRequestOperation *operation) {
+    } Failure:^(MyActionBase *action, NSError *error, AFHTTPRequestOperation *operation) {
         
     }];
 
@@ -177,7 +192,7 @@
     CGSize size = [[not.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
     CGFloat queBtnMaxY = 250.0;
     CGFloat maxJipanY = ScreenH-TopHeight-size.height;
-    if (queBtnMaxY-maxJipanY) {
+    if (queBtnMaxY-maxJipanY>0) {
         _mainScrollView.contentOffset = CGPointMake(0, queBtnMaxY-maxJipanY);
 
     }
@@ -185,7 +200,7 @@
 -(void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView
 {
     [self.view endEditing:YES];
-
+    
 }
 
 
