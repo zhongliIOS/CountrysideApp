@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface UserNameCell : UITableViewCell
+
+-(void)fillDataWithModel:(MyInfo *)model;
 
 @end

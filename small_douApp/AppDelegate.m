@@ -19,20 +19,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    GetAreasAction *act = [[GetAreasAction alloc]init];
-    [act DoActionWithSuccess:^(MyActionBase *action, id responseObject, AFHTTPRequestOperation *operation) {
-        NSDictionary *dic = responseObject;
-        if (dic) {
-            NSArray *areas = dic[@"_embedded"][@"areas"];
-            AreaInfo *m = [AreaInfo areaInfo];
-            m.dataArray = areas;
-        }
-        
-    } Failure:^(MyActionBase *action, NSError *error, AFHTTPRequestOperation *operation) {
-        NSLog(@"%@",operation.responseObject);
 
-    }];
-    
+   [self getAreaInfo];
+   [self isHasAutoLogin];
     
     CountryTabBarController *vc = [[CountryTabBarController alloc] init];
     UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:vc];
@@ -43,6 +32,45 @@
 
     
     return YES;
+}
+
+-(void)getAreaInfo
+{
+    GetAreasAction *act = [[GetAreasAction alloc]init];
+    [act DoActionWithSuccess:^(MyActionBase *action, id responseObject, AFHTTPRequestOperation *operation) {
+    NSArray *arr = responseObject;
+    if (arr) {
+        AreaInfo *m = [AreaInfo areaInfo];
+        m.dataArray = arr;
+    }
+    
+    } Failure:^(MyActionBase *action, NSError *error, AFHTTPRequestOperation *operation) {
+       NSLog(@"%@",operation.responseObject);
+     }];
+}
+
+-(void)isHasAutoLogin
+{
+    NSString *phone = [[NSUserDefaults standardUserDefaults] objectForKey:My_phone];
+    NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:My_token];
+    if (!phone||!token) {
+        return;
+    }
+    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:HOSTURL]];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    [manager.requestSerializer setValue:token forHTTPHeaderField:@"access-token"];
+    [manager GET:[NSString stringWithFormat:@"/customers/%@.json",phone] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"%@",responseObject);
+        NSDictionary *dic = responseObject;
+        if (dic[@"id"]) {
+            MyInfo *m = [MyInfo defaultMyInfo];
+            [m initWithModel:dic];
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+    }];
+
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -66,5 +94,7 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+
 
 @end

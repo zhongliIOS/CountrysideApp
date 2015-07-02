@@ -20,19 +20,45 @@
 @interface UserViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     UITableView *_tableView;
-
+    MyInfo *_myInfo;
 }
 @end
 
 @implementation UserViewController
+
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self createNavBar];
     [self configNavBar];
     [self createTableView];
-    LoginViewController *vc = [[LoginViewController alloc]init];
-    [self.navigationController presentViewController:vc animated:YES completion:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getData) name:NotificationUpdateMyInfo object:nil];
+    MyInfo *m = [MyInfo defaultMyInfo];
+    if (!m.tel) {
+        //没有自动登陆成功
+        LoginViewController *vc = [[LoginViewController alloc]init];
+        [self.navigationController presentViewController:vc animated:YES completion:nil];
+    }
+    else
+    {
+        [self getData];
+        
+    }
+}
+
+-(void)getData
+{
+    _myInfo = [MyInfo defaultMyInfo];
+    [_tableView reloadData];
+
+
 }
 -(void)createTableView
 {
@@ -67,6 +93,7 @@
         }
         cell.backgroundColor = [UIColor clearColor];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        [cell fillDataWithModel:_myInfo];
         return cell;
     }
     else

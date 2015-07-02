@@ -91,7 +91,7 @@
         [bgview addSubview:tf];
     }
     
-    UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     _getYZM = btn;
     btn.frame = CGRectMake(ScreenW-2*leftSpace-110, 9, 100, 27);
     btn.layer.cornerRadius = 5.0;
@@ -126,14 +126,48 @@
         [LUnity showErrorHUDViewAtView:self.view WithTitle:@"请输入验证码"];
         return;
     }
-    
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     VerifySmsCodeAction *act = [[VerifySmsCodeAction alloc]initWithMobile:_phoneTf.text andCode:_yzmTf.text];
     [act DoActionWithSuccess:^(MyActionBase *action, id responseObject, AFHTTPRequestOperation *operation) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         NSLog(@"loginResponse:%@",responseObject);
+        NSDictionary *dic = responseObject;
+        NSDictionary *resultDic = dic[@"data"];
+        if (resultDic) {
+            NSString *access_token = resultDic[@"access_token"];
+            if (access_token) {
+                [[NSUserDefaults standardUserDefaults]setObject:access_token forKey:My_token];
+                [[NSUserDefaults standardUserDefaults]setObject:_phoneTf.text forKey:My_phone];
+                [self getMyInfo:access_token];
+            }
+        }
         [LUnity showErrorHUDViewAtView:self.view WithTitle:@"登陆成功"];
     } Failure:^(MyActionBase *action, NSError *error, AFHTTPRequestOperation *operation) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+
+    }];
+}
+
+-(void)getMyInfo:(NSString *)access_token
+{
+    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:HOSTURL]];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    [manager.requestSerializer setValue:access_token forHTTPHeaderField:@"access-token"];
+    [manager GET:[NSString stringWithFormat:@"/customers/%@.json",_phoneTf.text] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"%@",responseObject);
+        NSDictionary *dic = responseObject;
+        if (dic[@"id"]) {
+            MyInfo *m = [MyInfo defaultMyInfo];
+            [m initWithModel:dic];
+            [[NSNotificationCenter defaultCenter] postNotificationName:NotificationUpdateMyInfo object:nil];
+            [self leftButItemClick];
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
         
     }];
+
 }
 
 -(void)btnClick:(UIButton *)btn
@@ -159,7 +193,13 @@
     RequestSmsCodeAction *act = [[RequestSmsCodeAction alloc]initWithMobilePhoneNum:_phoneTf.text];
     [act DoActionWithSuccess:^(MyActionBase *action, id responseObject, AFHTTPRequestOperation *operation) {
         NSLog(@"request:%@",responseObject);
-        [LUnity showErrorHUDViewAtView:self.view WithTitle:@"验证码发送成功"];
+        if ([responseObject isKindOfClass:[NSDictionary class]]) {
+            NSDictionary *dic = responseObject;
+            if (dic[@"smsId"]) {
+                [LUnity showErrorHUDViewAtView:self.view WithTitle:@"验证码发送成功"];
+                [self daojishi];
+            }
+        }
     } Failure:^(MyActionBase *action, NSError *error, AFHTTPRequestOperation *operation) {
         
     }];
@@ -168,6 +208,8 @@
 }
 -(void)daojishi
 {
+    _getYZM.userInteractionEnabled = NO;
+    _getYZM.backgroundColor = color_font_gray2;
     _time = 60;
     _timer =  [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(timerFireMethod:) userInfo:nil repeats:YES];
     
@@ -175,14 +217,14 @@
 - (void)timerFireMethod:(NSTimer *)timer{
     if (_time>1) {
         _time -= 1;
-        _getYZM.highlighted = YES;
-        _getYZM.userInteractionEnabled = NO;
         NSString *string = [NSString stringWithFormat:@"%d",_time];
-        [_getYZM setTitle:string forState:UIControlStateHighlighted];
+        [_getYZM setTitle:string forState:UIControlStateNormal];
         
     }else{
-        _getYZM.highlighted = NO;
         _getYZM.userInteractionEnabled = YES;
+        _getYZM.backgroundColor = color_btn_green;
+        [_getYZM setTitle:@"获取验证码" forState:UIControlStateNormal];
+
         [timer invalidate];
         timer = nil;
     }

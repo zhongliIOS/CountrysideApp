@@ -10,12 +10,13 @@
 
 @interface ObjCustomer : ObjBase
 
+
 @property(nonatomic,copy)NSString *areaId;
 @property(nonatomic,copy)NSString *code;
 @property(nonatomic,copy)NSString *name;
 @property(nonatomic,copy)NSString *regTime;
 @property(nonatomic,copy)NSString *tel;
 @property(nonatomic,copy)NSString *typeId;
-
+@property(nonatomic,copy)NSString *photo;
 
 @end

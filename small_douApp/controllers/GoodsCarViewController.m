@@ -9,7 +9,9 @@
 #import "GoodsCarViewController.h"
 #import "PayViewController.h"
 #import "TianXieOrderViewController.h"
+#import "LoginViewController.h"
 #import "GoodCarCell.h"
+#import "GetMyGoodsCarAction.h"
 
 @interface GoodsCarViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -21,14 +23,54 @@
 
 @implementation GoodsCarViewController
 
+
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self initData];
     [self createNavBar];
     [self configNavBar];
     [self createTableView];
     [self createFootView];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getData) name:NotificationUpdateMyInfo object:nil];
+    
+    MyInfo *m = [MyInfo defaultMyInfo];
+    if (!m.tel) {
+        //没有自动登陆成功
+        LoginViewController *vc = [[LoginViewController alloc]init];
+        
+        [self.navigationController presentViewController:vc animated:YES completion:nil];
+    }
+    else
+    {
+        [self getData];
+        
+    }
 
 }
+
+-(void)getData
+{
+    MyInfo *m = [MyInfo defaultMyInfo];
+    if (m.guid) {
+        GetMyGoodsCarAction *act = [[GetMyGoodsCarAction alloc]initWithCustomId:m.guid];
+        [act DoActionWithSuccess:^(MyActionBase *action, id responseObject, AFHTTPRequestOperation *operation) {
+        
+            
+        } Failure:^(MyActionBase *action, NSError *error, AFHTTPRequestOperation *operation) {
+            
+        }];
+    }
+
+
+}
+
 -(void)createTableView
 {
     
@@ -83,7 +125,11 @@
     [bgView addSubview:_sumPriceLabel];
     
 }
+-(void)initData
+{
+  
 
+}
 -(void)buyBtnClick
 {
   //购买

@@ -14,12 +14,19 @@
 
 #import <AFNetworking.h>
 #import <MBProgressHUD.h>
+#import <UIImageView+WebCache.h>
+#import <SDImageCache.h>
+#import <SDWebImageManager.h>
 #import "CustomTextField.h"
 #import "LUnity.h"
 #import "EMSearchDisplayController.h"
 #import "UIImage+fixOrientation.h"
 #import "AreaInfo.h"
+#import "MyInfo.h"
 
+
+
+#define HOSTURL @"http://120.25.213.75:8080"
 /**
 *  标题字体
 */
@@ -107,5 +114,11 @@
 #define bordWidth 0.5
 
 #define backImageName @"arrow-nav-white-36x36-left@2x"
+
+#define My_token @"access_token"
+#define My_phone @"phoneNum"
+
+#define NotificationUpdateMyInfo @"NotificationUpdateMyInfo"
+
 
 #endif

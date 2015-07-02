@@ -47,12 +47,24 @@
     _phoneLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_iconImgV.frame)+10, CGRectGetMaxY(_userNameLabel.frame), 200, 20)];
     _phoneLabel.textColor = [UIColor colorWithRed:0.67 green:0.86 blue:0.64 alpha:1];
     _phoneLabel.font = [UIFont systemFontOfSize:size_font3];
-    _phoneLabel.text = @"18321538808";
+    _phoneLabel.text = @"";
     [bgImageV addSubview:_phoneLabel];
     
     UIImageView *nextImgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
-    nextImgV.image = [UIImage imageNamed:@""];
+    nextImgV.image = [UIImage imageNamed:@"jinru"];
     [bgImageV addSubview:nextImgV];
+ 
+    
+}
+
+-(void)fillDataWithModel:(MyInfo *)model
+{
+    if (!model.tel) {
+        return;
+    }
+    _phoneLabel.text = model.tel;
+    [_iconImgV sd_setImageWithURL:[NSURL URLWithString:model.photo] placeholderImage:[UIImage imageNamed:@""]];
+    _userNameLabel.text = model.name;
 }
 
 - (void)awakeFromNib {

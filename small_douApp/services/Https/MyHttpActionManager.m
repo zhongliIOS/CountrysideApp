@@ -25,10 +25,11 @@ static MyHttpActionManager *_m = nil;
         {
             if (!_m) {
                 _m = [[self alloc]init];
-                _m.baseURL = @"http://120.25.213.75:8080";
+                _m.baseURL = HOSTURL;
                 AFHTTPRequestOperationManager *manger = [[AFHTTPRequestOperationManager alloc]initWithBaseURL:[NSURL URLWithString:_m.baseURL]];
                 manger.responseSerializer = [AFJSONResponseSerializer serializer];
                 _m.httpRequestMgr = manger;
+                
             }
         }
     }
