@@ -11,4 +11,7 @@
 @interface MainHeadViewCell : UITableViewCell
 @property(nonatomic,strong)UIScrollView *mainScrollView;
 @property(nonatomic,strong)UIPageControl *pageView;
+
+-(void)fillDataWithModel:(ObjMainData *)model;
+
 @end

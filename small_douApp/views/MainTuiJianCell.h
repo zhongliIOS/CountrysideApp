@@ -10,6 +10,7 @@
 
 @interface MainTuiJianCell : UITableViewCell
 
-@property(nonatomic,strong)NSArray *dataArr;
+-(void)fillDataWithModel:(ObjMainData *)model;
+
 
 @end

@@ -12,24 +12,52 @@
 #import "MainTuiJianCell.h"
 #import "MainAllCell.h"
 #import "AreaViewController.h"
-
-//http://120.25.213.75:8080/jsondoc
+#import "GetMainData.h"
+#import "ObjMainData.h"
 
 @interface MainViewController()<UITextViewDelegate,UITableViewDataSource,UITableViewDelegate>
 {
     UILabel *_areaLabel;
     UITableView *_tableView;
+    ObjMainData *_obj;
 }
 @end
 
 @implementation MainViewController
 
+
+-(void)initData
+{
+    GetMainData *act = [[GetMainData alloc]init];
+    [act DoActionWithSuccess:^(MyActionBase *action, id responseObject, AFHTTPRequestOperation *operation) {
+        NSLog(@"sss");
+        MyResponeResult *result = [MyResponeResult createWithResponeObject:responseObject];
+        if ([result get_error_code]==kServerErrorCode_OK) {
+            NSDictionary *dic = [result try_get_data_with_dict];
+            if (dic) {
+                _obj = [[ObjMainData alloc] initWithDirectory:dic];
+                [_tableView reloadData];
+            }
+        }
+        else
+        {
+        
+        }
+        
+    } Failure:^(MyActionBase *action, NSError *error, AFHTTPRequestOperation *operation) {
+        NSLog(@"ss");
+
+    }];
+    
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self initData];
     [self createNavBar];
     [self configNavBar];
     [self createTableView];
-    
 }
 
 -(void)createTableView

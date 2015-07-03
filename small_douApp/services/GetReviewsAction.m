@@ -14,6 +14,7 @@
 -(instancetype)initWithProId:(NSString *)Id
 {
     self = [super initWithActionURLString:[NSString stringWithFormat:@"/reviews/reviews_list/%@.json",Id]];
+    self.isValid = YES;
     return self;
 }
 

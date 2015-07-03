@@ -17,7 +17,7 @@ typedef enum : NSUInteger {
 /**
  *  服务器返回的结果
  */
-@interface TResponeResult : NSObject
+@interface MyResponeResult : NSObject
 {
     NSDictionary *  _json;
 }

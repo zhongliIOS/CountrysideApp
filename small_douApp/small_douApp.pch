@@ -23,8 +23,8 @@
 #import "UIImage+fixOrientation.h"
 #import "AreaInfo.h"
 #import "MyInfo.h"
-
-
+#import "MyResponeResult.h"
+#import "public.h"
 
 #define HOSTURL @"http://120.25.213.75:8080"
 /**
@@ -112,6 +112,9 @@
 
 #define leftSpace 10.0
 #define bordWidth 0.5
+#define Autosize_for_Plus ScreenW/320.0
+
+#define ImageHeadHeight 115.0*Autosize_for_Plus
 
 #define backImageName @"arrow-nav-white-36x36-left@2x"
 

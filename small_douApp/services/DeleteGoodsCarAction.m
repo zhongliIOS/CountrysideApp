@@ -13,6 +13,7 @@
 -(instancetype)initWithGoodId:(NSString *)Id
 {
     self = [super initWithActionURLString:[NSString stringWithFormat:@"/shoppingCarts/del/%@.json",Id]];
+    self.isValid = YES;
     return self;
 }
 @end

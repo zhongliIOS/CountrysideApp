@@ -38,11 +38,15 @@
 {
     GetAreasAction *act = [[GetAreasAction alloc]init];
     [act DoActionWithSuccess:^(MyActionBase *action, id responseObject, AFHTTPRequestOperation *operation) {
-    NSArray *arr = responseObject;
-    if (arr) {
-        AreaInfo *m = [AreaInfo areaInfo];
-        m.dataArray = arr;
-    }
+     
+    MyResponeResult *result = [MyResponeResult createWithResponeObject:responseObject];
+        if ([result get_error_code]==kServerErrorCode_OK) {
+            NSArray *arr = [result try_get_data_with_array];
+            if (arr) {
+                AreaInfo *m = [AreaInfo areaInfo];
+                m.dataArray = arr;
+            }
+        }
     
     } Failure:^(MyActionBase *action, NSError *error, AFHTTPRequestOperation *operation) {
        NSLog(@"%@",operation.responseObject);

@@ -43,14 +43,21 @@
         [_mainView addSubview:line];
     }
 }
--(void)setDataArr:(NSArray *)dataArr
+
+-(void)fillDataWithModel:(ObjMainData *)model
 {
-    for (int i=0; i<dataArr.count; i++) {
+    NSArray *arr = model.arrJingpin;
+    if (!arr) {
+        return;
+    }
+    NSUInteger arrCount = arr.count;
+    for (int i=0; i<arrCount; i++) {
+        ObjProduct *obj = arr[i];
         UIImageView *imageV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
         imageV.contentMode = UIViewContentModeScaleAspectFill;
         [_mainView addSubview:imageV];
-        
     }
+
 }
 
 - (void)awakeFromNib {

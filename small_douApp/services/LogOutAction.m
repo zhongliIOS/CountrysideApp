@@ -17,6 +17,8 @@
         if (mobilePhoneNumber)
           self.parameters = [@{@"mobilePhoneNumber":mobilePhoneNumber} mutableCopy];
     }
+    self.isValid = YES;
+
     return self;
 
 }

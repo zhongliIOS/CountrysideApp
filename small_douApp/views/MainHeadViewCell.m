@@ -23,8 +23,7 @@
 
 -(void)createContentView
 {
-    CGFloat imageH = 115.0*AutoPlus;
-    _mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, ScreenW, imageH)];
+    _mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, ScreenW, ImageHeadHeight)];
     _mainScrollView.pagingEnabled = YES;
     _mainScrollView.bounces = NO;
     _mainScrollView.showsHorizontalScrollIndicator = NO;
@@ -39,6 +38,32 @@
     _pageView.pageIndicatorTintColor = [UIColor colorWithRed:1 green:1 blue:1 alpha:0.5];
     [self.contentView addSubview:_pageView];
     
+}
+
+-(void)fillDataWithModel:(ObjMainData *)model
+{
+    for (UIView *view in _mainScrollView.subviews) {
+        if ([view isKindOfClass:[UIImageView class]]) {
+            [view removeFromSuperview];
+        }
+    }
+    NSArray *arr = model.arrBanner;
+    if (!arr) {
+        return;
+    }
+    _pageView.numberOfPages = arr.count;
+    for (int i=0; i<arr.count; i++) {
+        UIImageView *imgV = [[UIImageView alloc] initWithFrame:CGRectMake(ScreenW*i, 0, ScreenW, ImageHeadHeight)];
+        imgV.clipsToBounds = YES;
+        imgV.contentMode = UIViewContentModeScaleAspectFill;
+        [imgV sd_setImageWithURL:[NSURL URLWithString:arr[i]] placeholderImage:[UIImage imageNamed:@""]];
+//        imgV.userInteractionEnabled = YES;
+        imgV.tag = i;
+//        [imgV addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imgVclick:)]];
+        [_mainScrollView addSubview:imgV];
+        
+    }
+
 }
 
 - (void)awakeFromNib {

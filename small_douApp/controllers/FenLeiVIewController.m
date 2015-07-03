@@ -7,6 +7,7 @@
 //
 
 #import "FenLeiVIewController.h"
+#import "GetCategorysAction.h"
 
 @interface FenLeiVIewController()<UISearchBarDelegate,UISearchDisplayDelegate,UITableViewDelegate,UITableViewDataSource>
 {
@@ -14,18 +15,44 @@
     EMSearchDisplayController *_displayController;
     UITableView *_tableView;
     NSMutableArray *_tipDataArr;
+    NSMutableArray *_dataArray;
 }
 @end
 
 @implementation FenLeiVIewController
 
+-(void)initData
+{
+    [_dataArray removeAllObjects];
+    GetCategorysAction *act = [[GetCategorysAction alloc]init];
+    [act DoActionWithSuccess:^(MyActionBase *action, id responseObject, AFHTTPRequestOperation *operation) {
+        MyResponeResult *result = [MyResponeResult createWithResponeObject:responseObject];
+        if ([result get_error_code]==kServerErrorCode_OK) {
+            NSArray *arr = [result try_get_data_with_array];
+            for (int i=0; i<arr.count; i++) {
+                NSDictionary *dic = arr[i];
+                ObjCategory *obj = [[ObjCategory alloc] initWithDirectory:dic];
+                [_dataArray addObject:obj];
+                [_tableView reloadData];
+            }
+            
+        }
+        else
+            [LUnity showErrorHUDViewAtView:self.view WithTitle:[result get_messge]];
+    } Failure:^(MyActionBase *action, NSError *error, AFHTTPRequestOperation *operation) {
+        
+    }];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _dataArray = [NSMutableArray array];
+    [self initData];
     [self createNavBar];
     [self configNavBar];
     [self createSearchBar];
     [self initSearchDisplay];
-    [self createContentView];
+    [self createTableView];
     
 }
 
@@ -65,13 +92,14 @@
     _displayController.searchResultsDataSource = self;
     _displayController.searchResultsDelegate   = self;
 }
--(void)createContentView
+-(void)createTableView
 {
-   
-    
-
-
-
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, TopHeight+44, ScreenW, ScreenH-TopHeight-44)];
+    _tableView.backgroundColor = [UIColor clearColor];
+    _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _tableView.dataSource = self;
+    _tableView.delegate = self;
+    [self.view addSubview:_tableView];
 
 }
 
@@ -121,15 +149,19 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
+    if (_tableView==tableView) {
+        
+        
+    }
     return nil;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-
+    if (_tableView==tableView) {
+        return _dataArray.count;
+    }
     return 0;
-    
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {

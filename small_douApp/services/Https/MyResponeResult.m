@@ -6,13 +6,13 @@
 //  Copyright (c) 2015年 ICan. All rights reserved.
 //
 
-#import "TResponeResult.h"
+#import "MyResponeResult.h"
 
-#define JSONRESKEY_ERRORCODE    @"error_code"
+#define JSONRESKEY_ERRORCODE    @"errcode"
 #define JSONRESKEY_DATA @"data"
-#define JSONRESKEY_MESSAGE  @"error_desc"
+#define JSONRESKEY_MESSAGE  @"showmessage"
 
-@implementation TResponeResult
+@implementation MyResponeResult
 
 
 @synthesize json_data=_json;
@@ -25,7 +25,7 @@
         return nil;
     }
     NSDictionary * jsonDict = (NSDictionary *) responeObject;
-    TResponeResult * ret = [[TResponeResult alloc] initWithJsonRespone:jsonDict];
+    MyResponeResult * ret = [[MyResponeResult alloc] initWithJsonRespone:jsonDict];
     return ret;
 }
 

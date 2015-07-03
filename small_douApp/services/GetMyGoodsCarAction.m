@@ -13,6 +13,7 @@
 -(instancetype)initWithCustomId:(NSString *)Id
 {
     self = [super initWithActionURLString:[NSString stringWithFormat:@"/shoppingCarts/shoppingCarts_list/%@.json",Id]];
+    self.isValid = YES;
 
     return self;
 }

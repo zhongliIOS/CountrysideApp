@@ -13,6 +13,7 @@
 -(instancetype)init
 {
     self = [super initWithActionURLString:@"/productCategorys/productCategorys_list"];
+    self.isValid = YES;
     return self;
 }
 
