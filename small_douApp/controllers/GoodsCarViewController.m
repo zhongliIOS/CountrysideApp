@@ -40,18 +40,19 @@
     [self createFootView];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getData) name:NotificationUpdateMyInfo object:nil];
     
-    MyInfo *m = [MyInfo defaultMyInfo];
-    if (!m.tel) {
-        //没有自动登陆成功
-        LoginViewController *vc = [[LoginViewController alloc]init];
-        
-        [self.navigationController presentViewController:vc animated:YES completion:nil];
-    }
-    else
-    {
-        [self getData];
-        
-    }
+//    MyInfo *m = [MyInfo defaultMyInfo];
+//    if (!m.tel) {
+//        //没有自动登陆成功
+//        LoginViewController *vc = [[LoginViewController alloc]init];
+//        
+//        [self.navigationController presentViewController:vc animated:YES completion:nil];
+//    }
+//    else
+//    {
+//        [self getData];
+//        
+//    }
+    [self getData];
 
 }
 
@@ -61,7 +62,13 @@
     if (m.guid) {
         GetMyGoodsCarAction *act = [[GetMyGoodsCarAction alloc]initWithCustomId:m.guid];
         [act DoActionWithSuccess:^(MyActionBase *action, id responseObject, AFHTTPRequestOperation *operation) {
-        
+            MyResponeResult *result = [MyResponeResult createWithResponeObject:responseObject];
+            if ([result get_error_code]==kServerErrorCode_OK) {
+                
+                
+            }
+            else
+                [LUnity showErrorHUDViewAtView:self.view WithTitle:[result get_messge]];
             
         } Failure:^(MyActionBase *action, NSError *error, AFHTTPRequestOperation *operation) {
             

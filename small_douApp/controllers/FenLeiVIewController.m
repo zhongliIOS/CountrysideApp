@@ -158,9 +158,9 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (_tableView==tableView) {
-        return _dataArray.count;
-    }
+//    if (_tableView==tableView) {
+//        return _dataArray.count;
+//    }
     return 0;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

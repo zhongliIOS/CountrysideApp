@@ -9,7 +9,7 @@
 #import "LoginViewController.h"
 #import "RequestSmsCodeAction.h"
 #import "VerifySmsCodeAction.h"
-
+#import "AppDelegate.h"
 @interface LoginViewController ()<UIScrollViewDelegate>
 {
     CustomTextField *_phoneTf;
@@ -43,9 +43,9 @@
 {
     self.midTitle = @"登录";
     self.midTitelColor = [UIColor whiteColor];
-    [self.leftBtn setTitle:@"取消" forState:UIControlStateNormal];
+//    [self.leftBtn setTitle:@"取消" forState:UIControlStateNormal];
     [self.leftBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    self.leftBtn.hidden = NO;
+    self.leftBtn.hidden = YES;
 }
 
 -(void)createContentView
@@ -130,18 +130,22 @@
     VerifySmsCodeAction *act = [[VerifySmsCodeAction alloc]initWithMobile:_phoneTf.text andCode:_yzmTf.text];
     [act DoActionWithSuccess:^(MyActionBase *action, id responseObject, AFHTTPRequestOperation *operation) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-        NSLog(@"loginResponse:%@",responseObject);
-        NSDictionary *dic = responseObject;
-        NSDictionary *resultDic = dic[@"data"];
-        if (resultDic) {
-            NSString *access_token = resultDic[@"access_token"];
-            if (access_token) {
-                [[NSUserDefaults standardUserDefaults]setObject:access_token forKey:My_token];
-                [[NSUserDefaults standardUserDefaults]setObject:_phoneTf.text forKey:My_phone];
-                [self getMyInfo:access_token];
+        MyResponeResult *result = [MyResponeResult createWithResponeObject:responseObject];
+        if ([result get_error_code]==kServerErrorCode_OK) {
+            NSDictionary *resultDic = [result try_get_data_with_dict];
+            if (resultDic) {
+                NSString *access_token = resultDic[@"access_token"];
+                if (access_token) {
+                    [[NSUserDefaults standardUserDefaults]setObject:access_token forKey:My_token];
+                    [[NSUserDefaults standardUserDefaults]setObject:_phoneTf.text forKey:My_phone];
+                    [self getMyInfo:access_token];
+                }
             }
+            [LUnity showErrorHUDViewAtView:self.view WithTitle:@"登陆成功"];
+            AppDelegate * app  = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            [app pushTabBarVC];
         }
-        [LUnity showErrorHUDViewAtView:self.view WithTitle:@"登陆成功"];
+
     } Failure:^(MyActionBase *action, NSError *error, AFHTTPRequestOperation *operation) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 
@@ -250,12 +254,7 @@
 -(void)hideKeyboard{
     _mainScrollView.contentOffset = CGPointMake(0, 0);
 }
--(void)leftButItemClick
-{
-    [self.view endEditing:YES];
-    [self dismissViewControllerAnimated:YES completion:nil];
 
-}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

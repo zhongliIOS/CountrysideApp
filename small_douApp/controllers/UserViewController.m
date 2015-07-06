@@ -40,17 +40,18 @@
     [self configNavBar];
     [self createTableView];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getData) name:NotificationUpdateMyInfo object:nil];
-    MyInfo *m = [MyInfo defaultMyInfo];
-    if (!m.tel) {
-        //没有自动登陆成功
-        LoginViewController *vc = [[LoginViewController alloc]init];
-        [self.navigationController presentViewController:vc animated:YES completion:nil];
-    }
-    else
-    {
-        [self getData];
-        
-    }
+//    MyInfo *m = [MyInfo defaultMyInfo];
+//    if (!m.tel) {
+//        //没有自动登陆成功
+//        LoginViewController *vc = [[LoginViewController alloc]init];
+//        [self.navigationController presentViewController:vc animated:YES completion:nil];
+//    }
+//    else
+//    {
+//        [self getData];
+//        
+//    }
+    [self getData];
 }
 
 -(void)getData

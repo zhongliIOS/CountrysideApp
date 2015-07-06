@@ -53,6 +53,10 @@
     NSUInteger arrCount = arr.count;
     for (int i=0; i<arrCount; i++) {
         ObjProduct *obj = arr[i];
+        if (obj.pics) {
+            NSArray *arr = [obj.pics componentsSeparatedByString:@";"];
+        }
+        NSString *firstImageUrl = arr[0];
         UIImageView *imageV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
         imageV.contentMode = UIViewContentModeScaleAspectFill;
         [_mainView addSubview:imageV];

@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "GetAreasAction.h"
 #import "CountryTabBarController.h"
+#import "LoginViewController.h"
 
 @interface AppDelegate ()
 
@@ -21,17 +22,33 @@
     // Override point for customization after application launch.
 
    [self getAreaInfo];
-   [self isHasAutoLogin];
-    
-    CountryTabBarController *vc = [[CountryTabBarController alloc] init];
-    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:vc];
-    navi.navigationBarHidden = YES;
-    self.window.rootViewController = navi;
-    
+//
+//    CountryTabBarController *vc = [[CountryTabBarController alloc] init];
+//    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:vc];
+//    navi.navigationBarHidden = YES;
+//    self.window.rootViewController = navi;
+//    [self.window makeKeyAndVisible];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    [self initWindowBackgroundColor];
     [self.window makeKeyAndVisible];
+    //尝试自动登陆
+    [self isHasAutoLogin];
 
-    
     return YES;
+}
+- (void)initWindowBackgroundColor
+{
+    UIImage *image;
+    if(ScreenH==568){
+        image = [UIImage imageNamed:@"Default-568h"];
+    }else if(ScreenH==480)
+    {
+        image = [UIImage imageNamed:@"Default-480h"];
+    }
+    else{
+        image = [UIImage imageNamed:@"Default"];
+    }
+    self.window.backgroundColor = [UIColor colorWithPatternImage:image];
 }
 
 -(void)getAreaInfo
@@ -58,22 +75,48 @@
     NSString *phone = [[NSUserDefaults standardUserDefaults] objectForKey:My_phone];
     NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:My_token];
     if (!phone||!token) {
+        [self pushLogin];
         return;
     }
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:HOSTURL]];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     [manager.requestSerializer setValue:token forHTTPHeaderField:@"access-token"];
     [manager GET:[NSString stringWithFormat:@"/customers/%@.json",phone] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"%@",responseObject);
-        NSDictionary *dic = responseObject;
-        if (dic[@"id"]) {
+        MyResponeResult *result = [MyResponeResult createWithResponeObject:responseObject];
+        if ([result get_error_code]==kServerErrorCode_OK) {
+            NSDictionary *dic = [result try_get_data_with_dict];
             MyInfo *m = [MyInfo defaultMyInfo];
             [m initWithModel:dic];
+            [self pushTabBarVC];
+        }
+        else
+        {
+            [self pushLogin];
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
+          [self pushLogin];
     }];
+
+}
+
+-(void)pushLogin
+{
+    LoginViewController *vc = [[LoginViewController alloc] init];
+    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:vc];
+    navi.navigationBarHidden = YES;
+    self.window.rootViewController = navi;
+    self.window.backgroundColor = [UIColor grayColor];
+
+}
+
+-(void)pushTabBarVC
+{
+    CountryTabBarController *vc = [[CountryTabBarController alloc] init];
+    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:vc];
+    navi.navigationBarHidden = YES;
+    self.window.rootViewController = navi;
+    self.window.backgroundColor = [UIColor grayColor];
 
 }
 

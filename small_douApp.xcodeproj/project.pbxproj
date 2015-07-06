@@ -95,6 +95,10 @@
 		CAB4D3CC1B33C9CA00A998E5 /* GoodHeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB4D3CB1B33C9CA00A998E5 /* GoodHeadCell.m */; };
 		CAB4D3CF1B33E7F700A998E5 /* GoodDescribleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB4D3CE1B33E7F700A998E5 /* GoodDescribleCell.m */; };
 		CAB4D3D21B33EC2C00A998E5 /* GoodPushCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB4D3D11B33EC2C00A998E5 /* GoodPushCell.m */; };
+		CABC4F321B4AA273004050B4 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CABC4F2E1B4AA273004050B4 /* Default-568h@2x.png */; };
+		CABC4F331B4AA273004050B4 /* Default-480h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CABC4F2F1B4AA273004050B4 /* Default-480h@2x.png */; };
+		CABC4F341B4AA273004050B4 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CABC4F301B4AA273004050B4 /* Default@2x.png */; };
+		CABC4F351B4AA273004050B4 /* Default@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CABC4F311B4AA273004050B4 /* Default@3x.png */; };
 		CAD7F1B31B31198F00DD94FC /* AddSubView.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD7F1B21B31198F00DD94FC /* AddSubView.m */; };
 		CAF0AD6D1B27C89A00306D9E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF0AD6C1B27C89A00306D9E /* main.m */; };
 		CAF0AD701B27C89A00306D9E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF0AD6F1B27C89A00306D9E /* AppDelegate.m */; };
@@ -273,6 +277,10 @@
 		CAB4D3CE1B33E7F700A998E5 /* GoodDescribleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodDescribleCell.m; sourceTree = "<group>"; };
 		CAB4D3D01B33EC2C00A998E5 /* GoodPushCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodPushCell.h; sourceTree = "<group>"; };
 		CAB4D3D11B33EC2C00A998E5 /* GoodPushCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodPushCell.m; sourceTree = "<group>"; };
+		CABC4F2E1B4AA273004050B4 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		CABC4F2F1B4AA273004050B4 /* Default-480h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-480h@2x.png"; sourceTree = "<group>"; };
+		CABC4F301B4AA273004050B4 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		CABC4F311B4AA273004050B4 /* Default@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@3x.png"; sourceTree = "<group>"; };
 		CAD7F1B11B31198F00DD94FC /* AddSubView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSubView.h; sourceTree = "<group>"; };
 		CAD7F1B21B31198F00DD94FC /* AddSubView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSubView.m; sourceTree = "<group>"; };
 		CAF0AD671B27C89A00306D9E /* small_douApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = small_douApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -611,6 +619,10 @@
 		CAF0AD9C1B29760100306D9E /* images */ = {
 			isa = PBXGroup;
 			children = (
+				CABC4F2E1B4AA273004050B4 /* Default-568h@2x.png */,
+				CABC4F2F1B4AA273004050B4 /* Default-480h@2x.png */,
+				CABC4F301B4AA273004050B4 /* Default@2x.png */,
+				CABC4F311B4AA273004050B4 /* Default@3x.png */,
 				C3CA70B21B3C353600672337 /*  wuxing.png */,
 				C3CA70B31B3C353600672337 /* huangua.png */,
 				C3CA70B41B3C353600672337 /* jia.png */,
@@ -738,15 +750,18 @@
 				C3CA70BD1B3C353600672337 /* search_green.png in Resources */,
 				CA3A86411B3AAC76005848C0 /* me_nav@2x.png in Resources */,
 				CA3A863E1B3AAC76005848C0 /* home@2x.png in Resources */,
+				CABC4F341B4AA273004050B4 /* Default@2x.png in Resources */,
 				C3CA70BE1B3C353600672337 /* weixuanzhong.png in Resources */,
 				CAF0AD9E1B29761000306D9E /* arrow-nav-white-36x36-left@2x.png in Resources */,
 				CA3A86441B3AAC76005848C0 /* shop@2x.png in Resources */,
 				C30FD46A1B37BC0500776357 /* wechat.png in Resources */,
 				C30FD4651B37BC0500776357 /* search.png in Resources */,
 				C30FD4591B37BC0500776357 /* alipay.png in Resources */,
+				CABC4F331B4AA273004050B4 /* Default-480h@2x.png in Resources */,
 				C30FD46C1B37BC0500776357 /* yixing.png in Resources */,
 				C3CA70BC1B3C353600672337 /* jian.png in Resources */,
 				CA3A863F1B3AAC76005848C0 /* label_nav@2x.png in Resources */,
+				CABC4F321B4AA273004050B4 /* Default-568h@2x.png in Resources */,
 				C3CA70BF1B3C353600672337 /* xuanzhong.png in Resources */,
 				CAF0AD761B27C89A00306D9E /* Main.storyboard in Resources */,
 				CAF0AD781B27C89A00306D9E /* Images.xcassets in Resources */,
@@ -757,6 +772,7 @@
 				CA3A86451B3AAC76005848C0 /* xiala.png in Resources */,
 				C30FD45A1B37BC0500776357 /* banner.png in Resources */,
 				CA3A863C1B3AAC76005848C0 /* areaxiala.png in Resources */,
+				CABC4F351B4AA273004050B4 /* Default@3x.png in Resources */,
 				CA3A86421B3AAC76005848C0 /* me@2x.png in Resources */,
 				C30FD45C1B37BC0500776357 /* ddcx.png in Resources */,
 				C30FD4601B37BC0500776357 /* jinru.png in Resources */,
