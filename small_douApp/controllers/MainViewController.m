@@ -147,9 +147,19 @@
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
         }
+        [cell fillDataWithModel:_obj];
         return cell;
     }
-    
+    if (indexPath.row==2) {
+        MainAllCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MainAllCell"];
+        if (!cell) {
+            cell = [[MainAllCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"MainAllCell"];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            
+        }
+//        [cell fillDataWithModel:_obj];
+        return cell;
+    }
     return nil;
 }
 
@@ -159,7 +169,7 @@
         return 114.0*AutoPlus;
     }
     if (indexPath.row==1) {
-        return 137.0;
+        return 135.5;
     }
     return 170.0;
 
@@ -169,7 +179,7 @@
 {
 
 
-    return 2;
+    return 3;
 
 
 }
