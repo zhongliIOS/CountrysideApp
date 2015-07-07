@@ -10,6 +10,7 @@
 
 @interface MainTuiJianCell : UITableViewCell
 
+@property(nonatomic,copy)void(^btnClick)(NSUInteger );
 -(void)fillDataWithModel:(ObjMainData *)model;
 
 

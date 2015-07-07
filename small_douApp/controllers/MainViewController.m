@@ -8,6 +8,7 @@
 
 #import "MainViewController.h"
 #import "SearchGoodsViewController.h"
+#import "GoodsDetailViewController.h"
 #import "MainHeadViewCell.h"
 #import "MainTuiJianCell.h"
 #import "MainAllCell.h"
@@ -148,6 +149,10 @@
 
         }
         [cell fillDataWithModel:_obj];
+        [cell setBtnClick:^(NSUInteger tag) {
+            GoodsDetailViewController *vc = [[GoodsDetailViewController alloc] init];
+            [self.navigationController pushViewController:vc animated:YES];
+        }];
         return cell;
     }
     if (indexPath.row==2) {

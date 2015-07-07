@@ -65,7 +65,6 @@
             MyResponeResult *result = [MyResponeResult createWithResponeObject:responseObject];
             if ([result get_error_code]==kServerErrorCode_OK) {
                 
-                
             }
             else
                 [LUnity showErrorHUDViewAtView:self.view WithTitle:[result get_messge]];

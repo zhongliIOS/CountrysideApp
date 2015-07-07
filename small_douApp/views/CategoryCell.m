@@ -10,8 +10,9 @@
 
 @implementation CategoryCell
 {
-
-
+    UIImageView *_iconImageV;
+    UILabel *_titleLabel;
+    UILabel *_subTitleLabel;
 }
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -29,10 +30,36 @@
     UIView *mainView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenW, 55)];
     mainView.backgroundColor = [UIColor whiteColor];
     [self.contentView addSubview:mainView];
-
+    
+    _iconImageV = [[UIImageView alloc]initWithFrame:CGRectMake(leftSpace, 7.5, 40, 40)];
+    [mainView addSubview:_iconImageV];
+    
+    _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_iconImageV.frame)+5, 5, ScreenW-80, 14)];
+    _titleLabel.font = [UIFont systemFontOfSize:size_font2];
+    _titleLabel.text = @"标题";
+    _titleLabel.textColor = color_font_black;
+    [mainView addSubview:_titleLabel];
+    
+    _subTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_iconImageV.frame)+5, CGRectGetMaxY(_titleLabel.frame)+5, ScreenW-80, 14)];
+    _subTitleLabel.font = [UIFont systemFontOfSize:size_font2];
+    _subTitleLabel.text = @"描述";
+    _subTitleLabel.textColor = color_font_gray2;
+    [mainView addSubview:_titleLabel];
+    
+    UIImageView *imgV = [[UIImageView alloc] initWithFrame:CGRectMake(ScreenW-22, 17.5, 14, 20)];
+    imgV.image = [UIImage imageNamed:@"jinru"];
+    [mainView addSubview:imgV];
     
 }
 
+-(void)fillDataWith:(ObjCategory *)model
+{
+  if (!model) {
+      return;
+  }
+    _titleLabel.text = model.name;
+    _subTitleLabel.text = model.desc;
+}
 
 - (void)awakeFromNib {
     // Initialization code

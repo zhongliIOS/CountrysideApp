@@ -10,4 +10,6 @@
 
 @interface CategoryCell : UITableViewCell
 
+-(void)fillDataWith:(ObjCategory *)model;
+
 @end

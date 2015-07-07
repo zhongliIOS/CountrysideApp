@@ -56,6 +56,8 @@
 		CA258F3E1B42390E00BDD2F3 /* LogOutAction.m in Sources */ = {isa = PBXBuildFile; fileRef = CA258F3D1B42390E00BDD2F3 /* LogOutAction.m */; };
 		CA258F411B4290C700BDD2F3 /* MyHttpActionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CA258F401B4290C700BDD2F3 /* MyHttpActionManager.m */; };
 		CA258F441B4293FF00BDD2F3 /* MyActionBase.m in Sources */ = {isa = PBXBuildFile; fileRef = CA258F431B4293FF00BDD2F3 /* MyActionBase.m */; };
+		CA30AC681B4BD0A600732ED3 /* GetGoodsDetailAction.m in Sources */ = {isa = PBXBuildFile; fileRef = CA30AC671B4BD0A600732ED3 /* GetGoodsDetailAction.m */; };
+		CA30AC6B1B4BD16F00732ED3 /* ObjProductDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = CA30AC6A1B4BD16F00732ED3 /* ObjProductDetail.m */; };
 		CA3A86221B3A5B85005848C0 /* gouwuche.png in Resources */ = {isa = PBXBuildFile; fileRef = CA3A86211B3A5B85005848C0 /* gouwuche.png */; };
 		CA3A86251B3A62EE005848C0 /* EvaluationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3A86241B3A62EE005848C0 /* EvaluationViewController.m */; };
 		CA3A86281B3A632D005848C0 /* EvaluationWriteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3A86271B3A632D005848C0 /* EvaluationWriteViewController.m */; };
@@ -210,6 +212,10 @@
 		CA258F401B4290C700BDD2F3 /* MyHttpActionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyHttpActionManager.m; sourceTree = "<group>"; };
 		CA258F421B4293FF00BDD2F3 /* MyActionBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyActionBase.h; sourceTree = "<group>"; };
 		CA258F431B4293FF00BDD2F3 /* MyActionBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyActionBase.m; sourceTree = "<group>"; };
+		CA30AC661B4BD0A600732ED3 /* GetGoodsDetailAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetGoodsDetailAction.h; sourceTree = "<group>"; };
+		CA30AC671B4BD0A600732ED3 /* GetGoodsDetailAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetGoodsDetailAction.m; sourceTree = "<group>"; };
+		CA30AC691B4BD16F00732ED3 /* ObjProductDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjProductDetail.h; sourceTree = "<group>"; };
+		CA30AC6A1B4BD16F00732ED3 /* ObjProductDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjProductDetail.m; sourceTree = "<group>"; };
 		CA3A86211B3A5B85005848C0 /* gouwuche.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gouwuche.png; sourceTree = "<group>"; };
 		CA3A86231B3A62EE005848C0 /* EvaluationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EvaluationViewController.h; sourceTree = "<group>"; };
 		CA3A86241B3A62EE005848C0 /* EvaluationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EvaluationViewController.m; sourceTree = "<group>"; };
@@ -370,6 +376,8 @@
 				CA9A5E3B1B45339500AD9DB1 /* GetCategorysAction.m */,
 				CA1E2A9A1B461F5D00DB835C /* GetMainData.h */,
 				CA1E2A9B1B461F5D00DB835C /* GetMainData.m */,
+				CA30AC661B4BD0A600732ED3 /* GetGoodsDetailAction.h */,
+				CA30AC671B4BD0A600732ED3 /* GetGoodsDetailAction.m */,
 				CA9A5E341B45317600AD9DB1 /* DeleteGoodsCarAction.h */,
 				CA9A5E351B45317600AD9DB1 /* DeleteGoodsCarAction.m */,
 			);
@@ -551,6 +559,8 @@
 				CA8EBBAE1B3BA95A00444BD2 /* ObjOrder.m */,
 				CA8EBBB01B3BAA6500444BD2 /* ObjProduct.h */,
 				CA8EBBB11B3BAA6500444BD2 /* ObjProduct.m */,
+				CA30AC691B4BD16F00732ED3 /* ObjProductDetail.h */,
+				CA30AC6A1B4BD16F00732ED3 /* ObjProductDetail.m */,
 				CA8EBBB31B3BABD500444BD2 /* ObjReview.h */,
 				CA8EBBB41B3BABD500444BD2 /* ObjReview.m */,
 				CA1E2A9D1B465D9500DB835C /* ObjMainData.h */,
@@ -869,6 +879,7 @@
 				CAB4D3CC1B33C9CA00A998E5 /* GoodHeadCell.m in Sources */,
 				CAF0AD701B27C89A00306D9E /* AppDelegate.m in Sources */,
 				C33B837D1B288BAB0020F76E /* ObjectList.m in Sources */,
+				CA30AC6B1B4BD16F00732ED3 /* ObjProductDetail.m in Sources */,
 				CA9A5E2D1B44DCD800AD9DB1 /* GetMyInfoAction.m in Sources */,
 				CA3F2FF11B39491E002B9B76 /* PayViewController.m in Sources */,
 				C33B837B1B288BAB0020F76E /* JsonObject.m in Sources */,
@@ -886,6 +897,7 @@
 				CA8EBBAC1B3BA7E500444BD2 /* ObjCustomer.m in Sources */,
 				C31C254F1B2895AD00BD8435 /* CountryTabBarController.m in Sources */,
 				C388EAEE1B418045002D392A /* VerifySmsCodeAction.m in Sources */,
+				CA30AC681B4BD0A600732ED3 /* GetGoodsDetailAction.m in Sources */,
 				CA1E2AA31B4673ED00DB835C /* ObjCategory.m in Sources */,
 				CA3A862B1B3A7CF9005848C0 /* EvaluationLevelCell.m in Sources */,
 				CA8EBBBE1B3BF49200444BD2 /* GetAreasAction.m in Sources */,

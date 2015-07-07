@@ -7,6 +7,7 @@
 //
 
 #import "FenLeiVIewController.h"
+#import "CategoryCell.h"
 #import "GetCategorysAction.h"
 
 @interface FenLeiVIewController()<UISearchBarDelegate,UISearchDisplayDelegate,UITableViewDelegate,UITableViewDataSource>
@@ -14,6 +15,7 @@
     UISearchBar *_searchBar;
     EMSearchDisplayController *_displayController;
     UITableView *_tableView;
+    UITableView *_searchResultTableView;
     NSMutableArray *_tipDataArr;
     NSMutableArray *_dataArray;
 }
@@ -88,6 +90,7 @@
 - (void)initSearchDisplay
 {
     _displayController = [[EMSearchDisplayController alloc] initWithSearchBar:_searchBar contentsController:self];
+    _searchResultTableView = _displayController.searchResultsTableView;
     _displayController.delegate = self;
     _displayController.searchResultsDataSource = self;
     _displayController.searchResultsDelegate   = self;
@@ -150,22 +153,28 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (_tableView==tableView) {
-        
-        
+        CategoryCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CategoryCell"];
+        if (!cell) {
+            cell = [[CategoryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CategoryCell"];
+        }
+        [cell fillDataWith:_dataArray[indexPath.row]];
+        return cell;
     }
     return nil;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-//    if (_tableView==tableView) {
-//        return _dataArray.count;
-//    }
+    if (_tableView==tableView) {
+        return _dataArray.count;
+    }
     return 0;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
+    if (_tableView==tableView) {
+        return 55.0;
+    }
     return 44.0;
 }
 

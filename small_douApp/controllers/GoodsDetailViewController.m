@@ -8,13 +8,14 @@
 
 #import "GoodsDetailViewController.h"
 #import "GoodHeadCell.h"
+#import "GetGoodsDetailAction.h"
 #import "EvaluationViewController.h"
 
 @interface GoodsDetailViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
 
     UITableView *_tableView;
-
+    ObjProductDetail *_objProductDetail;
 }
 @end
 
@@ -22,11 +23,38 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self initData];
     [self createNavBar];
     [self congigNavBar];
     [self createTableView];
     [self createContentView];
 }
+
+-(void)initData
+{
+    GetGoodsDetailAction *act = [[GetGoodsDetailAction alloc] initWithId:_productId];
+    if (!act.isValid) {
+        return;
+    }
+   [act DoActionWithSuccess:^(MyActionBase *action, id responseObject, AFHTTPRequestOperation *operation) {
+       MyResponeResult *result = [MyResponeResult createWithResponeObject:responseObject];
+       if ([result get_error_code]==kServerErrorCode_OK) {
+           NSDictionary *dic = [result try_get_data_with_dict];
+           if (dic) {
+               _objProductDetail = [[ObjProductDetail alloc] initWithDirectory:dic];
+
+           }
+       }
+       else
+           [LUnity showErrorHUDViewAtView:self.view WithTitle:[result get_messge]];
+       
+   } Failure:^(MyActionBase *action, NSError *error, AFHTTPRequestOperation *operation) {
+       
+   }];
+
+
+}
+
 -(void)createTableView
 {
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, TopHeight, ScreenW, ScreenH-TopHeight-44.0)];

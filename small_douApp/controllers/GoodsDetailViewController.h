@@ -10,4 +10,6 @@
 
 @interface GoodsDetailViewController : LBaseViewController
 
+@property(nonatomic,copy)NSString *productId;
+
 @end
