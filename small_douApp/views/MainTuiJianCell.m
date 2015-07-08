@@ -104,6 +104,7 @@
         }
         UIButton *clickBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         clickBtn.frame = CGRectMake((elemtWidth+0.5)*i, 0, elemtWidth, 103);
+        clickBtn.tag = i;
         [clickBtn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
         [_scrollView addSubview:clickBtn];
     }

@@ -71,8 +71,7 @@
         return @"";
     if( [field isKindOfClass:[NSNumber class] ] )
     {
-        NSNumberFormatter * num_format = [[NSNumberFormatter alloc] init];
-        NSString * ret = [num_format stringFromNumber:field];
+        NSString * ret = [NSString stringWithFormat:@"%@",field];
         
         return ret;
     }

@@ -11,7 +11,7 @@
 
 @implementation GetGoodsDetailAction
 
--(instancetype)initWithId:(NSString *)Id
+-(instancetype)initWithId:(NSNumber *)Id
 {
     self = [super initWithActionURLString:[NSString stringWithFormat:@"/products/%@.json",Id]];
     self.isValid = YES;

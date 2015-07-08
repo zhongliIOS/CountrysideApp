@@ -150,7 +150,9 @@
         }
         [cell fillDataWithModel:_obj];
         [cell setBtnClick:^(NSUInteger tag) {
+            
             GoodsDetailViewController *vc = [[GoodsDetailViewController alloc] init];
+            vc.productId = [(ObjProduct *)_obj.arrJingpin[tag] guid];
             [self.navigationController pushViewController:vc animated:YES];
         }];
         return cell;

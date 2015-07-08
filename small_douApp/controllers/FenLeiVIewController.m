@@ -140,8 +140,9 @@
         }
     }
 }
-- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
 
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+  
     
     
     
@@ -157,6 +158,7 @@
         if (!cell) {
             cell = [[CategoryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CategoryCell"];
         }
+        
         [cell fillDataWith:_dataArray[indexPath.row]];
         return cell;
     }
@@ -168,7 +170,14 @@
     if (_tableView==tableView) {
         return _dataArray.count;
     }
+    
     return 0;
+}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {

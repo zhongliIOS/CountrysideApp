@@ -9,6 +9,6 @@
 #import "MyActionBase.h"
 
 @interface GetGoodsDetailAction : MyActionGetBase
--(instancetype)initWithId:(NSString *)Id;
+-(instancetype)initWithId:(NSNumber *)Id;
 
 @end

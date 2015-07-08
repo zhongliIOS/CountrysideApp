@@ -14,6 +14,7 @@
     UILabel *_titleLabel;
     UILabel *_priceLabel;
     UILabel *_countLabel;
+    UILabel *_yuanJiaLabel;
 }
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -50,11 +51,24 @@
     _titleLabel.text = @"特级红富士";
     [mainView addSubview:_titleLabel];
     
+    _countLabel = [[UILabel alloc] initWithFrame:CGRectMake(ScreenW-110, (55.0-14)/2, 100, 14)];
+    _countLabel.font = [UIFont systemFontOfSize:size_font2];
+    _countLabel.textColor = color_font_gray1;
+    _countLabel.text = @"1个";
+    _countLabel.textAlignment = NSTextAlignmentRight;
+    [mainView addSubview:_countLabel];
+    
     _priceLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_imageV.frame)+10, CGRectGetMaxY(_titleLabel.frame)+7, 150, 12)];
-    _priceLabel.font = [UIFont systemFontOfSize:size_font4];
+    _priceLabel.font = [UIFont systemFontOfSize:size_font3];
     _priceLabel.textColor = color_font_red;
     _priceLabel.text = @"￥100.00";
     [mainView addSubview:_priceLabel];
+    
+    _yuanJiaLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_imageV.frame)+10, CGRectGetMaxY(_titleLabel.frame)+7, 150, 12)];
+    _yuanJiaLabel.font = [UIFont systemFontOfSize:size_font4];
+    _yuanJiaLabel.textColor = color_font_red;
+    _yuanJiaLabel.text = @"￥110.00";
+    [mainView addSubview:_yuanJiaLabel];
     
 }
 - (void)awakeFromNib {

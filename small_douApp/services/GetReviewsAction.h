@@ -9,6 +9,6 @@
 #import "MyActionBase.h"
 
 @interface GetReviewsAction : MyActionGetBase
--(instancetype)initWithProId:(NSString *)Id;
+-(instancetype)initWithProId:(NSNumber *)Id;
 
 @end

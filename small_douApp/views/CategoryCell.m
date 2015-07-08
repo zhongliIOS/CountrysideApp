@@ -34,22 +34,21 @@
     _iconImageV = [[UIImageView alloc]initWithFrame:CGRectMake(leftSpace, 7.5, 40, 40)];
     [mainView addSubview:_iconImageV];
     
-    _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_iconImageV.frame)+5, 5, ScreenW-80, 14)];
-    _titleLabel.font = [UIFont systemFontOfSize:size_font2];
+    _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_iconImageV.frame)+5, 10, ScreenW-80, 15)];
+    _titleLabel.font = [UIFont systemFontOfSize:15];
     _titleLabel.text = @"标题";
     _titleLabel.textColor = color_font_black;
     [mainView addSubview:_titleLabel];
     
     _subTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_iconImageV.frame)+5, CGRectGetMaxY(_titleLabel.frame)+5, ScreenW-80, 14)];
-    _subTitleLabel.font = [UIFont systemFontOfSize:size_font2];
+    _subTitleLabel.font = [UIFont systemFontOfSize:12];
     _subTitleLabel.text = @"描述";
     _subTitleLabel.textColor = color_font_gray2;
-    [mainView addSubview:_titleLabel];
+    [mainView addSubview:_subTitleLabel];
     
     UIImageView *imgV = [[UIImageView alloc] initWithFrame:CGRectMake(ScreenW-22, 17.5, 14, 20)];
     imgV.image = [UIImage imageNamed:@"jinru"];
     [mainView addSubview:imgV];
-    
 }
 
 -(void)fillDataWith:(ObjCategory *)model
@@ -58,7 +57,7 @@
       return;
   }
     _titleLabel.text = model.name;
-    _subTitleLabel.text = model.desc;
+    _subTitleLabel.text = @"苹果/香蕉/苹果/橘子/芒果";
 }
 
 - (void)awakeFromNib {

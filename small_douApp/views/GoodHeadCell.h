@@ -15,4 +15,6 @@
 @property(nonatomic,strong)UIButton *addressBtn;
 @property(nonatomic,copy)void(^CallBackEvaluation)(void );
 @property(nonatomic,copy)void(^CallBackCount)(NSInteger );
+
+-(void)fillDataWithModel:(ObjProductDetail *)model;
 @end

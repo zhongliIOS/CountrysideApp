@@ -7,6 +7,7 @@
 //
 
 #import "GoodsDetailViewController.h"
+#import "TianXieOrderViewController.h"
 #import "GoodHeadCell.h"
 #import "GetGoodsDetailAction.h"
 #import "EvaluationViewController.h"
@@ -16,6 +17,8 @@
 
     UITableView *_tableView;
     ObjProductDetail *_objProductDetail;
+    //当前的个数
+    NSInteger _currentNum;
 }
 @end
 
@@ -42,7 +45,7 @@
            NSDictionary *dic = [result try_get_data_with_dict];
            if (dic) {
                _objProductDetail = [[ObjProductDetail alloc] initWithDirectory:dic];
-
+               [_tableView reloadData];
            }
        }
        else
@@ -54,7 +57,34 @@
 
 
 }
-
+-(void)addShoppCarWithCuId:(NSNumber *)CuId andNum:(NSNumber *)num andProId:(NSNumber *)proId;
+{
+    NSDictionary *dic = @{@"cuId":CuId,@"num":num,@"proId":proId};
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:nil];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/shoppingCarts/save",HOSTURL]]];
+    [request setHTTPMethod:@"POST"];
+    //set headers
+    NSString *contentType = [NSString stringWithFormat:@"application/json"];
+    [request addValue:contentType forHTTPHeaderField: @"Content-Type"];
+    
+    //create the body
+    NSMutableData *postBody = [NSMutableData data];
+    [postBody appendData:jsonData];
+    
+    //post
+    [request setHTTPBody:postBody];
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"success");
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"fail");
+        
+    }];
+    [operation start];
+    
+}
 -(void)createTableView
 {
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, TopHeight, ScreenW, ScreenH-TopHeight-44.0)];
@@ -96,16 +126,33 @@
         btn.backgroundColor = i==1?[UIColor colorWithRed:0.93 green:0.45 blue:0.2 alpha:1]:[UIColor colorWithRed:0.98 green:0.27 blue:0.13 alpha:1];
         [btn setTitle:@[@"立即购买",@"加入购物车"][i] forState:UIControlStateNormal];
         [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        btn.tag = i;
+        [btn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
         btn.titleLabel.font = [UIFont systemFontOfSize:size_font2];
         [bottomBg addSubview:btn];
         if (i==1) {
             UIImageView *imgV = [[UIImageView alloc]initWithFrame:CGRectMake(CGRectGetMaxX(btn.frame)+10, 7.5, 31, 28.5)];
             imgV.image = [UIImage imageNamed:@"gouwuche"];
             [bottomBg addSubview:imgV];
-
         }
     }
-    
+}
+
+
+
+-(void)btnClick:(UIButton *)btn
+{
+    if (btn.tag==0) {
+      //buy
+        TianXieOrderViewController *vc = [[TianXieOrderViewController alloc]init];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    else
+    {
+     //addShop
+        [self addShoppCarWithCuId:[[MyInfo defaultMyInfo] guid] andNum:[NSNumber numberWithInteger:_currentNum] andProId:_productId];
+    }
+
 }
 
 
@@ -118,8 +165,9 @@
         cell = [[GoodHeadCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"GoodHeadCell"];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    [cell fillDataWithModel:_objProductDetail];
     [cell setCallBackCount:^(NSInteger num) {
-        
+        _currentNum = num;
     }];
     [cell setCallBackEvaluation:^{
         EvaluationViewController *vc =[[EvaluationViewController alloc]init];

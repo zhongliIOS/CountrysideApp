@@ -10,7 +10,7 @@
 
 @interface DeleteGoodsCarAction : MyActionPostBase
 
--(instancetype)initWithGoodId:(NSString *)Id;
+-(instancetype)initWithGoodId:(NSNumber *)Id;
 
 
 @end

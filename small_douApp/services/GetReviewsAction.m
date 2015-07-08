@@ -11,7 +11,7 @@
 
 @implementation GetReviewsAction
 
--(instancetype)initWithProId:(NSString *)Id
+-(instancetype)initWithProId:(NSNumber *)Id
 {
     self = [super initWithActionURLString:[NSString stringWithFormat:@"/reviews/reviews_list/%@.json",Id]];
     self.isValid = YES;

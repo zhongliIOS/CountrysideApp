@@ -31,9 +31,10 @@
     
 }
 
+CGFloat  imageH = 160.0;
+
 -(void)createContentView
 {
-    CGFloat imageH = 160.0;
     
     _mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, ScreenW, imageH)];
     _mainScrollView.backgroundColor = [UIColor whiteColor];
@@ -48,7 +49,6 @@
     _pageLabel.layer.masksToBounds = YES;
     _pageLabel.textAlignment = NSTextAlignmentCenter;
     _pageLabel.font = [UIFont systemFontOfSize:size_font2];
-    _pageLabel.text = @"1/5";
     _pageLabel.textColor = [UIColor whiteColor];
     [self.contentView addSubview:_pageLabel];
     
@@ -169,6 +169,40 @@
     _pingJILabel.textColor = color_font_black;
     _pingJILabel.text = @"用户评级";
     [evaluationBg addSubview:_pingJILabel];
+}
+
+-(void)fillDataWithModel:(ObjProductDetail *)model
+{
+    if (!model) {
+        return;
+    }
+    NSArray *imagesArr = model.picsArr;
+    if (imagesArr.count) {
+        _pageLabel.text = [NSString stringWithFormat:@"1/%lu",imagesArr.count];
+    }
+    for (int i=0; i<imagesArr.count; i++) {
+        UIImageView *imgV = [[UIImageView alloc] initWithFrame:CGRectMake(ScreenW*i, 0, ScreenW, imageH)];
+        imgV.clipsToBounds = YES;
+        imgV.contentMode = UIViewContentModeScaleAspectFill;
+        [imgV sd_setImageWithURL:[NSURL URLWithString:imagesArr[i]] placeholderImage:[UIImage imageNamed:@""]];
+        //        imgV.userInteractionEnabled = YES;
+        imgV.tag = i;
+        //        [imgV addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imgVclick:)]];
+        [_mainScrollView addSubview:imgV];
+    }
+    _titleLabel.text = model.name;
+    CGSize detailSize = [LUnity CalSizeByString:model.desc ForWidth:ScreenW-2*leftSpace ForFont:[UIFont systemFontOfSize:size_font3]];
+    _detailLabel.text = model.desc;
+    _detailLabel.frame = CGRectMake(_detailLabel.frame.origin.x, _detailLabel.frame.origin.y, detailSize.width, detailSize.height);
+    CGFloat price = [model.price floatValue];
+    CGFloat dicount = [model.discount floatValue];
+    CGFloat beforePrice = dicount==0?0:price/dicount;
+    _priceLabel.text = [NSString stringWithFormat:@"￥%.2f",price];
+    CGSize priceSize = [LUnity CalSizeByString:_priceLabel.text ForWidth:200 ForFont:[UIFont systemFontOfSize:size_font2]];
+    _priceLabel.frame = CGRectMake(_priceLabel.frame.origin.x, _priceLabel.frame.origin.y, priceSize.width, 32.5);
+    
+    _productAreaLabel.text = model.place;
+    _evaluationLabel.text = [NSString stringWithFormat:@"好评数：%@",model.commentsize];
 }
 -(void)viewEvaluationClick
 {
