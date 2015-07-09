@@ -9,6 +9,7 @@
 #import "EvaluationViewController.h"
 #import "EvaluationLevelCell.h"
 #import "EvaluationContentCell.h"
+#import "GetReviewsAction.h"
 
 @interface EvaluationViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -21,10 +22,33 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self initData];
     [self createNavBar];
     [self configNavBar];
     [self createTableView];
 }
+
+-(void)initData
+{
+    GetReviewsAction *act = [[GetReviewsAction alloc] initWithProId:_proId];
+    if (!act.isValid) {
+        return;
+    }
+    [act DoActionWithSuccess:^(MyActionBase *action, id responseObject, AFHTTPRequestOperation *operation) {
+        MyResponeResult *result = [MyResponeResult createWithResponeObject:responseObject];
+        if ([result get_error_code]==kServerErrorCode_OK) {
+            
+        }
+        else
+        {
+            [LUnity showErrorHUDViewAtView:self.view WithTitle:[result get_messge]];
+        }
+        
+    } Failure:^(MyActionBase *action, NSError *error, AFHTTPRequestOperation *operation) {
+        
+    }];
+}
+
 -(void)configNavBar
 {
     self.midTitle = @"评价";

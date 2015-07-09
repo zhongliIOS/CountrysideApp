@@ -10,4 +10,6 @@
 
 @interface EvaluationViewController : LBaseViewController
 
+@property(nonatomic,strong)NSNumber *proId;
+
 @end

@@ -10,4 +10,9 @@
 
 @interface ObjReview : ObjBase
 
+@property(nonatomic,copy)NSString *content;
+@property(nonatomic,copy)NSString *level;
+
+
+
 @end

@@ -49,8 +49,6 @@
         NSLog(@"ss");
 
     }];
-    
-    
 }
 
 - (void)viewDidLoad {
@@ -60,6 +58,7 @@
     [self configNavBar];
     [self createTableView];
 }
+
 
 -(void)createTableView
 {

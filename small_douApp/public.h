@@ -13,5 +13,6 @@
 #import "ObjProduct.h"
 #import "ObjCategory.h"
 #import "ObjProductDetail.h"
+#import "StarView.h"
 
 #endif

@@ -59,7 +59,7 @@
     [mainView addSubview:_countLabel];
     
     _priceLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_imageV.frame)+10, CGRectGetMaxY(_titleLabel.frame)+7, 150, 12)];
-    _priceLabel.font = [UIFont systemFontOfSize:size_font3];
+    _priceLabel.font = [UIFont systemFontOfSize:size_font4];
     _priceLabel.textColor = color_font_red;
     _priceLabel.text = @"￥100.00";
     [mainView addSubview:_priceLabel];

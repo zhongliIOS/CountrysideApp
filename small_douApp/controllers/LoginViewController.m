@@ -145,6 +145,9 @@
             AppDelegate * app  = (AppDelegate *)[[UIApplication sharedApplication] delegate];
             [app pushTabBarVC];
         }
+        else
+            [LUnity showErrorHUDViewAtView:self.view WithTitle:[result get_messge]];
+
 
     } Failure:^(MyActionBase *action, NSError *error, AFHTTPRequestOperation *operation) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
@@ -202,6 +205,11 @@
             if (dic[@"smsId"]) {
                 [LUnity showErrorHUDViewAtView:self.view WithTitle:@"验证码发送成功"];
                 [self daojishi];
+            }
+            else
+            {
+                [LUnity showErrorHUDViewAtView:self.view WithTitle:@"系统繁忙，请稍后再试"];
+
             }
         }
     } Failure:^(MyActionBase *action, NSError *error, AFHTTPRequestOperation *operation) {

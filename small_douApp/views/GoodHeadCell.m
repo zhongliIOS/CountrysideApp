@@ -19,6 +19,7 @@
     UILabel *_danWeiLabel;
     UILabel *_evaluationLabel;
     UILabel *_pingJILabel;
+    StarView *_starView;
 }
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -164,11 +165,16 @@ CGFloat  imageH = 160.0;
     _evaluationLabel.text = @"好评数：200";
     [evaluationBg addSubview:_evaluationLabel];
     
-    _pingJILabel = [[UILabel alloc]initWithFrame:CGRectMake(200, 0.5, 200, 35)];
+    _pingJILabel = [[UILabel alloc]initWithFrame:CGRectMake(200, 0.5, 100, 35)];
     _pingJILabel.font = [UIFont systemFontOfSize:size_font2];
     _pingJILabel.textColor = color_font_black;
     _pingJILabel.text = @"用户评级";
+    _pingJILabel.textAlignment = NSTextAlignmentRight;
     [evaluationBg addSubview:_pingJILabel];
+    
+    _starView = [[StarView alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_pingJILabel.frame), 7, 0, 0)];
+    [evaluationBg addSubview:_starView];
+    
 }
 
 -(void)fillDataWithModel:(ObjProductDetail *)model
@@ -203,6 +209,8 @@ CGFloat  imageH = 160.0;
     
     _productAreaLabel.text = model.place;
     _evaluationLabel.text = [NSString stringWithFormat:@"好评数：%@",model.commentsize];
+    _starView.starNum = 3;
+    _pingJILabel.frame = CGRectMake(CGRectGetMinX(_starView.frame)-100, _pingJILabel.frame.origin.y, _pingJILabel.frame.size.width, _pingJILabel.frame.size.height);
 }
 -(void)viewEvaluationClick
 {
