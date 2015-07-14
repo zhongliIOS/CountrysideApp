@@ -42,7 +42,6 @@
         [_mainView addSubview:line];
     }
     
-    
 }
 
 - (void)awakeFromNib {
