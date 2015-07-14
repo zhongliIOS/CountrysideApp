@@ -57,35 +57,35 @@
 
 
 }
--(void)addShoppCarWithCuId:(NSNumber *)CuId andNum:(NSNumber *)num andProId:(NSNumber *)proId;
+
+
+-(void)rightButItemClick
 {
-    NSDictionary *dic = @{@"cuId":CuId,@"num":num,@"proId":proId};
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:nil];
-    
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
-    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/shoppingCarts/save",HOSTURL]]];
-    [request setHTTPMethod:@"POST"];
-    //set headers
-    NSString *contentType = [NSString stringWithFormat:@"application/json"];
-    [request addValue:contentType forHTTPHeaderField: @"Content-Type"];
-    
-    //create the body
-    NSMutableData *postBody = [NSMutableData data];
-    [postBody appendData:jsonData];
-    
-    //post
-    [request setHTTPBody:postBody];
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"success");
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"fail");
+    NSDictionary *dic ;
+    if ([[MyInfo defaultMyInfo] guid]&&_productId) {
+        dic = @{@"cuId":[[MyInfo defaultMyInfo] guid],@"proId":_productId};
+    }
+    else
+    {
+        return;
+    }
+    [self postWithBodyDic:dic andUrl:@"/products/collect" success:^(id responseObject, AFHTTPRequestOperation *operation) {
+        MyResponeResult *result = [MyResponeResult createWithResponeObject:responseObject];
+        if ([result get_error_code]==kServerErrorCode_OK) {
+            [LUnity showErrorHUDViewAtView:self.view WithTitle:@"收藏成功"];
+        }
+        else
+        {
+            [LUnity showErrorHUDViewAtView:self.view WithTitle:[result get_messge]];
+
+        }
+        
+    } fail:^(NSError *error, AFHTTPRequestOperation *operation) {
         
     }];
-    
-    [operation start];
-    
+
 }
+
 -(void)createTableView
 {
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, TopHeight, ScreenW, ScreenH-TopHeight-44.0)];
@@ -151,7 +151,13 @@
     else
     {
      //addShop
-        [self addShoppCarWithCuId:[[MyInfo defaultMyInfo] guid] andNum:[NSNumber numberWithInteger:_currentNum] andProId:_productId];
+        NSDictionary *dic = @{@"cuId":[[MyInfo defaultMyInfo] guid],@"num":[NSNumber numberWithInteger:_currentNum],@"proId":_productId};
+        [self postWithBodyDic:dic andUrl:@"/shoppingCarts/save" success:^(id responseObject, AFHTTPRequestOperation *operation) {
+            
+            
+        } fail:^(NSError *error, AFHTTPRequestOperation *operation) {
+            
+        }];
     }
 
 }

@@ -194,6 +194,15 @@
     return 12;
 }
 
+//- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    if (!tableView.editing)
+//        return UITableViewCellEditingStyleNone;
+//    else {
+//        return UITableViewCellEditingStyleDelete;
+//    }
+//    
+//}
 
 
 

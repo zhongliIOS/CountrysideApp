@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+
+typedef void (^Sussess)(id responseObject , AFHTTPRequestOperation *operation );
+typedef void (^Failure)(NSError *error , AFHTTPRequestOperation *operation );
 @interface LBaseViewController : UIViewController
 
 @property(nonatomic,strong)UIButton *leftBtn;
@@ -22,5 +25,6 @@
 
 - (void)leftButItemClick;
 - (void)rightButItemClick;
+-(void)postWithBodyDic:(NSDictionary *)dic andUrl:(NSString *)url success:(Sussess)success fail:(Failure)fail;
 
 @end

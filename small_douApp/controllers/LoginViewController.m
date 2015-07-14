@@ -163,7 +163,7 @@
     [manager GET:[NSString stringWithFormat:@"/customers/%@.json",_phoneTf.text] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"%@",responseObject);
         NSDictionary *dic = responseObject;
-        if (dic[@"id"]) {
+        if (dic[@"id"]){
             MyInfo *m = [MyInfo defaultMyInfo];
             [m initWithModel:dic];
             [[NSNotificationCenter defaultCenter] postNotificationName:NotificationUpdateMyInfo object:nil];

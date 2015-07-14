@@ -44,6 +44,8 @@
 		C3EA5CA61B383B460043C3E9 /* OrderSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EA5CA51B383B460043C3E9 /* OrderSearchController.m */; };
 		C3EA5CA91B383E190043C3E9 /* OrderSumarryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EA5CA81B383E190043C3E9 /* OrderSumarryCell.m */; };
 		C3EA5CAC1B384D810043C3E9 /* UserDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EA5CAB1B384D810043C3E9 /* UserDetailViewController.m */; };
+		CA14CCE51B53860100C6F087 /* DeleteCollectAction.m in Sources */ = {isa = PBXBuildFile; fileRef = CA14CCE41B53860100C6F087 /* DeleteCollectAction.m */; };
+		CA14CCE81B5389F000C6F087 /* GetFavoritesAction.m in Sources */ = {isa = PBXBuildFile; fileRef = CA14CCE71B5389F000C6F087 /* GetFavoritesAction.m */; };
 		CA1E2A9C1B461F5D00DB835C /* GetMainData.m in Sources */ = {isa = PBXBuildFile; fileRef = CA1E2A9B1B461F5D00DB835C /* GetMainData.m */; };
 		CA1E2A9F1B465D9500DB835C /* ObjMainData.m in Sources */ = {isa = PBXBuildFile; fileRef = CA1E2A9E1B465D9500DB835C /* ObjMainData.m */; };
 		CA1E2AA31B4673ED00DB835C /* ObjCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = CA1E2AA21B4673ED00DB835C /* ObjCategory.m */; };
@@ -209,6 +211,10 @@
 		C3EA5CA81B383E190043C3E9 /* OrderSumarryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderSumarryCell.m; sourceTree = "<group>"; };
 		C3EA5CAA1B384D810043C3E9 /* UserDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDetailViewController.h; sourceTree = "<group>"; };
 		C3EA5CAB1B384D810043C3E9 /* UserDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDetailViewController.m; sourceTree = "<group>"; };
+		CA14CCE31B53860100C6F087 /* DeleteCollectAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeleteCollectAction.h; sourceTree = "<group>"; };
+		CA14CCE41B53860100C6F087 /* DeleteCollectAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeleteCollectAction.m; sourceTree = "<group>"; };
+		CA14CCE61B5389F000C6F087 /* GetFavoritesAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetFavoritesAction.h; sourceTree = "<group>"; };
+		CA14CCE71B5389F000C6F087 /* GetFavoritesAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetFavoritesAction.m; sourceTree = "<group>"; };
 		CA1E2A9A1B461F5D00DB835C /* GetMainData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetMainData.h; sourceTree = "<group>"; };
 		CA1E2A9B1B461F5D00DB835C /* GetMainData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetMainData.m; sourceTree = "<group>"; };
 		CA1E2A9D1B465D9500DB835C /* ObjMainData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjMainData.h; sourceTree = "<group>"; };
@@ -521,8 +527,12 @@
 				CA1E2A9B1B461F5D00DB835C /* GetMainData.m */,
 				CA30AC661B4BD0A600732ED3 /* GetGoodsDetailAction.h */,
 				CA30AC671B4BD0A600732ED3 /* GetGoodsDetailAction.m */,
+				CA14CCE61B5389F000C6F087 /* GetFavoritesAction.h */,
+				CA14CCE71B5389F000C6F087 /* GetFavoritesAction.m */,
 				CA9A5E341B45317600AD9DB1 /* DeleteGoodsCarAction.h */,
 				CA9A5E351B45317600AD9DB1 /* DeleteGoodsCarAction.m */,
+				CA14CCE31B53860100C6F087 /* DeleteCollectAction.h */,
+				CA14CCE41B53860100C6F087 /* DeleteCollectAction.m */,
 			);
 			path = services;
 			sourceTree = "<group>";
@@ -1148,6 +1158,7 @@
 				CA258F411B4290C700BDD2F3 /* MyHttpActionManager.m in Sources */,
 				CA822DDC1B4FA25A008AB90E /* openssl_wrapper.m in Sources */,
 				C3EA5CA61B383B460043C3E9 /* OrderSearchController.m in Sources */,
+				CA14CCE81B5389F000C6F087 /* GetFavoritesAction.m in Sources */,
 				CAF0ADAF1B2A840200306D9E /* GoodsCarViewController.m in Sources */,
 				CA822DD81B4FA25A008AB90E /* DataSigner.m in Sources */,
 				CA3A86251B3A62EE005848C0 /* EvaluationViewController.m in Sources */,
@@ -1163,6 +1174,7 @@
 				CAF0ADAC1B2A83E900306D9E /* FenLeiVIewController.m in Sources */,
 				CAB4D3CC1B33C9CA00A998E5 /* GoodHeadCell.m in Sources */,
 				CAF0AD701B27C89A00306D9E /* AppDelegate.m in Sources */,
+				CA14CCE51B53860100C6F087 /* DeleteCollectAction.m in Sources */,
 				C33B837D1B288BAB0020F76E /* ObjectList.m in Sources */,
 				CA30AC6B1B4BD16F00732ED3 /* ObjProductDetail.m in Sources */,
 				CA9A5E2D1B44DCD800AD9DB1 /* GetMyInfoAction.m in Sources */,

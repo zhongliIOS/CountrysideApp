@@ -104,7 +104,35 @@
     _midMaxLabel.text = midTitle;
 
 }
-
+-(void)postWithBodyDic:(NSDictionary *)dic andUrl:(NSString *)url success:(Sussess)success fail:(Failure)fail;
+{
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:nil];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    [request setURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",HOSTURL,url]]];
+    [request setHTTPMethod:@"POST"];
+    //set headers
+    NSString *contentType = [NSString stringWithFormat:@"application/json"];
+    [request addValue:contentType forHTTPHeaderField: @"Content-Type"];
+    
+    //create the body
+    NSMutableData *postBody = [NSMutableData data];
+    [postBody appendData:jsonData];
+    
+    //post
+    [request setHTTPBody:postBody];
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"success");
+        NSData *data = responseObject;
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        success(dic,operation);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"fail");
+        fail(error,operation);
+    }];
+    [operation start];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

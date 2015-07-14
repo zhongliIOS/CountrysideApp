@@ -11,5 +11,6 @@
 @interface FavCell : UITableViewCell
 
 //我的收藏cell
+-(void)fillDataWithModel:(ObjProduct *)model;
 
 @end

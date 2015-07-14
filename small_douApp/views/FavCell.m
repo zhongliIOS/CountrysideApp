@@ -74,6 +74,18 @@
     [mainView addSubview:imgV];
     
 }
+
+-(void)fillDataWithModel:(ObjProduct *)model
+{
+    if (!model) {
+        return;
+    }
+    [_imageV sd_setImageWithURL:[NSURL URLWithString:model.pic] placeholderImage:[UIImage imageNamed:@""]];
+    _titleLabel.text = model.name;
+    _priceLabel.text = [NSString stringWithFormat:@"￥%.2f",[model.price floatValue]];
+
+}
+
 -(void)addClick
 {
 

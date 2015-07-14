@@ -76,3 +76,6 @@ typedef void (^FailureBlock)(MyActionBase *action, NSError *error , AFHTTPReques
 - (BOOL) DoActionWithSuccess:(SussessBlock) success Failure:(FailureBlock) failure;
 
 @end
+
+
+

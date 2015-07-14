@@ -9,6 +9,7 @@
 #ifndef small_douApp_public_h
 #define small_douApp_public_h
 
+#import "ObjectList.h"
 #import "ObjMainData.h"
 #import "ObjProduct.h"
 #import "ObjCategory.h"

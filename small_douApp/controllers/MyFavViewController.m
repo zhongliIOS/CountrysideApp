@@ -7,20 +7,54 @@
 //
 
 #import "MyFavViewController.h"
+#import "GetFavoritesAction.h"
 #import "FavCell.h"
 
 @interface MyFavViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
 
     UITableView *_tableView;
-
+    ObjectList *_objectList;
 }
 @end
 
 @implementation MyFavViewController
 
+
+-(void)downLoadData
+{
+    GetFavoritesAction *act = [[GetFavoritesAction alloc]initWithCustomerId:[[MyInfo defaultMyInfo] guid]];
+    if (!act.isValid) {
+        return;
+    }
+    
+    [act DoActionWithSuccess:^(MyActionBase *action, id responseObject, AFHTTPRequestOperation *operation) {
+        MyResponeResult *result = [MyResponeResult createWithResponeObject:responseObject];
+        if ([result get_error_code]==kServerErrorCode_OK) {
+            NSArray *arr = [result try_get_data_with_array];
+            for (int i=0; i<arr.count; i++) {
+                NSDictionary *dic = arr[i];
+                ObjProduct *obj = [[ObjProduct alloc]initWithDirectory:dic];
+                [_objectList Add:obj];
+            }
+            [_tableView reloadData];
+        }
+        else
+        {
+            [LUnity showErrorHUDViewAtView:self.view WithTitle:[result get_messge]];
+        }
+        
+    } Failure:^(MyActionBase *action, NSError *error, AFHTTPRequestOperation *operation) {
+        
+    }];
+
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _objectList = [[ObjectList alloc]init];
+    [self downLoadData];
     [self createNavBar];
     [self configNavBar];
     [self createTableView];
@@ -55,6 +89,7 @@
         cell = [[FavCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"FavCell"];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    [cell fillDataWithModel:(ObjProduct *)[_objectList GetIndexAt:indexPath.row WithIsDESC:YES]];
     return cell;
     
 }
@@ -70,7 +105,7 @@
 {
     
     
-    return 2;
+    return [_objectList GetCount];
 }
 
 
