@@ -85,6 +85,16 @@
     _responseLabel.textColor = color_font_black;
     [bgView addSubview:_responseLabel];
 }
+
+-(void)fillDataWithModel:(ObjReview *)obj
+{
+    if (!obj) {
+        return;
+    }
+
+
+}
+
 - (void)awakeFromNib {
     // Initialization code
 }

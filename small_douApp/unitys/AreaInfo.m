@@ -20,4 +20,17 @@ static AreaInfo *m = nil;
 
 }
 
+-(NSString *)searchAreaNameWithId:(NSString *)Id
+{
+    
+    for (int i=0; i<[_dataList GetCount]; i++) {
+        ObjArea *obj = (ObjArea *)[_dataList GetIndexAt:i WithIsDESC:YES];
+        if ([obj.guid integerValue]==[Id integerValue]) {
+            return obj.name;
+        }
+    }
+
+    return nil;
+}
+
 @end

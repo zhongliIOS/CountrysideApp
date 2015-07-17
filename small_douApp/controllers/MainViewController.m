@@ -152,6 +152,7 @@
             
             GoodsDetailViewController *vc = [[GoodsDetailViewController alloc] init];
             vc.productId = [(ObjProduct *)_obj.arrJingpin[tag] guid];
+            vc.product = (ObjProduct *)_obj.arrJingpin[tag];
             [self.navigationController pushViewController:vc animated:YES];
         }];
         return cell;

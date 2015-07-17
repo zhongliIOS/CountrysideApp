@@ -11,5 +11,6 @@
 @interface GoodsDetailViewController : LBaseViewController
 
 @property(nonatomic,strong)NSNumber *productId;
+@property(nonatomic,strong)ObjProduct *product;
 
 @end

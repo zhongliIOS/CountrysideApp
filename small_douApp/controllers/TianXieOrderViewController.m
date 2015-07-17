@@ -22,6 +22,7 @@
 
 @implementation TianXieOrderViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self createNavBar];
@@ -64,6 +65,7 @@
     [buyBtn addTarget:self action:@selector(buyBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [footView addSubview:buyBtn];
     [footView addSubview:_priceLabel];
+    
 }
 -(void)createTableView
 {
@@ -77,21 +79,50 @@
 
 -(void)buyBtnClick
 {
-    PayViewController *vc = [[PayViewController alloc]init];
-    [self.navigationController pushViewController:vc animated:YES];
-
+//    PayViewController *vc = [[PayViewController alloc]init];
+//    [self.navigationController pushViewController:vc animated:YES];
+    /*{
+     "list":[
+     {
+     "proId":1,
+     "num":2
+     },
+     {
+     "proId":3,
+     "num":1
+     }
+     ],
+     "cuId":1,
+     "tel":"13225650040",
+     "area":1
+     }*/
+    
+    MyInfo *user = [MyInfo defaultMyInfo];
+    NSMutableArray *arr = [NSMutableArray array];
+    for (ObjPostOrder *obj in _productsArr) {
+        NSDictionary *dic = @{@"proId":obj.product.guid,@"num":obj.num};
+        [arr addObject:dic];
+    }
+    NSDictionary *dataDic = @{@"list":arr,@"cuId":user.guid,@"tel":user.tel,@"area":@"1"};
+    [self postWithBodyDic:dataDic andUrl:@"/orders/submit" success:^(id responseObject, AFHTTPRequestOperation *operation) {
+        
+        
+    } fail:^(NSError *error, AFHTTPRequestOperation *operation) {
+        
+    }];
 }
 
 #pragma mark----tableViewDelegate
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row!=2) {
+    if (indexPath.row!=_productsArr.count) {
         GoodOrderCell *cell = [tableView dequeueReusableCellWithIdentifier:@"GoodOrderCell"];
         if (!cell) {
             cell = [[GoodOrderCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"GoodOrderCell"];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        [cell fillDataWithModel:(ObjPostOrder *)_productsArr[indexPath.row] ];
         return cell;
     }
     else
@@ -101,6 +132,8 @@
             cell = [[GoodAddressCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"GoodAddressCell"];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        [cell fillDataWithModel:_productsArr];
+
         return cell;
     
     }
@@ -109,7 +142,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row==2) {
+    if (indexPath.row==_productsArr.count) {
         return 235.0;
     }
     
@@ -121,7 +154,7 @@
 {
     
     
-    return 3;
+    return _productsArr.count+1;
 }
 
 - (void)didReceiveMemoryWarning {

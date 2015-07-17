@@ -9,7 +9,12 @@
 #import "GoodAddressCell.h"
 
 @implementation GoodAddressCell
-
+{
+    UILabel *_phoneDetailLabel;
+    UILabel *_areaDetailLabel;
+    UILabel *_priceDetailLabel;
+    UILabel *_salePriceDetaiLabel;
+}
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -22,7 +27,7 @@
 
 -(void)createContentView
 {
-    NSArray *titleArr = @[@"手机号码",@"收获小区",@"商品金额",@"优惠金额"];
+    NSArray *titleArr = @[@"手机号码",@"收货小区",@"商品金额",@"优惠金额"];
     for (int i=0; i<2; i++) {
         UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 10+120.5*i, ScreenW, 110.5)];
         bgView.backgroundColor = [UIColor whiteColor];
@@ -40,8 +45,21 @@
             detailLabel.textAlignment = NSTextAlignmentRight;
             [bgView addSubview:detailLabel];
             detailLabel.textColor = i==0?color_font_gray1:color_font_red;
-
-                
+            int c = i*2+j;
+            if (c==0) {
+                _phoneDetailLabel = detailLabel;
+            }else if (c==1)
+            {
+                _areaDetailLabel = detailLabel;
+            }
+            else if (c==2)
+            {
+                _priceDetailLabel = detailLabel;
+            }
+            else
+            {
+                _salePriceDetaiLabel = detailLabel;
+            }
             
         }
         for (int j=0; j<3; j++) {
@@ -50,8 +68,24 @@
             [bgView addSubview:line];
         }
     }
-
     
+}
+
+-(void)fillDataWithModel:(NSArray *)arr
+{
+    MyInfo *user = [MyInfo defaultMyInfo];
+    _phoneDetailLabel.text = user.tel;
+    AreaInfo *areaInfo = [AreaInfo areaInfo];
+    _areaDetailLabel.text = [areaInfo searchAreaNameWithId:user.areaId];
+    CGFloat allPrice = 0.0;
+    CGFloat salePrice = 0.0;
+    for (ObjPostOrder *obj in arr) {
+        ObjProduct *product = obj.product;
+        allPrice += [product.price floatValue];
+        salePrice +=[product.price floatValue]/[product.discount floatValue];
+    }
+    _priceDetailLabel.text = [NSString stringWithFormat:@"￥%.2f",allPrice];
+    _salePriceDetaiLabel.text = [NSString stringWithFormat:@"-￥%.2f",salePrice-allPrice];
 }
 
 - (void)awakeFromNib {

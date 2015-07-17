@@ -71,6 +71,23 @@
     [mainView addSubview:_yuanJiaLabel];
     
 }
+
+-(void)fillDataWithModel:(ObjPostOrder *)obj
+{
+    if (!obj) {
+        return;
+    }
+    ObjProduct *product = obj.product;
+    [_imageV sd_setImageWithURL:[NSURL URLWithString:product.pic] placeholderImage:[UIImage imageNamed:@""]];
+    _titleLabel.text = product.name;
+    _priceLabel.text = [NSString stringWithFormat:@"￥%.2f",[product.price floatValue]];
+    CGFloat price = [product.price floatValue];
+    CGFloat discount = [product.discount floatValue];
+    CGFloat noSalePrice = price/discount;
+    _yuanJiaLabel.text = [NSString stringWithFormat:@"￥%.2f",noSalePrice];
+    _countLabel.text = [NSString stringWithFormat:@"%@ %@",obj.num,product.mu];
+}
+
 - (void)awakeFromNib {
     // Initialization code
 }

@@ -7,12 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ObjectList.h"
 
 @interface AreaInfo : NSObject
 
-@property(nonatomic,strong)NSDictionary *dataDic ;
-@property(nonatomic,strong)NSArray *dataArray ;
+@property(nonatomic,strong)ObjectList *dataList ;
 
 +(id)areaInfo;
+
+-(NSString *)searchAreaNameWithId:(NSString *)Id;
+
 
 @end

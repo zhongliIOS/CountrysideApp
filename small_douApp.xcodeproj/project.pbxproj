@@ -80,6 +80,7 @@
 		CA3F2FF11B39491E002B9B76 /* PayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3F2FF01B39491E002B9B76 /* PayViewController.m */; };
 		CA3F2FF41B395A3E002B9B76 /* MyFavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3F2FF31B395A3E002B9B76 /* MyFavViewController.m */; };
 		CA3F2FF71B395C40002B9B76 /* FavCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3F2FF61B395C40002B9B76 /* FavCell.m */; };
+		CA40A29B1B58968D0059E587 /* ObjPostOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = CA40A29A1B58968D0059E587 /* ObjPostOrder.m */; };
 		CA822C701B4E07CD008AB90E /* StarView.m in Sources */ = {isa = PBXBuildFile; fileRef = CA822C6F1B4E07CD008AB90E /* StarView.m */; };
 		CA822C801B4E4ADB008AB90E /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = CA822C7D1B4E4ADB008AB90E /* UIScrollView+SVInfiniteScrolling.m */; };
 		CA822C811B4E4ADB008AB90E /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = CA822C7F1B4E4ADB008AB90E /* UIScrollView+SVPullToRefresh.m */; };
@@ -273,6 +274,8 @@
 		CA3F2FF31B395A3E002B9B76 /* MyFavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFavViewController.m; sourceTree = "<group>"; };
 		CA3F2FF51B395C40002B9B76 /* FavCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavCell.h; sourceTree = "<group>"; };
 		CA3F2FF61B395C40002B9B76 /* FavCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavCell.m; sourceTree = "<group>"; };
+		CA40A2991B58968D0059E587 /* ObjPostOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjPostOrder.h; sourceTree = "<group>"; };
+		CA40A29A1B58968D0059E587 /* ObjPostOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjPostOrder.m; sourceTree = "<group>"; };
 		CA822C6E1B4E07CD008AB90E /* StarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StarView.h; sourceTree = "<group>"; };
 		CA822C6F1B4E07CD008AB90E /* StarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StarView.m; sourceTree = "<group>"; };
 		CA822C7B1B4E4ADB008AB90E /* SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVPullToRefresh.h; sourceTree = "<group>"; };
@@ -831,6 +834,8 @@
 				CA8EBBAB1B3BA7E500444BD2 /* ObjCustomer.m */,
 				CA8EBBAD1B3BA95A00444BD2 /* ObjOrder.h */,
 				CA8EBBAE1B3BA95A00444BD2 /* ObjOrder.m */,
+				CA40A2991B58968D0059E587 /* ObjPostOrder.h */,
+				CA40A29A1B58968D0059E587 /* ObjPostOrder.m */,
 				CA8EBBB01B3BAA6500444BD2 /* ObjProduct.h */,
 				CA8EBBB11B3BAA6500444BD2 /* ObjProduct.m */,
 				CA30AC691B4BD16F00732ED3 /* ObjProductDetail.h */,
@@ -1206,6 +1211,7 @@
 				CAF0ADA91B2A83CE00306D9E /* MainViewController.m in Sources */,
 				CA822C811B4E4ADB008AB90E /* UIScrollView+SVPullToRefresh.m in Sources */,
 				CAF0AD6D1B27C89A00306D9E /* main.m in Sources */,
+				CA40A29B1B58968D0059E587 /* ObjPostOrder.m in Sources */,
 				C30FD4721B37DD4500776357 /* MainHeadViewCell.m in Sources */,
 				C38136151B399A8D00418CDB /* TianXieOrderViewController.m in Sources */,
 				C3EA5CA91B383E190043C3E9 /* OrderSumarryCell.m in Sources */,

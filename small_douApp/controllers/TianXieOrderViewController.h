@@ -10,4 +10,6 @@
 
 @interface TianXieOrderViewController : LBaseViewController
 
+@property(nonatomic,strong)NSArray *productsArr;
+
 @end

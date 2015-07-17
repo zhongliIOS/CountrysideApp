@@ -15,5 +15,8 @@
 #import "ObjCategory.h"
 #import "ObjProductDetail.h"
 #import "StarView.h"
+#import "ObjPostOrder.h"
+#import "ObjArea.h"
+#import "ObjReview.h"
 
 #endif

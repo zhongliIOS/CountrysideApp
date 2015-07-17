@@ -10,4 +10,6 @@
 
 @interface EvaluationContentCell : UITableViewCell
 
+-(void)fillDataWithModel:(ObjReview *)obj;
+
 @end

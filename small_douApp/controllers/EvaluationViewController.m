@@ -14,7 +14,8 @@
 @interface EvaluationViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     UITableView *_tableView;
-
+    NSInteger _currentPage;
+    ObjectList *_evalutaionList;
 }
 @end
 
@@ -22,6 +23,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _evalutaionList = [[ObjectList alloc]init];
     [self initData];
     [self createNavBar];
     [self configNavBar];
@@ -30,14 +32,21 @@
 
 -(void)initData
 {
-    GetReviewsAction *act = [[GetReviewsAction alloc] initWithProId:_proId];
+    GetReviewsAction *act = [[GetReviewsAction alloc] initWithProId:_proId page:[NSNumber numberWithInteger:_currentPage] size:[NSNumber numberWithInteger:sizecount] sort:sortDesc];
     if (!act.isValid) {
         return;
     }
     [act DoActionWithSuccess:^(MyActionBase *action, id responseObject, AFHTTPRequestOperation *operation) {
         MyResponeResult *result = [MyResponeResult createWithResponeObject:responseObject];
         if ([result get_error_code]==kServerErrorCode_OK) {
-            
+            NSArray *arr = [[result try_get_data_with_dict] objectForKey:@"rows"];
+            if (arr) {
+                for (NSDictionary *dic in arr) {
+                    ObjReview *obj = [[ObjReview alloc] initWithDirectory:dic];
+                    [_evalutaionList Add:obj];
+                }
+                [_tableView reloadData];
+            }
         }
         else
         {
@@ -85,6 +94,7 @@
             cell = [[EvaluationContentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"EvaluationContentCell"];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        [cell fillDataWithModel:(ObjReview *)[_evalutaionList GetIndexAt:indexPath.row-1 WithIsDESC:YES]];
         return cell;
     
     }
@@ -109,7 +119,7 @@
 {
     
     
-    return 2;
+    return [_evalutaionList GetCount]+1;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -10,4 +10,20 @@
 
 @implementation ObjArea
 
+-(id)initWithDirectory:(NSDictionary *)data
+{
+    self = [super initWithDirectory:data];
+    if (self) {
+        self.code = [self ReadField_String:data WithFieldName:@"code"];
+        self.location = [self ReadField_String:data WithFieldName:@"location"];
+        self.name = [self ReadField_String:data WithFieldName:@"name"];
+        self.staffId = [self ReadField_String:data WithFieldName:@"staffId"];
+        self.spName = [self ReadField_String:data WithFieldName:@"pic"];
+        self.spLocation = [self ReadField_String:data WithFieldName:@"spLocation"];
+
+    }
+    return self;
+
+}
+
 @end

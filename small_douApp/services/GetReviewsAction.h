@@ -9,6 +9,6 @@
 #import "MyActionBase.h"
 
 @interface GetReviewsAction : MyActionGetBase
--(instancetype)initWithProId:(NSNumber *)Id;
+-(instancetype)initWithProId:(NSNumber *)Id page:(NSNumber *)page size:(NSNumber *)size sort:(NSString *)sort;
 
 @end

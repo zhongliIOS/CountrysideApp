@@ -29,6 +29,11 @@
 
 #define HOSTURL @"http://120.25.213.75:8080"
 /**
+ *  分页每页的大小，排序
+ */
+#define sizecount 20
+#define sortDesc @"desc"
+/**
 *  标题字体
 */
 #define size_title1 23  //一般用于首页专题标题

@@ -10,4 +10,6 @@
 
 @interface GoodAddressCell : UITableViewCell
 
+-(void)fillDataWithModel:(NSArray *)arr;
+
 @end

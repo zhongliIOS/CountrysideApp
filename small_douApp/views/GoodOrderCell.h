@@ -10,4 +10,6 @@
 
 @interface GoodOrderCell : UITableViewCell
 
+-(void)fillDataWithModel:(ObjPostOrder *)obj;
+
 @end

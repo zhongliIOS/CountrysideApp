@@ -74,7 +74,11 @@
             NSArray *arr = [result try_get_data_with_array];
             if (arr) {
                 AreaInfo *m = [AreaInfo areaInfo];
-                m.dataArray = arr;
+                m.dataList = [[ObjectList alloc]init];
+                for (NSDictionary *dic in arr) {
+                    ObjArea *obj = [[ObjArea alloc] initWithDirectory:dic];
+                    [m.dataList Add:obj];
+                }
             }
         }
     

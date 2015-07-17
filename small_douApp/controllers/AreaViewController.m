@@ -14,8 +14,8 @@
     EMSearchDisplayController *_displayController;
     UITableView *_tableView;
     NSMutableArray *_tipDataArr;
-    NSArray *_areaArray;
-    NSMutableArray *_searchDataArray;
+    ObjectList *_areaList;
+    ObjectList *_areaSearchList;
 }
 @end
 
@@ -28,10 +28,9 @@
     [self createSearchBar];
     [self createTableView];
     [self initSearchDisplay];
-    _searchDataArray = [NSMutableArray array];
+    _areaSearchList = [[ObjectList alloc]init];
     AreaInfo *m = [AreaInfo areaInfo];
-    _areaArray = m.dataArray;
-    NSLog(@"%@",m.dataArray);
+    _areaList = m.dataList;
     
 }
 -(void)createTableView
@@ -113,13 +112,13 @@
 }
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     
-    [_searchDataArray removeAllObjects];
-    for (NSDictionary *dic in _areaArray) {
-        if ([dic[@"name"] containsString:searchText]) {
-            [_searchDataArray addObject:dic];
+    [_areaSearchList ClearAll];
+    for (int i=0; i<[_areaList GetCount]; i++) {
+        ObjArea *obj = (ObjArea *)[_areaList GetIndexAt:i WithIsDESC:YES];
+        if ([obj.name containsString:searchText]) {
+            [_areaSearchList Add:obj];
         }
     }
-    
     
 }
 
@@ -152,7 +151,7 @@
                                           reuseIdentifier:tipCellIdentifier];
             cell.backgroundColor = [UIColor clearColor];
         }
-        cell.textLabel.text = _searchDataArray[indexPath.row][@"name"];
+        cell.textLabel.text = [(ObjArea *)[_areaSearchList GetIndexAt:indexPath.row WithIsDESC:YES] name];
         cell.textLabel.textColor = color_font_gray1;
         cell.textLabel.font = [UIFont systemFontOfSize:size_font1];
         return cell;
@@ -215,7 +214,7 @@
         return 2;
     }
   
-    return _searchDataArray.count;
+    return [_areaSearchList GetCount];
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {

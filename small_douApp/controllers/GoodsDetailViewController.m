@@ -26,6 +26,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _currentNum = 1;
     [self initData];
     [self createNavBar];
     [self congigNavBar];
@@ -145,7 +146,12 @@
 {
     if (btn.tag==0) {
       //buy
+        ObjPostOrder *order = [[ObjPostOrder alloc]init];
+        order.product = _product;
+        order.num = [NSNumber numberWithInteger:_currentNum];
+        NSArray *arr = @[order];
         TianXieOrderViewController *vc = [[TianXieOrderViewController alloc]init];
+        vc.productsArr = arr;
         [self.navigationController pushViewController:vc animated:YES];
     }
     else
@@ -178,6 +184,7 @@
     }];
     [cell setCallBackEvaluation:^{
         EvaluationViewController *vc =[[EvaluationViewController alloc]init];
+        vc.proId = _productId;
         [self.navigationController pushViewController:vc animated:YES];
     }];
     return cell;
