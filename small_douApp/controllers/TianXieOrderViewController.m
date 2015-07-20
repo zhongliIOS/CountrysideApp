@@ -17,6 +17,7 @@
 
    UITableView *_tableView;
     UILabel *_priceLabel;
+    NSDictionary *_payDic;
 }
 @end
 
@@ -105,8 +106,15 @@
     }
     NSDictionary *dataDic = @{@"list":arr,@"cuId":user.guid,@"tel":user.tel,@"area":@"1"};
     [self postWithBodyDic:dataDic andUrl:@"/orders/submit" success:^(id responseObject, AFHTTPRequestOperation *operation) {
-        
-        
+        MyResponeResult *result = [MyResponeResult createWithResponeObject:responseObject];
+        if ([result get_error_code]==kServerErrorCode_OK) {
+            _payDic = [result try_get_data_with_dict];
+            PayViewController *vc = [[PayViewController alloc] init];
+            vc.payDic = _payDic;
+            [self.navigationController pushViewController:vc animated:YES];
+        }
+        else
+            [LUnity showErrorHUDViewAtView:self.view WithTitle:[result get_messge]];
     } fail:^(NSError *error, AFHTTPRequestOperation *operation) {
         
     }];

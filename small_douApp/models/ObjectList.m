@@ -134,6 +134,16 @@
     
     return -1;
 }
+-(NSInteger)GetIndexByGuId:(id)Id
+{
+    for (int i=0; i<[self GetCount]; i++) {
+        ObjBase *obj = [self GetIndexAt:i WithIsDESC:YES];
+        if ([obj.guid integerValue]==[Id integerValue]) {
+            return i;
+        }
+    }
+    return 0;
+}
 
 - (void) ClearAll
 {

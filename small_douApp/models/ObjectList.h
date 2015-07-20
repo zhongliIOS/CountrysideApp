@@ -76,6 +76,7 @@
  *  @return 对象存在列表中返回所在位置 >= 0 , 不存在返回-1
  */
 - (NSInteger)  GetIndexByObj:(ObjBase *) obj;
+- (NSInteger)  GetIndexByGuId:(id) Id;
 
 /**
  *  清空列表

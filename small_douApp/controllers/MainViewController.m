@@ -67,6 +67,7 @@
     _tableView.dataSource = self;
     _tableView.backgroundColor = [UIColor clearColor];
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    _tableView.showsVerticalScrollIndicator = NO;
     [self.view addSubview:_tableView];
 }
 
@@ -127,6 +128,13 @@
     }
 
 }
+-(void)clickViewAllProducts
+{
+   //查看全部商品
+
+
+
+}
 #pragma mark----tableviewDelegate
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -162,9 +170,28 @@
         if (!cell) {
             cell = [[MainAllCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"MainAllCell"];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            
         }
-//        [cell fillDataWithModel:_obj];
+        [cell fillDataWithModel:_obj];
+        [cell setBtnClick:^(NSUInteger tag) {
+            GoodsDetailViewController *vc = [[GoodsDetailViewController alloc] init];
+            vc.productId = [(ObjProduct *)_obj.arrProducts[tag] guid];
+            vc.product = (ObjProduct *)_obj.arrProducts[tag];
+            [self.navigationController pushViewController:vc animated:YES];
+        }];
+        return cell;
+    }
+    if (indexPath.row==3) {
+        UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+        cell.backgroundColor = [UIColor clearColor];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        btn.frame = CGRectMake(10, 15, ScreenW-20, 40);
+        btn.backgroundColor = [UIColor whiteColor];
+        [btn setTitle:@"查看全部商品" forState:UIControlStateNormal];
+        [btn setTitleColor:color_font_gray1 forState:UIControlStateNormal];
+        btn.titleLabel.font = [UIFont systemFontOfSize:size_font2];
+        [btn addTarget:self action:@selector(clickViewAllProducts) forControlEvents:UIControlEventTouchUpInside];
+        [cell.contentView addSubview:btn];
         return cell;
     }
     return nil;
@@ -178,15 +205,20 @@
     if (indexPath.row==1) {
         return 135.5;
     }
-    return 170.0;
-
+    if (indexPath.row==2) {
+        CGFloat width = 147.0;
+        CGFloat space = (ScreenW-2*width)/3;
+        return 25+(_obj.arrProducts.count+1)/2*(158.0+space)+20;
+    }
+    return 75.0;
+ 
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 
 
-    return 3;
+    return 4;
 
 
 }

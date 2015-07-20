@@ -10,4 +10,9 @@
 
 @interface MainAllCell : UITableViewCell
 
+@property(nonatomic,copy)void(^btnClick)(NSUInteger );
+
+-(void)fillDataWithModel:(ObjMainData *)obj;
+
+
 @end

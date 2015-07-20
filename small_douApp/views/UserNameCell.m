@@ -50,7 +50,7 @@
     _phoneLabel.text = @"";
     [bgImageV addSubview:_phoneLabel];
     
-    UIImageView *nextImgV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 0, 0)];
+    UIImageView *nextImgV = [[UIImageView alloc] initWithFrame:CGRectMake(ScreenW-22, 26, 14, 20)];
     nextImgV.image = [UIImage imageNamed:@"jinru"];
     [bgImageV addSubview:nextImgV];
  

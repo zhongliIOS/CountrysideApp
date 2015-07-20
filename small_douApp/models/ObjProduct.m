@@ -17,6 +17,9 @@
         self.code = [self ReadField_String:data WithFieldName:@"code"];
         self.desc = [self ReadField_String:data WithFieldName:@"description"];
         self.discount = [self ReadField_String:data WithFieldName:@"discount"];
+        if ([self.discount isEqualToString:@""]) {
+            self.discount = @"1.0";
+        }
         self.mu = [self ReadField_String:data WithFieldName:@"mu"];
         self.name = [self ReadField_String:data WithFieldName:@"name"];
         self.number = [self ReadField_String:data WithFieldName:@"number"];

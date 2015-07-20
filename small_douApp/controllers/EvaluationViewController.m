@@ -107,7 +107,10 @@
     if (indexPath.row==0) {
         return 110.0;
     }
-    return 150.0;
+    ObjReview *obj = (ObjReview *)[_evalutaionList GetIndexAt:indexPath.row-1 WithIsDESC:YES];
+    CGSize size = [LUnity CalSizeByString:obj.content ForWidth:ScreenW-20 ForFont:[UIFont systemFontOfSize:size_font3]];
+
+    return 70+size.height;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

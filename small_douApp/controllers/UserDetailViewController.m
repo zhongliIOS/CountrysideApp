@@ -12,11 +12,14 @@
 {
 
     UIImageView *_iconImageV;
-    NSArray *_areaArray;
     UIPickerView *_pickView;
     UIView *_cancelAndCompleteView;
-    NSString *_currentArea;
+    ObjArea *_currentArea;
     UILabel *_areaDetailLabel;
+    UITextField *_nickNameTf;
+    ObjectList *_areaList;
+    NSString *_currentPhoto;
+    MyInfo *_user;
 }
 @end
 
@@ -24,9 +27,9 @@
 
 -(void)initData
 {
-
-    _areaArray=@[@"汤臣花园一期",@"碧桂园",@"山水龙城",@"鞍山新村",@"雨山湖小区",@"工大东区"];
-
+    AreaInfo *area = [AreaInfo areaInfo];
+    _areaList = area.dataList;
+    _user = [MyInfo defaultMyInfo];
 }
 
 - (void)viewDidLoad {
@@ -46,6 +49,8 @@
     _pickView.showsSelectionIndicator = YES;
     _pickView.dataSource = self;
     _pickView.hidden = YES;
+    _currentArea = (ObjArea *)[_areaList Find:[NSNumber numberWithInteger:[_user.areaId integerValue]]];
+    [_pickView selectRow:[_areaList GetIndexByGuId:_user.areaId] inComponent:0 animated:NO];
     [self.view addSubview:_pickView];
     
     _cancelAndCompleteView = [[UIView alloc]initWithFrame:CGRectMake(0, ScreenH-height-40, ScreenW, 40)];
@@ -69,6 +74,9 @@
     self.midTitelColor = [UIColor whiteColor];
     [self.leftBtn setImage:[UIImage imageNamed:backImageName] forState:UIControlStateNormal];
     self.leftBtn.hidden = NO;
+    [self.rightBtn setTitle:@"保存" forState:UIControlStateNormal];
+    [self.rightBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    self.rightBtn.hidden = NO;
 }
 
 -(void)createContentView
@@ -87,13 +95,7 @@
         label.font = [UIFont systemFontOfSize:size_font2];
         label.text = arr[i];
         [bgView addSubview:label];
-        if (i!=2) {
-            UIImageView *nextImgV = [[UIImageView alloc] initWithFrame:CGRectMake(ScreenW-22, 17.5, 14, 20)];
-            nextImgV.image = [UIImage imageNamed:@"jinru"];
-            [bgView addSubview:nextImgV];
-        }
-        else
-        {
+        if (i==2) {
             UIImageView *nextImgV = [[UIImageView alloc] initWithFrame:CGRectMake(ScreenW-28, 20.5, 20, 14)];
             nextImgV.image = [UIImage imageNamed:@"xiala"];
             [bgView addSubview:nextImgV];
@@ -105,28 +107,109 @@
             _iconImageV.layer.masksToBounds = YES;
             _iconImageV.contentMode = UIViewContentModeScaleAspectFill;
             _iconImageV.backgroundColor = color_bg;
+            [_iconImageV sd_setImageWithURL:[NSURL URLWithString:_user.photo] placeholderImage:nil];
             [bgView addSubview:_iconImageV];
+        }
+        else if(i==1)
+        {
+            _nickNameTf = [[UITextField alloc] initWithFrame:CGRectMake(ScreenW-250, 0, 218, viewH)];
+            _nickNameTf.textColor = color_font_gray2;
+            _nickNameTf.text = _user.name;
+            _nickNameTf.placeholder = @"暂无";
+            _nickNameTf.font = [UIFont systemFontOfSize:size_font2];
+            _nickNameTf.textAlignment = NSTextAlignmentRight;
+            _nickNameTf.clearButtonMode = UITextFieldViewModeWhileEditing;
+            [bgView addSubview:_nickNameTf];
         }
         else
         {
             UILabel *detailLabel = [[UILabel alloc] initWithFrame:CGRectMake(ScreenW-200, 0, 168, viewH)];
             detailLabel.textColor = color_font_gray2;
-            detailLabel.text = @"ihanqi";
+            detailLabel.text = [[AreaInfo areaInfo] searchAreaNameWithId:_user.areaId];
             detailLabel.font = [UIFont systemFontOfSize:size_font2];
             detailLabel.textAlignment = NSTextAlignmentRight;
-            if (i==2) {
-                _areaDetailLabel = detailLabel;
-
-            }
+            _areaDetailLabel = detailLabel;
             [bgView addSubview:detailLabel];
-        
         }
     }
 
 }
 
+-(void)rightButItemClick
+{
+    NSString *newName = _nickNameTf.text;
+    ObjArea *area = _currentArea;
+    NSMutableDictionary *paramets = [NSMutableDictionary dictionary];
+    if (![_user.name isEqualToString:newName]) {
+        [paramets setObject:newName forKey:@"name"];
+    }
+    if (!([_user.areaId integerValue]== [area.guid integerValue])) {
+        [paramets setObject:area.guid forKey:@"areaId"];
+    }
+    if (_currentPhoto) {
+        [paramets setObject:_currentPhoto forKey:@"photo"];
+
+    }
+    NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:My_token];
+    NSString *phoneNum = [[MyInfo defaultMyInfo] tel];
+    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:HOSTURL]];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    [manager.requestSerializer setValue:token forHTTPHeaderField:@"access-token"];
+    [manager POST:[NSString stringWithFormat:@"/customers/%@/edit",phoneNum] parameters:paramets success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        MyResponeResult *result = [MyResponeResult createWithResponeObject:responseObject];
+        [LUnity showErrorHUDViewAtView:self.view WithTitle:[result get_messge]];
+        if ([result get_error_code]==kServerErrorCode_OK) {
+            MyInfo *myinfo = [MyInfo defaultMyInfo];
+            [myinfo initWithModel:[result try_get_data_with_dict]];
+            [[NSNotificationCenter defaultCenter] postNotificationName:NotificationUpdateMyInfo object:nil];
+        }
+       
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        
+    }];
+
+}
+
+-(void)upLoadImageWithImage:(UIImage *)image
+{
+    if (!image) {
+        return;
+    }
+    NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:My_token];
+    NSString *phoneNum = [[MyInfo defaultMyInfo] tel];
+    
+    NSData *imageData = UIImageJPEGRepresentation(image, 1.0);
+    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:HOSTURL]];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    [manager.requestSerializer setValue:phoneNum forHTTPHeaderField:@"tel-no"];
+    [manager.requestSerializer setValue:token forHTTPHeaderField:@"access-token"];
+    [manager POST:@"/files/photo/upload" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        
+         [formData appendPartWithFileData:imageData name:@"image" fileName:@"testImage" mimeType:@"image"];
+        
+    } success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSDictionary *dic = responseObject;
+        if ([dic[@"errcode"] integerValue]==0) {
+            _currentPhoto = [LUnity ReadField_String:dic WithFieldName:@"data"];
+            [[SDImageCache sharedImageCache] removeImageForKey:_currentPhoto withCompletion:^{
+                [_iconImageV sd_setImageWithURL:[NSURL URLWithString:_currentPhoto] placeholderImage:nil];
+            }];
+
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+    }];
+
+
+}
+
 -(void)btnClick:(UIButton *)btn
 {
+    [self.view endEditing:YES];
+
     if (btn.tag==0) {
         //选择头像
         UIActionSheet *action = [[UIActionSheet alloc]initWithTitle:@"照片来源" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:nil otherButtonTitles:@"拍照",@"从相册选取", nil];
@@ -143,6 +226,12 @@
     }
 
 
+}
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    
+    [self.view endEditing:YES];
+    
 }
 
 #pragma mark---ActionsheetDelegate
@@ -200,9 +289,9 @@
 {
     UIImage *fixOrientationImage = [image fixOrientation];
     UIImage *newImage = [LUnity ReduceToDefaultSize:fixOrientationImage];
-    _iconImageV.image = newImage;
     NSLog(@"NewimageDataLength%ld",[UIImageJPEGRepresentation(newImage, 1.0) length]);
     NSLog(@"Newheight:%lf==width:%lf",newImage.size.height,newImage.size.width);
+    [self upLoadImageWithImage:newImage];
     [picker dismissViewControllerAnimated:YES completion:nil];
 }
 //取消的时候,调用
@@ -218,24 +307,17 @@
 }
 // returns the # of rows in each component..
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
-    return _areaArray.count;
+    return [_areaList GetCount];
 }
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
-    NSString *title = _areaArray[row];
+    NSString *title = [(ObjArea *)[_areaList GetIndexAt:row WithIsDESC:YES] name];
     NSString *string = [[NSString alloc]initWithFormat:@"%@",title];
     return string;
 }
-- (NSAttributedString *)pickerView:(UIPickerView *)pickerView attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component{
-    
-    NSMutableAttributedString *string = [[NSMutableAttributedString alloc]initWithString:[NSString stringWithFormat:@"%@",_areaArray[row]]];
-    [string addAttribute:NSForegroundColorAttributeName value:color_font_black range:NSMakeRange(0, string.length)];
-    [string addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:size_font1] range:NSMakeRange(0, string.length)];
 
-    return string;
-}
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
     
-    _currentArea = _areaArray[row] ;
+    _currentArea = (ObjArea *)[_areaList GetIndexAt:row WithIsDESC:YES] ;
 }
 
 -(void)pickCancelSureClick:(UIButton *)btn
@@ -244,7 +326,7 @@
     _pickView.hidden = YES;
     _cancelAndCompleteView.hidden = YES;
     if (btn.tag==1) {
-        _areaDetailLabel.text = _currentArea;
+        _areaDetailLabel.text = _currentArea.name;
     }
 
 

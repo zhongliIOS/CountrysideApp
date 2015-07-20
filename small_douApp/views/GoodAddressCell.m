@@ -81,8 +81,8 @@
     CGFloat salePrice = 0.0;
     for (ObjPostOrder *obj in arr) {
         ObjProduct *product = obj.product;
-        allPrice += [product.price floatValue];
-        salePrice +=[product.price floatValue]/[product.discount floatValue];
+        allPrice += [product.price floatValue]*[obj.num integerValue];
+        salePrice +=[product.price floatValue]/[product.discount floatValue]*[obj.num integerValue];
     }
     _priceDetailLabel.text = [NSString stringWithFormat:@"￥%.2f",allPrice];
     _salePriceDetaiLabel.text = [NSString stringWithFormat:@"-￥%.2f",salePrice-allPrice];

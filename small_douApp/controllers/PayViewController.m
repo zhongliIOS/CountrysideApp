@@ -23,6 +23,12 @@
     [self configNavBar];
     [self createContentView];
 }
+-(void)setPayDic:(NSDictionary *)payDic
+{
+    _payDic = payDic;
+    
+
+}
 -(void)createContentView
 {
     UIView *bgView1 = [[UIView alloc] initWithFrame:CGRectMake(0, TopHeight, ScreenW, 110.5)];
@@ -43,7 +49,7 @@
         detailLabel.textAlignment = NSTextAlignmentRight;
         detailLabel.textColor = i==0? color_font_gray2:color_font_red;
         detailLabel.font = [UIFont systemFontOfSize:size_font2];
-        detailLabel.text = i==0?@"123456789123456789":@"￥226.60";
+        detailLabel.text = i==0?_payDic[@"orCode"]:[NSString stringWithFormat:@"￥%.2f",[_payDic[@"amount"] floatValue]];
         [bgView1 addSubview:detailLabel];
     }
     UIView *bgView2 = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(bgView1.frame)+15, ScreenW, 110.5)];
@@ -104,12 +110,12 @@
 -(void)payClick
 {
     if (_weChatBtn.selected) {
-     
+       //微信支付
         
     }
    else
     {
-
+      //支付宝支付
 
     }
 

@@ -85,7 +85,7 @@
         
         UILabel *label1 = [[UILabel alloc] initWithFrame:CGRectMake((elemtWidth+0.5)*i, CGRectGetMaxY(imageV.frame)+10, elemtWidth, 10)];
         label1.textAlignment = NSTextAlignmentCenter;
-        label1.text = @"特级红富士";
+        label1.text = obj.name;
         label1.textColor = color_font_black;
         label1.font = [UIFont systemFontOfSize:size_font5];
         [_scrollView addSubview:label1];
@@ -93,7 +93,7 @@
         UILabel *label2 = [[UILabel alloc] initWithFrame:CGRectMake((elemtWidth+0.5)*i, CGRectGetMaxY(label1.frame)+5, elemtWidth, 12)];
         label2.textAlignment = NSTextAlignmentCenter;
         label2.textColor = color_green;
-        label2.text = @"￥59.0";
+        label2.text = [NSString stringWithFormat:@"￥%.2f",[obj.price floatValue]];
         label2.font = [UIFont systemFontOfSize:size_font4];
         [_scrollView addSubview:label2];
 

@@ -10,4 +10,14 @@
 
 @implementation ObjReview
 
+-(id)initWithDirectory:(NSDictionary *)data
+{
+    self = [super initWithDirectory:data];
+    if (self) {
+        self.content = [self ReadField_String:data WithFieldName:@"content"];
+        self.level = [self ReadField_String:data WithFieldName:@"level"];
+    }
+    return self;
+}
+
 @end

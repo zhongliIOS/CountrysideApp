@@ -136,7 +136,14 @@
                                           reuseIdentifier:tipCellIdentifier];
             cell.backgroundColor = [UIColor clearColor];
         }
-        cell.textLabel.text = @"东方绿洲";
+        if (indexPath.section==0) {
+            cell.textLabel.text =  [[AreaInfo areaInfo] searchAreaNameWithId:[[MyInfo defaultMyInfo] areaId]];
+        }
+        else
+        {
+         ObjArea *area = (ObjArea *)[_areaList GetIndexAt:indexPath.row WithIsDESC:YES];
+         cell.textLabel.text = area.name;
+        }
         cell.textLabel.textColor = color_font_gray1;
         cell.textLabel.font = [UIFont systemFontOfSize:size_font1];
         return cell;
@@ -177,7 +184,7 @@
         titleLabel.backgroundColor = [UIColor clearColor];
         titleLabel.textColor = color_font_green;
         titleLabel.font = [UIFont systemFontOfSize:size_font2];
-        titleLabel.text = section==0?@"当前":@"热门";
+        titleLabel.text = section==0?@"当前":@"全部";
         [bgView addSubview:titleLabel];
         
         return bgView;
@@ -211,7 +218,11 @@
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (_tableView == tableView) {
-        return 2;
+        if(section==0)
+        {
+            return 1;
+        }
+        return [_areaList GetCount];;
     }
   
     return [_areaSearchList GetCount];

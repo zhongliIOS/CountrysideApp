@@ -10,4 +10,6 @@
 
 @interface PayViewController : LBaseViewController
 
+@property(nonatomic,strong)NSDictionary *payDic;
+
 @end

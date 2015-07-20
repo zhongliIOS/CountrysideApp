@@ -161,11 +161,11 @@
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     [manager.requestSerializer setValue:access_token forHTTPHeaderField:@"access-token"];
     [manager GET:[NSString stringWithFormat:@"/customers/%@.json",_phoneTf.text] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        MyResponeResult *result = [MyResponeResult createWithResponeObject:responseObject];
         NSLog(@"%@",responseObject);
-        NSDictionary *dic = responseObject;
-        if (dic[@"id"]){
+        if ([result get_error_code]==kServerErrorCode_OK){
             MyInfo *m = [MyInfo defaultMyInfo];
-            [m initWithModel:dic];
+            [m initWithModel:[result try_get_data_with_dict]];
             [[NSNotificationCenter defaultCenter] postNotificationName:NotificationUpdateMyInfo object:nil];
             [self leftButItemClick];
         }

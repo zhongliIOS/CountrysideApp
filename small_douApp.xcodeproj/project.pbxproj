@@ -81,6 +81,7 @@
 		CA3F2FF41B395A3E002B9B76 /* MyFavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3F2FF31B395A3E002B9B76 /* MyFavViewController.m */; };
 		CA3F2FF71B395C40002B9B76 /* FavCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3F2FF61B395C40002B9B76 /* FavCell.m */; };
 		CA40A29B1B58968D0059E587 /* ObjPostOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = CA40A29A1B58968D0059E587 /* ObjPostOrder.m */; };
+		CA7955FA1B5CC602001D9DEA /* AllProductsController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA7955F91B5CC602001D9DEA /* AllProductsController.m */; };
 		CA822C701B4E07CD008AB90E /* StarView.m in Sources */ = {isa = PBXBuildFile; fileRef = CA822C6F1B4E07CD008AB90E /* StarView.m */; };
 		CA822C801B4E4ADB008AB90E /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = CA822C7D1B4E4ADB008AB90E /* UIScrollView+SVInfiniteScrolling.m */; };
 		CA822C811B4E4ADB008AB90E /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = CA822C7F1B4E4ADB008AB90E /* UIScrollView+SVPullToRefresh.m */; };
@@ -276,6 +277,8 @@
 		CA3F2FF61B395C40002B9B76 /* FavCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavCell.m; sourceTree = "<group>"; };
 		CA40A2991B58968D0059E587 /* ObjPostOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjPostOrder.h; sourceTree = "<group>"; };
 		CA40A29A1B58968D0059E587 /* ObjPostOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjPostOrder.m; sourceTree = "<group>"; };
+		CA7955F81B5CC602001D9DEA /* AllProductsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllProductsController.h; sourceTree = "<group>"; };
+		CA7955F91B5CC602001D9DEA /* AllProductsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllProductsController.m; sourceTree = "<group>"; };
 		CA822C6E1B4E07CD008AB90E /* StarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StarView.h; sourceTree = "<group>"; };
 		CA822C6F1B4E07CD008AB90E /* StarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StarView.m; sourceTree = "<group>"; };
 		CA822C7B1B4E4ADB008AB90E /* SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVPullToRefresh.h; sourceTree = "<group>"; };
@@ -795,6 +798,8 @@
 				C31C254E1B2895AD00BD8435 /* CountryTabBarController.m */,
 				CAF0ADA71B2A83CE00306D9E /* MainViewController.h */,
 				CAF0ADA81B2A83CE00306D9E /* MainViewController.m */,
+				CA7955F81B5CC602001D9DEA /* AllProductsController.h */,
+				CA7955F91B5CC602001D9DEA /* AllProductsController.m */,
 				CA8EBBB91B3BC4F800444BD2 /* AreaViewController.h */,
 				CA8EBBBA1B3BC4F800444BD2 /* AreaViewController.m */,
 				CAF0ADAA1B2A83E900306D9E /* FenLeiVIewController.h */,
@@ -1160,6 +1165,7 @@
 				CA258F3E1B42390E00BDD2F3 /* LogOutAction.m in Sources */,
 				CAB4D3D21B33EC2C00A998E5 /* GoodPushCell.m in Sources */,
 				CA3F2FF71B395C40002B9B76 /* FavCell.m in Sources */,
+				CA7955FA1B5CC602001D9DEA /* AllProductsController.m in Sources */,
 				CA258F411B4290C700BDD2F3 /* MyHttpActionManager.m in Sources */,
 				CA822DDC1B4FA25A008AB90E /* openssl_wrapper.m in Sources */,
 				C3EA5CA61B383B460043C3E9 /* OrderSearchController.m in Sources */,
