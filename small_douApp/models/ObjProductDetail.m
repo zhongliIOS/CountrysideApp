@@ -26,6 +26,8 @@
         self.sl = [self ReadField_String:data WithFieldName:@"sl"];
         self.typeId = [self ReadField_String:data WithFieldName:@"typeId"];
         self.commentsize = [self ReadField_String:data WithFieldName:@"commentsize"];
+        self.pic = [self ReadField_String:data WithFieldName:@"pic"];
+
     }
     
     return self;

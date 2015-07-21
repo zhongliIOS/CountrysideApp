@@ -12,18 +12,48 @@
 #import "LoginViewController.h"
 #import "GoodCarCell.h"
 #import "GetMyGoodsCarAction.h"
+#import "DeleteGoodsCarAction.h"
 
 @interface GoodsCarViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
     UITableView *_tableView;
     UILabel *_sumPriceLabel;
     CGFloat _sumPriceCount;
+    ObjectList *_objectList;
 }
 @end
 
 @implementation GoodsCarViewController
 
-
+-(void)getData
+{
+    MyInfo *m = [MyInfo defaultMyInfo];
+    if (m.guid) {
+        [_objectList ClearAll];
+        GetMyGoodsCarAction *act = [[GetMyGoodsCarAction alloc]initWithCustomId:m.guid];
+        [act DoActionWithSuccess:^(MyActionBase *action, id responseObject, AFHTTPRequestOperation *operation) {
+            MyResponeResult *result = [MyResponeResult createWithResponeObject:responseObject];
+            if ([result get_error_code]==kServerErrorCode_OK) {
+                NSArray *arr = [result try_get_data_with_array];
+                if (arr) {
+                    for (int i=0; i<arr.count; i++) {
+                        NSDictionary *dic = arr[i];
+                        ObjGoodCar *obj = [[ObjGoodCar alloc]initWithDirectory:dic];
+                        [_objectList Add:obj];
+                    }
+                    [_tableView reloadData];
+                }
+            }
+            else
+                [LUnity showErrorHUDViewAtView:self.view WithTitle:[result get_messge]];
+            
+        } Failure:^(MyActionBase *action, NSError *error, AFHTTPRequestOperation *operation) {
+            
+        }];
+    }
+    
+    
+}
 
 -(void)viewWillAppear:(BOOL)animated
 {
@@ -33,49 +63,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self initData];
+    _objectList = [[ObjectList alloc]init];
+    [self getData];
     [self createNavBar];
     [self configNavBar];
     [self createTableView];
     [self createFootView];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getData) name:NotificationUpdateMyInfo object:nil];
-    
-//    MyInfo *m = [MyInfo defaultMyInfo];
-//    if (!m.tel) {
-//        //没有自动登陆成功
-//        LoginViewController *vc = [[LoginViewController alloc]init];
-//        
-//        [self.navigationController presentViewController:vc animated:YES completion:nil];
-//    }
-//    else
-//    {
-//        [self getData];
-//        
-//    }
-    [self getData];
-
 }
 
--(void)getData
-{
-    MyInfo *m = [MyInfo defaultMyInfo];
-    if (m.guid) {
-        GetMyGoodsCarAction *act = [[GetMyGoodsCarAction alloc]initWithCustomId:m.guid];
-        [act DoActionWithSuccess:^(MyActionBase *action, id responseObject, AFHTTPRequestOperation *operation) {
-            MyResponeResult *result = [MyResponeResult createWithResponeObject:responseObject];
-            if ([result get_error_code]==kServerErrorCode_OK) {
-                
-            }
-            else
-                [LUnity showErrorHUDViewAtView:self.view WithTitle:[result get_messge]];
-            
-        } Failure:^(MyActionBase *action, NSError *error, AFHTTPRequestOperation *operation) {
-            
-        }];
-    }
 
-
-}
 
 -(void)createTableView
 {
@@ -90,6 +87,7 @@
 
 -(void)createFootView
 {
+   
     UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(-1, CGRectGetMaxY(_tableView.frame), ScreenW+2, 44.0)];
     bgView.backgroundColor = [UIColor whiteColor];
     bgView.layer.borderWidth = 0.5;
@@ -131,11 +129,7 @@
     [bgView addSubview:_sumPriceLabel];
     
 }
--(void)initData
-{
-  
 
-}
 -(void)buyBtnClick
 {
   //购买
@@ -171,6 +165,7 @@
         cell = [[GoodCarCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"GoodCarCell"];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    [cell fillDataWithModel:(ObjGoodCar *)[_objectList GetIndexAt:indexPath.row WithIsDESC:YES]];
     [cell setCallBackSelected:^(BOOL isSelected) {
         
     }];
@@ -191,19 +186,40 @@
 {
     
     
-    return 12;
+    return [_objectList GetCount];
 }
 
-//- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    if (!tableView.editing)
-//        return UITableViewCellEditingStyleNone;
-//    else {
-//        return UITableViewCellEditingStyleDelete;
-//    }
-//    
-//}
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
 
+    return UITableViewCellEditingStyleDelete;
+    
+}
+
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+
+    [self deleteWithShopId:[(ObjGoodCar *)[_objectList GetIndexAt:indexPath.row WithIsDESC:YES] guid]];
+
+}
+
+-(void)deleteWithShopId:(NSNumber *)num
+{
+    DeleteGoodsCarAction *act = [[DeleteGoodsCarAction alloc] initWithGoodId:num];
+    if (!act.isValid) {
+        return;
+    }
+    [act DoActionWithSuccess:^(MyActionBase *action, id responseObject, AFHTTPRequestOperation *operation) {
+        MyResponeResult *result = [MyResponeResult createWithResponeObject:responseObject];
+        if ([result get_error_code]==kServerErrorCode_OK) {
+            [self getData];
+        }
+        else
+            [LUnity showErrorHUDViewAtView:self.view WithTitle:[result get_messge]];
+    } Failure:^(MyActionBase *action, NSError *error, AFHTTPRequestOperation *operation) {
+        
+    }];
+}
 
 
 -(NSAttributedString *)getAttStringWith:(NSString *)string
@@ -215,10 +231,7 @@
 }
 
 
--(void)leftButItemClick
-{
 
-}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

@@ -15,6 +15,7 @@
     UIPickerView *_pickView;
     UIView *_cancelAndCompleteView;
     ObjArea *_currentArea;
+    ObjArea *_tempArea;
     UILabel *_areaDetailLabel;
     UITextField *_nickNameTf;
     ObjectList *_areaList;
@@ -50,6 +51,7 @@
     _pickView.dataSource = self;
     _pickView.hidden = YES;
     _currentArea = (ObjArea *)[_areaList Find:[NSNumber numberWithInteger:[_user.areaId integerValue]]];
+    _tempArea = _currentArea;
     [_pickView selectRow:[_areaList GetIndexByGuId:_user.areaId] inComponent:0 animated:NO];
     [self.view addSubview:_pickView];
     
@@ -317,18 +319,24 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
     
-    _currentArea = (ObjArea *)[_areaList GetIndexAt:row WithIsDESC:YES] ;
+    _tempArea = (ObjArea *)[_areaList GetIndexAt:row WithIsDESC:YES] ;
 }
 
 -(void)pickCancelSureClick:(UIButton *)btn
 {
-
+    
     _pickView.hidden = YES;
     _cancelAndCompleteView.hidden = YES;
     if (btn.tag==1) {
+        _currentArea = _tempArea;
         _areaDetailLabel.text = _currentArea.name;
     }
+    else
+    {
+        _tempArea = _currentArea;
+        [_pickView selectRow:[_areaList GetIndexByGuId:_currentArea.guid] inComponent:0 animated:NO];
 
+    }
 
 }
 

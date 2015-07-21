@@ -20,6 +20,7 @@
         if ([self.discount isEqualToString:@""]) {
             self.discount = @"1.0";
         }
+        self.proId = [self ReadField_Number:data WithFieldName:@"proId"];
         self.mu = [self ReadField_String:data WithFieldName:@"mu"];
         self.name = [self ReadField_String:data WithFieldName:@"name"];
         self.number = [self ReadField_String:data WithFieldName:@"number"];

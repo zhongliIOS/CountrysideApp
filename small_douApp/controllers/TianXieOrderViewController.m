@@ -12,24 +12,67 @@
 #import "GoodAddressCell.h"
 
 
-@interface TianXieOrderViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface TianXieOrderViewController ()<UITableViewDelegate,UITableViewDataSource,UIPickerViewDataSource,UIPickerViewDelegate>
 {
 
    UITableView *_tableView;
     UILabel *_priceLabel;
     NSDictionary *_payDic;
+    NSString *_currentAreaId;
+    NSString *_tempAreaId;
+    ObjectList *_areaList;
+    
+    UIPickerView *_pickView;
+    UIView *_cancelAndCompleteView;
+
 }
 @end
 
 @implementation TianXieOrderViewController
 
 
+-(void)initData
+{
+    _currentAreaId = [[MyInfo defaultMyInfo] areaId];
+    _tempAreaId = _currentAreaId;
+    _areaList = [[AreaInfo areaInfo] dataList];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self initData];
     [self createNavBar];
     [self configNavBar];
     [self createTableView];
     [self createFootView];
+    [self createPickView];
+}
+
+-(void)createPickView
+{
+    CGFloat height = ISiPhone4?130.0:150;
+    _pickView = [[UIPickerView alloc]initWithFrame:CGRectMake(0,ScreenH-height, ScreenW, height)];
+    _pickView.delegate = self;
+    _pickView.backgroundColor  = [UIColor colorWithRed:0.92 green:0.92 blue:0.92 alpha:1];
+    _pickView.showsSelectionIndicator = YES;
+    _pickView.dataSource = self;
+    _pickView.hidden = YES;
+    [_pickView selectRow:[_areaList GetIndexByGuId:_currentAreaId] inComponent:0 animated:NO];
+    [self.view addSubview:_pickView];
+    
+    _cancelAndCompleteView = [[UIView alloc]initWithFrame:CGRectMake(0, ScreenH-height-40, ScreenW, 40)];
+    _cancelAndCompleteView.backgroundColor = [UIColor whiteColor];
+    _cancelAndCompleteView.hidden = YES;
+    [self.view addSubview:_cancelAndCompleteView];
+    for (int i=0; i<2; i++) {
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
+        btn.frame = CGRectMake((ScreenW-60)*i, 0, 60, 40);
+        [btn setTitle:@[@"取消",@"完成"][i] forState:UIControlStateNormal];
+        [btn setTitleColor:color_font_black forState:UIControlStateNormal];
+        btn.titleLabel.font = [UIFont systemFontOfSize:size_font1];
+        btn.tag = i;
+        [btn addTarget:self action:@selector(pickCancelSureClick:) forControlEvents:UIControlEventTouchUpInside];
+        [_cancelAndCompleteView addSubview:btn];
+    }
 }
 -(void)configNavBar
 {
@@ -80,23 +123,6 @@
 
 -(void)buyBtnClick
 {
-//    PayViewController *vc = [[PayViewController alloc]init];
-//    [self.navigationController pushViewController:vc animated:YES];
-    /*{
-     "list":[
-     {
-     "proId":1,
-     "num":2
-     },
-     {
-     "proId":3,
-     "num":1
-     }
-     ],
-     "cuId":1,
-     "tel":"13225650040",
-     "area":1
-     }*/
     
     MyInfo *user = [MyInfo defaultMyInfo];
     NSMutableArray *arr = [NSMutableArray array];
@@ -104,7 +130,7 @@
         NSDictionary *dic = @{@"proId":obj.product.guid,@"num":obj.num};
         [arr addObject:dic];
     }
-    NSDictionary *dataDic = @{@"list":arr,@"cuId":user.guid,@"tel":user.tel,@"area":@"1"};
+    NSDictionary *dataDic = @{@"list":arr,@"cuId":user.guid,@"tel":user.tel,@"area":_currentAreaId};
     [self postWithBodyDic:dataDic andUrl:@"/orders/submit" success:^(id responseObject, AFHTTPRequestOperation *operation) {
         MyResponeResult *result = [MyResponeResult createWithResponeObject:responseObject];
         if ([result get_error_code]==kServerErrorCode_OK) {
@@ -131,6 +157,7 @@
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         [cell fillDataWithModel:(ObjPostOrder *)_productsArr[indexPath.row] ];
+        
         return cell;
     }
     else
@@ -141,7 +168,11 @@
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         [cell fillDataWithModel:_productsArr];
-
+        cell.addressId = _currentAreaId;
+        [cell setAreaClick:^{
+            _pickView.hidden = NO;
+            _cancelAndCompleteView.hidden = NO;
+        }];
         return cell;
     
     }
@@ -164,7 +195,41 @@
     
     return _productsArr.count+1;
 }
+#pragma mark------pickViewDelegate
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
+    return 1;
+}
+// returns the # of rows in each component..
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
+    return [_areaList GetCount];
+}
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
+    NSString *title = [(ObjArea *)[_areaList GetIndexAt:row WithIsDESC:YES] name];
+    NSString *string = [[NSString alloc]initWithFormat:@"%@",title];
+    return string;
+}
 
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
+    
+    _tempAreaId = [(ObjArea *)[_areaList GetIndexAt:row WithIsDESC:YES] guid] ;
+}
+
+-(void)pickCancelSureClick:(UIButton *)btn
+{
+    
+    _pickView.hidden = YES;
+    _cancelAndCompleteView.hidden = YES;
+    if (btn.tag==1) {
+        _currentAreaId = _tempAreaId;
+        [_tableView reloadData];
+    }
+    else
+    {
+        _tempAreaId = _currentAreaId;
+    
+    }
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

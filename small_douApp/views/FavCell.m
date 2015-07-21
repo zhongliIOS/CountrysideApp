@@ -60,7 +60,7 @@
     CGFloat AddBtnW = 85.0;
     UIButton *AddBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     AddBtn.frame = CGRectMake(ScreenW-34-AddBtnW,15, AddBtnW, 25);
-    [AddBtn setTitle:@"加入购物车" forState:UIControlStateNormal];
+    [AddBtn setTitle:@"取消收藏" forState:UIControlStateNormal];
     [AddBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     AddBtn.backgroundColor = [UIColor colorWithRed:1 green:0.49 blue:0.22 alpha:1];
     AddBtn.titleLabel.font = [UIFont systemFontOfSize:size_font3];
@@ -88,7 +88,9 @@
 
 -(void)addClick
 {
-
+    if (_DeleteClick) {
+        _DeleteClick();
+    }
 
 }
 - (void)awakeFromNib {

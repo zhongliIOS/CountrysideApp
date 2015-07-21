@@ -141,9 +141,7 @@
                     [self getMyInfo:access_token];
                 }
             }
-            [LUnity showErrorHUDViewAtView:self.view WithTitle:@"登陆成功"];
-            AppDelegate * app  = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-            [app pushTabBarVC];
+
         }
         else
             [LUnity showErrorHUDViewAtView:self.view WithTitle:[result get_messge]];
@@ -167,7 +165,10 @@
             MyInfo *m = [MyInfo defaultMyInfo];
             [m initWithModel:[result try_get_data_with_dict]];
             [[NSNotificationCenter defaultCenter] postNotificationName:NotificationUpdateMyInfo object:nil];
-            [self leftButItemClick];
+            [LUnity showErrorHUDViewAtView:self.view WithTitle:@"登陆成功"];
+            
+            AppDelegate * app  = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+            [app pushTabBarVC];
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

@@ -19,7 +19,7 @@
 
 -(void)initData
 {
-
+  
 
 
 }
@@ -51,7 +51,7 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
+    
     return nil;
 }
 

@@ -42,7 +42,8 @@
         }
         else
         {
-        
+          
+            
         }
         
     } Failure:^(MyActionBase *action, NSError *error, AFHTTPRequestOperation *operation) {
@@ -51,12 +52,24 @@
     }];
 }
 
+-(void)refreshCity
+{
+
+    MyInfo *user = [MyInfo defaultMyInfo];
+    _areaLabel.text = [[AreaInfo areaInfo] searchAreaNameWithId:user.areaId];
+
+
+
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initData];
     [self createNavBar];
     [self configNavBar];
     [self createTableView];
+    [self refreshCity];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshCity) name:NotificationUpdateMyInfo object:nil];
 }
 
 

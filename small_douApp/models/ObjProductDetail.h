@@ -22,5 +22,7 @@
 @property(nonatomic,copy)NSString *price;
 @property(nonatomic,copy)NSString *sl;
 @property(nonatomic,copy)NSString *typeId;
+@property(nonatomic,copy)NSString *pic;
+
 
 @end

@@ -66,7 +66,7 @@ CGFloat  imageH = 160.0;
     [self.contentView addSubview:_detailLabel];
     
     
-    UIView *pushBgView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_detailLabel.frame)+10, ScreenW, 98)];
+    UIView *pushBgView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_detailLabel.frame)+10, ScreenW, 65)];
     pushBgView.backgroundColor = [UIColor whiteColor];
     [self.contentView addSubview:pushBgView];
     
@@ -75,8 +75,8 @@ CGFloat  imageH = 160.0;
         line.backgroundColor = i==0||i==3?color_line1:color_line2;
         [pushBgView addSubview:line];
     }
-    NSArray *arr = @[@"59.25",@"产地：",@"送至："];
-    for (int i=0; i<3; i++) {
+    NSArray *arr = @[@"59.25",@"产地："];
+    for (int i=0; i<2; i++) {
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(leftSpace, 32.5*i, 42, 32.5)];
         label.textColor = i==0?color_font_red:color_font_black;
         label.font = [UIFont systemFontOfSize:size_font2];
@@ -97,21 +97,7 @@ CGFloat  imageH = 160.0;
             [pushBgView addSubview:_productAreaLabel];
         
         }
-        else if (i==2)
-        {
-            _addressBtn  = [UIButton buttonWithType:UIButtonTypeCustom];
-            _addressBtn.frame = CGRectMake(CGRectGetMaxX(label.frame), 71, 100, 20);
-            _addressBtn.layer.cornerRadius = 3.0;
-            _addressBtn.layer.masksToBounds = YES;
-            _addressBtn.layer.borderColor = color_btn_red.CGColor;
-            _addressBtn.layer.borderWidth = 1.0;
-            _addressBtn.titleLabel.font = [UIFont systemFontOfSize:size_font3];
-            [_addressBtn setTitle:@"绿城桂花园" forState:UIControlStateNormal];
-            [_addressBtn setTitleColor:color_font_black forState:UIControlStateNormal];
-            [_addressBtn addTarget:self action:@selector(addressClick) forControlEvents:UIControlEventTouchUpInside];
-            [pushBgView addSubview:_addressBtn];
-        
-        }
+
     }
     
     UIView *countBgView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(pushBgView.frame)+10, ScreenW, 36)];

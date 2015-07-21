@@ -14,4 +14,6 @@
 @property(nonatomic,copy)void(^CallBackSelected)(BOOL );
 @property(nonatomic,copy)void(^CallBackCount)(NSInteger );
 
+-(void)fillDataWithModel:(ObjGoodCar *)obj;
+
 @end

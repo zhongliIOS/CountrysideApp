@@ -78,7 +78,6 @@
         else
         {
             [LUnity showErrorHUDViewAtView:self.view WithTitle:[result get_messge]];
-
         }
         
     } fail:^(NSError *error, AFHTTPRequestOperation *operation) {
@@ -141,13 +140,12 @@
 }
 
 
-
 -(void)btnClick:(UIButton *)btn
 {
     if (btn.tag==0) {
       //buy
         ObjPostOrder *order = [[ObjPostOrder alloc]init];
-        order.product = _product;
+        order.product = _objProductDetail;
         order.num = [NSNumber numberWithInteger:_currentNum];
         NSArray *arr = @[order];
         TianXieOrderViewController *vc = [[TianXieOrderViewController alloc]init];
@@ -157,12 +155,15 @@
     else
     {
      //addShop
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         NSDictionary *dic = @{@"cuId":[[MyInfo defaultMyInfo] guid],@"num":[NSNumber numberWithInteger:_currentNum],@"proId":_productId};
         [self postWithBodyDic:dic andUrl:@"/shoppingCarts/save" success:^(id responseObject, AFHTTPRequestOperation *operation) {
-            
+            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+            MyResponeResult *result = [MyResponeResult createWithResponeObject:responseObject];
+            [LUnity showErrorHUDViewAtView:self.view WithTitle:[result get_messge]];
             
         } fail:^(NSError *error, AFHTTPRequestOperation *operation) {
-            
+            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         }];
     }
 

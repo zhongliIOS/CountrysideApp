@@ -30,6 +30,7 @@
 
     UIImageView *bgImageV = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, ScreenW, 72)];
     bgImageV.backgroundColor = [UIColor lightGrayColor];
+    bgImageV.image = [UIImage imageNamed:@"userBg.jpg"];
     [self.contentView addSubview:bgImageV];
     
     _iconImgV = [[UIImageView alloc] initWithFrame:CGRectMake(leftSpace, 10, 52, 52)];

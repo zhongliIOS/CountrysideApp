@@ -10,6 +10,8 @@
 
 @interface FavCell : UITableViewCell
 
+@property(nonatomic,copy)void(^DeleteClick)(void);
+
 //我的收藏cell
 -(void)fillDataWithModel:(ObjProduct *)model;
 

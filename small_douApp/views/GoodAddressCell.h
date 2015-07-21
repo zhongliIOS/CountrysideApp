@@ -10,6 +10,10 @@
 
 @interface GoodAddressCell : UITableViewCell
 
+@property(nonatomic,copy)NSString *addressId;
+@property(nonatomic,copy)void(^areaClick)(void);
+
 -(void)fillDataWithModel:(NSArray *)arr;
+
 
 @end

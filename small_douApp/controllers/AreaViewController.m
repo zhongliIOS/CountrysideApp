@@ -211,10 +211,23 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-
+    if (tableView==_tableView) {
+        if (indexPath.section==0) {
+            [self saveAreaWith:nil];
+        }
+        else
+        {
+            [self saveAreaWith:(ObjArea *)[_areaList GetIndexAt:indexPath.row WithIsDESC:YES]];
+        }
+    }
+    else
+    {
+       [self saveAreaWith:(ObjArea *)[_areaSearchList GetIndexAt:indexPath.row WithIsDESC:YES]];
+    }
 }
+
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (_tableView == tableView) {
@@ -232,7 +245,38 @@
     
     return 35.0;
 }
+-(void)saveAreaWith:(ObjArea *)area
+{
+    if (!area) {
+        [self leftButItemClick];
+        return;
+    }
+    NSMutableDictionary *paramets = [NSMutableDictionary dictionary];
+    [paramets setObject:area.guid forKey:@"areaId"];
+    NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:My_token];
+    NSString *phoneNum = [[MyInfo defaultMyInfo] tel];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:HOSTURL]];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    [manager.requestSerializer setValue:token forHTTPHeaderField:@"access-token"];
+    [manager POST:[NSString stringWithFormat:@"/customers/%@/edit",phoneNum] parameters:paramets success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        MyResponeResult *result = [MyResponeResult createWithResponeObject:responseObject];
+        [LUnity showErrorHUDViewAtView:self.view WithTitle:[result get_messge]];
+        if ([result get_error_code]==kServerErrorCode_OK) {
+            MyInfo *myinfo = [MyInfo defaultMyInfo];
+            [myinfo initWithModel:[result try_get_data_with_dict]];
+            [[NSNotificationCenter defaultCenter] postNotificationName:NotificationUpdateMyInfo object:nil];
+            [self leftButItemClick];
+        }
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 
+        
+    }];
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

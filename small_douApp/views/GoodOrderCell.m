@@ -51,7 +51,7 @@
     _titleLabel.text = @"特级红富士";
     [mainView addSubview:_titleLabel];
     
-    _countLabel = [[UILabel alloc] initWithFrame:CGRectMake(ScreenW-110, (55.0-14)/2, 100, 14)];
+    _countLabel = [[UILabel alloc] initWithFrame:CGRectMake(ScreenW-110, (55.0-16)/2, 100, 16)];
     _countLabel.font = [UIFont systemFontOfSize:size_font2];
     _countLabel.textColor = color_font_gray1;
     _countLabel.text = @"1个";

@@ -12,7 +12,7 @@
 
 @interface ObjPostOrder : NSObject
 
-@property(nonatomic,strong)ObjProduct *product;
+@property(nonatomic,strong)ObjProductDetail *product;
 @property(nonatomic,strong)NSNumber *num;
 
 @end

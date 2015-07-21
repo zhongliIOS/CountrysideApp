@@ -51,6 +51,11 @@
             }else if (c==1)
             {
                 _areaDetailLabel = detailLabel;
+                detailLabel.userInteractionEnabled = YES;
+                UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+                btn.frame = detailLabel.bounds;
+                [btn addTarget:self action:@selector(clickArea) forControlEvents:UIControlEventTouchUpInside];
+                [_areaDetailLabel addSubview:btn];
             }
             else if (c==2)
             {
@@ -71,21 +76,35 @@
     
 }
 
+
 -(void)fillDataWithModel:(NSArray *)arr
 {
     MyInfo *user = [MyInfo defaultMyInfo];
     _phoneDetailLabel.text = user.tel;
-    AreaInfo *areaInfo = [AreaInfo areaInfo];
-    _areaDetailLabel.text = [areaInfo searchAreaNameWithId:user.areaId];
     CGFloat allPrice = 0.0;
     CGFloat salePrice = 0.0;
     for (ObjPostOrder *obj in arr) {
-        ObjProduct *product = obj.product;
+        ObjProductDetail *product = obj.product;
         allPrice += [product.price floatValue]*[obj.num integerValue];
         salePrice +=[product.price floatValue]/[product.discount floatValue]*[obj.num integerValue];
     }
     _priceDetailLabel.text = [NSString stringWithFormat:@"￥%.2f",allPrice];
     _salePriceDetaiLabel.text = [NSString stringWithFormat:@"-￥%.2f",salePrice-allPrice];
+}
+
+-(void)setAddressId:(NSString *)addressId
+{
+    AreaInfo *areaInfo = [AreaInfo areaInfo];
+    _areaDetailLabel.text = [areaInfo searchAreaNameWithId:addressId];
+}
+-(void)clickArea
+{
+    
+    if (_areaClick) {
+        _areaClick();
+    }
+
+
 }
 
 - (void)awakeFromNib {

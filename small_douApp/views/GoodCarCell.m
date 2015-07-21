@@ -80,7 +80,16 @@
     
 }
 
+-(void)fillDataWithModel:(ObjGoodCar *)obj
+{
+    if (!obj) {
+        return;
+    }
+    [_imageV sd_setImageWithURL:[NSURL URLWithString:obj.pic] placeholderImage:nil];
+    _titleLabel.text = obj.name;
+    _priceLabel.text = [NSString stringWithFormat:@"￥%.2f",[obj.price floatValue]];
 
+}
 
 -(void)btnClick:(UIButton *)btn
 {

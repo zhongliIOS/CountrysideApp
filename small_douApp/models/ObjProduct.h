@@ -18,6 +18,7 @@
 @property(nonatomic,copy)NSString *number;
 @property(nonatomic,copy)NSString *pics;
 @property(nonatomic,copy)NSString *pic;
+@property(nonatomic,strong)NSNumber *proId;
 
 @property(nonatomic,copy)NSString *place;
 @property(nonatomic,copy)NSString *price;

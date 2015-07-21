@@ -57,7 +57,7 @@
       return;
   }
     _titleLabel.text = model.name;
-    _subTitleLabel.text = @"苹果/香蕉/苹果/橘子/芒果";
+    _subTitleLabel.text = model.desc;
 }
 
 - (void)awakeFromNib {

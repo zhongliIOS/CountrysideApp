@@ -81,6 +81,7 @@
         NSString *firstImageUrl = arr[0];
         UIImageView *imageV = [[UIImageView alloc] initWithFrame:CGRectMake(space+(2*space+0.5+imgW)*i, 10, imgW, imgH)];
         imageV.contentMode = UIViewContentModeScaleAspectFill;
+        [imageV sd_setImageWithURL:[NSURL URLWithString:obj.pic] placeholderImage:nil];
         [_scrollView addSubview:imageV];
         
         UILabel *label1 = [[UILabel alloc] initWithFrame:CGRectMake((elemtWidth+0.5)*i, CGRectGetMaxY(imageV.frame)+10, elemtWidth, 10)];

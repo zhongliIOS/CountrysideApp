@@ -8,6 +8,8 @@
 
 #import "MyFavViewController.h"
 #import "GetFavoritesAction.h"
+#import "DeleteCollectAction.h"
+#import "GoodsDetailViewController.h"
 #import "FavCell.h"
 
 @interface MyFavViewController ()<UITableViewDataSource,UITableViewDelegate>
@@ -28,6 +30,7 @@
         return;
     }
     
+    [_objectList ClearAll];
     [act DoActionWithSuccess:^(MyActionBase *action, id responseObject, AFHTTPRequestOperation *operation) {
         MyResponeResult *result = [MyResponeResult createWithResponeObject:responseObject];
         if ([result get_error_code]==kServerErrorCode_OK) {
@@ -47,14 +50,36 @@
     } Failure:^(MyActionBase *action, NSError *error, AFHTTPRequestOperation *operation) {
         
     }];
-
     
 }
 
+-(void)DeleteWithGuid:(NSNumber *)num
+{
+    DeleteCollectAction *act = [[DeleteCollectAction alloc] initWithCollectId:num];
+    if (!act.isValid) {
+        return;
+    }
+   [act DoActionWithSuccess:^(MyActionBase *action, id responseObject, AFHTTPRequestOperation *operation) {
+       MyResponeResult *result = [MyResponeResult createWithResponeObject:responseObject];
+       [LUnity showErrorHUDViewAtView:self.view WithTitle:[result get_messge]];
+       if ([result get_error_code]==kServerErrorCode_OK) {
+           [self downLoadData];
+       }
+       
+   } Failure:^(MyActionBase *action, NSError *error, AFHTTPRequestOperation *operation) {
+       
+   }];
+
+}
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self downLoadData];
+  
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     _objectList = [[ObjectList alloc]init];
-    [self downLoadData];
     [self createNavBar];
     [self configNavBar];
     [self createTableView];
@@ -90,6 +115,10 @@
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     [cell fillDataWithModel:(ObjProduct *)[_objectList GetIndexAt:indexPath.row WithIsDESC:YES]];
+    [cell setDeleteClick:^{
+        ObjProduct *product = (ObjProduct *)[_objectList GetIndexAt:indexPath.row WithIsDESC:YES];
+        [self DeleteWithGuid:product.guid];
+    }];
     return cell;
     
 }
@@ -100,6 +129,15 @@
     return 55.0;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    ObjProduct *product = (ObjProduct *)[_objectList GetIndexAt:indexPath.row WithIsDESC:YES];
+    GoodsDetailViewController *vc = [[GoodsDetailViewController alloc]init];
+    vc.productId = product.proId;
+    [self.navigationController pushViewController:vc animated:YES];
+
+}
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
