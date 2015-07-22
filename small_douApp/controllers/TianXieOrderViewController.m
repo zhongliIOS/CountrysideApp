@@ -82,6 +82,16 @@
     self.leftBtn.hidden = NO;
     
 }
+-(NSString *)getStringWithArr:(NSArray *)arr
+{
+    CGFloat allPrice = 0.0;
+    for (ObjPostOrder *obj in arr) {
+        ObjProductDetail *product = obj.product;
+        allPrice += [product.price floatValue]*[obj.num integerValue];
+    }
+    return  [NSString stringWithFormat:@"实付款￥%.2f",allPrice];
+
+}
 -(void)createFootView
 {
     UIView *footView = [[UIView alloc] initWithFrame:CGRectMake(0, ScreenH-45.0, ScreenW, 45.0)];
@@ -95,7 +105,7 @@
     _priceLabel = [[UILabel alloc] initWithFrame:CGRectMake(leftSpace, 1, 200, 44.0)];
     _priceLabel.font = [UIFont systemFontOfSize:size_font2];
     _priceLabel.textColor = color_font_red;
-    _priceLabel.text = @"实付款：￥226.00";
+    _priceLabel.text = [self getStringWithArr:_productsArr];
     
     UIButton *buyBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     buyBtn.tintColor = [UIColor whiteColor];

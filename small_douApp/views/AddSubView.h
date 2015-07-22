@@ -10,6 +10,7 @@
 
 @interface AddSubView : UIView
 
+@property(nonatomic,assign)NSInteger currentCount;
 @property(nonatomic,copy)void(^addClick)(NSInteger );
 @property(nonatomic,copy)void(^subClick)(NSInteger );
 

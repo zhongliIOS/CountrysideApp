@@ -14,6 +14,8 @@
     UIImageView *_imageV;
     UILabel *_titleLabel;
     UILabel *_priceLabel;
+    AddSubView *_customView;
+    UIButton *_choiceBtn;
 }
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -36,17 +38,17 @@
     line.backgroundColor = color_line2;
     [mainView addSubview:line];
     
-    UIButton *choiceBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    choiceBtn.frame = CGRectMake(leftSpace, 17.5, 20, 20);
-    choiceBtn.layer.cornerRadius = 7.5;
-    choiceBtn.layer.masksToBounds = YES;
+    _choiceBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    _choiceBtn.frame = CGRectMake(leftSpace, 17.5, 20, 20);
+    _choiceBtn.layer.cornerRadius = 7.5;
+    _choiceBtn.layer.masksToBounds = YES;
     
-    [choiceBtn setImage:[UIImage imageNamed:@"weixuanzhong"] forState:UIControlStateNormal];
-        [choiceBtn setImage:[UIImage imageNamed:@"xuanzhong"] forState:UIControlStateSelected];
-    [choiceBtn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
-    [mainView addSubview:choiceBtn];
+    [_choiceBtn setImage:[UIImage imageNamed:@"weixuanzhong"] forState:UIControlStateNormal];
+        [_choiceBtn setImage:[UIImage imageNamed:@"xuanzhong"] forState:UIControlStateSelected];
+    [_choiceBtn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [mainView addSubview:_choiceBtn];
     
-    _imageV = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(choiceBtn.frame)+10, (55.0-imgVH)/2, imgVH, imgVH)];
+    _imageV = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_choiceBtn.frame)+10, (55.0-imgVH)/2, imgVH, imgVH)];
     _imageV.layer.cornerRadius = 3.0;
     _imageV.layer.masksToBounds = YES;
     _imageV.layer.borderWidth = 0.5;
@@ -65,19 +67,18 @@
     _priceLabel.text = @"￥100.00";
     [mainView addSubview:_priceLabel];
     
-    AddSubView *customView = [[AddSubView alloc] initWithFrame:CGRectMake(ScreenW-90, 17.5, 85, 25)];
-    [customView setAddClick:^(NSInteger num) {
+    _customView = [[AddSubView alloc] initWithFrame:CGRectMake(ScreenW-90, 17.5, 85, 25)];
+    [_customView setAddClick:^(NSInteger num) {
         if (_CallBackCount) {
             _CallBackCount(num);
         }
     }];
-    [customView setSubClick:^(NSInteger num) {
+    [_customView setSubClick:^(NSInteger num) {
         if (_CallBackCount) {
             _CallBackCount(num);
         }
     }];
-    [mainView addSubview:customView];
-    
+    [mainView addSubview:_customView];
 }
 
 -(void)fillDataWithModel:(ObjGoodCar *)obj
@@ -88,7 +89,8 @@
     [_imageV sd_setImageWithURL:[NSURL URLWithString:obj.pic] placeholderImage:nil];
     _titleLabel.text = obj.name;
     _priceLabel.text = [NSString stringWithFormat:@"￥%.2f",[obj.price floatValue]];
-
+    _customView.currentCount = [obj.num integerValue];
+    _choiceBtn.selected = obj.isSelected;
 }
 
 -(void)btnClick:(UIButton *)btn

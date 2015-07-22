@@ -10,7 +10,6 @@
 
 @implementation AddSubView
 {
-    NSInteger _currentCount;
     UILabel *_label;
 }
 -(instancetype)initWithFrame:(CGRect)frame
@@ -50,6 +49,13 @@
         [self addSubview:line];
     }
     
+}
+
+-(void)setCurrentCount:(NSInteger)currentCount
+{
+    _currentCount = currentCount;
+    _label.text = [NSString stringWithFormat:@"%lu",_currentCount];
+
 }
 
 -(void)click:(UIButton *)btn

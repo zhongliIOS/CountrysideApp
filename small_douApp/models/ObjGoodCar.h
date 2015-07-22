@@ -11,5 +11,6 @@
 @interface ObjGoodCar : ObjProduct
 
 @property(nonatomic,copy)NSString *num;
+@property(nonatomic,assign)BOOL isSelected;
 
 @end

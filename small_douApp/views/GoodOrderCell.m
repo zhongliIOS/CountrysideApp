@@ -64,7 +64,7 @@
     _priceLabel.text = @"￥100.00";
     [mainView addSubview:_priceLabel];
     
-    _yuanJiaLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_imageV.frame)+10, CGRectGetMaxY(_titleLabel.frame)+7, 150, 12)];
+    _yuanJiaLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_priceLabel.frame)+10, CGRectGetMaxY(_titleLabel.frame)+7, 150, 12)];
     _yuanJiaLabel.font = [UIFont systemFontOfSize:size_font4];
     _yuanJiaLabel.textColor = color_font_red;
     _yuanJiaLabel.text = @"￥110.00";
