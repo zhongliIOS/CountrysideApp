@@ -44,6 +44,8 @@
 		C3EA5CA61B383B460043C3E9 /* OrderSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EA5CA51B383B460043C3E9 /* OrderSearchController.m */; };
 		C3EA5CA91B383E190043C3E9 /* OrderSumarryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EA5CA81B383E190043C3E9 /* OrderSumarryCell.m */; };
 		C3EA5CAC1B384D810043C3E9 /* UserDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EA5CAB1B384D810043C3E9 /* UserDetailViewController.m */; };
+		CA07FEDE1B608AD00011C07F /* GetProductListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = CA07FEDD1B608AD00011C07F /* GetProductListAction.m */; };
+		CA07FEE11B609B590011C07F /* ProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA07FEE01B609B590011C07F /* ProductCell.m */; };
 		CA14CCE51B53860100C6F087 /* DeleteCollectAction.m in Sources */ = {isa = PBXBuildFile; fileRef = CA14CCE41B53860100C6F087 /* DeleteCollectAction.m */; };
 		CA14CCE81B5389F000C6F087 /* GetFavoritesAction.m in Sources */ = {isa = PBXBuildFile; fileRef = CA14CCE71B5389F000C6F087 /* GetFavoritesAction.m */; };
 		CA1B7ED61B5DD5DE00F2B40B /* userBg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CA1B7ED51B5DD5DE00F2B40B /* userBg.jpg */; };
@@ -215,6 +217,10 @@
 		C3EA5CA81B383E190043C3E9 /* OrderSumarryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderSumarryCell.m; sourceTree = "<group>"; };
 		C3EA5CAA1B384D810043C3E9 /* UserDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDetailViewController.h; sourceTree = "<group>"; };
 		C3EA5CAB1B384D810043C3E9 /* UserDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDetailViewController.m; sourceTree = "<group>"; };
+		CA07FEDC1B608AD00011C07F /* GetProductListAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetProductListAction.h; sourceTree = "<group>"; };
+		CA07FEDD1B608AD00011C07F /* GetProductListAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetProductListAction.m; sourceTree = "<group>"; };
+		CA07FEDF1B609B590011C07F /* ProductCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductCell.h; sourceTree = "<group>"; };
+		CA07FEE01B609B590011C07F /* ProductCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductCell.m; sourceTree = "<group>"; };
 		CA14CCE31B53860100C6F087 /* DeleteCollectAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeleteCollectAction.h; sourceTree = "<group>"; };
 		CA14CCE41B53860100C6F087 /* DeleteCollectAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeleteCollectAction.m; sourceTree = "<group>"; };
 		CA14CCE61B5389F000C6F087 /* GetFavoritesAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetFavoritesAction.h; sourceTree = "<group>"; };
@@ -528,6 +534,8 @@
 				CA258F3D1B42390E00BDD2F3 /* LogOutAction.m */,
 				CA9A5E2B1B44DCD800AD9DB1 /* GetMyInfoAction.h */,
 				CA9A5E2C1B44DCD800AD9DB1 /* GetMyInfoAction.m */,
+				CA07FEDC1B608AD00011C07F /* GetProductListAction.h */,
+				CA07FEDD1B608AD00011C07F /* GetProductListAction.m */,
 				CA9A5E311B450E3D00AD9DB1 /* GetMyGoodsCarAction.h */,
 				CA9A5E321B450E3D00AD9DB1 /* GetMyGoodsCarAction.m */,
 				CA9A5E371B4532A400AD9DB1 /* GetReviewsAction.h */,
@@ -891,6 +899,8 @@
 				CA1E634B1B32C8AC00EE4EE7 /* UserNameCell.m */,
 				CA1E634D1B32C8BC00EE4EE7 /* UserOtherCell.h */,
 				CA1E634E1B32C8BC00EE4EE7 /* UserOtherCell.m */,
+				CA07FEDF1B609B590011C07F /* ProductCell.h */,
+				CA07FEE01B609B590011C07F /* ProductCell.m */,
 				CAB4D3CA1B33C9CA00A998E5 /* GoodHeadCell.h */,
 				CAB4D3CB1B33C9CA00A998E5 /* GoodHeadCell.m */,
 				CAB4D3CD1B33E7F700A998E5 /* GoodDescribleCell.h */,
@@ -1212,6 +1222,7 @@
 				CAD7F1B31B31198F00DD94FC /* AddSubView.m in Sources */,
 				CA87509F1B3CF50D0089F693 /* AreaInfo.m in Sources */,
 				C33B83731B28895E0020F76E /* LTableViewController.m in Sources */,
+				CA07FEDE1B608AD00011C07F /* GetProductListAction.m in Sources */,
 				CA1E2AA61B46798C00DB835C /* CategoryCell.m in Sources */,
 				CA8EBBAC1B3BA7E500444BD2 /* ObjCustomer.m in Sources */,
 				C31C254F1B2895AD00BD8435 /* CountryTabBarController.m in Sources */,
@@ -1219,6 +1230,7 @@
 				CA30AC681B4BD0A600732ED3 /* GetGoodsDetailAction.m in Sources */,
 				CA1E2AA31B4673ED00DB835C /* ObjCategory.m in Sources */,
 				CA3A862B1B3A7CF9005848C0 /* EvaluationLevelCell.m in Sources */,
+				CA07FEE11B609B590011C07F /* ProductCell.m in Sources */,
 				CA8EBBBE1B3BF49200444BD2 /* GetAreasAction.m in Sources */,
 				C33B837C1B288BAB0020F76E /* ObjBase.m in Sources */,
 				CA9A5E391B4532A400AD9DB1 /* GetReviewsAction.m in Sources */,

@@ -31,7 +31,7 @@
 /**
  *  分页每页的大小，排序
  */
-#define sizecount 20
+#define sizecount 1
 #define sortDesc @"desc"
 /**
 *  标题字体

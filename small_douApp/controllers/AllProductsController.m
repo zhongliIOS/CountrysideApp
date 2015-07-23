@@ -7,10 +7,14 @@
 //
 
 #import "AllProductsController.h"
+#import "ProductCell.h"
+#import "GetProductListAction.h"
 
 @interface AllProductsController ()<UITableViewDataSource,UITableViewDelegate>
 {
     UITableView *_tableView;
+    NSInteger _currentPage;
+    ObjectList *_productList;
 }
 @end
 
@@ -19,12 +23,33 @@
 
 -(void)initData
 {
-  
-
+    GetProductListAction *act = [[GetProductListAction alloc] initWithTypeId:nil page:nil size:nil sort:nil name:nil];
+    if (!act.isValid) {
+        return;
+    }
+    [act DoActionWithSuccess:^(MyActionBase *action, id responseObject, AFHTTPRequestOperation *operation) {
+        MyResponeResult *result = [MyResponeResult createWithResponeObject:responseObject];
+        if ([result get_error_code]==kServerErrorCode_OK) {
+            NSArray *arr = [[result try_get_data_with_dict] objectForKey:@"rows"];
+            if (arr) {
+                for (NSDictionary *dic in arr) {
+                    ObjProduct *obj = [[ObjProduct alloc] initWithDirectory:dic];
+                    [_productList Add:obj];
+                }
+                [_tableView reloadData];
+            }
+        }
+        else
+            [LUnity showErrorHUDViewAtView:self.view WithTitle:[result get_messge]];
+        
+    } Failure:^(MyActionBase *action, NSError *error, AFHTTPRequestOperation *operation) {
+        
+    }];
 
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _productList = [[ObjectList alloc]init];
     [self initData];
     [self createNavBar];
     [self configNavBar];
@@ -51,7 +76,34 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.row==0) {
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
+        if (!cell) {
+            cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"UITableViewCell"];
+            cell.backgroundColor = [UIColor clearColor];
+            for (int i=0; i<3; i++) {
+                UIButton *btn = [UIButton buttonWithType:UIButtonTypeSystem];
+                btn.frame =  CGRectMake(15, 10, 70, 30);
+                btn.backgroundColor = [UIColor whiteColor];
+                btn.layer.cornerRadius = 5.0;
+                btn.layer.masksToBounds = YES;
+                [cell.contentView addSubview:btn];
+            }
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
+    }
+    else
+    {
+        ProductCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ProductCell"];
+        if (!cell) {
+            cell = [[ProductCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"ProductCell"];
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        [cell fillDataWithModel:(ObjProduct *)[_productList GetIndexAt:indexPath.row-1 WithIsDESC:YES]];
+        return cell;
     
+    }
     return nil;
 }
 
@@ -59,14 +111,14 @@
 {
 
     
-    return 44.0;
+    return 50.0;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
     
-    return 0;
+    return [_productList GetCount]+1;
     
     
 }

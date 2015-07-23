@@ -38,6 +38,7 @@
     }
     [act DoActionWithSuccess:^(MyActionBase *action, id responseObject, AFHTTPRequestOperation *operation) {
         MyResponeResult *result = [MyResponeResult createWithResponeObject:responseObject];
+        [_tableView.infiniteScrollingView stopAnimating];
         if ([result get_error_code]==kServerErrorCode_OK) {
             NSArray *arr = [[result try_get_data_with_dict] objectForKey:@"rows"];
             if (arr) {
@@ -54,7 +55,8 @@
         }
         
     } Failure:^(MyActionBase *action, NSError *error, AFHTTPRequestOperation *operation) {
-        
+        [_tableView.infiniteScrollingView stopAnimating];
+
     }];
 }
 
@@ -73,6 +75,10 @@
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.dataSource = self;
     _tableView.delegate = self;
+    [_tableView addInfiniteScrollingWithActionHandler:^{
+        _currentPage++;
+        [self initData];
+    }];
     [self.view addSubview:_tableView];
 }
 #pragma mark----tableViewDelegate

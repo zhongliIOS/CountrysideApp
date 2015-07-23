@@ -9,6 +9,7 @@
 #import "MainViewController.h"
 #import "SearchGoodsViewController.h"
 #import "GoodsDetailViewController.h"
+#import "AllProductsController.h"
 #import "MainHeadViewCell.h"
 #import "MainTuiJianCell.h"
 #import "MainAllCell.h"
@@ -144,8 +145,8 @@
 -(void)clickViewAllProducts
 {
    //查看全部商品
-
-
+    AllProductsController *vc = [[AllProductsController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
 
 }
 #pragma mark----tableviewDelegate
