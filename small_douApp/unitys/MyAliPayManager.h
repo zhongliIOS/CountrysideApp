@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-//#import "ObjPay.h"
 
 typedef unsigned int ShareType;
 
@@ -20,6 +19,7 @@ typedef void(^BackPublishContentEventHandler) (BOOL end);
 +(MyAliPayManager *)defultManager;
 
 -(void)backInfoWith:(BOOL)payResult;
-//-(void)PayWithInfo:(id )obj result:(BackPublishContentEventHandler)result;
+-(void)PayWithInfo:(NSDictionary *)dic result:(BackPublishContentEventHandler)result;
+-(void)PayWithOrderString:(NSString *)orderString result:(BackPublishContentEventHandler)result;
 
 @end

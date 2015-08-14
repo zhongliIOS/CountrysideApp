@@ -148,7 +148,7 @@ CGFloat  imageH = 160.0;
     _evaluationLabel = [[UILabel alloc]initWithFrame:CGRectMake(leftSpace, 0.5, 200, 35)];
     _evaluationLabel.font = [UIFont systemFontOfSize:size_font2];
     _evaluationLabel.textColor = color_font_black;
-    _evaluationLabel.text = @"好评数：200";
+    _evaluationLabel.text = @"评论数：200";
     [evaluationBg addSubview:_evaluationLabel];
     
     _pingJILabel = [[UILabel alloc]initWithFrame:CGRectMake(200, 0.5, 100, 35)];

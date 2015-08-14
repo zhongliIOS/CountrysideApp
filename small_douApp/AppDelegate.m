@@ -10,6 +10,10 @@
 #import "GetAreasAction.h"
 #import "CountryTabBarController.h"
 #import "LoginViewController.h"
+#import "MyAliPayManager.h"
+#import "MyWeChatPayManager.h"
+#import "PayViewController.h"
+#import <AlipaySDK/AlipaySDK.h>
 
 @interface AppDelegate ()
 
@@ -23,17 +27,18 @@
 
    [self getAreaInfo];
 //
-//    CountryTabBarController *vc = [[CountryTabBarController alloc] init];
+//    PayViewController *vc = [[PayViewController alloc] init];
 //    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:vc];
 //    navi.navigationBarHidden = YES;
 //    self.window.rootViewController = navi;
 //    [self.window makeKeyAndVisible];
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    [self initWindowBackgroundColor];
+    UIViewController *vc = [[UIViewController alloc]init];
+    self.window.rootViewController = vc;
+    [self initWindowBackgroundColorwithView:vc.view];
     [self.window makeKeyAndVisible];
     //尝试自动登陆
     [self isHasAutoLogin];
-
+    
     return YES;
 }
 
@@ -49,7 +54,7 @@
     return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     
 }
-- (void)initWindowBackgroundColor
+- (void)initWindowBackgroundColorwithView:(UIView *)view
 {
     UIImage *image;
     if(ScreenH==568){
@@ -61,7 +66,7 @@
     else{
         image = [UIImage imageNamed:@"Default"];
     }
-    self.window.backgroundColor = [UIColor colorWithPatternImage:image];
+    view.backgroundColor = [UIColor colorWithPatternImage:image];
 }
 
 -(void)getAreaInfo
@@ -124,7 +129,7 @@
     navi.navigationBarHidden = YES;
     self.window.rootViewController = navi;
     self.window.backgroundColor = [UIColor grayColor];
-
+    [self.window makeKeyAndVisible];
 }
 
 -(void)pushTabBarVC
@@ -134,7 +139,22 @@
     navi.navigationBarHidden = YES;
     self.window.rootViewController = navi;
     self.window.backgroundColor = [UIColor grayColor];
+//    [self.window makeKeyAndVisible];
 
+}
+
+-(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    if ([url.host isEqualToString:@"safepay"]) {
+        
+        [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
+            
+            
+        }];
+        
+    }
+    
+    return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

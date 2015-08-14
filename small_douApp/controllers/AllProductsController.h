@@ -10,4 +10,6 @@
 
 @interface AllProductsController : LBaseViewController
 
+@property(nonatomic,strong)ObjCategory *categoryObj;
+
 @end

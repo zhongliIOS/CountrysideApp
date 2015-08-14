@@ -31,6 +31,7 @@
             [self.parameters setObject:name forKey:@"name"];
         }
     }
+    self.isValid = YES;
     return self;
 }
 

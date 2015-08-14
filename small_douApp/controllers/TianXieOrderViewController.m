@@ -37,6 +37,19 @@
     _tempAreaId = _currentAreaId;
     _areaList = [[AreaInfo areaInfo] dataList];
 }
+
+-(void)setOrder:(ObjOrder *)order
+{
+    if (order) {
+        _order = order;
+    }
+    if ([_order.status isEqualToString:OrderStatusWaitPay]) {
+        
+    }
+}
+
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initData];
@@ -111,6 +124,7 @@
     buyBtn.tintColor = [UIColor whiteColor];
     buyBtn.frame = CGRectMake(ScreenW-128, 5, 118, 35);
     buyBtn.backgroundColor = color_btn_red;
+    
     [buyBtn setTitle:@"立即支付" forState:UIControlStateNormal];
     [buyBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     buyBtn.titleLabel.font = [UIFont systemFontOfSize:size_font2];
@@ -140,20 +154,24 @@
         NSDictionary *dic = @{@"proId":obj.product.guid,@"num":obj.num};
         [arr addObject:dic];
     }
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     NSDictionary *dataDic = @{@"list":arr,@"cuId":user.guid,@"tel":user.tel,@"area":_currentAreaId};
     [self postWithBodyDic:dataDic andUrl:@"/orders/submit" success:^(id responseObject, AFHTTPRequestOperation *operation) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         MyResponeResult *result = [MyResponeResult createWithResponeObject:responseObject];
         if ([result get_error_code]==kServerErrorCode_OK) {
             _payDic = [result try_get_data_with_dict];
+            ObjOrder *order = [[ObjOrder alloc] initWithDirectory:_payDic];
             PayViewController *vc = [[PayViewController alloc] init];
-            vc.payDic = _payDic;
+            vc.orderObj = order;
             [self.navigationController pushViewController:vc animated:YES];
         }
         else
             [LUnity showErrorHUDViewAtView:self.view WithTitle:[result get_messge]];
     } fail:^(NSError *error, AFHTTPRequestOperation *operation) {
-        
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     }];
+
 }
 
 #pragma mark----tableViewDelegate

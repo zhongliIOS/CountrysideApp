@@ -44,7 +44,7 @@
             
             UILabel *detailLabel = [[UILabel alloc]initWithFrame:CGRectMake(ScreenW-210, 55*j, 200, 55)];
             detailLabel.font = [UIFont systemFontOfSize:size_font2];
-            detailLabel.text = @"18321538808";
+            detailLabel.text = @"";
             detailLabel.textAlignment = NSTextAlignmentRight;
             [bgView addSubview:detailLabel];
             detailLabel.textColor = i==0?color_font_gray1:color_font_red;
@@ -54,11 +54,15 @@
             }else if (c==1)
             {
                 _areaDetailLabel = detailLabel;
+                _areaDetailLabel.frame = CGRectMake(ScreenW-240, 55*j, 200, 55);
                 detailLabel.userInteractionEnabled = YES;
                 UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-                btn.frame = detailLabel.bounds;
+                btn.frame = CGRectMake(0, 55*j, ScreenW, 55);
                 [btn addTarget:self action:@selector(clickArea) forControlEvents:UIControlEventTouchUpInside];
-                [_areaDetailLabel addSubview:btn];
+                [bgView addSubview:btn];
+                UIImageView *nextImageV = [[UIImageView alloc] initWithFrame:CGRectMake(ScreenW-30, 19,20 , 17)];
+                nextImageV.image=[UIImage imageNamed:@"xiala"];
+                [btn addSubview:nextImageV];
             }
             else if (c==2)
             {

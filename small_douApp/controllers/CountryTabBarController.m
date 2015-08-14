@@ -30,9 +30,21 @@
     }
     return self;
 }
+
+-(void)hideTabBar
+{
+    _tabBar.hidden = YES;
+}
+-(void)showTabBar
+{
+    _tabBar.hidden = NO;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tabBar.hidden = YES;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideTabBar) name:NotificationHideTabBar object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showTabBar) name:NotificationShowTabBar object:nil];
+
     [self createTabBar];
     [self createTabs];
     [self createViewControllers];
@@ -85,6 +97,12 @@
     NSArray *controllersArr = @[@"MainViewController",@"FenLeiVIewController",@"GoodsCarViewController",@"UserViewController"];
     for (int i=0; i<4; i++) {
         UIViewController *vc = [[NSClassFromString(controllersArr[i]) alloc] init];
+//        if (i==0) {
+//            UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:vc];
+//            navi.navigationBarHidden = YES;
+//            [controllers addObject:navi];
+//        }
+//        else
         [controllers addObject:vc];
     }
     self.viewControllers = controllers;

@@ -94,7 +94,6 @@
         _searchBar.frame = CGRectMake(0, 20, ScreenW, 44);
         self.view.backgroundColor = [UIColor colorWithRed:230.0/255 green:230.0/255 blue:230.0/255 alpha:1.0];
         self.navBar.hidden = YES;
-        
     }];
 }
 - (void)searchDisplayControllerWillEndSearch:(UISearchDisplayController *)controller{
@@ -103,7 +102,6 @@
         self.view.backgroundColor = color_bg;
         self.navBar.hidden = NO;
     }];
-    
 }
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
     
@@ -119,7 +117,6 @@
             [_areaSearchList Add:obj];
         }
     }
-    
 }
 
 #pragma mark----tableViewDelegate
@@ -162,7 +159,6 @@
         cell.textLabel.textColor = color_font_gray1;
         cell.textLabel.font = [UIFont systemFontOfSize:size_font1];
         return cell;
-    
     }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -242,7 +238,10 @@
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    if (_tableView==tableView) {
+        return 35.0;
+
+    }
     return 35.0;
 }
 -(void)saveAreaWith:(ObjArea *)area

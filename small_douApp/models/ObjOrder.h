@@ -14,6 +14,10 @@
 @property(nonatomic,copy)NSString *code;
 @property(nonatomic,copy)NSString *cuId;
 @property(nonatomic,copy)NSString *desc;
+@property(nonatomic,copy)NSString *area;
+@property(nonatomic,copy)NSString *tel;
+
+
 /**
  *  订单生成时间
  */

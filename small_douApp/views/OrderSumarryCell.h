@@ -11,4 +11,6 @@
 @interface OrderSumarryCell : UITableViewCell
 //所有订单cell
 
+-(void)fillDataWithModel:(ObjOrder *)model;
+
 @end

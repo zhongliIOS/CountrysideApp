@@ -32,7 +32,7 @@
 
 -(void)initData
 {
-    GetReviewsAction *act = [[GetReviewsAction alloc] initWithProId:_proId page:[NSNumber numberWithInteger:_currentPage] size:[NSNumber numberWithInteger:sizecount] sort:sortDesc];
+    GetReviewsAction *act = [[GetReviewsAction alloc] initWithProId:_proId page:[NSNumber numberWithInteger:_currentPage] size:sizecount sort:sortDesc];
     if (!act.isValid) {
         return;
     }
@@ -50,13 +50,10 @@
             }
         }
         else
-        {
-            [LUnity showErrorHUDViewAtView:self.view WithTitle:[result get_messge]];
+        {               [LUnity showErrorHUDViewAtView:self.view WithTitle:[result get_messge]];
         }
-        
     } Failure:^(MyActionBase *action, NSError *error, AFHTTPRequestOperation *operation) {
         [_tableView.infiniteScrollingView stopAnimating];
-
     }];
 }
 

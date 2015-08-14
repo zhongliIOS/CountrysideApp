@@ -9,6 +9,7 @@
 #import "FenLeiVIewController.h"
 #import "CategoryCell.h"
 #import "GetCategorysAction.h"
+#import "AllProductsController.h"
 
 @interface FenLeiVIewController()<UISearchBarDelegate,UISearchDisplayDelegate,UITableViewDelegate,UITableViewDataSource>
 {
@@ -37,7 +38,6 @@
                 [_dataArray addObject:obj];
                 [_tableView reloadData];
             }
-            
         }
         else
             [LUnity showErrorHUDViewAtView:self.view WithTitle:[result get_messge]];
@@ -83,7 +83,7 @@
     _searchBar.tintColor = color_blue1;
     _searchBar.keyboardType = UIKeyboardTypeDefault;
     self.view.autoresizingMask = UIViewAutoresizingFlexibleHeight;
-    [self.view addSubview:_searchBar];
+//    [self.view addSubview:_searchBar];
 
 }
 
@@ -97,13 +97,12 @@
 }
 -(void)createTableView
 {
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, TopHeight+44, ScreenW, ScreenH-TopHeight-44)];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, TopHeight, ScreenW, ScreenH-TopHeight)];
     _tableView.backgroundColor = [UIColor clearColor];
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     _tableView.dataSource = self;
     _tableView.delegate = self;
     [self.view addSubview:_tableView];
-
 }
 
 #pragma mark - UISearchDisplayDelegate
@@ -176,8 +175,11 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    ObjCategory *obj =  _dataArray[indexPath.row];
+    AllProductsController *vc = [[AllProductsController alloc]init];
+    vc.categoryObj = obj;
+    [self.navigationController pushViewController:vc animated:YES];
     
-
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {

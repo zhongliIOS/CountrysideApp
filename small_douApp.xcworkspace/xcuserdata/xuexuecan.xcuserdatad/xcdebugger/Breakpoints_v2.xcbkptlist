@@ -9,7 +9,7 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "small_douApp/LBaseViewController.m"
+            filePath = "small_douApp/LBaseViewController.mm"
             timestampString = "459142282.156001"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"

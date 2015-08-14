@@ -89,7 +89,8 @@
         }
         
         [bgview addSubview:tf];
-    }
+    } 
+    
     
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     _getYZM = btn;
@@ -112,7 +113,6 @@
     [loginBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     loginBtn.titleLabel.font = [UIFont systemFontOfSize:size_font1];
     [loginBtn addTarget:self action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
-
     [_mainScrollView addSubview:loginBtn];
 }
 

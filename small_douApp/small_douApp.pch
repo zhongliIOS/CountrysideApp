@@ -31,7 +31,7 @@
 /**
  *  分页每页的大小，排序
  */
-#define sizecount 1
+#define sizecount @10
 #define sortDesc @"desc"
 /**
 *  标题字体
@@ -128,6 +128,12 @@
 #define My_phone @"phoneNum"
 
 #define NotificationUpdateMyInfo @"NotificationUpdateMyInfo"
+#define NotificationShowTabBar @"NotificationShowTabBar"
+#define NotificationHideTabBar @"NotificationHideTabBar"
 
+#define OrderStatusWaitPay @"waitpay"
+#define OrderStatusPeiSongzhong @"peisongzhong"
+#define OrderStatusDaiPingjia @"daipingjia"
+#define OrderStatusCompleted @"completed"
 
 #endif

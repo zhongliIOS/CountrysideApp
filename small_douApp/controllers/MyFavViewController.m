@@ -69,13 +69,11 @@
    } Failure:^(MyActionBase *action, NSError *error, AFHTTPRequestOperation *operation) {
        
    }];
-
 }
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     [self downLoadData];
-  
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -95,7 +93,6 @@
 
 -(void)createTableView
 {
-    
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, TopHeight, ScreenW, ScreenH-TopHeight)];
     _tableView.backgroundColor = [UIColor clearColor];
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -108,7 +105,6 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     FavCell *cell = [tableView dequeueReusableCellWithIdentifier:@"FavCell"];
     if (!cell) {
         cell = [[FavCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"FavCell"];
@@ -119,8 +115,8 @@
         ObjProduct *product = (ObjProduct *)[_objectList GetIndexAt:indexPath.row WithIsDESC:YES];
         [self DeleteWithGuid:product.guid];
     }];
-    return cell;
     
+    return cell;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

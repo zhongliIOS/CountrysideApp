@@ -8,17 +8,57 @@
 
 #import "OrderSearchController.h"
 #import "OrderSumarryCell.h"
+#import "GetOrderListAction.h"
+#import "DeleteOrderAction.h"
+#import "ObjOrder.h"
+#import "PayViewController.h"
+#import "TianXieOrderViewController.h"
 
 @interface OrderSearchController ()<UITableViewDataSource,UITableViewDelegate>
 {
     UITableView *_tableView;
+    ObjectList *_objList;
 }
 @end
 
 @implementation OrderSearchController
 
+- (void)initData
+{
+    MyInfo *user = [MyInfo defaultMyInfo];
+    GetOrderListAction *act = [[GetOrderListAction alloc]initWithCuId:user.guid];
+    if (!act.isValid) {
+        return;
+    }
+    [_objList ClearAll];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [act DoActionWithSuccess:^(MyActionBase *action, id responseObject, AFHTTPRequestOperation *operation) {
+        MyResponeResult *result = [MyResponeResult createWithResponeObject:responseObject];
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        if ([result get_error_code]==kServerErrorCode_OK) {
+            NSArray *arr = [result try_get_data_with_array];
+            if (arr) {
+                for (NSDictionary *dic in arr) {
+                    ObjOrder *obj = [[ObjOrder alloc] initWithDirectory:dic];
+                    [_objList Add:obj];
+                }
+                [_tableView reloadData];
+            }
+        }
+        else
+            [LUnity showErrorHUDViewAtView:self.view WithTitle:[result get_messge]];
+        
+    } Failure:^(MyActionBase *action, NSError *error, AFHTTPRequestOperation *operation) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+
+    }];
+
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _objList = [[ObjectList alloc] init];
+    [self initData];
     [self createNavBar];
     [self configNavBar];
     [self createTableView];
@@ -50,26 +90,68 @@
         cell = [[OrderSumarryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"OrderSumarryCell"];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    [cell fillDataWithModel:(ObjOrder *)[_objList GetIndexAt:indexPath.row WithIsDESC:YES]];
     return cell;
 
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
-        return 55.0;
+    
+    return 55.0;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
+    ObjOrder *order = (ObjOrder *)[_objList GetIndexAt:indexPath.row WithIsDESC:YES];
+    if ([order.status isEqualToString:@"waitpay"]||[order.status isEqualToString:@"completed"]||[order.status isEqualToString:@"yunsongzhong"]) {
+        TianXieOrderViewController *vc = [[TianXieOrderViewController alloc] init];
+        vc.order = order;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    else
+    {
+        PayViewController *vc = [[PayViewController alloc]init];
+        vc.orderObj = order;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    
+}
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    return UITableViewCellEditingStyleDelete;
     
 }
 
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    [self deleteWithOrderId:[(ObjOrder *)[_objList GetIndexAt:indexPath.row WithIsDESC:YES] guid]];
+    
+}
+
+-(void)deleteWithOrderId:(NSNumber *)num
+{
+    DeleteOrderAction *act = [[DeleteOrderAction alloc] initWithOrderId:num];
+    if (!act.isValid) {
+        return;
+    }
+    [act DoActionWithSuccess:^(MyActionBase *action, id responseObject, AFHTTPRequestOperation *operation) {
+        MyResponeResult *result = [MyResponeResult createWithResponeObject:responseObject];
+        if ([result get_error_code]==kServerErrorCode_OK) {
+            [self initData];
+        }
+        else
+            [LUnity showErrorHUDViewAtView:self.view WithTitle:[result get_messge]];
+    } Failure:^(MyActionBase *action, NSError *error, AFHTTPRequestOperation *operation) {
+        
+    }];
+}
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
     
-    return 2;
+    return [_objList GetCount];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -24,6 +24,7 @@
 
 @implementation GoodsDetailViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     _currentNum = 1;
@@ -83,7 +84,6 @@
     } fail:^(NSError *error, AFHTTPRequestOperation *operation) {
         
     }];
-
 }
 
 -(void)createTableView

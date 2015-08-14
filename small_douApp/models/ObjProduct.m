@@ -30,6 +30,8 @@
         self.sl = [self ReadField_String:data WithFieldName:@"sl"];
         self.typeId = [self ReadField_String:data WithFieldName:@"typeId"];
         self.pic = [self ReadField_String:data WithFieldName:@"pic"];
+        
+        self.num = [self ReadField_String:data WithFieldName:@"num"];
 
     }
 

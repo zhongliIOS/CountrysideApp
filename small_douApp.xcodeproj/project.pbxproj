@@ -23,7 +23,7 @@
 		C31C25491B288EC700BD8435 /* LUnity.m in Sources */ = {isa = PBXBuildFile; fileRef = C31C25481B288EC700BD8435 /* LUnity.m */; };
 		C31C254C1B2894B400BD8435 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C31C254B1B2894B400BD8435 /* LoginViewController.m */; };
 		C31C254F1B2895AD00BD8435 /* CountryTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C31C254E1B2895AD00BD8435 /* CountryTabBarController.m */; };
-		C33B83701B28894E0020F76E /* LBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C33B836F1B28894E0020F76E /* LBaseViewController.m */; };
+		C33B83701B28894E0020F76E /* LBaseViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C33B836F1B28894E0020F76E /* LBaseViewController.mm */; };
 		C33B83731B28895E0020F76E /* LTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C33B83721B28895E0020F76E /* LTableViewController.m */; };
 		C33B837B1B288BAB0020F76E /* JsonObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C33B83761B288BAB0020F76E /* JsonObject.m */; };
 		C33B837C1B288BAB0020F76E /* ObjBase.m in Sources */ = {isa = PBXBuildFile; fileRef = C33B83781B288BAB0020F76E /* ObjBase.m */; };
@@ -48,6 +48,12 @@
 		CA07FEE11B609B590011C07F /* ProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA07FEE01B609B590011C07F /* ProductCell.m */; };
 		CA14CCE51B53860100C6F087 /* DeleteCollectAction.m in Sources */ = {isa = PBXBuildFile; fileRef = CA14CCE41B53860100C6F087 /* DeleteCollectAction.m */; };
 		CA14CCE81B5389F000C6F087 /* GetFavoritesAction.m in Sources */ = {isa = PBXBuildFile; fileRef = CA14CCE71B5389F000C6F087 /* GetFavoritesAction.m */; };
+		CA15ADE11B6F0B81007364E9 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CA15ADDE1B6F0B81007364E9 /* libWeChatSDK.a */; };
+		CA15ADE31B6F0C86007364E9 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CA15ADE21B6F0C86007364E9 /* libsqlite3.0.dylib */; };
+		CA15ADE81B6F43A5007364E9 /* MyAliPayManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CA15ADE71B6F43A5007364E9 /* MyAliPayManager.m */; };
+		CA15ADEB1B6F4499007364E9 /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = CA15ADEA1B6F4499007364E9 /* Order.m */; };
+		CA15ADF11B6F4842007364E9 /* MyWeChatPayManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CA15ADF01B6F4842007364E9 /* MyWeChatPayManager.m */; };
+		CA15ADF31B6F50AB007364E9 /* img_checked_green_36x36.png in Resources */ = {isa = PBXBuildFile; fileRef = CA15ADF21B6F50AB007364E9 /* img_checked_green_36x36.png */; };
 		CA1B7ED61B5DD5DE00F2B40B /* userBg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CA1B7ED51B5DD5DE00F2B40B /* userBg.jpg */; };
 		CA1B7ED91B5E3EBF00F2B40B /* ObjGoodCar.m in Sources */ = {isa = PBXBuildFile; fileRef = CA1B7ED81B5E3EBF00F2B40B /* ObjGoodCar.m */; };
 		CA1E2A9C1B461F5D00DB835C /* GetMainData.m in Sources */ = {isa = PBXBuildFile; fileRef = CA1E2A9B1B461F5D00DB835C /* GetMainData.m */; };
@@ -85,7 +91,10 @@
 		CA3F2FF41B395A3E002B9B76 /* MyFavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3F2FF31B395A3E002B9B76 /* MyFavViewController.m */; };
 		CA3F2FF71B395C40002B9B76 /* FavCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3F2FF61B395C40002B9B76 /* FavCell.m */; };
 		CA40A29B1B58968D0059E587 /* ObjPostOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = CA40A29A1B58968D0059E587 /* ObjPostOrder.m */; };
+		CA6AD4541B6B42A3002756E7 /* GetOrderListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = CA6AD4531B6B42A3002756E7 /* GetOrderListAction.m */; };
+		CA6AD4571B6B4324002756E7 /* DeleteOrderAction.m in Sources */ = {isa = PBXBuildFile; fileRef = CA6AD4561B6B4324002756E7 /* DeleteOrderAction.m */; };
 		CA7955FA1B5CC602001D9DEA /* AllProductsController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA7955F91B5CC602001D9DEA /* AllProductsController.m */; };
+		CA79E7D81B7ADD2E0030CCCF /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CA79E7D71B7ADD2E0030CCCF /* AlipaySDK.bundle */; };
 		CA822C701B4E07CD008AB90E /* StarView.m in Sources */ = {isa = PBXBuildFile; fileRef = CA822C6F1B4E07CD008AB90E /* StarView.m */; };
 		CA822C801B4E4ADB008AB90E /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = CA822C7D1B4E4ADB008AB90E /* UIScrollView+SVInfiniteScrolling.m */; };
 		CA822C811B4E4ADB008AB90E /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = CA822C7F1B4E4ADB008AB90E /* UIScrollView+SVPullToRefresh.m */; };
@@ -127,11 +136,15 @@
 		CAB4D3CC1B33C9CA00A998E5 /* GoodHeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB4D3CB1B33C9CA00A998E5 /* GoodHeadCell.m */; };
 		CAB4D3CF1B33E7F700A998E5 /* GoodDescribleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB4D3CE1B33E7F700A998E5 /* GoodDescribleCell.m */; };
 		CAB4D3D21B33EC2C00A998E5 /* GoodPushCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB4D3D11B33EC2C00A998E5 /* GoodPushCell.m */; };
+		CAB5DF9E1B7C324F002B9ADA /* CreateAliOrderAction.m in Sources */ = {isa = PBXBuildFile; fileRef = CAB5DF9D1B7C324F002B9ADA /* CreateAliOrderAction.m */; };
 		CABC4F321B4AA273004050B4 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CABC4F2E1B4AA273004050B4 /* Default-568h@2x.png */; };
 		CABC4F331B4AA273004050B4 /* Default-480h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CABC4F2F1B4AA273004050B4 /* Default-480h@2x.png */; };
 		CABC4F341B4AA273004050B4 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CABC4F301B4AA273004050B4 /* Default@2x.png */; };
 		CABC4F351B4AA273004050B4 /* Default@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CABC4F311B4AA273004050B4 /* Default@3x.png */; };
 		CAD7F1B31B31198F00DD94FC /* AddSubView.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD7F1B21B31198F00DD94FC /* AddSubView.m */; };
+		CADB99E81B7D9C16004B110F /* OrderStatuesController.m in Sources */ = {isa = PBXBuildFile; fileRef = CADB99E71B7D9C16004B110F /* OrderStatuesController.m */; };
+		CADB99EB1B7DD63C004B110F /* GetOrderDetailAction.m in Sources */ = {isa = PBXBuildFile; fileRef = CADB99EA1B7DD63C004B110F /* GetOrderDetailAction.m */; };
+		CADB99EE1B7DD878004B110F /* ObjOrderDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = CADB99ED1B7DD878004B110F /* ObjOrderDetail.m */; };
 		CAF0AD6D1B27C89A00306D9E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF0AD6C1B27C89A00306D9E /* main.m */; };
 		CAF0AD701B27C89A00306D9E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF0AD6F1B27C89A00306D9E /* AppDelegate.m */; };
 		CAF0AD731B27C89A00306D9E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAF0AD721B27C89A00306D9E /* ViewController.m */; };
@@ -183,7 +196,7 @@
 		C31C254D1B2895AD00BD8435 /* CountryTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountryTabBarController.h; sourceTree = "<group>"; };
 		C31C254E1B2895AD00BD8435 /* CountryTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountryTabBarController.m; sourceTree = "<group>"; };
 		C33B836E1B28894E0020F76E /* LBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBaseViewController.h; sourceTree = "<group>"; };
-		C33B836F1B28894E0020F76E /* LBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBaseViewController.m; sourceTree = "<group>"; };
+		C33B836F1B28894E0020F76E /* LBaseViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LBaseViewController.mm; sourceTree = "<group>"; };
 		C33B83711B28895E0020F76E /* LTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTableViewController.h; sourceTree = "<group>"; };
 		C33B83721B28895E0020F76E /* LTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTableViewController.m; sourceTree = "<group>"; };
 		C33B83751B288BAB0020F76E /* JsonObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JsonObject.h; path = ../JsonObject.h; sourceTree = "<group>"; };
@@ -225,6 +238,17 @@
 		CA14CCE41B53860100C6F087 /* DeleteCollectAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeleteCollectAction.m; sourceTree = "<group>"; };
 		CA14CCE61B5389F000C6F087 /* GetFavoritesAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetFavoritesAction.h; sourceTree = "<group>"; };
 		CA14CCE71B5389F000C6F087 /* GetFavoritesAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetFavoritesAction.m; sourceTree = "<group>"; };
+		CA15ADDE1B6F0B81007364E9 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		CA15ADDF1B6F0B81007364E9 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		CA15ADE01B6F0B81007364E9 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		CA15ADE21B6F0C86007364E9 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		CA15ADE61B6F43A5007364E9 /* MyAliPayManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAliPayManager.h; sourceTree = "<group>"; };
+		CA15ADE71B6F43A5007364E9 /* MyAliPayManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAliPayManager.m; sourceTree = "<group>"; };
+		CA15ADE91B6F4499007364E9 /* Order.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Order.h; sourceTree = "<group>"; };
+		CA15ADEA1B6F4499007364E9 /* Order.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Order.m; sourceTree = "<group>"; };
+		CA15ADEF1B6F4842007364E9 /* MyWeChatPayManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWeChatPayManager.h; sourceTree = "<group>"; };
+		CA15ADF01B6F4842007364E9 /* MyWeChatPayManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyWeChatPayManager.m; sourceTree = "<group>"; wrapsLines = 1; };
+		CA15ADF21B6F50AB007364E9 /* img_checked_green_36x36.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_checked_green_36x36.png; sourceTree = "<group>"; };
 		CA1B7ED51B5DD5DE00F2B40B /* userBg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = userBg.jpg; sourceTree = "<group>"; };
 		CA1B7ED71B5E3EBF00F2B40B /* ObjGoodCar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjGoodCar.h; sourceTree = "<group>"; };
 		CA1B7ED81B5E3EBF00F2B40B /* ObjGoodCar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjGoodCar.m; sourceTree = "<group>"; };
@@ -288,8 +312,13 @@
 		CA3F2FF61B395C40002B9B76 /* FavCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavCell.m; sourceTree = "<group>"; };
 		CA40A2991B58968D0059E587 /* ObjPostOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjPostOrder.h; sourceTree = "<group>"; };
 		CA40A29A1B58968D0059E587 /* ObjPostOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjPostOrder.m; sourceTree = "<group>"; };
+		CA6AD4521B6B42A3002756E7 /* GetOrderListAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetOrderListAction.h; sourceTree = "<group>"; };
+		CA6AD4531B6B42A3002756E7 /* GetOrderListAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetOrderListAction.m; sourceTree = "<group>"; };
+		CA6AD4551B6B4324002756E7 /* DeleteOrderAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeleteOrderAction.h; sourceTree = "<group>"; };
+		CA6AD4561B6B4324002756E7 /* DeleteOrderAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeleteOrderAction.m; sourceTree = "<group>"; };
 		CA7955F81B5CC602001D9DEA /* AllProductsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllProductsController.h; sourceTree = "<group>"; };
 		CA7955F91B5CC602001D9DEA /* AllProductsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllProductsController.m; sourceTree = "<group>"; };
+		CA79E7D71B7ADD2E0030CCCF /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
 		CA822C6E1B4E07CD008AB90E /* StarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StarView.h; sourceTree = "<group>"; };
 		CA822C6F1B4E07CD008AB90E /* StarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StarView.m; sourceTree = "<group>"; };
 		CA822C7B1B4E4ADB008AB90E /* SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVPullToRefresh.h; sourceTree = "<group>"; };
@@ -438,12 +467,20 @@
 		CAB4D3CE1B33E7F700A998E5 /* GoodDescribleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodDescribleCell.m; sourceTree = "<group>"; };
 		CAB4D3D01B33EC2C00A998E5 /* GoodPushCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodPushCell.h; sourceTree = "<group>"; };
 		CAB4D3D11B33EC2C00A998E5 /* GoodPushCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodPushCell.m; sourceTree = "<group>"; };
+		CAB5DF9C1B7C324F002B9ADA /* CreateAliOrderAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateAliOrderAction.h; sourceTree = "<group>"; };
+		CAB5DF9D1B7C324F002B9ADA /* CreateAliOrderAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateAliOrderAction.m; sourceTree = "<group>"; };
 		CABC4F2E1B4AA273004050B4 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		CABC4F2F1B4AA273004050B4 /* Default-480h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-480h@2x.png"; sourceTree = "<group>"; };
 		CABC4F301B4AA273004050B4 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		CABC4F311B4AA273004050B4 /* Default@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@3x.png"; sourceTree = "<group>"; };
 		CAD7F1B11B31198F00DD94FC /* AddSubView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddSubView.h; sourceTree = "<group>"; };
 		CAD7F1B21B31198F00DD94FC /* AddSubView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddSubView.m; sourceTree = "<group>"; };
+		CADB99E61B7D9C16004B110F /* OrderStatuesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderStatuesController.h; sourceTree = "<group>"; };
+		CADB99E71B7D9C16004B110F /* OrderStatuesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderStatuesController.m; sourceTree = "<group>"; };
+		CADB99E91B7DD63C004B110F /* GetOrderDetailAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetOrderDetailAction.h; sourceTree = "<group>"; };
+		CADB99EA1B7DD63C004B110F /* GetOrderDetailAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetOrderDetailAction.m; sourceTree = "<group>"; };
+		CADB99EC1B7DD878004B110F /* ObjOrderDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjOrderDetail.h; sourceTree = "<group>"; };
+		CADB99ED1B7DD878004B110F /* ObjOrderDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjOrderDetail.m; sourceTree = "<group>"; };
 		CAF0AD671B27C89A00306D9E /* small_douApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = small_douApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAF0AD6B1B27C89A00306D9E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CAF0AD6C1B27C89A00306D9E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -473,10 +510,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA15ADE31B6F0C86007364E9 /* libsqlite3.0.dylib in Frameworks */,
 				CA822DEE1B4FA33E008AB90E /* Foundation.framework in Frameworks */,
 				CA822DEC1B4FA338008AB90E /* UIKit.framework in Frameworks */,
 				CA822DEA1B4FA32F008AB90E /* CoreGraphics.framework in Frameworks */,
 				CA822DE81B4FA323008AB90E /* CoreText.framework in Frameworks */,
+				CA15ADE11B6F0B81007364E9 /* libWeChatSDK.a in Frameworks */,
 				CA822DE61B4FA31C008AB90E /* libz.dylib in Frameworks */,
 				CA822DE41B4FA30E008AB90E /* QuartzCore.framework in Frameworks */,
 				CA822DF11B4FA386008AB90E /* libcrypto.a in Frameworks */,
@@ -516,6 +555,12 @@
 				C31C25481B288EC700BD8435 /* LUnity.m */,
 				CA87509D1B3CF50D0089F693 /* AreaInfo.h */,
 				CA87509E1B3CF50D0089F693 /* AreaInfo.m */,
+				CA15ADE61B6F43A5007364E9 /* MyAliPayManager.h */,
+				CA15ADE71B6F43A5007364E9 /* MyAliPayManager.m */,
+				CA15ADEF1B6F4842007364E9 /* MyWeChatPayManager.h */,
+				CA15ADF01B6F4842007364E9 /* MyWeChatPayManager.m */,
+				CA15ADE91B6F4499007364E9 /* Order.h */,
+				CA15ADEA1B6F4499007364E9 /* Order.m */,
 			);
 			path = unitys;
 			sourceTree = "<group>";
@@ -546,12 +591,20 @@
 				CA1E2A9B1B461F5D00DB835C /* GetMainData.m */,
 				CA30AC661B4BD0A600732ED3 /* GetGoodsDetailAction.h */,
 				CA30AC671B4BD0A600732ED3 /* GetGoodsDetailAction.m */,
+				CA6AD4521B6B42A3002756E7 /* GetOrderListAction.h */,
+				CA6AD4531B6B42A3002756E7 /* GetOrderListAction.m */,
+				CADB99E91B7DD63C004B110F /* GetOrderDetailAction.h */,
+				CADB99EA1B7DD63C004B110F /* GetOrderDetailAction.m */,
 				CA14CCE61B5389F000C6F087 /* GetFavoritesAction.h */,
 				CA14CCE71B5389F000C6F087 /* GetFavoritesAction.m */,
 				CA9A5E341B45317600AD9DB1 /* DeleteGoodsCarAction.h */,
 				CA9A5E351B45317600AD9DB1 /* DeleteGoodsCarAction.m */,
 				CA14CCE31B53860100C6F087 /* DeleteCollectAction.h */,
 				CA14CCE41B53860100C6F087 /* DeleteCollectAction.m */,
+				CA6AD4551B6B4324002756E7 /* DeleteOrderAction.h */,
+				CA6AD4561B6B4324002756E7 /* DeleteOrderAction.m */,
+				CAB5DF9C1B7C324F002B9ADA /* CreateAliOrderAction.h */,
+				CAB5DF9D1B7C324F002B9ADA /* CreateAliOrderAction.m */,
 			);
 			path = services;
 			sourceTree = "<group>";
@@ -569,6 +622,16 @@
 			path = Https;
 			sourceTree = "<group>";
 		};
+		CA15ADD31B6F0B5C007364E9 /* WeChat */ = {
+			isa = PBXGroup;
+			children = (
+				CA15ADDE1B6F0B81007364E9 /* libWeChatSDK.a */,
+				CA15ADDF1B6F0B81007364E9 /* WXApi.h */,
+				CA15ADE01B6F0B81007364E9 /* WXApiObject.h */,
+			);
+			path = WeChat;
+			sourceTree = "<group>";
+		};
 		CA1E63461B326B8200EE4EE7 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
@@ -581,6 +644,7 @@
 		CA822C791B4E4AD4008AB90E /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				CA15ADD31B6F0B5C007364E9 /* WeChat */,
 				CA822D791B4FA259008AB90E /* openssl */,
 				CA822DC51B4FA25A008AB90E /* Util */,
 				CA822C7A1B4E4ADB008AB90E /* SVPullToRefresh */,
@@ -755,7 +819,7 @@
 				CAF0AD711B27C89A00306D9E /* ViewController.h */,
 				CAF0AD721B27C89A00306D9E /* ViewController.m */,
 				C33B836E1B28894E0020F76E /* LBaseViewController.h */,
-				C33B836F1B28894E0020F76E /* LBaseViewController.m */,
+				C33B836F1B28894E0020F76E /* LBaseViewController.mm */,
 				C33B83711B28895E0020F76E /* LTableViewController.h */,
 				C33B83721B28895E0020F76E /* LTableViewController.m */,
 				CAF0AD741B27C89A00306D9E /* Main.storyboard */,
@@ -831,6 +895,8 @@
 				CAB4D3C81B33BDBF00A998E5 /* GoodsDetailViewController.m */,
 				C3EA5CA41B383B460043C3E9 /* OrderSearchController.h */,
 				C3EA5CA51B383B460043C3E9 /* OrderSearchController.m */,
+				CADB99E61B7D9C16004B110F /* OrderStatuesController.h */,
+				CADB99E71B7D9C16004B110F /* OrderStatuesController.m */,
 				CA3F2FEF1B39491E002B9B76 /* PayViewController.h */,
 				CA3F2FF01B39491E002B9B76 /* PayViewController.m */,
 				CA3F2FF21B395A3E002B9B76 /* MyFavViewController.h */,
@@ -852,6 +918,8 @@
 				CA8EBBAB1B3BA7E500444BD2 /* ObjCustomer.m */,
 				CA8EBBAD1B3BA95A00444BD2 /* ObjOrder.h */,
 				CA8EBBAE1B3BA95A00444BD2 /* ObjOrder.m */,
+				CADB99EC1B7DD878004B110F /* ObjOrderDetail.h */,
+				CADB99ED1B7DD878004B110F /* ObjOrderDetail.m */,
 				CA40A2991B58968D0059E587 /* ObjPostOrder.h */,
 				CA40A29A1B58968D0059E587 /* ObjPostOrder.m */,
 				CA8EBBB01B3BAA6500444BD2 /* ObjProduct.h */,
@@ -876,6 +944,7 @@
 		CAF0AD941B27EF3D00306D9E /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				CA79E7D71B7ADD2E0030CCCF /* AlipaySDK.bundle */,
 				CAF0AD9C1B29760100306D9E /* images */,
 			);
 			path = resources;
@@ -941,6 +1010,7 @@
 				C3CA70B31B3C353600672337 /* huangua.png */,
 				C3CA70B41B3C353600672337 /* jia.png */,
 				C3CA70B51B3C353600672337 /* jian.png */,
+				CA15ADF21B6F50AB007364E9 /* img_checked_green_36x36.png */,
 				C3CA70B61B3C353600672337 /* search_green.png */,
 				C3CA70B71B3C353600672337 /* weixuanzhong.png */,
 				C3CA70B81B3C353600672337 /* xuanzhong.png */,
@@ -973,6 +1043,7 @@
 		DD3422EB9E12B2FC9E16ED6F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CA15ADE21B6F0C86007364E9 /* libsqlite3.0.dylib */,
 				CA822DED1B4FA33E008AB90E /* Foundation.framework */,
 				CA822DEB1B4FA338008AB90E /* UIKit.framework */,
 				CA822DE91B4FA32F008AB90E /* CoreGraphics.framework */,
@@ -1075,9 +1146,11 @@
 				C3CA70BD1B3C353600672337 /* search_green.png in Resources */,
 				CA3A86411B3AAC76005848C0 /* me_nav@2x.png in Resources */,
 				CA3A863E1B3AAC76005848C0 /* home@2x.png in Resources */,
+				CA79E7D81B7ADD2E0030CCCF /* AlipaySDK.bundle in Resources */,
 				CABC4F341B4AA273004050B4 /* Default@2x.png in Resources */,
 				C3CA70BE1B3C353600672337 /* weixuanzhong.png in Resources */,
 				CAF0AD9E1B29761000306D9E /* arrow-nav-white-36x36-left@2x.png in Resources */,
+				CA15ADF31B6F50AB007364E9 /* img_checked_green_36x36.png in Resources */,
 				CA3A86441B3AAC76005848C0 /* shop@2x.png in Resources */,
 				C30FD46A1B37BC0500776357 /* wechat.png in Resources */,
 				C30FD4651B37BC0500776357 /* search.png in Resources */,
@@ -1163,10 +1236,12 @@
 				C31C25491B288EC700BD8435 /* LUnity.m in Sources */,
 				CAF0AD731B27C89A00306D9E /* ViewController.m in Sources */,
 				CA8EBBBB1B3BC4F800444BD2 /* AreaViewController.m in Sources */,
+				CADB99E81B7D9C16004B110F /* OrderStatuesController.m in Sources */,
 				CA3A86311B3A9F9E005848C0 /* EvaluationWriteCell.m in Sources */,
 				CA8EBBB51B3BABD500444BD2 /* ObjReview.m in Sources */,
 				CA1E63491B326B8E00EE4EE7 /* CustomTextField.m in Sources */,
 				CA822C701B4E07CD008AB90E /* StarView.m in Sources */,
+				CA15ADEB1B6F4499007364E9 /* Order.m in Sources */,
 				C3EA5CAC1B384D810043C3E9 /* UserDetailViewController.m in Sources */,
 				CAB4D3CF1B33E7F700A998E5 /* GoodDescribleCell.m in Sources */,
 				CA1E634F1B32C8BC00EE4EE7 /* UserOtherCell.m in Sources */,
@@ -1213,7 +1288,8 @@
 				C33B837B1B288BAB0020F76E /* JsonObject.m in Sources */,
 				CAF0ADB21B2A841200306D9E /* UserViewController.m in Sources */,
 				CA822DDA1B4FA25A008AB90E /* MD5DataSigner.m in Sources */,
-				C33B83701B28894E0020F76E /* LBaseViewController.m in Sources */,
+				CADB99EE1B7DD878004B110F /* ObjOrderDetail.m in Sources */,
+				C33B83701B28894E0020F76E /* LBaseViewController.mm in Sources */,
 				CA8EBBB81B3BB0A500444BD2 /* UIImage+fixOrientation.m in Sources */,
 				C33B83851B288C620020F76E /* MyResponeResult.m in Sources */,
 				CA9A5E301B44E65D00AD9DB1 /* MyInfo.m in Sources */,
@@ -1223,6 +1299,7 @@
 				CA87509F1B3CF50D0089F693 /* AreaInfo.m in Sources */,
 				C33B83731B28895E0020F76E /* LTableViewController.m in Sources */,
 				CA07FEDE1B608AD00011C07F /* GetProductListAction.m in Sources */,
+				CAB5DF9E1B7C324F002B9ADA /* CreateAliOrderAction.m in Sources */,
 				CA1E2AA61B46798C00DB835C /* CategoryCell.m in Sources */,
 				CA8EBBAC1B3BA7E500444BD2 /* ObjCustomer.m in Sources */,
 				C31C254F1B2895AD00BD8435 /* CountryTabBarController.m in Sources */,
@@ -1242,9 +1319,14 @@
 				CA40A29B1B58968D0059E587 /* ObjPostOrder.m in Sources */,
 				C30FD4721B37DD4500776357 /* MainHeadViewCell.m in Sources */,
 				C38136151B399A8D00418CDB /* TianXieOrderViewController.m in Sources */,
+				CA15ADE81B6F43A5007364E9 /* MyAliPayManager.m in Sources */,
 				C3EA5CA91B383E190043C3E9 /* OrderSumarryCell.m in Sources */,
+				CA6AD4541B6B42A3002756E7 /* GetOrderListAction.m in Sources */,
 				CAB4D3C91B33BDBF00A998E5 /* GoodsDetailViewController.m in Sources */,
 				CA822DD91B4FA25A008AB90E /* DataVerifier.m in Sources */,
+				CA6AD4571B6B4324002756E7 /* DeleteOrderAction.m in Sources */,
+				CADB99EB1B7DD63C004B110F /* GetOrderDetailAction.m in Sources */,
+				CA15ADF11B6F4842007364E9 /* MyWeChatPayManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1389,6 +1471,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/small_douApp/lib",
+					"$(PROJECT_DIR)/small_douApp/lib/WeChat",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -1423,6 +1507,8 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/small_douApp/lib",
+					"$(PROJECT_DIR)/small_douApp/lib/WeChat",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

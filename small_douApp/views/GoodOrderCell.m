@@ -67,7 +67,7 @@
     _yuanJiaLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_priceLabel.frame)+10, CGRectGetMaxY(_titleLabel.frame)+7, 150, 12)];
     _yuanJiaLabel.font = [UIFont systemFontOfSize:size_font4];
     _yuanJiaLabel.textColor = color_font_red;
-    _yuanJiaLabel.text = @"￥110.00";
+    _yuanJiaLabel.text = @"";
     [mainView addSubview:_yuanJiaLabel];
     
 }
@@ -83,8 +83,8 @@
     _priceLabel.text = [NSString stringWithFormat:@"￥%.2f",[product.price floatValue]];
     CGFloat price = [product.price floatValue];
     CGFloat discount = [product.discount floatValue];
-    CGFloat noSalePrice = price/discount;
-    _yuanJiaLabel.text = [NSString stringWithFormat:@"￥%.2f",noSalePrice];
+//    CGFloat noSalePrice = price/discount;
+//    _yuanJiaLabel.text = [NSString stringWithFormat:@"￥%.2f",noSalePrice];
     _countLabel.text = [NSString stringWithFormat:@"%@ %@",obj.num,product.mu];
 }
 

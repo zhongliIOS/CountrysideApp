@@ -46,7 +46,7 @@
     _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_imageV.frame)+10, (55.0-imgVH)/2, 250, 14)];
     _titleLabel.font = [UIFont systemFontOfSize:size_font2];
     _titleLabel.textColor = color_font_black;
-    _titleLabel.text = @"特级红富士";
+    _titleLabel.text = @"";
     [mainView addSubview:_titleLabel];
 
    UILabel * tipLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_imageV.frame)+10, CGRectGetMaxY(_titleLabel.frame)+7, 60, 12)];
@@ -65,7 +65,15 @@
     imgV.image = [UIImage imageNamed:@"jinru"];
     [mainView addSubview:imgV];
     
-    
+}
+
+-(void)fillDataWithModel:(ObjOrder *)model
+{
+    if (!model) {
+        return;
+    }
+    _titleLabel.text = [NSString stringWithFormat:@"订单号：%@",model.code];
+    _statusLabel.text = model.status;
 }
 
 - (void)awakeFromNib {

@@ -8,8 +8,11 @@
 
 #import "LBaseViewController.h"
 
+
 @interface TianXieOrderViewController : LBaseViewController
 
 @property(nonatomic,strong)NSArray *productsArr;
+@property(nonatomic,strong)ObjOrder *order;
+
 
 @end

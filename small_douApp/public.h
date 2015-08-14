@@ -19,5 +19,6 @@
 #import "ObjArea.h"
 #import "ObjReview.h"
 #import "ObjGoodCar.h"
+#import "ObjOrder.h"
 
 #endif

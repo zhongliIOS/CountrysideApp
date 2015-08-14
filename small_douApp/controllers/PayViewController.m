@@ -7,15 +7,22 @@
 //
 
 #import "PayViewController.h"
+#import "MyAliPayManager.h"
+#import "MyWeChatPayManager.h"
+#import "CreateAliOrderAction.h"
 
 @interface PayViewController ()
 {
     UIButton *_aliPayBtn;
     UIButton *_weChatBtn;
+    NSString *_aliOrderString;
 }
 @end
 
 @implementation PayViewController
+
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -49,7 +56,11 @@
         detailLabel.textAlignment = NSTextAlignmentRight;
         detailLabel.textColor = i==0? color_font_gray2:color_font_red;
         detailLabel.font = [UIFont systemFontOfSize:size_font2];
-        detailLabel.text = i==0?_payDic[@"orCode"]:[NSString stringWithFormat:@"￥%.2f",[_payDic[@"amount"] floatValue]];
+        detailLabel.text = i==0?_payDic[@"orCode"]:[NSString stringWithFormat:@"￥%.2f",[_orderObj.code floatValue]];
+        if (_orderObj) {
+            detailLabel.text = i==0?_orderObj.code:[NSString stringWithFormat:@"￥%.2f",[_orderObj.amount floatValue]];
+
+        }
         [bgView1 addSubview:detailLabel];
     }
     UIView *bgView2 = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(bgView1.frame)+15, ScreenW, 110.5)];
@@ -79,6 +90,7 @@
         choiceBtn.layer.borderWidth = 1.0;
         choiceBtn.layer.borderColor = color_line1.CGColor;
         [choiceBtn addTarget:self action:@selector(choiceBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+        [choiceBtn setImage:[UIImage imageNamed:@"img_checked_green_36x36"] forState:UIControlStateSelected];
         [bgView2 addSubview:choiceBtn];
         if (i==0) {
             _weChatBtn = choiceBtn;
@@ -111,13 +123,41 @@
 {
     if (_weChatBtn.selected) {
        //微信支付
-        
+       
     }
    else
     {
-      //支付宝支付
+        CreateAliOrderAction *act = [[CreateAliOrderAction alloc] initWithOrderId:_orderObj.guid];
+        if (!act.isValid) {
+            return;
+        }
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [act DoActionWithSuccess:^(MyActionBase *action, id responseObject, AFHTTPRequestOperation *operation) {
+            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+            MyResponeResult *result = [MyResponeResult createWithResponeObject:responseObject];
+            if ([result get_error_code]==kServerErrorCode_OK) {
+                _aliOrderString = [result get_data];
+                if (_aliOrderString) {
+                    [self doAliPay];
+                }
+            }
+            else
+                [LUnity showErrorHUDViewAtView:self.view WithTitle:[result get_messge]];
+            
+        } Failure:^(MyActionBase *action, NSError *error, AFHTTPRequestOperation *operation) {
+            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        }];
+    
+     }
 
-    }
+}
+
+-(void)doAliPay
+{
+    //支付宝支付
+    [[MyAliPayManager defultManager]PayWithOrderString:_aliOrderString result:^(BOOL end) {
+
+    }];
 
 }
 
