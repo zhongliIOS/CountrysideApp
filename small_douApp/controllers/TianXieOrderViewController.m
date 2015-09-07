@@ -147,7 +147,6 @@
 
 -(void)buyBtnClick
 {
-    
     MyInfo *user = [MyInfo defaultMyInfo];
     NSMutableArray *arr = [NSMutableArray array];
     for (ObjPostOrder *obj in _productsArr) {

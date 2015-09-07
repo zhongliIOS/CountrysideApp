@@ -13,6 +13,7 @@
 #import "ObjOrder.h"
 #import "PayViewController.h"
 #import "TianXieOrderViewController.h"
+#import "OrderStatuesController.h"
 
 @interface OrderSearchController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -92,7 +93,6 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     [cell fillDataWithModel:(ObjOrder *)[_objList GetIndexAt:indexPath.row WithIsDESC:YES]];
     return cell;
-
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -103,18 +103,9 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ObjOrder *order = (ObjOrder *)[_objList GetIndexAt:indexPath.row WithIsDESC:YES];
-    if ([order.status isEqualToString:@"waitpay"]||[order.status isEqualToString:@"completed"]||[order.status isEqualToString:@"yunsongzhong"]) {
-        TianXieOrderViewController *vc = [[TianXieOrderViewController alloc] init];
-        vc.order = order;
-        [self.navigationController pushViewController:vc animated:YES];
-    }
-    else
-    {
-        PayViewController *vc = [[PayViewController alloc]init];
-        vc.orderObj = order;
-        [self.navigationController pushViewController:vc animated:YES];
-    }
-    
+    OrderStatuesController *vc = [[OrderStatuesController alloc]init];
+    vc.orderId = order.guid;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {

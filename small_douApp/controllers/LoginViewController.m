@@ -197,7 +197,6 @@
         [LUnity showErrorHUDViewAtView:self.view WithTitle:@"请输入正确的手机号"];
         return;
     }
-    
     RequestSmsCodeAction *act = [[RequestSmsCodeAction alloc]initWithMobilePhoneNum:_phoneTf.text];
     [act DoActionWithSuccess:^(MyActionBase *action, id responseObject, AFHTTPRequestOperation *operation) {
         NSLog(@"request:%@",responseObject);
@@ -216,7 +215,6 @@
     } Failure:^(MyActionBase *action, NSError *error, AFHTTPRequestOperation *operation) {
         
     }];
-
 
 }
 -(void)daojishi
