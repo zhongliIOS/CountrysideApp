@@ -131,8 +131,8 @@
     }
     if (indexPath.row==2) {
      //完成订单
-        GoodsDetailViewController *vc =[[GoodsDetailViewController alloc]init];
-        [self.navigationController pushViewController:vc animated:YES];
+//        GoodsDetailViewController *vc =[[GoodsDetailViewController alloc]init];
+//        [self.navigationController pushViewController:vc animated:YES];
     }
     if (indexPath.row==3) {
         //我的收藏

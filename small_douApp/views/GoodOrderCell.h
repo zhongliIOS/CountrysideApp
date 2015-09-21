@@ -12,4 +12,6 @@
 
 -(void)fillDataWithModel:(ObjPostOrder *)obj;
 
+-(void)fillDataWithProduct:(ObjProduct *)obj;
+
 @end

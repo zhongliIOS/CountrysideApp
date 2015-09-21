@@ -19,6 +19,7 @@
     NSArray *_productsArr;
     UILabel *_priceLabel;
     UIView  *_footView;
+    UIButton *_buyBtn;
 }
 @end
 
@@ -37,6 +38,7 @@
            NSDictionary *dic = [result try_get_data_with_dict];
            if (dic) {
                _orderDetailObj = [[ObjOrderDetail alloc]initWithDirectory:dic];
+               _productsArr = _orderDetailObj.arrProducts;
                [_tableView reloadData];
                [self updateUI];
            }
@@ -66,6 +68,21 @@
         return;
     }
     self.midTitle = status;
+    if ([status isEqualToString:OrderStatusWaitPay]) {
+        _footView.hidden = NO;
+    }
+    else if ([status isEqualToString:OrderStatusPeiSongzhong]) {
+        _footView.hidden = YES;
+    }
+    else if ([status isEqualToString:OrderStatusDaiPingjia])
+    {
+        _footView.hidden = NO;
+        [_buyBtn setTitle:@"去评价" forState:UIControlStateNormal];
+    }
+    else if ([status isEqualToString:OrderStatusCompleted])
+    {
+        _footView.hidden = YES;
+    }
 }
 
 -(void)configNavBar
@@ -102,10 +119,10 @@
 //    _priceLabel.text = [self getStringWithArr:_productsArr];
     
     UIButton *buyBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    _buyBtn = buyBtn;
     buyBtn.tintColor = [UIColor whiteColor];
     buyBtn.frame = CGRectMake(ScreenW-128, 5, 118, 35);
     buyBtn.backgroundColor = color_btn_red;
-    
     [buyBtn setTitle:@"立即支付" forState:UIControlStateNormal];
     [buyBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     buyBtn.titleLabel.font = [UIFont systemFontOfSize:size_font2];
@@ -119,8 +136,7 @@
 
 -(void)buyBtnClick
 {
-
-
+      
 }
 
 #pragma mark----tableViewDelegate
@@ -134,7 +150,8 @@
             cell = [[GoodOrderCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"GoodOrderCell"];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cell fillDataWithModel:(ObjPostOrder *)_productsArr[indexPath.row] ];
+        [cell fillDataWithProduct:(ObjProduct *)_productsArr[indexPath.row] ];
+       
         return cell;
     }
     else
@@ -144,7 +161,7 @@
             cell = [[GoodAddressCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"GoodAddressCell"];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        [cell fillDataWithModel:_productsArr];
+        [cell fillDataWithOrderDeatilModel:_orderDetailObj];
         return cell;
     }
     return nil;
@@ -161,7 +178,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-   return _orderDetailObj.arrProducts.count;
+   return _orderDetailObj.arrProducts.count+1;
 }
 
 - (void)didReceiveMemoryWarning {

@@ -109,16 +109,12 @@
 }
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     return UITableViewCellEditingStyleDelete;
-    
 }
 
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     [self deleteWithOrderId:[(ObjOrder *)[_objList GetIndexAt:indexPath.row WithIsDESC:YES] guid]];
-    
 }
 
 -(void)deleteWithOrderId:(NSNumber *)num

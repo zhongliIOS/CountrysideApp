@@ -93,7 +93,6 @@
     self.midTitelColor = [UIColor whiteColor];
     [self.leftBtn setImage:[UIImage imageNamed:backImageName] forState:UIControlStateNormal];
     self.leftBtn.hidden = NO;
-    
 }
 -(NSString *)getStringWithArr:(NSArray *)arr
 {
