@@ -87,14 +87,15 @@
         [_cancelAndCompleteView addSubview:btn];
     }
 }
+
 -(void)configNavBar
 {
     self.midTitle = @"填写订单";
     self.midTitelColor = [UIColor whiteColor];
     [self.leftBtn setImage:[UIImage imageNamed:backImageName] forState:UIControlStateNormal];
     self.leftBtn.hidden = NO;
-    
 }
+
 -(NSString *)getStringWithArr:(NSArray *)arr
 {
     CGFloat allPrice = 0.0;
@@ -147,7 +148,6 @@
 
 -(void)buyBtnClick
 {
-    
     MyInfo *user = [MyInfo defaultMyInfo];
     NSMutableArray *arr = [NSMutableArray array];
     for (ObjPostOrder *obj in _productsArr) {

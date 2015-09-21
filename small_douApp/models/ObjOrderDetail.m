@@ -11,7 +11,7 @@
 @implementation ObjOrderDetail
 -(id)initWithDirectory:(NSDictionary *)data
 {
-    self = [super init];
+    self = [super initWithDirectory:data];
     if (self) {
 
         self.arrProducts = [NSMutableArray array];

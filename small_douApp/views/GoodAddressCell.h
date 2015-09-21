@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ObjOrderDetail.h"
 
 @interface GoodAddressCell : UITableViewCell
 
@@ -14,6 +15,7 @@
 @property(nonatomic,copy)void(^areaClick)(void);
 
 -(void)fillDataWithModel:(NSArray *)arr;
+-(void)fillDataWithOrderDeatilModel:(ObjOrderDetail *)obj;
 
 
 @end

@@ -37,7 +37,6 @@
     req.package             = [dic objectForKey:@"package"];
     req.sign                = [dic objectForKey:@"sign"];
     [WXApi sendReq:req];
-    
 }
 
 //支付结果回调

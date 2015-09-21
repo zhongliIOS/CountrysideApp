@@ -7,46 +7,81 @@
 		<key>Pods-AFNetworking.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>2</integer>
 		</dict>
 		<key>Pods-DACircularProgress.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>2</integer>
-		</dict>
-		<key>Pods-MBProgressHUD.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
 			<integer>3</integer>
 		</dict>
-		<key>Pods-MWPhotoBrowser.xcscheme</key>
+		<key>Pods-Google.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>4</integer>
 		</dict>
-		<key>Pods-PSTCollectionView.xcscheme</key>
+		<key>Pods-GoogleAnalytics.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>5</integer>
 		</dict>
-		<key>Pods-SDWebImage.xcscheme</key>
+		<key>Pods-GoogleNetworkingUtilities.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>6</integer>
 		</dict>
-		<key>Pods-UIActivityIndicator-for-SDWebImage.xcscheme</key>
+		<key>Pods-GoogleSymbolUtilities.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>7</integer>
 		</dict>
+		<key>Pods-GoogleUtilities.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
+		</dict>
+		<key>Pods-MBProgressHUD.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>9</integer>
+		</dict>
+		<key>Pods-MWPhotoBrowser.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>10</integer>
+		</dict>
+		<key>Pods-PSTCollectionView.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>11</integer>
+		</dict>
+		<key>Pods-SDWebImage.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>12</integer>
+		</dict>
+		<key>Pods-UIActivityIndicator-for-SDWebImage.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>13</integer>
+		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>01AF26AD7D75FC7483DC194F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>03796748C42881E059E50197</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>0560DAB942BE1A573AD90E0D</key>
 		<dict>
 			<key>primary</key>
@@ -62,7 +97,37 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>3166937EC547369596E8D4E7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>5753FA259DDB0ABAD344582D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5B8487813BA5B5BEA1148C74</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>62A199772FE5F3987163C43E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>634A0FA9EE634032AA2DD603</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6AD7093821A50454D433C44D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7B032021020DD2E7C02EEB5B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -72,7 +137,27 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>914B1CFD9F1E57422EEED1CB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A03AFEFFC7296E373D332BEC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B19BE27EEEEE074A82A14463</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>BFA3748AD7AF1B2965E26A30</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CC0F011E45194E387490EE38</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -83,6 +168,11 @@
 			<true/>
 		</dict>
 		<key>E6D51A0C74032EA287A764EE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FF2B6634CF861D9A0FF0CF76</key>
 		<dict>
 			<key>primary</key>
 			<true/>

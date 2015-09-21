@@ -21,6 +21,7 @@
 
 @implementation AreaViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self createNavBar];
@@ -41,6 +42,7 @@
     _tableView.dataSource = self;
     _tableView.delegate = self;
     [self.view addSubview:_tableView];
+    
 
 }
 

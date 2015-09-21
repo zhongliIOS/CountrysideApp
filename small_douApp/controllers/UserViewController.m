@@ -82,8 +82,6 @@
   
 }
 
-
-
 #pragma mark----tableViewDelegate
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -138,6 +136,7 @@
 //        [self.navigationController pushViewController:vc animated:YES];
         AppInstroViewController *vc = [[AppInstroViewController alloc]init];
         [self.navigationController pushViewController:vc animated:YES];
+
     }
     if (indexPath.row==3) {
         //我的收藏

@@ -14,6 +14,9 @@
     UILabel *_areaDetailLabel;
     UILabel *_priceDetailLabel;
     UILabel *_salePriceDetaiLabel;
+    UIImageView *_nextImageV;
+    UIButton *_areaBtn;
+    UILabel *_orderCodeLabel;
 }
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -27,15 +30,13 @@
 
 -(void)createContentView
 {
-    NSArray *titleArr = @[@"手机号码",@"收货小区",@"商品金额",@"优惠金额"];
+    NSArray *titleArr = @[@"手机号码",@"收货小区",@"商品金额",@"订单编号"];
     for (int i=0; i<2; i++) {
         UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, 10+120.5*i, ScreenW, 110.5-55*i)];
         bgView.backgroundColor = [UIColor whiteColor];
         [self.contentView addSubview:bgView];
         for (int j=0; j<2; j++) {
-            if (i==1&&j==1) {
-                break;
-            }
+
             UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(leftSpace, 55*j, 100, 55)];
             label.textColor = color_font_black;
             label.font = [UIFont systemFontOfSize:size_font2];
@@ -57,10 +58,12 @@
                 _areaDetailLabel.frame = CGRectMake(ScreenW-240, 55*j, 200, 55);
                 detailLabel.userInteractionEnabled = YES;
                 UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+                _areaBtn = btn;
                 btn.frame = CGRectMake(0, 55*j, ScreenW, 55);
                 [btn addTarget:self action:@selector(clickArea) forControlEvents:UIControlEventTouchUpInside];
                 [bgView addSubview:btn];
                 UIImageView *nextImageV = [[UIImageView alloc] initWithFrame:CGRectMake(ScreenW-30, 19,20 , 17)];
+                _nextImageV = nextImageV;
                 nextImageV.image=[UIImage imageNamed:@"xiala"];
                 [btn addSubview:nextImageV];
             }
@@ -71,10 +74,14 @@
             else
             {
                 _salePriceDetaiLabel = detailLabel;
+                _salePriceDetaiLabel.hidden = YES;
             }
             
         }
         for (int j=0; j<3; j++) {
+            if (i==1&&j==2) {
+                continue;
+            }
             UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, 55*j, ScreenW, 0.5)];
             line.backgroundColor = color_line2;
             [bgView addSubview:line];
@@ -96,7 +103,22 @@
         salePrice +=[product.price floatValue]/[product.discount floatValue]*[obj.num integerValue];
     }
     _priceDetailLabel.text = [NSString stringWithFormat:@"￥%.2f",allPrice];
-//    _salePriceDetaiLabel.text = [NSString stringWithFormat:@"-￥%.2f",salePrice-allPrice];
+//  _salePriceDetaiLabel.text = [NSString stringWithFormat:@"-￥%.2f",salePrice-allPrice];
+}
+
+-(void)fillDataWithOrderDeatilModel:(ObjOrderDetail *)obj
+{
+    if (!obj) {
+        return;
+    }
+    [_nextImageV removeFromSuperview];
+    _areaBtn.userInteractionEnabled = NO;
+    _phoneDetailLabel.text = obj.tel;
+    _areaDetailLabel.text = obj.area;
+    _priceDetailLabel.text = [NSString stringWithFormat:@"￥%.2f",[obj.amount floatValue]];
+    _salePriceDetaiLabel.hidden = NO;
+    _salePriceDetaiLabel.text = obj.code;
+
 }
 
 -(void)setAddressId:(NSString *)addressId

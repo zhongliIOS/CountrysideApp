@@ -131,8 +131,8 @@
 #define NotificationShowTabBar @"NotificationShowTabBar"
 #define NotificationHideTabBar @"NotificationHideTabBar"
 
-#define OrderStatusWaitPay @"waitpay"
-#define OrderStatusPeiSongzhong @"peisongzhong"
+#define OrderStatusWaitPay @"待付款"
+#define OrderStatusPeiSongzhong @"已付款"
 #define OrderStatusDaiPingjia @"daipingjia"
 #define OrderStatusCompleted @"completed"
 
