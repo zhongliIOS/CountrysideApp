@@ -29,6 +29,7 @@
 		C33B837C1B288BAB0020F76E /* ObjBase.m in Sources */ = {isa = PBXBuildFile; fileRef = C33B83781B288BAB0020F76E /* ObjBase.m */; };
 		C33B837D1B288BAB0020F76E /* ObjectList.m in Sources */ = {isa = PBXBuildFile; fileRef = C33B837A1B288BAB0020F76E /* ObjectList.m */; };
 		C33B83851B288C620020F76E /* MyResponeResult.m in Sources */ = {isa = PBXBuildFile; fileRef = C33B83831B288C620020F76E /* MyResponeResult.m */; };
+		C35E14641B92BCBC00C7DA2A /* AppInstroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C35E14631B92BCBC00C7DA2A /* AppInstroViewController.m */; };
 		C38136151B399A8D00418CDB /* TianXieOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C38136141B399A8D00418CDB /* TianXieOrderViewController.m */; };
 		C38136181B399F9D00418CDB /* GoodOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C38136171B399F9D00418CDB /* GoodOrderCell.m */; };
 		C381361B1B39A19B00418CDB /* GoodAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C381361A1B39A19B00418CDB /* GoodAddressCell.m */; };
@@ -207,6 +208,8 @@
 		C33B837A1B288BAB0020F76E /* ObjectList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ObjectList.m; path = ../ObjectList.m; sourceTree = "<group>"; };
 		C33B83821B288C620020F76E /* MyResponeResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyResponeResult.h; sourceTree = "<group>"; };
 		C33B83831B288C620020F76E /* MyResponeResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyResponeResult.m; sourceTree = "<group>"; };
+		C35E14621B92BCBC00C7DA2A /* AppInstroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppInstroViewController.h; sourceTree = "<group>"; };
+		C35E14631B92BCBC00C7DA2A /* AppInstroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppInstroViewController.m; sourceTree = "<group>"; };
 		C38136131B399A8D00418CDB /* TianXieOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TianXieOrderViewController.h; sourceTree = "<group>"; };
 		C38136141B399A8D00418CDB /* TianXieOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TianXieOrderViewController.m; sourceTree = "<group>"; };
 		C38136161B399F9D00418CDB /* GoodOrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodOrderCell.h; sourceTree = "<group>"; };
@@ -905,6 +908,8 @@
 				CA3A86241B3A62EE005848C0 /* EvaluationViewController.m */,
 				CA3A86261B3A632D005848C0 /* EvaluationWriteViewController.h */,
 				CA3A86271B3A632D005848C0 /* EvaluationWriteViewController.m */,
+				C35E14621B92BCBC00C7DA2A /* AppInstroViewController.h */,
+				C35E14631B92BCBC00C7DA2A /* AppInstroViewController.m */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -1111,6 +1116,7 @@
 				TargetAttributes = {
 					CAF0AD661B27C89A00306D9E = {
 						CreatedOnToolsVersion = 6.3;
+						DevelopmentTeam = GDGZ2H4K6A;
 					};
 					CAF0AD7F1B27C89A00306D9E = {
 						CreatedOnToolsVersion = 6.3;
@@ -1281,6 +1287,7 @@
 				CAB4D3CC1B33C9CA00A998E5 /* GoodHeadCell.m in Sources */,
 				CAF0AD701B27C89A00306D9E /* AppDelegate.m in Sources */,
 				CA14CCE51B53860100C6F087 /* DeleteCollectAction.m in Sources */,
+				C35E14641B92BCBC00C7DA2A /* AppInstroViewController.m in Sources */,
 				C33B837D1B288BAB0020F76E /* ObjectList.m in Sources */,
 				CA30AC6B1B4BD16F00732ED3 /* ObjProductDetail.m in Sources */,
 				CA9A5E2D1B44DCD800AD9DB1 /* GetMyInfoAction.m in Sources */,
@@ -1448,6 +1455,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1475,6 +1484,7 @@
 					"$(PROJECT_DIR)/small_douApp/lib/WeChat",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -1484,6 +1494,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1511,6 +1523,7 @@
 					"$(PROJECT_DIR)/small_douApp/lib/WeChat",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

@@ -16,6 +16,7 @@
 #import "UserNameCell.h"
 #import "UserOtherCell.h"
 #import "EvaluationWriteViewController.h"
+#import "AppInstroViewController.h"
 
 @interface UserViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -133,7 +134,9 @@
     }
     if (indexPath.row==2) {
      //完成订单
-        GoodsDetailViewController *vc =[[GoodsDetailViewController alloc]init];
+//        GoodsDetailViewController *vc =[[GoodsDetailViewController alloc]init];
+//        [self.navigationController pushViewController:vc animated:YES];
+        AppInstroViewController *vc = [[AppInstroViewController alloc]init];
         [self.navigationController pushViewController:vc animated:YES];
     }
     if (indexPath.row==3) {
