@@ -14,6 +14,7 @@
 #import "MyWeChatPayManager.h"
 #import "PayViewController.h"
 #import <AlipaySDK/AlipaySDK.h>
+#import <Google/Analytics.h>
 
 @interface AppDelegate ()
 
@@ -25,6 +26,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
 
+   [self configGoogleAnalytics];
    [self getAreaInfo];
 //
 //    PayViewController *vc = [[PayViewController alloc] init];
@@ -42,6 +44,21 @@
     return YES;
 }
 
+-(void)configGoogleAnalytics
+{
+//    // Configure tracker from GoogleService-Info.plist.
+//    NSError *configureError;
+//    [[GGLContext sharedInstance] configureWithError:&configureError];
+//    NSAssert(!configureError, @"Error configuring Google services: %@", configureError);
+//    
+
+    id<GAITracker> tracker = [[GAI sharedInstance] trackerWithTrackingId:@"UA-54478999-2"];
+    
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+
+    tracker.allowIDFACollection = YES;
+    
+}
 
 - (NSString*)dictionaryToJson:(NSDictionary *)dic
 

@@ -91,6 +91,7 @@
 		CA3F2FF41B395A3E002B9B76 /* MyFavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3F2FF31B395A3E002B9B76 /* MyFavViewController.m */; };
 		CA3F2FF71B395C40002B9B76 /* FavCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA3F2FF61B395C40002B9B76 /* FavCell.m */; };
 		CA40A29B1B58968D0059E587 /* ObjPostOrder.m in Sources */ = {isa = PBXBuildFile; fileRef = CA40A29A1B58968D0059E587 /* ObjPostOrder.m */; };
+		CA6322291BB0036E0086CE2F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CA6322281BB0036E0086CE2F /* GoogleService-Info.plist */; };
 		CA6AD4541B6B42A3002756E7 /* GetOrderListAction.m in Sources */ = {isa = PBXBuildFile; fileRef = CA6AD4531B6B42A3002756E7 /* GetOrderListAction.m */; };
 		CA6AD4571B6B4324002756E7 /* DeleteOrderAction.m in Sources */ = {isa = PBXBuildFile; fileRef = CA6AD4561B6B4324002756E7 /* DeleteOrderAction.m */; };
 		CA7955FA1B5CC602001D9DEA /* AllProductsController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA7955F91B5CC602001D9DEA /* AllProductsController.m */; };
@@ -312,6 +313,7 @@
 		CA3F2FF61B395C40002B9B76 /* FavCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavCell.m; sourceTree = "<group>"; };
 		CA40A2991B58968D0059E587 /* ObjPostOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjPostOrder.h; sourceTree = "<group>"; };
 		CA40A29A1B58968D0059E587 /* ObjPostOrder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjPostOrder.m; sourceTree = "<group>"; };
+		CA6322281BB0036E0086CE2F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CA6AD4521B6B42A3002756E7 /* GetOrderListAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetOrderListAction.h; sourceTree = "<group>"; };
 		CA6AD4531B6B42A3002756E7 /* GetOrderListAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetOrderListAction.m; sourceTree = "<group>"; };
 		CA6AD4551B6B4324002756E7 /* DeleteOrderAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeleteOrderAction.h; sourceTree = "<group>"; };
@@ -835,6 +837,7 @@
 			isa = PBXGroup;
 			children = (
 				CAF0AD6B1B27C89A00306D9E /* Info.plist */,
+				CA6322281BB0036E0086CE2F /* GoogleService-Info.plist */,
 				CAF0AD6C1B27C89A00306D9E /* main.m */,
 			);
 			name = "Supporting Files";
@@ -1168,6 +1171,7 @@
 				CA3A86221B3A5B85005848C0 /* gouwuche.png in Resources */,
 				CA1B7ED61B5DD5DE00F2B40B /* userBg.jpg in Resources */,
 				C3CA70B91B3C353600672337 /*  wuxing.png in Resources */,
+				CA6322291BB0036E0086CE2F /* GoogleService-Info.plist in Resources */,
 				CA3A86451B3AAC76005848C0 /* xiala.png in Resources */,
 				C30FD45A1B37BC0500776357 /* banner.png in Resources */,
 				CA3A863C1B3AAC76005848C0 /* areaxiala.png in Resources */,
