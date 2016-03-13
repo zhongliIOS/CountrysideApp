@@ -58,7 +58,7 @@
         detailLabel.font = [UIFont systemFontOfSize:size_font2];
         detailLabel.text = i==0?_payDic[@"orCode"]:[NSString stringWithFormat:@"￥%.2f",[_orderObj.code floatValue]];
         if (_orderObj) {
-            detailLabel.text = i==0?_orderObj.code:[NSString stringWithFormat:@"￥%.2f",[_orderObj.amount floatValue]];
+            detailLabel.text = i==0?_orderObj.code:[NSString stringWithFormat:@"￥%.2f",[_orderObj.totalFee floatValue]];
 
         }
         [bgView1 addSubview:detailLabel];

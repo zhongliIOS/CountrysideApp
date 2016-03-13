@@ -94,7 +94,7 @@
 -(void)fillDataWithModel:(NSArray *)arr
 {
     MyInfo *user = [MyInfo defaultMyInfo];
-    _phoneDetailLabel.text = user.tel;
+    _phoneDetailLabel.text = user.mobile;
     CGFloat allPrice = 0.0;
     CGFloat salePrice = 0.0;
     for (ObjPostOrder *obj in arr) {

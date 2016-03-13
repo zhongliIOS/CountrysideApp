@@ -50,9 +50,9 @@
     _pickView.showsSelectionIndicator = YES;
     _pickView.dataSource = self;
     _pickView.hidden = YES;
-    _currentArea = (ObjArea *)[_areaList Find:[NSNumber numberWithInteger:[_user.areaId integerValue]]];
+    _currentArea = (ObjArea *)[_areaList Find:[NSNumber numberWithInteger:[_user.locationId integerValue]]];
     _tempArea = _currentArea;
-    [_pickView selectRow:[_areaList GetIndexByGuId:_user.areaId] inComponent:0 animated:NO];
+    [_pickView selectRow:[_areaList GetIndexByGuId:_user.locationId] inComponent:0 animated:NO];
     [self.view addSubview:_pickView];
     
     _cancelAndCompleteView = [[UIView alloc]initWithFrame:CGRectMake(0, ScreenH-height-40, ScreenW, 40)];
@@ -116,7 +116,7 @@
         {
             _nickNameTf = [[UITextField alloc] initWithFrame:CGRectMake(ScreenW-250, 0, 218, viewH)];
             _nickNameTf.textColor = color_font_gray2;
-            _nickNameTf.text = _user.name;
+            _nickNameTf.text = _user.username;
             _nickNameTf.placeholder = @"暂无";
             _nickNameTf.font = [UIFont systemFontOfSize:size_font2];
             _nickNameTf.textAlignment = NSTextAlignmentRight;
@@ -127,7 +127,7 @@
         {
             UILabel *detailLabel = [[UILabel alloc] initWithFrame:CGRectMake(ScreenW-200, 0, 168, viewH)];
             detailLabel.textColor = color_font_gray2;
-            detailLabel.text = [[AreaInfo areaInfo] searchAreaNameWithId:_user.areaId];
+            detailLabel.text = [[AreaInfo areaInfo] searchAreaNameWithId:_user.locationId];
             detailLabel.font = [UIFont systemFontOfSize:size_font2];
             detailLabel.textAlignment = NSTextAlignmentRight;
             _areaDetailLabel = detailLabel;
@@ -142,22 +142,21 @@
     NSString *newName = _nickNameTf.text;
     ObjArea *area = _currentArea;
     NSMutableDictionary *paramets = [NSMutableDictionary dictionary];
-    if (![_user.name isEqualToString:newName]) {
-        [paramets setObject:newName forKey:@"name"];
+    if (![_user.username isEqualToString:newName]) {
+        [paramets setObject:newName forKey:@"username"];
     }
-    if (!([_user.areaId integerValue]== [area.guid integerValue])) {
-        [paramets setObject:area.guid forKey:@"areaId"];
+    if (!([_user.locationId integerValue]== [area.guid integerValue])) {
+        [paramets setObject:area.guid forKey:@"locationId"];
     }
     if (_currentPhoto) {
-        [paramets setObject:_currentPhoto forKey:@"photo"];
+        [paramets setObject:_currentPhoto forKey:@"avatar"];
 
     }
     NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:My_token];
-    NSString *phoneNum = [[MyInfo defaultMyInfo] tel];
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:HOSTURL]];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    [manager.requestSerializer setValue:token forHTTPHeaderField:@"access-token"];
-    [manager POST:[NSString stringWithFormat:@"/customers/%@/edit",phoneNum] parameters:paramets success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@",token] forHTTPHeaderField:@"Authorization"];
+    [manager PUT:@"/customer.json" parameters:paramets success:^(AFHTTPRequestOperation *operation, id responseObject) {
         MyResponeResult *result = [MyResponeResult createWithResponeObject:responseObject];
         [LUnity showErrorHUDViewAtView:self.view WithTitle:[result get_messge]];
         if ([result get_error_code]==kServerErrorCode_OK) {
@@ -180,16 +179,14 @@
         return;
     }
     NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:My_token];
-    NSString *phoneNum = [[MyInfo defaultMyInfo] tel];
     
     NSData *imageData = UIImageJPEGRepresentation(image, 1.0);
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:HOSTURL]];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    [manager.requestSerializer setValue:phoneNum forHTTPHeaderField:@"tel-no"];
-    [manager.requestSerializer setValue:token forHTTPHeaderField:@"access-token"];
-    [manager POST:@"/files/photo/upload" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+    [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@",token] forHTTPHeaderField:@"Authorization"];
+    [manager POST:@"/files/photo/upload.json" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         
-         [formData appendPartWithFileData:imageData name:@"image" fileName:@"testImage" mimeType:@"image"];
+         [formData appendPartWithFileData:imageData name:@"image" fileName:@"image" mimeType:@"image/jpeg"];
         
     } success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary *dic = responseObject;
@@ -312,7 +309,7 @@
     return [_areaList GetCount];
 }
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
-    NSString *title = [(ObjArea *)[_areaList GetIndexAt:row WithIsDESC:YES] name];
+    NSString *title = [(ObjArea *)[_areaList GetIndexAt:row WithIsDESC:YES] location];
     NSString *string = [[NSString alloc]initWithFormat:@"%@",title];
     return string;
 }
@@ -329,7 +326,7 @@
     _cancelAndCompleteView.hidden = YES;
     if (btn.tag==1) {
         _currentArea = _tempArea;
-        _areaDetailLabel.text = _currentArea.name;
+        _areaDetailLabel.text = _currentArea.location;
     }
     else
     {

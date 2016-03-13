@@ -59,7 +59,7 @@
 
     MyInfo *user = [MyInfo defaultMyInfo];
 //    _areaLabel.text = [[AreaInfo areaInfo] searchAreaNameWithId:user.areaId];
-    NSString *areaText = [[AreaInfo areaInfo] searchAreaNameWithId:user.areaId];
+    NSString *areaText = [[AreaInfo areaInfo] searchAreaNameWithId:user.locationId];
     [_areaBtn setTitle:areaText forState:UIControlStateNormal];
   
 
@@ -149,7 +149,6 @@
         SearchGoodsViewController *vc = [[SearchGoodsViewController alloc]init];
         [self.navigationController pushViewController:vc animated:YES];
     }
-
 }
 -(void)clickViewAllProducts
 {
@@ -168,7 +167,8 @@
             cell = [[MainHeadViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"MainHeadViewCell"];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
         }
-        
+        [cell fillDataWithModel:_obj];
+
         return cell;
     }
     if (indexPath.row==1) {

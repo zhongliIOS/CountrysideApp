@@ -27,6 +27,7 @@
 -(void)initData
 {
     [_dataArray removeAllObjects];
+
     GetCategorysAction *act = [[GetCategorysAction alloc]init];
     [act DoActionWithSuccess:^(MyActionBase *action, id responseObject, AFHTTPRequestOperation *operation) {
         MyResponeResult *result = [MyResponeResult createWithResponeObject:responseObject];

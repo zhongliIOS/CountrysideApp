@@ -8,7 +8,7 @@
 
 #import "MyActionBase.h"
 
-@interface DeleteCollectAction : MyActionGetBase
+@interface DeleteCollectAction : MyActionPostBase
 -(instancetype)initWithCollectId:(NSNumber *)Id;
 
 @end

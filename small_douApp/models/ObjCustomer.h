@@ -11,12 +11,12 @@
 @interface ObjCustomer : ObjBase
 
 
-@property(nonatomic,copy)NSString *areaId;
-@property(nonatomic,copy)NSString *code;
-@property(nonatomic,copy)NSString *name;
-@property(nonatomic,copy)NSString *regTime;
-@property(nonatomic,copy)NSString *tel;
+@property(nonatomic,copy)NSString *locationId;
+@property(nonatomic,copy)NSString *username;
+@property(nonatomic,copy)NSString *mtime;
+@property(nonatomic,copy)NSString *mobile;
 @property(nonatomic,copy)NSString *typeId;
+@property(nonatomic,copy)NSString *ctime;
 @property(nonatomic,copy)NSString *photo;
 
 @end

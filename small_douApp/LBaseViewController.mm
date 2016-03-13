@@ -114,7 +114,9 @@
     //set headers
     NSString *contentType = [NSString stringWithFormat:@"application/json"];
     [request addValue:contentType forHTTPHeaderField: @"Content-Type"];
-    
+    NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:My_token];
+    [request addValue:[NSString stringWithFormat:@"Bearer %@",token] forHTTPHeaderField:@"Authorization"];
+
     //create the body
     NSMutableData *postBody = [NSMutableData data];
     [postBody appendData:jsonData];

@@ -8,7 +8,7 @@
 
 #import "MyFavViewController.h"
 #import "GetFavoritesAction.h"
-#import "DeleteCollectAction.h"
+#import "CollectionAction.h"
 #import "GoodsDetailViewController.h"
 #import "FavCell.h"
 
@@ -55,7 +55,7 @@
 
 -(void)DeleteWithGuid:(NSNumber *)num
 {
-    DeleteCollectAction *act = [[DeleteCollectAction alloc] initWithCollectId:num];
+    CollectionAction *act = [[CollectionAction alloc] initWithUnCollectId:num];
     if (!act.isValid) {
         return;
     }
@@ -113,7 +113,7 @@
     [cell fillDataWithModel:(ObjProduct *)[_objectList GetIndexAt:indexPath.row WithIsDESC:YES]];
     [cell setDeleteClick:^{
         ObjProduct *product = (ObjProduct *)[_objectList GetIndexAt:indexPath.row WithIsDESC:YES];
-        [self DeleteWithGuid:product.guid];
+        [self DeleteWithGuid:product.proId];
     }];
     
     return cell;

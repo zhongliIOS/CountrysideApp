@@ -20,6 +20,7 @@
         self.staffId = [self ReadField_String:data WithFieldName:@"staffId"];
         self.spName = [self ReadField_String:data WithFieldName:@"pic"];
         self.spLocation = [self ReadField_String:data WithFieldName:@"spLocation"];
+        self.storeId = [self ReadField_Number:data WithFieldName:@"storeId"];
 
     }
     return self;

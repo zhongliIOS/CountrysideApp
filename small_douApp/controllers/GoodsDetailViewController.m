@@ -11,6 +11,7 @@
 #import "GoodHeadCell.h"
 #import "GetGoodsDetailAction.h"
 #import "EvaluationViewController.h"
+#import "CollectionAction.h"
 
 @interface GoodsDetailViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -63,25 +64,15 @@
 
 -(void)rightButItemClick
 {
-    NSDictionary *dic ;
-    if ([[MyInfo defaultMyInfo] guid]&&_productId) {
-        dic = @{@"cuId":[[MyInfo defaultMyInfo] guid],@"proId":_productId};
-    }
-    else
-    {
-        return;
-    }
-    [self postWithBodyDic:dic andUrl:@"/products/collect" success:^(id responseObject, AFHTTPRequestOperation *operation) {
+    CollectionAction *act = [[CollectionAction alloc]initWithId:_productId];
+    [act DoActionWithSuccess:^(MyActionBase *action, id responseObject, AFHTTPRequestOperation *operation) {
         MyResponeResult *result = [MyResponeResult createWithResponeObject:responseObject];
         if ([result get_error_code]==kServerErrorCode_OK) {
             [LUnity showErrorHUDViewAtView:self.view WithTitle:@"收藏成功"];
         }
         else
-        {
             [LUnity showErrorHUDViewAtView:self.view WithTitle:[result get_messge]];
-        }
-        
-    } fail:^(NSError *error, AFHTTPRequestOperation *operation) {
+    } Failure:^(MyActionBase *action, NSError *error, AFHTTPRequestOperation *operation) {
         
     }];
 }

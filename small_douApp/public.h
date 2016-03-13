@@ -20,5 +20,6 @@
 #import "ObjReview.h"
 #import "ObjGoodCar.h"
 #import "ObjOrder.h"
+#import "ObjNewOrder.h"
 
 #endif

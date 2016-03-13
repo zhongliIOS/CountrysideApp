@@ -28,6 +28,11 @@ static MyHttpActionManager *_m = nil;
                 _m.baseURL = HOSTURL;
                 AFHTTPRequestOperationManager *manger = [[AFHTTPRequestOperationManager alloc]initWithBaseURL:[NSURL URLWithString:_m.baseURL]];
                 manger.responseSerializer = [AFJSONResponseSerializer serializer];
+                NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:My_token];
+                if (token.length>0) {
+                    [manger.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@",token] forHTTPHeaderField:@"Authorization"];
+                }
+
                 _m.httpRequestMgr = manger;
                 
             }

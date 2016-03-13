@@ -21,14 +21,13 @@ static MyInfo *_m = nil;
 
 -(void)initWithModel:(NSDictionary *)data
 {
-    self.areaId = [self ReadField_String:data WithFieldName:@"areaId"];
-    self.code = [self ReadField_String:data WithFieldName:@"code"];
+    self.username = [self ReadField_String:data WithFieldName:@"username"];
     self.guid = [self ReadField_String:data WithFieldName:@"id"];
-    self.name = [self ReadField_String:data WithFieldName:@"name"];
-    self.regTime = [self ReadField_String:data WithFieldName:@"regTime"];
-    self.tel = [self ReadField_String:data WithFieldName:@"tel"];
+    self.mtime = [self ReadField_String:data WithFieldName:@"mtime"];
+    self.ctime = [self ReadField_String:data WithFieldName:@"ctime"];
+    self.mobile = [self ReadField_String:data WithFieldName:@"mobile"];
     self.typeId = [self ReadField_String:data WithFieldName:@"typeId"];
-    self.photo = [self ReadField_String:data WithFieldName:@"photo"];
+    self.locationId = [self ReadField_String:data WithFieldName:@"locationId"];
 
 }
 

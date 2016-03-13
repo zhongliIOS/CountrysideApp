@@ -10,7 +10,6 @@
 
 @interface ObjCategory : ObjBase
 
-@property(nonatomic,copy)NSString *code;
 @property(nonatomic,copy)NSString *desc;
 @property(nonatomic,copy)NSString *name;
 

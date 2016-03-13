@@ -39,7 +39,6 @@
     [self initWindowBackgroundColorwithView:vc.view];
     [self.window makeKeyAndVisible];
     //尝试自动登陆
-    [self isHasAutoLogin];
     
     return YES;
 }
@@ -47,12 +46,13 @@
 -(void)configGoogleAnalytics
 {
 //    // Configure tracker from GoogleService-Info.plist.
-//    NSError *configureError;
-//    [[GGLContext sharedInstance] configureWithError:&configureError];
+    NSError *configureError;
+    [[GGLContext sharedInstance] configureWithError:&configureError];
 //    NSAssert(!configureError, @"Error configuring Google services: %@", configureError);
 //    
 
-    id<GAITracker> tracker = [[GAI sharedInstance] trackerWithTrackingId:@"UA-54478999-2"];
+
+    id<GAITracker> tracker = [[GAI sharedInstance] trackerWithTrackingId:@"UA-67862434-1"];
     
     [GAI sharedInstance].trackUncaughtExceptions = YES;
 
@@ -100,8 +100,11 @@
                 for (NSDictionary *dic in arr) {
                     ObjArea *obj = [[ObjArea alloc] initWithDirectory:dic];
                     [m.dataList Add:obj];
+            
                 }
             }
+            [self isHasAutoLogin];
+
         }
     
     } Failure:^(MyActionBase *action, NSError *error, AFHTTPRequestOperation *operation) {
@@ -119,8 +122,8 @@
     }
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:HOSTURL]];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    [manager.requestSerializer setValue:token forHTTPHeaderField:@"access-token"];
-    [manager GET:[NSString stringWithFormat:@"/customers/%@.json",phone] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@",token] forHTTPHeaderField:@"Authorization"];
+    [manager GET:@"/customer.json" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         MyResponeResult *result = [MyResponeResult createWithResponeObject:responseObject];
         if ([result get_error_code]==kServerErrorCode_OK) {
             NSDictionary *dic = [result try_get_data_with_dict];

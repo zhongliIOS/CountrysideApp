@@ -13,6 +13,7 @@
 @property(nonatomic,copy)NSString *code;
 @property(nonatomic,copy)NSString *location;
 @property(nonatomic,copy)NSString *name;
+@property(nonatomic,strong)NSNumber *storeId;
 /**
  *  服务点位置
  */

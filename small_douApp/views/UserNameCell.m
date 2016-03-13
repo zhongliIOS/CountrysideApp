@@ -60,12 +60,12 @@
 
 -(void)fillDataWithModel:(MyInfo *)model
 {
-    if (!model.tel) {
+    if (!model.mobile) {
         return;
     }
-    _phoneLabel.text = model.tel;
+    _phoneLabel.text = model.mobile;
     [_iconImgV sd_setImageWithURL:[NSURL URLWithString:model.photo] placeholderImage:[UIImage imageNamed:@""]];
-    _userNameLabel.text = model.name;
+    _userNameLabel.text = model.username;
 }
 
 - (void)awakeFromNib {

@@ -33,7 +33,6 @@
             [_tableView setSeparatorInset:UIEdgeInsetsMake(0, 0, 0, 0)];
         }
     }
-    
     return _tableView;
 }
 

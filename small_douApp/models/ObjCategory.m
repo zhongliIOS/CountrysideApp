@@ -14,7 +14,6 @@
 {
     self = [super initWithDirectory:data];
     if (self) {
-        self.code = [self ReadField_String:data WithFieldName:@"code"];
         self.name = [self ReadField_String:data WithFieldName:@"name"];
         self.desc = [self ReadField_String:data WithFieldName:@"description"];
     }

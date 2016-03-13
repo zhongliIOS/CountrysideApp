@@ -115,7 +115,7 @@
     [_areaSearchList ClearAll];
     for (int i=0; i<[_areaList GetCount]; i++) {
         ObjArea *obj = (ObjArea *)[_areaList GetIndexAt:i WithIsDESC:YES];
-        if ([obj.name containsString:searchText]) {
+        if ([obj.location containsString:searchText]) {
             [_areaSearchList Add:obj];
         }
     }
@@ -136,12 +136,12 @@
             cell.backgroundColor = [UIColor clearColor];
         }
         if (indexPath.section==0) {
-            cell.textLabel.text =  [[AreaInfo areaInfo] searchAreaNameWithId:[[MyInfo defaultMyInfo] areaId]];
+            cell.textLabel.text =  [[AreaInfo areaInfo] searchAreaNameWithId:[[MyInfo defaultMyInfo] locationId]];
         }
         else
         {
          ObjArea *area = (ObjArea *)[_areaList GetIndexAt:indexPath.row WithIsDESC:YES];
-         cell.textLabel.text = area.name;
+         cell.textLabel.text = area.location;
         }
         cell.textLabel.textColor = color_font_gray1;
         cell.textLabel.font = [UIFont systemFontOfSize:size_font1];
@@ -157,7 +157,7 @@
                                           reuseIdentifier:tipCellIdentifier];
             cell.backgroundColor = [UIColor clearColor];
         }
-        cell.textLabel.text = [(ObjArea *)[_areaSearchList GetIndexAt:indexPath.row WithIsDESC:YES] name];
+        cell.textLabel.text = [(ObjArea *)[_areaSearchList GetIndexAt:indexPath.row WithIsDESC:YES] location];
         cell.textLabel.textColor = color_font_gray1;
         cell.textLabel.font = [UIFont systemFontOfSize:size_font1];
         return cell;
@@ -253,14 +253,14 @@
         return;
     }
     NSMutableDictionary *paramets = [NSMutableDictionary dictionary];
-    [paramets setObject:area.guid forKey:@"areaId"];
+    [paramets setObject:area.guid forKey:@"locationId"];
     NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:My_token];
-    NSString *phoneNum = [[MyInfo defaultMyInfo] tel];
+    NSString *phoneNum = [[MyInfo defaultMyInfo] mobile];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:HOSTURL]];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    [manager.requestSerializer setValue:token forHTTPHeaderField:@"access-token"];
-    [manager POST:[NSString stringWithFormat:@"/customers/%@/edit",phoneNum] parameters:paramets success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@",token] forHTTPHeaderField:@"Authorization"];
+    [manager PUT:@"/customer.json" parameters:paramets success:^(AFHTTPRequestOperation *operation, id responseObject) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         MyResponeResult *result = [MyResponeResult createWithResponeObject:responseObject];
         [LUnity showErrorHUDViewAtView:self.view WithTitle:[result get_messge]];

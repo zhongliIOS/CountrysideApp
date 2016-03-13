@@ -12,8 +12,7 @@
 
 -(instancetype)initWithCustomerId:(NSNumber *)Id
 {
-    self = [super initWithActionURLString:@"/products/favorites"];
-    self.parameters = [@{@"cuId":Id} mutableCopy];
+    self = [super initWithActionURLString:@"/customer/favorites.json"];
     self.isValid = YES;
     return self;
 }

@@ -33,7 +33,7 @@
 
 -(void)initData
 {
-    _currentAreaId = [[MyInfo defaultMyInfo] areaId];
+    _currentAreaId = [[MyInfo defaultMyInfo] locationId];
     _tempAreaId = _currentAreaId;
     _areaList = [[AreaInfo areaInfo] dataList];
 }
@@ -155,13 +155,13 @@
         [arr addObject:dic];
     }
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    NSDictionary *dataDic = @{@"list":arr,@"cuId":user.guid,@"tel":user.tel,@"area":_currentAreaId};
-    [self postWithBodyDic:dataDic andUrl:@"/orders/submit" success:^(id responseObject, AFHTTPRequestOperation *operation) {
+    NSDictionary *dataDic = @{@"list":arr,@"addressId":_currentAreaId};
+    [self postWithBodyDic:dataDic andUrl:@"/orders/submit.json" success:^(id responseObject, AFHTTPRequestOperation *operation) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         MyResponeResult *result = [MyResponeResult createWithResponeObject:responseObject];
         if ([result get_error_code]==kServerErrorCode_OK) {
             _payDic = [result try_get_data_with_dict];
-            ObjOrder *order = [[ObjOrder alloc] initWithDirectory:_payDic];
+            ObjNewOrder *order = [[ObjNewOrder alloc] initWithDirectory:_payDic];
             PayViewController *vc = [[PayViewController alloc] init];
             vc.orderObj = order;
             [self.navigationController pushViewController:vc animated:YES];

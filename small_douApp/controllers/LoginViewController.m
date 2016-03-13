@@ -10,6 +10,8 @@
 #import "RequestSmsCodeAction.h"
 #import "VerifySmsCodeAction.h"
 #import "AppDelegate.h"
+#import <Google/Analytics.h>
+
 @interface LoginViewController ()<UIScrollViewDelegate>
 {
     CustomTextField *_phoneTf;
@@ -118,6 +120,13 @@
 
 -(void)login
 {
+    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+    
+    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_actionhave"
+                                                          action:@"button_presshave"
+                                                           label:@"playhave"
+                                                           value:nil] build]];
+    
     if (_phoneTf.text.length!=11) {
         [LUnity showErrorHUDViewAtView:self.view WithTitle:@"请输入正确的手机号"];
         return;
@@ -138,7 +147,7 @@
                 if (access_token) {
                     [[NSUserDefaults standardUserDefaults]setObject:access_token forKey:My_token];
                     [[NSUserDefaults standardUserDefaults]setObject:_phoneTf.text forKey:My_phone];
-                    [self getMyInfo:access_token];
+                    [self getMyInfo:[NSString stringWithFormat:@"Bearer %@",access_token]];
                 }
             }
 
@@ -157,8 +166,8 @@
 {
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:HOSTURL]];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    [manager.requestSerializer setValue:access_token forHTTPHeaderField:@"access-token"];
-    [manager GET:[NSString stringWithFormat:@"/customers/%@.json",_phoneTf.text] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager.requestSerializer setValue:access_token forHTTPHeaderField:@"Authorization"];
+    [manager GET:@"/customer.json" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         MyResponeResult *result = [MyResponeResult createWithResponeObject:responseObject];
         NSLog(@"%@",responseObject);
         if ([result get_error_code]==kServerErrorCode_OK){

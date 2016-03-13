@@ -11,6 +11,6 @@
 @interface PayViewController : LBaseViewController
 
 @property(nonatomic,strong)NSDictionary *payDic;
-@property(nonatomic,strong)ObjOrder *orderObj;
+@property(nonatomic,strong)ObjNewOrder *orderObj;
 
 @end
