@@ -8,13 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GoodHeadCell : UITableViewCell
+@interface GoodHeadCell : UITableViewCell<UIWebViewDelegate>
 
 @property(nonatomic,strong)UIScrollView *mainScrollView;
 @property(nonatomic,strong)UILabel *pageLabel;
 @property(nonatomic,strong)UIButton *addressBtn;
 @property(nonatomic,copy)void(^CallBackEvaluation)(void );
 @property(nonatomic,copy)void(^CallBackCount)(NSInteger );
+@property(nonatomic,copy)void(^Callheight)(CGFloat );
+
+@property(nonatomic,strong)UIWebView *webView;
 
 -(void)fillDataWithModel:(ObjProductDetail *)model;
+-(void)fillUrl:(NSString *)url;
+
+
 @end

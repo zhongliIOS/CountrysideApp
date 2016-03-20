@@ -13,7 +13,7 @@
 
 -(instancetype)initWithCuId:(NSNumber *)Id
 {
-    self = [super initWithActionURLString:[NSString stringWithFormat:@"/orders/orders_list/%@.json",Id]];
+    self = [super initWithActionURLString:@"/orders/orders_list.json"];
     self.isValid = YES;
     return self;
 }

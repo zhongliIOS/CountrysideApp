@@ -26,6 +26,7 @@
 #import "MyInfo.h"
 #import "MyResponeResult.h"
 #import "public.h"
+#import "UIView+Frame.h"
 
 #define HOSTURL @"http://120.25.213.75:8080"
 /**

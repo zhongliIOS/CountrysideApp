@@ -33,7 +33,7 @@
     MyInfo *m = [MyInfo defaultMyInfo];
     if (m.guid) {
         [_objectList ClearAll];
-        GetMyGoodsCarAction *act = [[GetMyGoodsCarAction alloc]initWithCustomId:m.guid];
+        GetMyGoodsCarAction *act = [[GetMyGoodsCarAction alloc]init];
         [act DoActionWithSuccess:^(MyActionBase *action, id responseObject, AFHTTPRequestOperation *operation) {
             MyResponeResult *result = [MyResponeResult createWithResponeObject:responseObject];
             if ([result get_error_code]==kServerErrorCode_OK) {

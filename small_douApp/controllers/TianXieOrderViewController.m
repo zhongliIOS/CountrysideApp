@@ -232,7 +232,7 @@
     return [_areaList GetCount];
 }
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
-    NSString *title = [(ObjArea *)[_areaList GetIndexAt:row WithIsDESC:YES] name];
+    NSString *title = [(ObjArea *)[_areaList GetIndexAt:row WithIsDESC:YES] location];
     NSString *string = [[NSString alloc]initWithFormat:@"%@",title];
     return string;
 }

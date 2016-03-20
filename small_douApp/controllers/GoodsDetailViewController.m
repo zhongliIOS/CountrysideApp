@@ -12,6 +12,8 @@
 #import "GetGoodsDetailAction.h"
 #import "EvaluationViewController.h"
 #import "CollectionAction.h"
+#import "GetProductDetailAction.h"
+#import "AddshopcarAction.h"
 
 @interface GoodsDetailViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -20,6 +22,9 @@
     ObjProductDetail *_objProductDetail;
     //当前的个数
     NSInteger _currentNum;
+    
+    NSString *_h5String;
+    CGFloat  _height;
 }
 @end
 
@@ -30,6 +35,7 @@
     [super viewDidLoad];
     _currentNum = 1;
     [self initData];
+    [self initH5Data];
     [self createNavBar];
     [self congigNavBar];
     [self createTableView];
@@ -61,6 +67,29 @@
 
 }
 
+-(void)initH5Data
+{
+    GetProductDetailAction *act = [[GetProductDetailAction alloc] initWithId:_productId];
+    if (!act.isValid) {
+        return;
+    }
+    [act DoActionWithSuccess:^(MyActionBase *action, id responseObject, AFHTTPRequestOperation *operation) {
+        MyResponeResult *result = [MyResponeResult createWithResponeObject:responseObject];
+        if ([result get_error_code]==kServerErrorCode_OK) {
+            NSDictionary *dic = responseObject;
+            if (dic) {
+                _h5String = [LUnity ReadField_String:dic WithFieldName:@"data"];
+            }
+            [_tableView reloadData];
+        }
+        else
+            [LUnity showErrorHUDViewAtView:self.view WithTitle:[result get_messge]];
+        
+    } Failure:^(MyActionBase *action, NSError *error, AFHTTPRequestOperation *operation) {
+        
+    }];
+
+}
 
 -(void)rightButItemClick
 {
@@ -147,14 +176,14 @@
     {
      //addShop
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        NSDictionary *dic = @{@"cuId":[[MyInfo defaultMyInfo] guid],@"num":[NSNumber numberWithInteger:_currentNum],@"proId":_productId};
-        [self postWithBodyDic:dic andUrl:@"/shoppingCarts/save" success:^(id responseObject, AFHTTPRequestOperation *operation) {
+        AddshopcarAction *act = [[AddshopcarAction alloc]initWithProId:_productId num:[NSNumber numberWithInteger:_currentNum]];
+        [act DoActionWithSuccess:^(MyActionBase *action, id responseObject, AFHTTPRequestOperation *operation) {
             [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
             MyResponeResult *result = [MyResponeResult createWithResponeObject:responseObject];
             [LUnity showErrorHUDViewAtView:self.view WithTitle:[result get_messge]];
-            
-        } fail:^(NSError *error, AFHTTPRequestOperation *operation) {
+        } Failure:^(MyActionBase *action, NSError *error, AFHTTPRequestOperation *operation) {
             [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+
         }];
     }
 
@@ -171,6 +200,7 @@
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     [cell fillDataWithModel:_objProductDetail];
+    [cell fillUrl:_h5String];
     [cell setCallBackCount:^(NSInteger num) {
         _currentNum = num;
     }];
@@ -179,13 +209,17 @@
         vc.proId = _productId;
         [self.navigationController pushViewController:vc animated:YES];
     }];
+    [cell setCallheight:^(CGFloat height) {
+        _height = height;
+        [_tableView reloadData];
+    }];
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
 
-    return 400;
+    return 400+_height+20;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {

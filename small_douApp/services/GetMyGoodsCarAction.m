@@ -10,9 +10,9 @@
 
 @implementation GetMyGoodsCarAction
 
--(instancetype)initWithCustomId:(NSNumber *)Id
+-(instancetype)init
 {
-    self = [super initWithActionURLString:[NSString stringWithFormat:@"/shoppingCarts/shoppingCarts_list/%@.json",Id]];
+    self = [super initWithActionURLString:@"/shoppingCarts/shoppingCarts_list.json"];
     self.isValid = YES;
 
     return self;

@@ -31,5 +31,14 @@
 @property(nonatomic,copy)NSString *vCode;
 
 
+//新参数
+@property(nonatomic,strong)NSNumber *addressId;
+@property(nonatomic,strong)NSNumber *userId;
+
+@property(nonatomic,copy)NSString *ctime;
+@property(nonatomic,copy)NSString *message;
+@property(nonatomic,copy)NSString *refundedFee;
+@property(nonatomic,copy)NSString *totalFee;
+
 
 @end

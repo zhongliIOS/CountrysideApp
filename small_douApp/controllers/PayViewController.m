@@ -10,6 +10,7 @@
 #import "MyAliPayManager.h"
 #import "MyWeChatPayManager.h"
 #import "CreateAliOrderAction.h"
+#import "CreateWxOrderAction.h"
 
 @interface PayViewController ()
 {
@@ -123,6 +124,28 @@
 {
     if (_weChatBtn.selected) {
        //微信支付
+        
+        
+        CreateWxOrderAction *act = [[CreateWxOrderAction alloc] initWithOrderId:_orderObj.guid];
+        if (!act.isValid) {
+            return;
+        }
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [act DoActionWithSuccess:^(MyActionBase *action, id responseObject, AFHTTPRequestOperation *operation) {
+            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+            MyResponeResult *result = [MyResponeResult createWithResponeObject:responseObject];
+            if ([result get_error_code]==kServerErrorCode_OK) {
+                _aliOrderString = [result get_data];
+                if (_aliOrderString) {
+                    [self doWxPay];
+                }
+            }
+            else
+                [LUnity showErrorHUDViewAtView:self.view WithTitle:[result get_messge]];
+            
+        } Failure:^(MyActionBase *action, NSError *error, AFHTTPRequestOperation *operation) {
+            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        }];
        
     }
    else
@@ -149,6 +172,13 @@
         }];
     
      }
+
+}
+
+-(void)doWxPay
+{
+
+
 
 }
 

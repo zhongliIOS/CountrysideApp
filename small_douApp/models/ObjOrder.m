@@ -26,7 +26,12 @@
         self.doneTime = [self ReadField_String:data WithFieldName:@"doneTime"];
         self.payTime = [self ReadField_String:data WithFieldName:@"payTime"];
         self.vCode = [self ReadField_String:data WithFieldName:@"vCode"];
-
+        
+        self.addressId = [self ReadField_Number:data WithFieldName:@"addressId"];
+        self.userId = [self ReadField_Number:data WithFieldName:@"userId"];
+        self.ctime = [self ReadField_String:data WithFieldName:@"ctime"];
+        self.refundedFee = [self ReadField_String:data WithFieldName:@"refundedFee"];
+        self.totalFee = [self ReadField_String:data WithFieldName:@"totalFee"];
 
     }
     return self;

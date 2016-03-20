@@ -29,7 +29,10 @@
 		C33B837C1B288BAB0020F76E /* ObjBase.m in Sources */ = {isa = PBXBuildFile; fileRef = C33B83781B288BAB0020F76E /* ObjBase.m */; };
 		C33B837D1B288BAB0020F76E /* ObjectList.m in Sources */ = {isa = PBXBuildFile; fileRef = C33B837A1B288BAB0020F76E /* ObjectList.m */; };
 		C33B83851B288C620020F76E /* MyResponeResult.m in Sources */ = {isa = PBXBuildFile; fileRef = C33B83831B288C620020F76E /* MyResponeResult.m */; };
+		C35C3E291C96E625007DB0A1 /* GetProductDetailAction.m in Sources */ = {isa = PBXBuildFile; fileRef = C35C3E281C96E625007DB0A1 /* GetProductDetailAction.m */; };
+		C35C3E2C1C96EC16007DB0A1 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = C35C3E2B1C96EC16007DB0A1 /* UIView+Frame.m */; };
 		C35E14641B92BCBC00C7DA2A /* AppInstroViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C35E14631B92BCBC00C7DA2A /* AppInstroViewController.m */; };
+		C374A9AC1C9ED9A20011501A /* AddshopcarAction.m in Sources */ = {isa = PBXBuildFile; fileRef = C374A9AB1C9ED9A20011501A /* AddshopcarAction.m */; };
 		C38136151B399A8D00418CDB /* TianXieOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C38136141B399A8D00418CDB /* TianXieOrderViewController.m */; };
 		C38136181B399F9D00418CDB /* GoodOrderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C38136171B399F9D00418CDB /* GoodOrderCell.m */; };
 		C381361B1B39A19B00418CDB /* GoodAddressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C381361A1B39A19B00418CDB /* GoodAddressCell.m */; };
@@ -44,6 +47,7 @@
 		C3CA70BD1B3C353600672337 /* search_green.png in Resources */ = {isa = PBXBuildFile; fileRef = C3CA70B61B3C353600672337 /* search_green.png */; };
 		C3CA70BE1B3C353600672337 /* weixuanzhong.png in Resources */ = {isa = PBXBuildFile; fileRef = C3CA70B71B3C353600672337 /* weixuanzhong.png */; };
 		C3CA70BF1B3C353600672337 /* xuanzhong.png in Resources */ = {isa = PBXBuildFile; fileRef = C3CA70B81B3C353600672337 /* xuanzhong.png */; };
+		C3CD93A51C9D945D0023AC21 /* CreateWxOrderAction.m in Sources */ = {isa = PBXBuildFile; fileRef = C3CD93A41C9D945C0023AC21 /* CreateWxOrderAction.m */; };
 		C3EA5CA61B383B460043C3E9 /* OrderSearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EA5CA51B383B460043C3E9 /* OrderSearchController.m */; };
 		C3EA5CA91B383E190043C3E9 /* OrderSumarryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EA5CA81B383E190043C3E9 /* OrderSumarryCell.m */; };
 		C3EA5CAC1B384D810043C3E9 /* UserDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C3EA5CAB1B384D810043C3E9 /* UserDetailViewController.m */; };
@@ -211,8 +215,14 @@
 		C33B837A1B288BAB0020F76E /* ObjectList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ObjectList.m; path = ../ObjectList.m; sourceTree = "<group>"; };
 		C33B83821B288C620020F76E /* MyResponeResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyResponeResult.h; sourceTree = "<group>"; };
 		C33B83831B288C620020F76E /* MyResponeResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyResponeResult.m; sourceTree = "<group>"; };
+		C35C3E271C96E625007DB0A1 /* GetProductDetailAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetProductDetailAction.h; sourceTree = "<group>"; };
+		C35C3E281C96E625007DB0A1 /* GetProductDetailAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetProductDetailAction.m; sourceTree = "<group>"; };
+		C35C3E2A1C96EC16007DB0A1 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
+		C35C3E2B1C96EC16007DB0A1 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
 		C35E14621B92BCBC00C7DA2A /* AppInstroViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppInstroViewController.h; sourceTree = "<group>"; };
 		C35E14631B92BCBC00C7DA2A /* AppInstroViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppInstroViewController.m; sourceTree = "<group>"; };
+		C374A9AA1C9ED9A20011501A /* AddshopcarAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddshopcarAction.h; sourceTree = "<group>"; };
+		C374A9AB1C9ED9A20011501A /* AddshopcarAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddshopcarAction.m; sourceTree = "<group>"; };
 		C38136131B399A8D00418CDB /* TianXieOrderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TianXieOrderViewController.h; sourceTree = "<group>"; };
 		C38136141B399A8D00418CDB /* TianXieOrderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TianXieOrderViewController.m; sourceTree = "<group>"; };
 		C38136161B399F9D00418CDB /* GoodOrderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodOrderCell.h; sourceTree = "<group>"; };
@@ -234,6 +244,8 @@
 		C3CA70B61B3C353600672337 /* search_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search_green.png; sourceTree = "<group>"; };
 		C3CA70B71B3C353600672337 /* weixuanzhong.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weixuanzhong.png; sourceTree = "<group>"; };
 		C3CA70B81B3C353600672337 /* xuanzhong.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xuanzhong.png; sourceTree = "<group>"; };
+		C3CD93A31C9D945C0023AC21 /* CreateWxOrderAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateWxOrderAction.h; sourceTree = "<group>"; };
+		C3CD93A41C9D945C0023AC21 /* CreateWxOrderAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateWxOrderAction.m; sourceTree = "<group>"; };
 		C3EA5CA41B383B460043C3E9 /* OrderSearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderSearchController.h; sourceTree = "<group>"; };
 		C3EA5CA51B383B460043C3E9 /* OrderSearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderSearchController.m; sourceTree = "<group>"; };
 		C3EA5CA71B383E190043C3E9 /* OrderSumarryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderSumarryCell.h; sourceTree = "<group>"; };
@@ -594,8 +606,12 @@
 				CA9A5E2C1B44DCD800AD9DB1 /* GetMyInfoAction.m */,
 				CA07FEDC1B608AD00011C07F /* GetProductListAction.h */,
 				CA07FEDD1B608AD00011C07F /* GetProductListAction.m */,
+				C35C3E271C96E625007DB0A1 /* GetProductDetailAction.h */,
+				C35C3E281C96E625007DB0A1 /* GetProductDetailAction.m */,
 				CA9A5E311B450E3D00AD9DB1 /* GetMyGoodsCarAction.h */,
 				CA9A5E321B450E3D00AD9DB1 /* GetMyGoodsCarAction.m */,
+				C374A9AA1C9ED9A20011501A /* AddshopcarAction.h */,
+				C374A9AB1C9ED9A20011501A /* AddshopcarAction.m */,
 				CA9A5E371B4532A400AD9DB1 /* GetReviewsAction.h */,
 				CA9A5E381B4532A400AD9DB1 /* GetReviewsAction.m */,
 				CA9A5E3A1B45339500AD9DB1 /* GetCategorysAction.h */,
@@ -618,6 +634,8 @@
 				CA6AD4561B6B4324002756E7 /* DeleteOrderAction.m */,
 				CAB5DF9C1B7C324F002B9ADA /* CreateAliOrderAction.h */,
 				CAB5DF9D1B7C324F002B9ADA /* CreateAliOrderAction.m */,
+				C3CD93A31C9D945C0023AC21 /* CreateWxOrderAction.h */,
+				C3CD93A41C9D945C0023AC21 /* CreateWxOrderAction.m */,
 			);
 			path = services;
 			sourceTree = "<group>";
@@ -657,6 +675,8 @@
 		CA822C791B4E4AD4008AB90E /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				C35C3E2A1C96EC16007DB0A1 /* UIView+Frame.h */,
+				C35C3E2B1C96EC16007DB0A1 /* UIView+Frame.m */,
 				CA15ADD31B6F0B5C007364E9 /* WeChat */,
 				CA822D791B4FA259008AB90E /* openssl */,
 				CA822DC51B4FA25A008AB90E /* Util */,
@@ -1129,7 +1149,7 @@
 				TargetAttributes = {
 					CAF0AD661B27C89A00306D9E = {
 						CreatedOnToolsVersion = 6.3;
-						DevelopmentTeam = GDGZ2H4K6A;
+						DevelopmentTeam = V9TZB8NB7E;
 					};
 					CAF0AD7F1B27C89A00306D9E = {
 						CreatedOnToolsVersion = 6.3;
@@ -1288,6 +1308,7 @@
 				CA14CCE81B5389F000C6F087 /* GetFavoritesAction.m in Sources */,
 				CAF0ADAF1B2A840200306D9E /* GoodsCarViewController.m in Sources */,
 				CA822DD81B4FA25A008AB90E /* DataSigner.m in Sources */,
+				C3CD93A51C9D945D0023AC21 /* CreateWxOrderAction.m in Sources */,
 				CA3A86251B3A62EE005848C0 /* EvaluationViewController.m in Sources */,
 				C388EAEB1B418028002D392A /* RequestSmsCodeAction.m in Sources */,
 				CA9A5E331B450E3D00AD9DB1 /* GetMyGoodsCarAction.m in Sources */,
@@ -1298,6 +1319,7 @@
 				CA822DD71B4FA25A008AB90E /* base64.m in Sources */,
 				CA9A5E361B45317600AD9DB1 /* DeleteGoodsCarAction.m in Sources */,
 				CA1B7ED91B5E3EBF00F2B40B /* ObjGoodCar.m in Sources */,
+				C35C3E2C1C96EC16007DB0A1 /* UIView+Frame.m in Sources */,
 				CA3F2FF41B395A3E002B9B76 /* MyFavViewController.m in Sources */,
 				CAF0ADAC1B2A83E900306D9E /* FenLeiVIewController.m in Sources */,
 				CAB4D3CC1B33C9CA00A998E5 /* GoodHeadCell.m in Sources */,
@@ -1308,6 +1330,7 @@
 				CA30AC6B1B4BD16F00732ED3 /* ObjProductDetail.m in Sources */,
 				CA9A5E2D1B44DCD800AD9DB1 /* GetMyInfoAction.m in Sources */,
 				CA3F2FF11B39491E002B9B76 /* PayViewController.m in Sources */,
+				C374A9AC1C9ED9A20011501A /* AddshopcarAction.m in Sources */,
 				C33B837B1B288BAB0020F76E /* JsonObject.m in Sources */,
 				CAF0ADB21B2A841200306D9E /* UserViewController.m in Sources */,
 				CA822DDA1B4FA25A008AB90E /* MD5DataSigner.m in Sources */,
@@ -1340,6 +1363,7 @@
 				CA822C811B4E4ADB008AB90E /* UIScrollView+SVPullToRefresh.m in Sources */,
 				CAF0AD6D1B27C89A00306D9E /* main.m in Sources */,
 				CA40A29B1B58968D0059E587 /* ObjPostOrder.m in Sources */,
+				C35C3E291C96E625007DB0A1 /* GetProductDetailAction.m in Sources */,
 				C30FD4721B37DD4500776357 /* MainHeadViewCell.m in Sources */,
 				C38136151B399A8D00418CDB /* TianXieOrderViewController.m in Sources */,
 				CA15ADE81B6F43A5007364E9 /* MyAliPayManager.m in Sources */,

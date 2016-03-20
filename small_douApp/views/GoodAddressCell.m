@@ -17,6 +17,7 @@
     UIImageView *_nextImageV;
     UIButton *_areaBtn;
     UILabel *_orderCodeLabel;
+    UILabel *_orderTipLabel;
 }
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -42,6 +43,9 @@
             label.font = [UIFont systemFontOfSize:size_font2];
             label.text = titleArr[i*2+j];
             [bgView addSubview:label];
+            if (i*2+j==3) {
+                _orderTipLabel = label;
+            }
             
             UILabel *detailLabel = [[UILabel alloc]initWithFrame:CGRectMake(ScreenW-210, 55*j, 200, 55)];
             detailLabel.font = [UIFont systemFontOfSize:size_font2];
@@ -76,7 +80,6 @@
                 _salePriceDetaiLabel = detailLabel;
                 _salePriceDetaiLabel.hidden = YES;
             }
-            
         }
         for (int j=0; j<3; j++) {
             if (i==1&&j==2) {
@@ -93,6 +96,7 @@
 
 -(void)fillDataWithModel:(NSArray *)arr
 {
+    _orderTipLabel.hidden = YES;
     MyInfo *user = [MyInfo defaultMyInfo];
     _phoneDetailLabel.text = user.mobile;
     CGFloat allPrice = 0.0;
@@ -111,11 +115,13 @@
     if (!obj) {
         return;
     }
+    _orderTipLabel.hidden = NO;
+
     [_nextImageV removeFromSuperview];
     _areaBtn.userInteractionEnabled = NO;
-    _phoneDetailLabel.text = obj.tel;
-    _areaDetailLabel.text = obj.area;
-    _priceDetailLabel.text = [NSString stringWithFormat:@"￥%.2f",[obj.amount floatValue]];
+    _phoneDetailLabel.text = obj.mobile;
+    _areaDetailLabel.text = [[AreaInfo areaInfo] searchAreaNameWithId:obj.address];
+    _priceDetailLabel.text = [NSString stringWithFormat:@"￥%.2f",[obj.total_fee floatValue]];
     _salePriceDetaiLabel.hidden = NO;
     _salePriceDetaiLabel.text = obj.code;
 

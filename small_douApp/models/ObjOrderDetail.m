@@ -20,6 +20,13 @@
             ObjProduct *obj = [[ObjProduct alloc]initWithDirectory:dic];
             [self.arrProducts addObject:obj];
         }
+        self.total_fee = [self ReadField_String:data WithFieldName:@"total_fee"];
+        self.store = [self ReadField_String:data WithFieldName:@"store"];
+        self.name = [self ReadField_String:data WithFieldName:@"name"];
+        self.mobile = [self ReadField_String:data WithFieldName:@"mobile"];
+        self.location = [self ReadField_String:data WithFieldName:@"location"];
+        self.sex = [self ReadField_Number:data WithFieldName:@"sex"];
+        self.address = [self ReadField_String:data WithFieldName:@"address"];
 
     }
     return self;

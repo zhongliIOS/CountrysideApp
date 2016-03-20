@@ -54,11 +54,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self downLoadData];
     [self createNavBar];
     [self configNavBar];
     [self createTableView];
     [self createFootView];
+    [self downLoadData];
+
 }
 
 -(void)updateUI

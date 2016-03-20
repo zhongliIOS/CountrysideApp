@@ -20,6 +20,7 @@
     UILabel *_evaluationLabel;
     UILabel *_pingJILabel;
     StarView *_starView;
+    BOOL     _isNeedUrl;
 }
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -27,6 +28,7 @@
     if (self) {
         [self createContentView];
         self.backgroundColor = [UIColor clearColor];
+        _isNeedUrl = YES;
     }
     return self;
     
@@ -161,6 +163,33 @@ CGFloat  imageH = 160.0;
     _starView = [[StarView alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_pingJILabel.frame), 7, 0, 0)];
     [evaluationBg addSubview:_starView];
     
+    _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, evaluationBg.maxY+10, ScreenW, 100)];
+    _webView.delegate = self;
+    _webView.scalesPageToFit = YES;
+    _webView.userInteractionEnabled = NO;
+    [self.contentView addSubview:_webView];
+}
+
+-(void)fillUrl:(NSString *)url
+{
+    if (!url||!_isNeedUrl) {
+        return;
+    }
+    _isNeedUrl = NO;
+    NSString *urlStr = [NSString stringWithFormat:@"<html><body>%@</body></html>",url];
+    NSString *s = @"<img src=\"https://img.yzcdn.cn/upload_files/2015/12/21/FqYTzaSf7KOjEv-BpwlZ6x5KLbgt.jpg!730x0.jpg\"/><img src=\"https://img.yzcdn.cn/upload_files/2015/12/21/FvF0eFtZmfW2Yz-Dtv0kPFIDJOFs.jpg!730x0.jpg\"/><img src=\"https://img.yzcdn.cn/upload_files/2015/12/21/FgV5oxeeYG1R2DFxeMOaK4SIDJV6.jpg!730x0.jpg\"/>";
+    [_webView loadHTMLString:s baseURL:nil];
+}
+
+-(void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    UIScrollView *scroll = webView.scrollView;
+    
+    _webView.height = scroll.contentSize.height;
+    
+    if (_Callheight) {
+        _Callheight(scroll.contentSize.height);
+    }
 }
 
 -(void)fillDataWithModel:(ObjProductDetail *)model

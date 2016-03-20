@@ -10,6 +10,6 @@
 
 @interface GetMyGoodsCarAction : MyActionGetBase
 
--(instancetype)initWithCustomId:(NSNumber *)Id;
+-(instancetype)init;
 
 @end

@@ -96,7 +96,7 @@
     ObjProduct *product = obj;
     [_imageV sd_setImageWithURL:[NSURL URLWithString:product.pic] placeholderImage:[UIImage imageNamed:@""]];
     _titleLabel.text = product.name;
-    _priceLabel.text = [NSString stringWithFormat:@"￥%.2f",[product.price floatValue]];
+    _priceLabel.text = [NSString stringWithFormat:@"￥%.2f",[product.total_fee floatValue]];
     CGFloat price = [product.price floatValue];
     CGFloat discount = [product.discount floatValue];
     //    CGFloat noSalePrice = price/discount;
