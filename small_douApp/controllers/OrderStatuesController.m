@@ -11,6 +11,7 @@
 #import "ObjOrderDetail.h"
 #import "GoodOrderCell.h"
 #import "GoodAddressCell.h"
+#import "EvaluationWriteViewController.h"
 
 @interface OrderStatuesController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -137,7 +138,9 @@
 
 -(void)buyBtnClick
 {
-      
+    EvaluationWriteViewController *vc = [[EvaluationWriteViewController alloc]init];
+    vc.isProduct = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark----tableViewDelegate

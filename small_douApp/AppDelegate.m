@@ -39,7 +39,8 @@
     [self initWindowBackgroundColorwithView:vc.view];
     [self.window makeKeyAndVisible];
     //尝试自动登陆
-    
+    [self isHasAutoLogin];
+
     return YES;
 }
 
@@ -103,12 +104,16 @@
             
                 }
             }
-            [self isHasAutoLogin];
-
+            [[NSNotificationCenter defaultCenter] postNotificationName:NotificationUpdateMyInfo object:nil];
         }
     
     } Failure:^(MyActionBase *action, NSError *error, AFHTTPRequestOperation *operation) {
        NSLog(@"%@",operation.responseObject);
+        NSDictionary *dic = operation.responseObject;
+        if ([dic[@"error"] isEqualToString:@"invalid_token"]) {
+            [[NSUserDefaults standardUserDefaults]setObject:@"" forKey:My_token];
+            [self getAreaInfo];
+        }
      }];
 }
 
@@ -137,6 +142,11 @@
         }
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        NSDictionary *dic = operation.responseObject;
+        if ([dic[@"error"] isEqualToString:@"invalid_token"]) {
+            [[NSUserDefaults standardUserDefaults]setObject:@"" forKey:My_token];
+        }
           [self pushLogin];
     }];
 

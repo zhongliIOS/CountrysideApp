@@ -49,6 +49,10 @@
     UIImageView *imgV = [[UIImageView alloc] initWithFrame:CGRectMake(ScreenW-22, 17.5, 14, 20)];
     imgV.image = [UIImage imageNamed:@"jinru"];
     [mainView addSubview:imgV];
+    
+    UIView *line = [[UIView alloc]initWithFrame:CGRectMake(0, 54.5, ScreenW, 0.5)];
+    line.backgroundColor = color_line1;
+    [self.contentView addSubview:line];
 }
 
 -(void)fillDataWith:(ObjCategory *)model

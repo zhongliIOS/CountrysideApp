@@ -10,4 +10,9 @@
 
 @interface EvaluationWriteViewController : LBaseViewController
 
+@property(nonatomic,strong)NSNumber *orId;
+@property(nonatomic,strong)NSNumber *proId;
+@property(nonatomic,assign)BOOL  isProduct;
+
+
 @end

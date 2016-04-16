@@ -76,6 +76,11 @@
         [_viewsArr addObject:view];
         
         UIImageView *imageV = [[UIImageView alloc] initWithFrame:CGRectZero];
+        imageV.contentMode = UIViewContentModeScaleAspectFill;
+        imageV.clipsToBounds = YES;
+        imageV.frame = CGRectMake((width-88)/2, 10, 88, 88);
+        [imageV sd_setImageWithURL:[NSURL URLWithString:product.pic]];
+        
         [view addSubview:imageV];
         for (int i=0; i<3; i++) {
             UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, 108, width, 20)];

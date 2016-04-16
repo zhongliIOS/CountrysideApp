@@ -13,5 +13,8 @@
 @property(nonatomic,strong)UIScrollView *mainScrollView;
 @property(nonatomic,strong)UILabel *pageLabel;
 @property(nonatomic,copy)void(^CallBackClick)(void);
+@property(nonatomic,assign)BOOL isEvaPro;
+
+-(NSNumber *)score;
 
 @end

@@ -120,12 +120,7 @@
 
 -(void)login
 {
-    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-    
-    [tracker send:[[GAIDictionaryBuilder createEventWithCategory:@"ui_actionhave"
-                                                          action:@"button_presshave"
-                                                           label:@"playhave"
-                                                           value:nil] build]];
+
     
     if (_phoneTf.text.length!=11) {
         [LUnity showErrorHUDViewAtView:self.view WithTitle:@"请输入正确的手机号"];
@@ -166,7 +161,7 @@
 {
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:HOSTURL]];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    [manager.requestSerializer setValue:access_token forHTTPHeaderField:@"Authorization"];
+    [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@",access_token] forHTTPHeaderField:@"Authorization"];
     [manager GET:@"/customer.json" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         MyResponeResult *result = [MyResponeResult createWithResponeObject:responseObject];
         NSLog(@"%@",responseObject);
@@ -222,7 +217,7 @@
             }
         }
     } Failure:^(MyActionBase *action, NSError *error, AFHTTPRequestOperation *operation) {
-        
+         NSLog(@"%@",operation.responseObject);
     }];
 
 }

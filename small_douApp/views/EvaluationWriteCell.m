@@ -13,6 +13,7 @@
     UILabel *_titleLabel;
     UILabel *_detailLabel;
     UITextView *_textView;
+    UILabel *_proLabel;
 }
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -30,36 +31,36 @@
 {
     CGFloat imageH = 160.0;
     
-    _mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, ScreenW, imageH)];
-    _mainScrollView.backgroundColor = [UIColor whiteColor];
-    _mainScrollView.pagingEnabled = YES;
-    _mainScrollView.bounces = NO;
-    _mainScrollView.showsHorizontalScrollIndicator = NO;
-    [self.contentView addSubview:_mainScrollView];
+//    _mainScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, ScreenW, imageH)];
+//    _mainScrollView.backgroundColor = [UIColor whiteColor];
+//    _mainScrollView.pagingEnabled = YES;
+//    _mainScrollView.bounces = NO;
+//    _mainScrollView.showsHorizontalScrollIndicator = NO;
+//    [self.contentView addSubview:_mainScrollView];
+//    
+//    _pageLabel = [[UILabel alloc] initWithFrame:CGRectMake(ScreenW-45, imageH-37, 35, 35)];
+//    _pageLabel.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
+//    _pageLabel.layer.cornerRadius = 17.5;
+//    _pageLabel.layer.masksToBounds = YES;
+//    _pageLabel.textAlignment = NSTextAlignmentCenter;
+//    _pageLabel.font = [UIFont systemFontOfSize:size_font2];
+//    _pageLabel.text = @"1/5";
+//    _pageLabel.textColor = [UIColor whiteColor];
+//    [self.contentView addSubview:_pageLabel];
+//    
+//    _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(leftSpace, CGRectGetMaxY(_mainScrollView.frame)+10, ScreenW-2*leftSpace, 20)];
+//    _titleLabel.font = [UIFont systemFontOfSize:size_font2];
+//    _titleLabel.text = @"进口红心火龙果";
+//    _titleLabel.textColor = color_font_black;
+//    [self.contentView addSubview:_titleLabel];
+//    _detailLabel = [[UILabel alloc] initWithFrame:CGRectMake(leftSpace, CGRectGetMaxY(_titleLabel.frame), ScreenW-2*leftSpace, 20)];
+//    _detailLabel.font = [UIFont systemFontOfSize:size_font3];
+//    _detailLabel.textColor = [UIColor colorWithRed:0.65 green:0.65 blue:0.65 alpha:1];
+//    _detailLabel.text = @"新鲜又好吃";
+//    _detailLabel.numberOfLines = 0;
+//    [self.contentView addSubview:_detailLabel];
     
-    _pageLabel = [[UILabel alloc] initWithFrame:CGRectMake(ScreenW-45, imageH-37, 35, 35)];
-    _pageLabel.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.3];
-    _pageLabel.layer.cornerRadius = 17.5;
-    _pageLabel.layer.masksToBounds = YES;
-    _pageLabel.textAlignment = NSTextAlignmentCenter;
-    _pageLabel.font = [UIFont systemFontOfSize:size_font2];
-    _pageLabel.text = @"1/5";
-    _pageLabel.textColor = [UIColor whiteColor];
-    [self.contentView addSubview:_pageLabel];
-    
-    _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(leftSpace, CGRectGetMaxY(_mainScrollView.frame)+10, ScreenW-2*leftSpace, 20)];
-    _titleLabel.font = [UIFont systemFontOfSize:size_font2];
-    _titleLabel.text = @"进口红心火龙果";
-    _titleLabel.textColor = color_font_black;
-    [self.contentView addSubview:_titleLabel];
-    _detailLabel = [[UILabel alloc] initWithFrame:CGRectMake(leftSpace, CGRectGetMaxY(_titleLabel.frame), ScreenW-2*leftSpace, 20)];
-    _detailLabel.font = [UIFont systemFontOfSize:size_font3];
-    _detailLabel.textColor = [UIColor colorWithRed:0.65 green:0.65 blue:0.65 alpha:1];
-    _detailLabel.text = @"新鲜又好吃";
-    _detailLabel.numberOfLines = 0;
-    [self.contentView addSubview:_detailLabel];
-    
-    UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_detailLabel.frame)+10, ScreenW, 215.0)];
+    UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0,10, ScreenW, 215.0)];
     bgView.backgroundColor = [UIColor whiteColor];
     [self.contentView addSubview:bgView];
     
@@ -76,6 +77,9 @@
             label.textColor = color_font_black;
             label.text = i==0?@"订单评级":@"评价内容";
             [bgView addSubview:label];
+            if (i==0) {
+                _proLabel = label;
+            }
         }
     }
     UIView *textBg = [[UITextView alloc] initWithFrame:CGRectMake(6, 105, ScreenW-12, 101)];
@@ -98,6 +102,38 @@
     [btn addTarget:self action:@selector(btnClick) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:btn];
     
+    for (int i=0; i<5; i++) {
+        CGFloat btnsize = 22;
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        btn.frame = CGRectMake((ScreenW-5*btnsize-4*5-5)+27*i, 16.5, btnsize, btnsize);
+        btn.backgroundColor = [UIColor whiteColor];
+        [btn setBackgroundImage:[UIImage imageNamed:@"wuxing"] forState:UIControlStateNormal];
+        [btn setBackgroundImage:[UIImage imageNamed:@"yixing"] forState:UIControlStateSelected];
+        [btn addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
+        btn.tag = i+10;
+        [bgView addSubview:btn];
+    }
+}
+
+-(void)setIsEvaPro:(BOOL)isEvaPro
+{
+    if (isEvaPro) {
+        _proLabel.text = @"商品评级";
+    }
+}
+
+-(void)click:(UIButton *)btn
+{
+    for (int i=0; i<6; i++) {
+        UIButton *button = (UIButton *)[self viewWithTag:i+10];
+        button.selected = NO;
+    }
+    for (int i=0; i<=btn.tag-10; i++) {
+        UIButton *button = (UIButton *)[self viewWithTag:i+10];
+        
+        button.selected = YES;
+    }
+
 }
 
 -(void)btnClick
@@ -107,7 +143,17 @@
         _CallBackClick();
     }
 }
-
+- (NSNumber *)score{
+    
+    NSInteger num = 0;
+    for (int i=0; i<6; i++) {
+        UIButton *button = (UIButton *)[self viewWithTag:i+10];
+        if (button.selected) {
+            num++;
+        }
+    }
+    return [NSNumber numberWithInteger:num];
+}
 - (void)awakeFromNib {
     // Initialization code
 }

@@ -12,7 +12,7 @@
 
 -(id)init
 {
-    self = [super initWithActionURLString:@"/areas/areas_list.json"];
+    self = [super initWithActionURLString:@"areas/areas_list.json"];
     if (self) {
         
     }

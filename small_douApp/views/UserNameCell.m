@@ -64,8 +64,8 @@
         return;
     }
     _phoneLabel.text = model.mobile;
-    [_iconImgV sd_setImageWithURL:[NSURL URLWithString:model.photo] placeholderImage:[UIImage imageNamed:@""]];
-    _userNameLabel.text = model.username;
+    [_iconImgV sd_setImageWithURL:[NSURL URLWithString:model.avatar] placeholderImage:[UIImage imageNamed:@""]];
+    _userNameLabel.text = model.nickname;
 }
 
 - (void)awakeFromNib {

@@ -20,7 +20,7 @@
         self.mu = [self ReadField_String:data WithFieldName:@"mu"];
         self.name = [self ReadField_String:data WithFieldName:@"name"];
         self.number = [self ReadField_String:data WithFieldName:@"number"];
-        self.picsArr = [self ReadField_Array:data WithFieldName:@"pics"];
+        self.picsArr = [self ReadField_Array:data WithFieldName:@"pic_url"];
         self.place = [self ReadField_String:data WithFieldName:@"place"];
         self.price = [self ReadField_String:data WithFieldName:@"price"];
         self.sl = [self ReadField_String:data WithFieldName:@"sl"];

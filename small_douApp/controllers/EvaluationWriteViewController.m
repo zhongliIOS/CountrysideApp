@@ -35,6 +35,9 @@
 -(void)configNavBar
 {
     self.midTitle = @"评价订单";
+    if (_isProduct) {
+        self.midTitle = @"评价商品";
+    }
     self.midTitelColor = [UIColor whiteColor];
     [self.leftBtn setImage:[UIImage imageNamed:backImageName] forState:UIControlStateNormal];
     self.leftBtn.hidden = NO;
@@ -61,6 +64,7 @@
         cell = [[EvaluationWriteCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"EvaluationWriteCell"];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.isEvaPro = _isProduct;
     [cell setCallBackClick:^{
         NSLog(@"xixi");
         [self endEdit];

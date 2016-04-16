@@ -109,14 +109,14 @@
             _iconImageV.layer.masksToBounds = YES;
             _iconImageV.contentMode = UIViewContentModeScaleAspectFill;
             _iconImageV.backgroundColor = color_bg;
-            [_iconImageV sd_setImageWithURL:[NSURL URLWithString:_user.photo] placeholderImage:nil];
+            [_iconImageV sd_setImageWithURL:[NSURL URLWithString:_user.avatar] placeholderImage:nil];
             [bgView addSubview:_iconImageV];
         }
         else if(i==1)
         {
             _nickNameTf = [[UITextField alloc] initWithFrame:CGRectMake(ScreenW-250, 0, 218, viewH)];
             _nickNameTf.textColor = color_font_gray2;
-            _nickNameTf.text = _user.username;
+            _nickNameTf.text = _user.nickname;
             _nickNameTf.placeholder = @"暂无";
             _nickNameTf.font = [UIFont systemFontOfSize:size_font2];
             _nickNameTf.textAlignment = NSTextAlignmentRight;
@@ -143,7 +143,7 @@
     ObjArea *area = _currentArea;
     NSMutableDictionary *paramets = [NSMutableDictionary dictionary];
     if (![_user.username isEqualToString:newName]) {
-        [paramets setObject:newName forKey:@"username"];
+        [paramets setObject:newName forKey:@"nickname"];
     }
     if (!([_user.locationId integerValue]== [area.guid integerValue])) {
         [paramets setObject:area.guid forKey:@"locationId"];

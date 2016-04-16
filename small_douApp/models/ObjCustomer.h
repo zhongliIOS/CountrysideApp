@@ -13,10 +13,13 @@
 
 @property(nonatomic,copy)NSString *locationId;
 @property(nonatomic,copy)NSString *username;
+@property(nonatomic,copy)NSString *nickname;
+
 @property(nonatomic,copy)NSString *mtime;
 @property(nonatomic,copy)NSString *mobile;
 @property(nonatomic,copy)NSString *typeId;
 @property(nonatomic,copy)NSString *ctime;
 @property(nonatomic,copy)NSString *photo;
+@property(nonatomic,copy)NSString *avatar;
 
 @end
