@@ -44,6 +44,8 @@
 
 @implementation MyActionGetBase
 
+
+
 - (BOOL) DoActionWithSuccess:(SussessBlock) success Failure:(FailureBlock) failure
 {
     NSLog(@"%@",[self get_action_url]);
@@ -63,6 +65,30 @@
     return YES;
 }
 
+-(BOOL)DoActionWithNotTokenSuccess:(SussessBlock)success Failure:(FailureBlock)failure
+{
+    NSLog(@"%@",[self get_action_url]);
+    if( !self.isValid )
+        return NO;
+    
+    
+    AFHTTPRequestOperationManager *http_request_mgr = [[AFHTTPRequestOperationManager alloc]initWithBaseURL:[NSURL URLWithString:HOSTURL]];
+    http_request_mgr.responseSerializer = [AFJSONResponseSerializer serializer];
+    
+    if( !http_request_mgr )
+        return NO;
+    
+    [http_request_mgr GET:[self get_action_url] parameters:self.parameters
+                  success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                      success( self , responseObject , operation );
+                  } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                      failure( self , error , operation );
+                  }];
+    return YES;
+
+
+}
+
 @end
 
 
@@ -72,7 +98,9 @@
 {
     if( !self.isValid )
         return NO;
-    AFHTTPRequestOperationManager * http_request_mgr = [[MyHttpActionManager defaultManager] getHttpRequestMgr];
+    AFHTTPRequestOperationManager *http_request_mgr = [[AFHTTPRequestOperationManager alloc]initWithBaseURL:[NSURL URLWithString:HOSTURL]];
+    http_request_mgr.responseSerializer = [AFJSONResponseSerializer serializer];
+    
     if( !http_request_mgr )
         return NO;
     
@@ -87,6 +115,28 @@
     
     return YES;
 }
+
+-(BOOL)DoActionWithNotTokenSuccess:(SussessBlock)success Failure:(FailureBlock)failure
+{
+
+    if( !self.isValid )
+        return NO;
+    AFHTTPRequestOperationManager * http_request_mgr = [[MyHttpActionManager defaultManager] getHttpRequestMgr];
+    if( !http_request_mgr )
+        return NO;
+    
+    
+    [http_request_mgr POST:[self get_action_url] parameters:self.parameters
+                   success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                       success( self , responseObject , operation );
+                   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                       failure( self , error , operation );
+                       
+                   }];
+    
+    return YES;
+}
+
 @end
 
 @implementation MyActionPostWithSingleImageBase

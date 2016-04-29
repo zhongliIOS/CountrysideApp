@@ -132,7 +132,7 @@
     }
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     VerifySmsCodeAction *act = [[VerifySmsCodeAction alloc]initWithMobile:_phoneTf.text andCode:_yzmTf.text];
-    [act DoActionWithSuccess:^(MyActionBase *action, id responseObject, AFHTTPRequestOperation *operation) {
+    [act DoActionWithNotTokenSuccess:^(MyActionBase *action, id responseObject, AFHTTPRequestOperation *operation) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         MyResponeResult *result = [MyResponeResult createWithResponeObject:responseObject];
         if ([result get_error_code]==kServerErrorCode_OK) {
@@ -161,7 +161,7 @@
 {
     AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:[NSURL URLWithString:HOSTURL]];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
-    [manager.requestSerializer setValue:[NSString stringWithFormat:@"Bearer %@",access_token] forHTTPHeaderField:@"Authorization"];
+    [manager.requestSerializer setValue:access_token forHTTPHeaderField:@"Authorization"];
     [manager GET:@"/customer.json" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         MyResponeResult *result = [MyResponeResult createWithResponeObject:responseObject];
         NSLog(@"%@",responseObject);

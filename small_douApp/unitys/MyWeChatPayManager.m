@@ -28,11 +28,11 @@
     _backResult = result;
     //生成支付对象
     PayReq *req = [[PayReq alloc]init];
-    NSMutableString *stamp  = [dic objectForKey:@"timestamp"];
-    req.openID              = [dic objectForKey:@"appid"];
-    req.partnerId           = [dic objectForKey:@"partnerid"];
-    req.prepayId            = [dic objectForKey:@"prepayid"];
-    req.nonceStr            = [dic objectForKey:@"noncestr"];
+    NSMutableString *stamp  = [dic objectForKey:@"timeStamp"];
+    req.openID              = [dic objectForKey:@"appId"];
+    req.partnerId           = [dic objectForKey:@"partnerId"];
+    req.prepayId            = [dic objectForKey:@"prepayId"];
+    req.nonceStr            = [dic objectForKey:@"nonceStr"];
     req.timeStamp           = stamp.intValue;
     req.package             = [dic objectForKey:@"package"];
     req.sign                = [dic objectForKey:@"sign"];

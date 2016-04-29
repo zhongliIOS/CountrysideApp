@@ -17,6 +17,7 @@
     UIButton *_aliPayBtn;
     UIButton *_weChatBtn;
     NSString *_aliOrderString;
+    NSDictionary *_wxOrderInfoDic;
 }
 @end
 
@@ -135,8 +136,8 @@
             [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
             MyResponeResult *result = [MyResponeResult createWithResponeObject:responseObject];
             if ([result get_error_code]==kServerErrorCode_OK) {
-                _aliOrderString = [result get_data];
-                if (_aliOrderString) {
+                _wxOrderInfoDic = [result get_data];
+                if (_wxOrderInfoDic) {
                     [self doWxPay];
                 }
             }
@@ -177,7 +178,12 @@
 
 -(void)doWxPay
 {
-
+  [[MyWeChatPayManager defultManager] PayWithInfo:_wxOrderInfoDic result:^(BOOL end) {
+     
+      NSString *str = end?@"支付成功":@"支付失败";
+      [LUnity showErrorHUDViewAtView:self.view WithTitle:str];
+  }];
+    
 
 
 }
@@ -186,7 +192,8 @@
 {
     //支付宝支付
     [[MyAliPayManager defultManager]PayWithOrderString:_aliOrderString result:^(BOOL end) {
-
+        NSString *str = end?@"支付成功":@"支付失败";
+        [LUnity showErrorHUDViewAtView:self.view WithTitle:str];
     }];
 
 }

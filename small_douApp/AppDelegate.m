@@ -26,14 +26,11 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
 
-   [self configGoogleAnalytics];
+//   [self configGoogleAnalytics];
    [self getAreaInfo];
 //
-//    PayViewController *vc = [[PayViewController alloc] init];
-//    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:vc];
-//    navi.navigationBarHidden = YES;
-//    self.window.rootViewController = navi;
-//    [self.window makeKeyAndVisible];
+    [WXApi registerApp:wxAppId withDescription:@"http://www.ahtyxd.com"];
+
     UIViewController *vc = [[UIViewController alloc]init];
     self.window.rootViewController = vc;
     [self initWindowBackgroundColorwithView:vc.view];
@@ -90,7 +87,7 @@
 -(void)getAreaInfo
 {
     GetAreasAction *act = [[GetAreasAction alloc]init];
-    [act DoActionWithSuccess:^(MyActionBase *action, id responseObject, AFHTTPRequestOperation *operation) {
+    [act DoActionWithNotTokenSuccess:^(MyActionBase *action, id responseObject, AFHTTPRequestOperation *operation) {
      
     MyResponeResult *result = [MyResponeResult createWithResponeObject:responseObject];
         if ([result get_error_code]==kServerErrorCode_OK) {
@@ -112,7 +109,7 @@
         NSDictionary *dic = operation.responseObject;
         if ([dic[@"error"] isEqualToString:@"invalid_token"]) {
             [[NSUserDefaults standardUserDefaults]setObject:@"" forKey:My_token];
-            [self getAreaInfo];
+            
         }
      }];
 }
@@ -183,8 +180,17 @@
         }];
         
     }
-    
+    [WXApi handleOpenURL:url delegate:[MyWeChatPayManager defultManager]];
+
     return YES;
+}
+-(BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    
+    [WXApi handleOpenURL:url delegate:[MyWeChatPayManager defultManager]];
+    
+    return   [WXApi handleOpenURL:url delegate:[MyWeChatPayManager defultManager]];
+;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

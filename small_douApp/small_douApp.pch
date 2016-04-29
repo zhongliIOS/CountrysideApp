@@ -137,4 +137,8 @@
 #define OrderStatusDaiPingjia @"daipingjia"
 #define OrderStatusCompleted @"completed"
 
+
+#define wxAppId @"wx17bddf0c7c9c8e9f"
+#define wxAppSecret @"c624c70b4c214c6789aba170af0fe892"
+
 #endif

@@ -32,12 +32,15 @@ typedef void (^FailureBlock)(MyActionBase *action, NSError *error , AFHTTPReques
 @interface MyActionGetBase : MyActionBase
 
 - (BOOL) DoActionWithSuccess:(SussessBlock) success Failure:(FailureBlock) failure;
+- (BOOL) DoActionWithNotTokenSuccess:(SussessBlock) success Failure:(FailureBlock) failure;
+
 
 @end
 
 @interface MyActionPostBase : MyActionBase
 
 - (BOOL) DoActionWithSuccess:(SussessBlock) success Failure:(FailureBlock) failure;
+- (BOOL) DoActionWithNotTokenSuccess:(SussessBlock) success Failure:(FailureBlock) failure;
 
 @end
 
